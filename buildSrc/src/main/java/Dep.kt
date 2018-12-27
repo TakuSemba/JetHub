@@ -6,9 +6,6 @@ object Dep {
     const val kotlin = "1.3.11"
     const val coroutine = "1.1.0"
     const val androidX = "1.0.0"
-    const val ktx = "1.0.0-alpha1"
-    const val lifecycleKtx = "2.0.0-alpha1"
-    const val archKtx = "1.0.0-alpha01"
     const val lifecycle = "2.0.0"
     const val constraintLayout = "2.0.0-alpha2"
     const val navigation = "1.0.0-alpha09"
@@ -34,16 +31,26 @@ object Dep {
   val appCompat = "androidx.appcompat:appcompat:${Version.androidX}"
   val material = "com.google.android.material:material:${Version.androidX}"
   val constraintLayout = "androidx.constraintlayout:constraintlayout:${Version.constraintLayout}"
+  val coreKtx = "androidx.core:core-ktx:${Version.androidX}"
+  val fragmentKtx = "androidx.fragment:fragment-ktx:${Version.androidX}"
+  val collectionKtx = "androidx.collection:collection-ktx:${Version.androidX}"
 
   // navigation
   val navFragment = "android.arch.navigation:navigation-fragment:${Version.navigation}"
   val navUi = "android.arch.navigation:navigation-ui:${Version.navigation}"
+  val navCommonKtx = "android.arch.navigation:navigation-common-ktx:${Version.navigation}"
+  val navRuntimeKtx = "android.arch.navigation:navigation-runtime-ktx:${Version.navigation}"
+  val navFragmentKtx = "android.arch.navigation:navigation-fragment-ktx:${Version.navigation}"
+  val navUiKtx = "android.arch.navigation:navigation-ui-ktx:${Version.navigation}"
+  val navTestKtx = "android.arch.navigation:navigation-testing-ktx:1.0.0-alpha01"
 
   // android architecture component
   val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime:${Version.lifecycle}"
   val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Version.lifecycle}"
   val lifecycleReactivestreams = "androidx.lifecycle:lifecycle-reactivestreams:${Version.lifecycle}"
   val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Version.lifecycle}"
+  val viewModel = "androidx.lifecycle:lifecycle-viewmodel:${Version.lifecycle}"
+  val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifecycle}"
 
   // dependency injection
   val dagger = "com.google.dagger:dagger:${Version.dagger}"
@@ -57,17 +64,6 @@ object Dep {
   val retrofitConverter = "com.squareup.retrofit2:converter-gson:${Version.retrofit}"
   val retrofitAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
   val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:3.11.0"
-
-  // ktx
-  val coreKtx = "androidx.core:core-ktx:${Version.ktx}"
-  val fragmentKtx = "androidx.fragment:fragment-ktx:${Version.ktx}"
-  val collectionKtx = "androidx.collection:collection-ktx:${Version.ktx}"
-  val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifecycleKtx}"
-  val navCommonKtx = "android.arch.navigation:navigation-common-ktx:${Version.archKtx}"
-  val navRuntimeKtx = "android.arch.navigation:navigation-runtime-ktx:${Version.archKtx}"
-  val navFragmentKtx = "android.arch.navigation:navigation-fragment-ktx:${Version.archKtx}"
-  val navUiKtx = "android.arch.navigation:navigation-ui-ktx:${Version.archKtx}"
-  val navTestKtx = "android.arch.navigation:navigation-testing-ktx:${Version.archKtx}"
 
   // date
   val threetenabp = "com.jakewharton.threetenabp:threetenabp:1.1.1"

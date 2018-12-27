@@ -37,23 +37,26 @@ dependencies {
   implementation(Dep.appCompat)
   implementation(Dep.material)
   implementation(Dep.constraintLayout)
-
-  // ktx
   implementation(Dep.coreKtx)
   implementation(Dep.fragmentKtx)
   implementation(Dep.collectionKtx)
+
+  // android architecture component
+  implementation(Dep.lifecycleRuntime)
+  implementation(Dep.lifecycleExtensions)
+  implementation(Dep.lifecycleReactivestreams)
+  kapt(Dep.lifecycleCompiler)
+  implementation(Dep.viewModel)
   implementation(Dep.viewmodelKtx)
+
+  // navigation
+  implementation(Dep.navFragment)
+  implementation(Dep.navUi)
   implementation(Dep.navCommonKtx)
   implementation(Dep.navRuntimeKtx)
   implementation(Dep.navFragmentKtx)
   implementation(Dep.navUiKtx)
   testImplementation(Dep.navTestKtx)
-
-  // navigation
-  implementation(Dep.navFragment)
-  implementation(Dep.navUi)
-  implementation(Dep.navFragmentKtx)
-  implementation(Dep.navUiKtx)
 
   // dependency injection
   implementation(Dep.dagger)
