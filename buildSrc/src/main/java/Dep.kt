@@ -53,6 +53,9 @@ object Dep {
   val retrofitAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
   val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:3.11.0"
 
+  // date
+  val threetenabp = "com.jakewharton.threetenabp:threetenabp:1.1.1"
+
   // test
   val junit = "junit:junit:${Version.junit}"
 }
