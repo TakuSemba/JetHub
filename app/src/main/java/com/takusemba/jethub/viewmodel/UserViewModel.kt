@@ -23,7 +23,7 @@ class UserViewModel @Inject constructor(
 
   fun pin(id: Long) {
     launch {
-      Log.d("UserViewModel", "pin $id")
+      Log.d("UserViewModel ${System.identityHashCode(this@UserViewModel)}", "pin $id")
       userRepository.pin(id)
       val repositories = pinedRepositories.value?.toMutableList() ?: mutableListOf()
       repositories.add(id)
@@ -33,7 +33,7 @@ class UserViewModel @Inject constructor(
 
   fun unpin(id: Long) {
     launch {
-      Log.d("UserViewModel", "unpin $id")
+      Log.d("UserViewModel ${System.identityHashCode(this@UserViewModel)}", "unpin $id")
       userRepository.unpin(id)
       val repositories = pinedRepositories.value?.toMutableList() ?: mutableListOf()
       repositories.remove(id)
@@ -52,6 +52,6 @@ class UserViewModel @Inject constructor(
   override fun onCleared() {
     super.onCleared()
     coroutineContext.cancel()
-    Log.d("UserViewModel", "onCleared")
+    Log.d("UserViewModel ${System.identityHashCode(this)}", "onCleared")
   }
 }

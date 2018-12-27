@@ -1,6 +1,7 @@
 package com.takusemba.jethub.ui.activity
 
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import com.takusemba.jethub.R
 import com.takusemba.jethub.extension.viewModelProvider
@@ -20,6 +21,7 @@ class MainActivity : DaggerAppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
+    Log.d("MainActivity", "factory is ${System.identityHashCode(viewModelFactory)}")
     userViewModel.pin(1)
   }
 }
