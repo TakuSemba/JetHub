@@ -2,12 +2,33 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:id="@+id/mobile_navigation"
-  app:startDestination="@id/main_tab"
+  app:startDestination="@id/mainTabFragment"
   >
 
   <fragment
-    android:id="@+id/main_tab"
+    android:id="@+id/mainTabFragment"
     android:name="com.takusemba.jethub.ui.fragment.MainTabFragment"
     android:label="MainTabFragment"
+    >
+    <action
+      android:id="@+id/action_main_tab_to_repositoryFragment"
+      app:destination="@id/repositoryFragment"
+      />
+    <action
+      android:id="@+id/action_main_tab_to_userFragment"
+      app:destination="@id/userFragment"
+      />
+  </fragment>
+  <fragment
+    android:id="@+id/repositoryFragment"
+    android:name="com.takusemba.jethub.ui.fragment.RepositoryFragment"
+    android:label="RepositoryFragment"
     />
+  <fragment
+    android:id="@+id/userFragment"
+    android:name="com.takusemba.jethub.ui.fragment.UserFragment"
+    android:label="UserFragment"
+    />
+
+
 </navigation>
