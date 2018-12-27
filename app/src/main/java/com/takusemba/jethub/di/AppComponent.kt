@@ -10,21 +10,21 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = [
-        AndroidInjectionModule::class,
-        NetworkModule::class
-    ]
+  modules = [
+    AndroidInjectionModule::class,
+    NetworkModule::class
+  ]
 )
 interface AppComponent : AndroidInjector<App> {
 
-    @Component.Builder
-    interface Builder {
+  @Component.Builder
+  interface Builder {
 
-        @BindsInstance
-        fun application(application: Application): Builder
+    @BindsInstance
+    fun application(application: Application): Builder
 
-        fun build(): AppComponent
-    }
+    fun build(): AppComponent
+  }
 
-    override fun inject(app: App)
+  override fun inject(app: App)
 }
