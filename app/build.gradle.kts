@@ -29,11 +29,25 @@ dependencies {
   // kotlin
   implementation(Dep.kotlin)
 
+  // coroutine
+  implementation(Dep.coroutineCore)
+  implementation(Dep.coroutineAndroid)
+
   // androidx
   implementation(Dep.appCompat)
   implementation(Dep.material)
-  implementation(Dep.ktx)
   implementation(Dep.constraintLayout)
+
+  // ktx
+  implementation(Dep.coreKtx)
+  implementation(Dep.fragmentKtx)
+  implementation(Dep.collectionKtx)
+  implementation(Dep.viewmodelKtx)
+  implementation(Dep.navCommonKtx)
+  implementation(Dep.navRuntimeKtx)
+  implementation(Dep.navFragmentKtx)
+  implementation(Dep.navUiKtx)
+  testImplementation(Dep.navTestKtx)
 
   // navigation
   implementation(Dep.navFragment)
