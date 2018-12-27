@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentMainTabBinding
 import com.takusemba.jethub.extension.add
 import com.takusemba.jethub.extension.replace
+import dagger.android.support.DaggerFragment
 
-class MainTabFragment : Fragment() {
+class MainTabFragment : DaggerFragment() {
 
   override fun onCreateView(
     inflater: LayoutInflater,

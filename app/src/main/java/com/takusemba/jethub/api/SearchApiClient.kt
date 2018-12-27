@@ -18,10 +18,16 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
   interface Service {
 
     @GET("search/repositories?")
-    suspend fun getRepositories(@Query("q") query: String): List<RepositoryResponse>
+    suspend fun getRepositories(
+      @Query("q") query: String,
+      @Query("sort") sort: String = "stars"
+    ): List<RepositoryResponse>
 
     @GET("search/users?")
-    suspend fun getUsers(@Query("q") query: String): List<UserResponse>
+    suspend fun getUsers(
+      @Query("q") query: String,
+      @Query("sort") sort: String = "stars"
+    ): List<UserResponse>
   }
 
   private val service = retrofit.create(Service::class.java)

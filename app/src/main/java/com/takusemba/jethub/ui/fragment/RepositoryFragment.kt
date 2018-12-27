@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentRepositoryBinding
+import dagger.android.support.DaggerFragment
 
-class RepositoryFragment : Fragment() {
+class RepositoryFragment : DaggerFragment() {
 
   companion object {
 
