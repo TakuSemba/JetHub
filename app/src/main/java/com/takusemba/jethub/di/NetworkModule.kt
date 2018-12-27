@@ -17,11 +17,11 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
-class NetworkModule {
+open class NetworkModule {
 
   @Provides
   @Singleton
-  fun provideOkHttpClient(): OkHttpClient {
+  open fun provideOkHttpClient(): OkHttpClient {
     return OkHttpClient.Builder()
       .connectTimeout(10L, TimeUnit.SECONDS)
       .writeTimeout(10L, TimeUnit.SECONDS)
