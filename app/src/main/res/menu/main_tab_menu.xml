@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <item
+    android:id="@+id/feed"
+    android:icon="@drawable/ic_launcher_foreground"
+    android:title="feed"
+    />
+
+  <item
+    android:id="@+id/repositories"
+    android:icon="@drawable/ic_launcher_foreground"
+    android:title="repositories"
+    />
+
+  <item
+    android:id="@+id/users"
+    android:icon="@drawable/ic_launcher_foreground"
+    android:title="users"
+    />
+
+</menu>
