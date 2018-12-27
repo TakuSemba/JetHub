@@ -29,10 +29,6 @@ class FeedFragment : DaggerFragment() {
     viewModelProvider(viewModelFactory) as FeedViewModel
   }
 
-//  private val userViewModel: UserViewModel by lazy {
-//    activityViewModelProvider(viewModelFactory) as UserViewModel
-//  }
-
   companion object {
 
     fun newInstance() = FeedFragment()
@@ -53,7 +49,7 @@ class FeedFragment : DaggerFragment() {
     Log.d("FeedFragment", "factory is ${System.identityHashCode(viewModelFactory)}")
     userViewModel.pin(3)
 
-    feedViewModel.hotUsers.observe(this, Observer { repositories ->
+    feedViewModel.hotRepositories.observe(this, Observer { repositories ->
       Log.d("result", "repositories: $repositories")
     })
   }

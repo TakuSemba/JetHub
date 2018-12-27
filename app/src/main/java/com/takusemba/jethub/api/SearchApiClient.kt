@@ -1,10 +1,12 @@
 package com.takusemba.jethub.api
 
+import com.takusemba.jethub.api.response.ListResponse
 import com.takusemba.jethub.api.response.RepositoryResponse
 import com.takusemba.jethub.api.response.UserResponse
 import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.model.User
+import kotlinx.coroutines.Deferred
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.format.DateTimeFormatter
 import retrofit2.Retrofit
@@ -17,17 +19,17 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
 
   interface Service {
 
-    @GET("search/repositories?")
-    suspend fun getRepositories(
+    @GET("search/repositories")
+    fun getRepositories(
       @Query("q") query: String,
       @Query("sort") sort: String = "stars"
-    ): List<RepositoryResponse>
+    ): Deferred<ListResponse<RepositoryResponse>>
 
-    @GET("search/users?")
-    suspend fun getUsers(
+    @GET("search/users")
+    fun getUsers(
       @Query("q") query: String,
       @Query("sort") sort: String = "stars"
-    ): List<UserResponse>
+    ): Deferred<ListResponse<UserResponse>>
   }
 
   private val service = retrofit.create(Service::class.java)
@@ -37,7 +39,9 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     from: LocalDateTime
   ): List<Repository> {
     return service.getRepositories("language:${language.name} created:>${from.format(formatter)}")
-      .map { response -> response.toModel() }
+      .await()
+      .items
+      ?.map { response -> response.toModel() } ?: emptyList()
   }
 
   override suspend fun getHotUsers(
@@ -45,6 +49,8 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     from: LocalDateTime
   ): List<User> {
     return service.getUsers("language:${language.name} created:>${from.format(formatter)}")
-      .map { response -> response.toModel() }
+      .await()
+      .items
+      ?.map { response -> response.toModel() } ?: emptyList()
   }
 }

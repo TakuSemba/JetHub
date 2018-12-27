@@ -34,7 +34,7 @@ open class NetworkModule {
   fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
     return Retrofit.Builder()
       .client(okHttpClient)
-      .baseUrl("${Config.API_ENDPOINT}/")
+      .baseUrl(Config.API_ENDPOINT)
       .addConverterFactory(GsonConverterFactory.create())
       .addCallAdapterFactory(CoroutineCallAdapterFactory())
       .build()
