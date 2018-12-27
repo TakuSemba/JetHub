@@ -27,12 +27,6 @@ android {
   }
 }
 
-tasks.withType<KotlinCompile> {
-  kotlinOptions {
-    freeCompilerArgs = listOf("-Xallow-result-return-type")
-  }
-}
-
 dependencies {
   // kotlin
   implementation(Dep.kotlin)
