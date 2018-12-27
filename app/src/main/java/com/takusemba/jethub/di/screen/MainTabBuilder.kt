@@ -9,7 +9,7 @@ import dagger.android.ContributesAndroidInjector
 @Module
 interface MainTabBuilder {
 
-  @ContributesAndroidInjector
+  @ContributesAndroidInjector(modules = [FeedModule::class])
   fun contributeFeedFragment(): FeedFragment
 
   @ContributesAndroidInjector

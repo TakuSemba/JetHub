@@ -23,5 +23,5 @@ interface ActivityBuilder {
   @Binds
   @IntoMap
   @ViewModelKey(UserViewModel::class)
-  fun bindUserViewModel(userViewModel: UserViewModel): ViewModel
+  fun bindUserViewModel(viewModel: UserViewModel): ViewModel
 }
