@@ -22,6 +22,10 @@ class FeedFragment : DaggerFragment() {
     activityViewModelProvider(viewModelFactory) as UserViewModel
   }
 
+//  private val userViewModel: UserViewModel by lazy {
+//    activityViewModelProvider(viewModelFactory) as UserViewModel
+//  }
+
   companion object {
 
     fun newInstance() = FeedFragment()

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
   id("com.android.application")
   id("kotlin-android")
@@ -22,6 +24,12 @@ android {
   }
   dataBinding {
     isEnabled = true
+  }
+}
+
+tasks.withType<KotlinCompile> {
+  kotlinOptions {
+    freeCompilerArgs = listOf("-Xallow-result-return-type")
   }
 }
 
