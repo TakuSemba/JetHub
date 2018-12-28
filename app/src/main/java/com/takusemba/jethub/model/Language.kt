@@ -1,12 +1,15 @@
 package com.takusemba.jethub.model
 
-enum class Language(name: String) {
+import androidx.annotation.DrawableRes
+import com.takusemba.jethub.R
 
-  KOTLIN("Kotlin"),
+enum class Language(val title: String, @DrawableRes val icon: Int) {
 
-  JAVA("Java"),
+  KOTLIN("Kotlin", R.drawable.ic_circle_orange),
 
-  OTHER("");
+  JAVA("Java", R.drawable.ic_circle_brown),
+
+  OTHER("", R.drawable.ic_circle_gray);
 
   companion object {
 

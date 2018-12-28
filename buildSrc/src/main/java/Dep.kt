@@ -11,6 +11,7 @@ object Dep {
     const val navigation = "1.0.0-alpha09"
     const val dagger = "2.16"
     const val retrofit = "2.3.0"
+    const val groupie = "2.3.0"
 
     // library (test)
     const val junit = "4.12"
@@ -64,6 +65,10 @@ object Dep {
   val retrofitConverter = "com.squareup.retrofit2:converter-gson:${Version.retrofit}"
   val retrofitAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
   val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:3.11.0"
+
+  // recycler view
+  val groupie = "com.xwray:groupie:${Version.groupie}"
+  val groupieDatabinding = "com.xwray:groupie-databinding:${Version.groupie}"
 
   // date
   val threetenabp = "com.jakewharton.threetenabp:threetenabp:1.1.1"

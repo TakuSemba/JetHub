@@ -73,6 +73,10 @@ dependencies {
   implementation(Dep.retrofitAdapter)
   debugImplementation(Dep.loggingInterceptor)
 
+  // recycler view
+  implementation(Dep.groupie)
+  implementation(Dep.groupieDatabinding)
+
   // date
   implementation(Dep.threetenabp)
 

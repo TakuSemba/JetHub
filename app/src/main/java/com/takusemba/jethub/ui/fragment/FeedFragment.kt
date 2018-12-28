@@ -1,19 +1,21 @@
 package com.takusemba.jethub.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentFeedBinding
 import com.takusemba.jethub.extension.activityViewModelProvider
 import com.takusemba.jethub.extension.viewModelProvider
+import com.takusemba.jethub.ui.item.FeedSection
 import com.takusemba.jethub.viewmodel.FeedViewModel
 import com.takusemba.jethub.viewmodel.UserViewModel
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.ViewHolder
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -27,6 +29,10 @@ class FeedFragment : DaggerFragment() {
 
   private val feedViewModel: FeedViewModel by lazy {
     viewModelProvider(viewModelFactory) as FeedViewModel
+  }
+
+  private val feedSection: FeedSection by lazy {
+    FeedSection(this, feedViewModel)
   }
 
   companion object {
@@ -46,8 +52,11 @@ class FeedFragment : DaggerFragment() {
     super.onViewCreated(view, savedInstanceState)
     val binding = DataBindingUtil.bind<FragmentFeedBinding>(view)!!
 
-    feedViewModel.hotRepositories.observe(this, Observer { repositories ->
-      binding.title.text = repositories.toString()
-    })
+    val linearLayoutManager = LinearLayoutManager(context)
+    val groupAdapter = GroupAdapter<ViewHolder>().apply {
+      add(feedSection)
+    }
+    binding.recyclerView.layoutManager = linearLayoutManager
+    binding.recyclerView.adapter = groupAdapter
   }
 }
