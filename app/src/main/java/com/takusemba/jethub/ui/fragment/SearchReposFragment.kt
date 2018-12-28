@@ -60,6 +60,7 @@ class SearchReposFragment : DaggerFragment() {
       }
 
       override fun onQueryTextChange(newText: String): Boolean {
+        if (newText.isBlank()) return false
         searchReposViewModel.search(newText)
         return true
       }
