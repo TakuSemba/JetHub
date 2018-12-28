@@ -3,20 +3,20 @@
 
   <item
     android:id="@+id/feed"
-    android:icon="@drawable/ic_launcher_foreground"
-    android:title="feed"
+    android:icon="@drawable/ic_tab_feed"
+    android:title="@string/feed"
     />
 
   <item
     android:id="@+id/repositories"
-    android:icon="@drawable/ic_launcher_foreground"
-    android:title="repositories"
+    android:icon="@drawable/ic_tab_repository"
+    android:title="@string/repositories"
     />
 
   <item
     android:id="@+id/developers"
-    android:icon="@drawable/ic_launcher_foreground"
-    android:title="developers"
+    android:icon="@drawable/ic_tab_developer"
+    android:title="@string/developers"
     />
 
 </menu>

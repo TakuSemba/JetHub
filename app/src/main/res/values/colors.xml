@@ -13,5 +13,12 @@
   <color name="black_32">#52000000</color>
   <color name="black_20">#33000000</color>
   <color name="black_12">#1F000000</color>
+
   <color name="white">#FFFFFF</color>
+  <color name="white_87">#DEFFFFFF</color>
+  <color name="white_54">#8AFFFFFF</color>
+  <color name="white_50">#8FFFFFF0</color>
+  <color name="white_32">#52FFFFFF</color>
+  <color name="white_20">#33FFFFFF</color>
+  <color name="white_12">#1FFFFFFF</color>
 </resources>
