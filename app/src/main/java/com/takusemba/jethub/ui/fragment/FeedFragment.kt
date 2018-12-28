@@ -46,11 +46,8 @@ class FeedFragment : DaggerFragment() {
     super.onViewCreated(view, savedInstanceState)
     val binding = DataBindingUtil.bind<FragmentFeedBinding>(view)!!
 
-    Log.d("FeedFragment", "factory is ${System.identityHashCode(viewModelFactory)}")
-    userViewModel.pin(3)
-
     feedViewModel.hotRepositories.observe(this, Observer { repositories ->
-      Log.d("result", "repositories: $repositories")
+      binding.title.text = repositories.toString()
     })
   }
 }

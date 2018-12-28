@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.takusemba.jethub.R
-import com.takusemba.jethub.databinding.FragmentUserBinding
+import com.takusemba.jethub.databinding.FragmentUserDetailBinding
 import dagger.android.support.DaggerFragment
 
 class UserDetailFragment : DaggerFragment() {
@@ -26,6 +26,6 @@ class UserDetailFragment : DaggerFragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    val binding = DataBindingUtil.bind<FragmentUserBinding>(view)!!
+    val binding = DataBindingUtil.bind<FragmentUserDetailBinding>(view)!!
   }
 }

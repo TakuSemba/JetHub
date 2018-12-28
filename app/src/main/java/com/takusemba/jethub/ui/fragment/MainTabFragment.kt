@@ -1,7 +1,6 @@
 package com.takusemba.jethub.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,13 +35,6 @@ class MainTabFragment : DaggerFragment() {
     super.onViewCreated(view, savedInstanceState)
     val binding = DataBindingUtil.bind<FragmentMainTabBinding>(view)!!
 
-    Log.d("MainTabFragment", "factory is ${System.identityHashCode(viewModelFactory)}")
-    userViewModel.pin(2)
-
-    childFragmentManager.transaction {
-      add(R.id.container, FeedFragment.newInstance())
-    }
-
     binding.bottomNavigation.setOnNavigationItemSelectedListener(
       BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -67,5 +59,11 @@ class MainTabFragment : DaggerFragment() {
         }
         false
       })
+
+    if (childFragmentManager.findFragmentById(R.id.container) == null) {
+      childFragmentManager.transaction {
+        replace(R.id.container, FeedFragment.newInstance())
+      }
+    }
   }
 }

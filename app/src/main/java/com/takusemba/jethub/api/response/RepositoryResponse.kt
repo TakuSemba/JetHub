@@ -9,7 +9,7 @@ import org.threeten.bp.format.DateTimeFormatter
 class RepositoryResponse : DataResponse<Repository>() {
 
   companion object {
-    private val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:MM:ss")
+    private val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
   }
 
   @SerializedName("id")
@@ -214,7 +214,7 @@ class RepositoryResponse : DataResponse<Repository>() {
   var openIssuesCount: Int? = null
 
   @SerializedName("license")
-  var license: String? = null
+  var license: LicenseResponse? = null
 
   @SerializedName("forks")
   var forks: Int? = null

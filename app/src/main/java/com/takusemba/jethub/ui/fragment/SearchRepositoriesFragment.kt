@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.takusemba.jethub.R
-import com.takusemba.jethub.databinding.FragmentRepositoriesBinding
+import com.takusemba.jethub.databinding.FragmentSearchRepositoriesBinding
 import dagger.android.support.DaggerFragment
 
 class SearchRepositoriesFragment : DaggerFragment() {
@@ -27,7 +27,7 @@ class SearchRepositoriesFragment : DaggerFragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    val binding = DataBindingUtil.bind<FragmentRepositoriesBinding>(view)!!
+    val binding = DataBindingUtil.bind<FragmentSearchRepositoriesBinding>(view)!!
 
     binding.button.setOnClickListener {
       findNavController().navigate(R.id.repositoryDetailFragment)
