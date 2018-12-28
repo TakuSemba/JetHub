@@ -46,7 +46,7 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     language: Language,
     from: LocalDateTime
   ): List<Repository> {
-    return service.getHotRepos("language:${language.name} created:>${from.format(DateFormatters.ofSearchQuery())}")
+    return service.getHotRepos("language:${language.title} created:>${from.format(DateFormatters.ofSearchQuery())}")
       .await()
       .items
       ?.map { response -> response.toModel() } ?: emptyList()
@@ -56,21 +56,21 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     language: Language,
     from: LocalDateTime
   ): List<User> {
-    return service.getHotUsers("language:${language.name} created:>${from.format(DateFormatters.ofSearchQuery())}")
+    return service.getHotUsers("language:${language.title} created:>${from.format(DateFormatters.ofSearchQuery())}")
       .await()
       .items
       ?.map { response -> response.toModel() } ?: emptyList()
   }
 
   override suspend fun searchRepos(language: Language, query: String): List<Repository> {
-    return service.searchRepos("$query+language:${language.name}")
+    return service.searchRepos("$query+language:${language.title}")
       .await()
       .items
       ?.map { response -> response.toModel() } ?: emptyList()
   }
 
   override suspend fun searchUsers(language: Language, query: String): List<User> {
-    return service.searchUsers("$query+language:${language.name}")
+    return service.searchUsers("$query+language:${language.title}")
       .await()
       .items
       ?.map { response -> response.toModel() } ?: emptyList()
