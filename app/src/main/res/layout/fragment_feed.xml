@@ -14,6 +14,8 @@
       android:id="@+id/appbar"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:background="@color/white"
+      android:elevation="8dp"
       >
 
       <FrameLayout
@@ -29,7 +31,9 @@
           android:layout_gravity="center"
           android:gravity="center"
           android:minHeight="?actionBarSize"
-          android:text="feed"
+          android:text="@string/feed"
+          android:textColor="@color/black_87"
+          android:textSize="20sp"
           />
 
       </FrameLayout>

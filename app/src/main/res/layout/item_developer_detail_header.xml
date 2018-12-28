@@ -16,6 +16,7 @@
       android:layout_height="wrap_content"
       android:layout_marginStart="16dp"
       android:layout_marginTop="16dp"
+      android:background="@drawable/ripple_light_borderless"
       android:src="@drawable/ic_left_arrow"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"

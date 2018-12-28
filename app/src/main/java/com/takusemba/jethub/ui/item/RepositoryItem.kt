@@ -1,5 +1,6 @@
 package com.takusemba.jethub.ui.item
 
+import android.view.View
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.ItemRepositoryBinding
 import com.takusemba.jethub.model.Repository
@@ -14,6 +15,11 @@ data class RepositoryItem(
   override fun bind(binding: ItemRepositoryBinding, position: Int) {
     binding.title.text = repository.name
     binding.description.text = repository.description
+    binding.description.visibility = if (repository.description.isBlank()) {
+      View.GONE
+    } else {
+      View.VISIBLE
+    }
     binding.languageName.text = repository.language.title
     binding.languageIcon.setImageResource(repository.language.icon)
     binding.starCount.text = repository.starsCount.toString()

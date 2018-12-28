@@ -1,7 +1,11 @@
 <resources>
   <string name="app_name">JetHub</string>
 
+  <string name="feed">feed</string>
   <string name="repositories">repositories</string>
+  <string name="developers">developers</string>
+
+
   <string name="repos_count">%d repos</string>
   <string name="gists_count">%d gists</string>
   <string name="followers_count">%d followers</string>
