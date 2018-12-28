@@ -1,8 +1,8 @@
 package com.takusemba.jethub.di.screen
 
 import com.takusemba.jethub.ui.fragment.FeedFragment
-import com.takusemba.jethub.ui.fragment.RepositoriesFragment
-import com.takusemba.jethub.ui.fragment.UsersFragment
+import com.takusemba.jethub.ui.fragment.SearchRepositoriesFragment
+import com.takusemba.jethub.ui.fragment.SearchUsersFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -13,8 +13,8 @@ interface MainTabBuilder {
   fun contributeFeedFragment(): FeedFragment
 
   @ContributesAndroidInjector
-  fun contributeRepositoriesFragment(): RepositoriesFragment
+  fun contributeRepositoriesFragment(): SearchRepositoriesFragment
 
   @ContributesAndroidInjector
-  fun contributeUsersFragment(): UsersFragment
+  fun contributeUsersFragment(): SearchUsersFragment
 }

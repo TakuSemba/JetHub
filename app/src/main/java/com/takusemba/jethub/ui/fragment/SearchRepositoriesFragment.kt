@@ -10,11 +10,11 @@ import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentRepositoriesBinding
 import dagger.android.support.DaggerFragment
 
-class RepositoriesFragment : DaggerFragment() {
+class SearchRepositoriesFragment : DaggerFragment() {
 
   companion object {
 
-    fun newInstance() = RepositoriesFragment()
+    fun newInstance() = SearchRepositoriesFragment()
   }
 
   override fun onCreateView(
@@ -22,7 +22,7 @@ class RepositoriesFragment : DaggerFragment() {
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-    return inflater.inflate(R.layout.fragment_repositories, container, false)
+    return inflater.inflate(R.layout.fragment_search_repositories, container, false)
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,7 +30,7 @@ class RepositoriesFragment : DaggerFragment() {
     val binding = DataBindingUtil.bind<FragmentRepositoriesBinding>(view)!!
 
     binding.button.setOnClickListener {
-      findNavController().navigate(R.id.repositoryFragment)
+      findNavController().navigate(R.id.repositoryDetailFragment)
     }
   }
 }

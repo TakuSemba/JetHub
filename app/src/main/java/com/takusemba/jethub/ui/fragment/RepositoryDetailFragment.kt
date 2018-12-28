@@ -9,11 +9,11 @@ import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentRepositoryBinding
 import dagger.android.support.DaggerFragment
 
-class RepositoryFragment : DaggerFragment() {
+class RepositoryDetailFragment : DaggerFragment() {
 
   companion object {
 
-    fun newInstance() = RepositoryFragment()
+    fun newInstance() = RepositoryDetailFragment()
   }
 
   override fun onCreateView(
@@ -21,7 +21,7 @@ class RepositoryFragment : DaggerFragment() {
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-    return inflater.inflate(R.layout.fragment_repository, container, false)
+    return inflater.inflate(R.layout.fragment_repository_detail, container, false)
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
