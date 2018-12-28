@@ -1,5 +1,6 @@
 package com.takusemba.jethub.ui.item
 
+import androidx.navigation.findNavController
 import com.squareup.picasso.Picasso
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.ItemUserBinding
@@ -19,6 +20,9 @@ data class UserItem(
     binding.description.text = user.bio
     binding.followers.text = context.getString(R.string.followers_count, user.followersCount)
     binding.followers.text = context.getString(R.string.followings_count, user.followingCount)
+    binding.root.setOnClickListener { view ->
+      view.findNavController().navigate(R.id.userDetailFragment)
+    }
   }
 
   override fun getLayout() = R.layout.item_user

@@ -12,22 +12,22 @@
     >
     <action
       android:id="@+id/action_main_tab_to_repositoryFragment"
-      app:destination="@id/repositoryDetailFragment"
+      app:destination="@id/repoDetailFragment"
       />
     <action
       android:id="@+id/action_main_tab_to_userFragment"
-      app:destination="@id/userFragment"
+      app:destination="@id/userDetailFragment"
       />
   </fragment>
   <fragment
-    android:id="@+id/repositoryDetailFragment"
+    android:id="@+id/repoDetailFragment"
     android:name="com.takusemba.jethub.ui.fragment.RepoDetailFragment"
-    android:label="RepositoryFragment"
+    android:label="RepoDetailFragment"
     />
   <fragment
-    android:id="@+id/userFragment"
+    android:id="@+id/userDetailFragment"
     android:name="com.takusemba.jethub.ui.fragment.UserDetailFragment"
-    android:label="UserFragment"
+    android:label="UserDetailFragment"
     />
 
 
