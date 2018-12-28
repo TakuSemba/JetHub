@@ -2,8 +2,8 @@ package com.takusemba.jethub.di
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.takusemba.jethub.Config
-import com.takusemba.jethub.api.RepositoryApi
-import com.takusemba.jethub.api.RepositoryApiClient
+import com.takusemba.jethub.api.RepoApi
+import com.takusemba.jethub.api.RepoApiClient
 import com.takusemba.jethub.api.SearchApi
 import com.takusemba.jethub.api.SearchApiClient
 import com.takusemba.jethub.api.DeveloperApi
@@ -42,8 +42,8 @@ open class NetworkModule {
 
   @Singleton
   @Provides
-  fun provideRepositoryApi(retrofit: Retrofit): RepositoryApi {
-    return RepositoryApiClient(retrofit)
+  fun provideRepositoryApi(retrofit: Retrofit): RepoApi {
+    return RepoApiClient(retrofit)
   }
 
   @Singleton

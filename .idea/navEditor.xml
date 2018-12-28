@@ -8,6 +8,18 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="developerDetailFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="262" />
+                            <option name="y" value="11" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="mainTabFragment">
                     <value>
                       <LayoutPositions>
@@ -19,24 +31,12 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_main_tab_to_userFragment">
+                            <entry key="action_main_tab_to_developer_detail">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
                           </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="userDetailFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="262" />
-                            <option name="y" value="11" />
-                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

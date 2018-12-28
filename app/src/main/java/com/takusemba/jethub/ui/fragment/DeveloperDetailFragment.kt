@@ -4,14 +4,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import android.widget.Toast.LENGTH_SHORT
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentDeveloperDetailBinding
+import com.takusemba.jethub.extension.viewModelProvider
+import com.takusemba.jethub.ui.item.DeveloperDetailSection
+import com.takusemba.jethub.viewmodel.DeveloperDetailViewModel
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.ViewHolder
 import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
 class DeveloperDetailFragment : DaggerFragment() {
+
+  @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+
+  private val developerDetailViewModel: DeveloperDetailViewModel by lazy {
+    viewModelProvider(viewModelFactory) as DeveloperDetailViewModel
+  }
+
+  private val developerDetailSection: DeveloperDetailSection by lazy {
+    DeveloperDetailSection(this, developerDetailViewModel)
+  }
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -24,8 +40,13 @@ class DeveloperDetailFragment : DaggerFragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     val binding = DataBindingUtil.bind<FragmentDeveloperDetailBinding>(view)!!
-    val userId = DeveloperDetailFragmentArgs.fromBundle(arguments!!).userId
+    val developerId = DeveloperDetailFragmentArgs.fromBundle(arguments!!).developerId
 
-    Toast.makeText(context, "developer id is $userId", LENGTH_SHORT).show()
+    val linearLayoutManager = LinearLayoutManager(context)
+    val groupAdapter = GroupAdapter<ViewHolder>().apply {
+      add(developerDetailSection)
+    }
+    binding.recyclerView.layoutManager = linearLayoutManager
+    binding.recyclerView.adapter = groupAdapter
   }
 }

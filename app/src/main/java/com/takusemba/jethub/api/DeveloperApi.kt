@@ -1,3 +1,8 @@
 package com.takusemba.jethub.api
 
-interface DeveloperApi
+import com.takusemba.jethub.model.Developer
+
+interface DeveloperApi {
+
+  suspend fun getDeveloper(name: String): Developer
+}
