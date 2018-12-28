@@ -9,7 +9,7 @@ import org.threeten.bp.LocalDateTime
 class RepositoryResponse : DataResponse<Repository>() {
 
   @SerializedName("id")
-  var id: Long? = null
+  var id: Int? = null
 
   @SerializedName("node_id")
   var nodeId: String? = null

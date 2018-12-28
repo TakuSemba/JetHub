@@ -5,6 +5,7 @@ import com.squareup.picasso.Picasso
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.ItemUserBinding
 import com.takusemba.jethub.model.SimpleUser
+import com.takusemba.jethub.ui.fragment.MainTabFragmentDirections
 import com.xwray.groupie.databinding.BindableItem
 
 data class UserItem(
@@ -17,7 +18,8 @@ data class UserItem(
     Picasso.get().load(user.avatarUrl).into(binding.icon)
     binding.name.text = user.login
     binding.root.setOnClickListener { view ->
-      view.findNavController().navigate(R.id.userDetailFragment)
+      val direction = MainTabFragmentDirections.actionMainTabToUserDetail(user.id)
+      view.findNavController().navigate(direction)
     }
   }
 

@@ -9,7 +9,7 @@ class SimpleUserResponse : DataResponse<SimpleUser>() {
   var login: String? = null
 
   @SerializedName("id")
-  var id: Long? = null
+  var id: Int? = null
 
   @SerializedName("node_id")
   var nodeId: String? = null

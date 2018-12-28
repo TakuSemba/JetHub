@@ -1,7 +1,7 @@
 package com.takusemba.jethub.model
 
 data class User(
-  val id: Long,
+  val id: Int,
   val login: String,
   val avatarUrl: String,
   val name: String,

@@ -20,6 +20,7 @@ object Dep {
   // plugin
   val pluginBuildGradle = "com.android.tools.build:gradle:${Version.buildGradle}"
   val pluginkotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlin}"
+  val pluginsafeArgs = "android.arch.navigation:navigation-safe-args-gradle-plugin:${Version.navigation}"
 
   // kotlin
   val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Version.kotlin}"

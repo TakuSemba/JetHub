@@ -3,7 +3,7 @@ package com.takusemba.jethub.model
 import org.threeten.bp.LocalDateTime
 
 class Repository(
-  val id: Long,
+  val id: Int,
   val owner: Owner,
   val name: String,
   val description: String,

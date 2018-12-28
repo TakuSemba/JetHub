@@ -11,24 +11,20 @@
     android:label="MainTabFragment"
     >
     <action
-      android:id="@+id/action_main_tab_to_repositoryFragment"
-      app:destination="@id/repoDetailFragment"
-      />
-    <action
-      android:id="@+id/action_main_tab_to_userFragment"
+      android:id="@+id/action_main_tab_to_user_detail"
       app:destination="@id/userDetailFragment"
       />
   </fragment>
   <fragment
-    android:id="@+id/repoDetailFragment"
-    android:name="com.takusemba.jethub.ui.fragment.RepoDetailFragment"
-    android:label="RepoDetailFragment"
-    />
-  <fragment
     android:id="@+id/userDetailFragment"
     android:name="com.takusemba.jethub.ui.fragment.UserDetailFragment"
     android:label="UserDetailFragment"
-    />
+    >
+    <argument
+      android:name="userId"
+      app:argType="integer"
+      />
+  </fragment>
 
 
 </navigation>
