@@ -9,6 +9,8 @@
     android:layout_height="match_parent"
     >
 
+    <!--TODO stickyなtoolbarをつける-->
+
     <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/recycler_view"
       android:layout_width="0dp"

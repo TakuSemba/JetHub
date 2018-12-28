@@ -17,6 +17,8 @@ class UserViewModel @Inject constructor(
   private val userRepository: UserRepository
 ) : ViewModel(), CoroutineScope {
 
+  // TODO bookmark機能をつける
+
   override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
 
   private val pinedRepositories: MutableLiveData<List<Long>> = MutableLiveData()

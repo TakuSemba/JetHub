@@ -9,6 +9,7 @@ class SearchDevelopersRepository @Inject constructor(
   private val searchApi: SearchApi
 ) {
 
+  // TODO 検索結果をkotlinに縛らないようにする
   suspend fun searchUsers(query: String): List<SimpleDeveloper> {
     return searchApi.searchUsers(Language.KOTLIN, query)
   }

@@ -21,9 +21,11 @@ class FeedViewModel @Inject constructor(
 
   override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
 
+  // TODO Result型を独自のResult型にして外部に公開する
   private val hotReposResult = MutableLiveData<Result<List<Repository>>>()
   private val hotUsersResult = MutableLiveData<Result<List<SimpleDeveloper>>>()
 
+  // TODO feedにタブをつける
   val hotRepos: LiveData<List<Repository>>
   val hotUsers: LiveData<List<SimpleDeveloper>>
 
