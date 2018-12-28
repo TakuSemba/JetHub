@@ -2,7 +2,6 @@ package com.takusemba.jethub.ui.item
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.takusemba.jethub.model.Developer
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.viewmodel.DeveloperDetailViewModel
 import com.xwray.groupie.Item
@@ -15,17 +14,15 @@ class DeveloperDetailSection(
 
   init {
     searchReposViewModel.developer.observe(lifecycleOwner, Observer { developer ->
-      updateResult(developer, searchReposViewModel.developerRepos.value ?: emptyList())
+      setHeader(DeveloperDetailHeaderItem(developer))
     })
 
     searchReposViewModel.developerRepos.observe(lifecycleOwner, Observer { repos ->
-      val developer = searchReposViewModel.developer.value ?: return@Observer
-      updateResult(developer, repos)
+      updateResult(repos)
     })
   }
 
-  private fun updateResult(developer: Developer, repos: List<Repository>) {
-    setHeader(DeveloperDetailHeaderItem(developer))
+  private fun updateResult(repos: List<Repository>) {
     val items = mutableListOf<Item<*>>()
     (repos).mapTo(items) { repository -> RepositoryItem(repository) }
     update(items)

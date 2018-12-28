@@ -7,7 +7,7 @@
 
   <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     >
 
     <ImageView
@@ -48,9 +48,13 @@
 
     <TextView
       android:id="@+id/description"
-      android:layout_width="wrap_content"
+      android:layout_width="0dp"
       android:layout_height="wrap_content"
+      android:layout_marginEnd="16dp"
+      android:layout_marginStart="16dp"
       android:layout_marginTop="8dp"
+      android:gravity="center"
+      android:textAlignment="center"
       android:textColor="@color/black_50"
       android:textSize="18sp"
       app:layout_constraintEnd_toEndOf="parent"
@@ -168,11 +172,13 @@
       android:id="@+id/repositories_title"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_marginBottom="16dp"
       android:layout_marginTop="24dp"
       android:text="@string/repositories"
       android:textColor="@color/black_54"
       android:textSize="18sp"
       android:textStyle="bold"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@id/partition_line"

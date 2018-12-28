@@ -21,8 +21,8 @@
     android:label="DeveloperDetailFragment"
     >
     <argument
-      android:name="developerId"
-      app:argType="integer"
+      android:name="developerName"
+      app:argType="string"
       />
   </fragment>
 

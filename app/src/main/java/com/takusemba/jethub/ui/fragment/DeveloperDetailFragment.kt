@@ -40,7 +40,6 @@ class DeveloperDetailFragment : DaggerFragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     val binding = DataBindingUtil.bind<FragmentDeveloperDetailBinding>(view)!!
-    val developerId = DeveloperDetailFragmentArgs.fromBundle(arguments!!).developerId
 
     val linearLayoutManager = LinearLayoutManager(context)
     val groupAdapter = GroupAdapter<ViewHolder>().apply {

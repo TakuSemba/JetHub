@@ -18,7 +18,7 @@ data class UserItem(
     Picasso.get().load(developer.avatarUrl).into(binding.icon)
     binding.name.text = developer.login
     binding.root.setOnClickListener { view ->
-      val direction = MainTabFragmentDirections.actionMainTabToDeveloperDetail(developer.id)
+      val direction = MainTabFragmentDirections.actionMainTabToDeveloperDetail(developer.login)
       view.findNavController().navigate(direction)
     }
   }

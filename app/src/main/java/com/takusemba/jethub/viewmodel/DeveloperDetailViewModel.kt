@@ -3,6 +3,7 @@ package com.takusemba.jethub.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.takusemba.jethub.di.screen.DeveloperDetailModule.Qualifiers
 import com.takusemba.jethub.extension.map
 import com.takusemba.jethub.model.Developer
 import com.takusemba.jethub.model.Repository
@@ -13,10 +14,11 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import javax.inject.Named
 import kotlin.coroutines.CoroutineContext
 
 class DeveloperDetailViewModel @Inject constructor(
-  private val developerName: String,
+  @Named(Qualifiers.DEVELOPER_NAME) private val developerName: String,
   private val developerDetailRepository: DeveloperDetailRepository
 ) : ViewModel(), CoroutineScope {
 
@@ -38,7 +40,9 @@ class DeveloperDetailViewModel @Inject constructor(
     }
 
     launch {
-      val developer = runCatching { developerDetailRepository.getDeveloper(developerName) }
+      val developer = runCatching {
+        developerDetailRepository.getDeveloper(developerName)
+      }
       developerResult.value = developer
 
       val developerRepos = runCatching { developerDetailRepository.getRepos(developerName) }
