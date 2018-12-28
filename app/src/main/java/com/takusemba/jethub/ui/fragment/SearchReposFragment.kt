@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -52,5 +53,16 @@ class SearchReposFragment : DaggerFragment() {
     }
     binding.recyclerView.layoutManager = linearLayoutManager
     binding.recyclerView.adapter = groupAdapter
+
+    binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+      override fun onQueryTextSubmit(query: String): Boolean {
+        return false
+      }
+
+      override fun onQueryTextChange(newText: String): Boolean {
+        searchReposViewModel.search(newText)
+        return true
+      }
+    })
   }
 }

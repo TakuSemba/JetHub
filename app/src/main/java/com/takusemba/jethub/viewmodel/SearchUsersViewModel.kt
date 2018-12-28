@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.takusemba.jethub.extension.map
-import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.repository.SearchReposRepository
+import com.takusemba.jethub.model.User
+import com.takusemba.jethub.repository.SearchUsersRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -14,31 +14,31 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class SearchReposViewModel @Inject constructor(
-  private val searchReposRepository: SearchReposRepository
+class SearchUsersViewModel @Inject constructor(
+  private val searchUsersRepository: SearchUsersRepository
 ) : ViewModel(), CoroutineScope {
 
   override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
 
-  private val searchedReposResult = MutableLiveData<Result<List<Repository>>>()
+  private val searchedUsersResult = MutableLiveData<Result<List<User>>>()
 
-  val searchedRepos: LiveData<List<Repository>>
+  val searchedUsers: LiveData<List<User>>
 
   init {
-    searchedRepos = searchedReposResult.map { result ->
+    searchedUsers = searchedUsersResult.map { result ->
       result.getOrDefault(emptyList())
     }
 
     launch {
-      val repositories = runCatching { searchReposRepository.searchRepos("") }
-      searchedReposResult.value = repositories
+      val repositories = runCatching { searchUsersRepository.searchUsers("") }
+      searchedUsersResult.value = repositories
     }
   }
 
   fun search(query: String) {
     launch {
-      val repositories = runCatching { searchReposRepository.searchRepos(query) }
-      searchedReposResult.value = repositories
+      val repositories = runCatching { searchUsersRepository.searchUsers(query) }
+      searchedUsersResult.value = repositories
     }
   }
 

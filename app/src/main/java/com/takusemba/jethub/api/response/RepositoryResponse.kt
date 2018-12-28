@@ -225,7 +225,7 @@ class RepositoryResponse : DataResponse<Repository>() {
   var defaultBranch: String? = null
 
   @SerializedName("score")
-  var score: Int? = null
+  var score: Double? = null
 
   override fun toModel() = Repository(
     id = id ?: throw IllegalArgumentException("id not found"),
