@@ -38,10 +38,10 @@ class FeedViewModel @Inject constructor(
 
     launch {
       val repositories = runCatching { feedRepository.getHotRepositories() }
-      hotRepositoriesResult.postValue(repositories)
+      hotRepositoriesResult.value = repositories
 
       val users = runCatching { feedRepository.getHotUsers() }
-      hotUsersResult.postValue(users)
+      hotUsersResult.value = users
     }
   }
 
