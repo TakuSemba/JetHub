@@ -2,7 +2,7 @@ package com.takusemba.jethub.ui.item
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.takusemba.jethub.model.User
+import com.takusemba.jethub.model.SimpleUser
 import com.takusemba.jethub.viewmodel.SearchUsersViewModel
 import com.xwray.groupie.Item
 import com.xwray.groupie.Section
@@ -18,7 +18,7 @@ class SearchUsersSection(
     })
   }
 
-  private fun updateResult(users: List<User>) {
+  private fun updateResult(users: List<SimpleUser>) {
     val items = mutableListOf<Item<*>>()
     (users).mapTo(items) { user -> UserItem(user) }
     update(items)

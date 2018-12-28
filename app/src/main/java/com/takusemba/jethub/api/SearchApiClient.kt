@@ -2,11 +2,11 @@ package com.takusemba.jethub.api
 
 import com.takusemba.jethub.api.response.ListResponse
 import com.takusemba.jethub.api.response.RepositoryResponse
-import com.takusemba.jethub.api.response.UserResponse
+import com.takusemba.jethub.api.response.SimpleUserResponse
 import com.takusemba.jethub.model.DateFormatters
 import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.model.User
+import com.takusemba.jethub.model.SimpleUser
 import kotlinx.coroutines.Deferred
 import org.threeten.bp.LocalDateTime
 import retrofit2.Retrofit
@@ -27,7 +27,7 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     fun getHotUsers(
       @Query("q") query: String,
       @Query("sort") sort: String = "stars"
-    ): Deferred<ListResponse<UserResponse>>
+    ): Deferred<ListResponse<SimpleUserResponse>>
 
     @GET("search/repositories")
     fun searchRepos(
@@ -37,7 +37,7 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     @GET("search/users")
     fun searchUsers(
       @Query("q") query: String
-    ): Deferred<ListResponse<UserResponse>>
+    ): Deferred<ListResponse<SimpleUserResponse>>
   }
 
   private val service = retrofit.create(Service::class.java)
@@ -55,7 +55,7 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
   override suspend fun getHotUsers(
     language: Language,
     from: LocalDateTime
-  ): List<User> {
+  ): List<SimpleUser> {
     return service.getHotUsers("language:${language.title} created:>${from.format(DateFormatters.ofSearchQuery())}")
       .await()
       .items
@@ -63,14 +63,14 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
   }
 
   override suspend fun searchRepos(language: Language, query: String): List<Repository> {
-    return service.searchRepos("$query+language:${language.title}")
+    return service.searchRepos("$query language:${language.title}")
       .await()
       .items
       ?.map { response -> response.toModel() } ?: emptyList()
   }
 
-  override suspend fun searchUsers(language: Language, query: String): List<User> {
-    return service.searchUsers("$query+language:${language.title}")
+  override suspend fun searchUsers(language: Language, query: String): List<SimpleUser> {
+    return service.searchUsers("$query language:${language.title}")
       .await()
       .items
       ?.map { response -> response.toModel() } ?: emptyList()

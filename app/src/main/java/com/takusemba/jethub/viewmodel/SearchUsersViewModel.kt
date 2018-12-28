@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.takusemba.jethub.extension.map
+import com.takusemba.jethub.model.SimpleUser
 import com.takusemba.jethub.model.User
 import com.takusemba.jethub.repository.SearchUsersRepository
 import kotlinx.coroutines.CoroutineScope
@@ -20,9 +21,9 @@ class SearchUsersViewModel @Inject constructor(
 
   override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
 
-  private val searchedUsersResult = MutableLiveData<Result<List<User>>>()
+  private val searchedUsersResult = MutableLiveData<Result<List<SimpleUser>>>()
 
-  val searchedUsers: LiveData<List<User>>
+  val searchedUsers: LiveData<List<SimpleUser>>
 
   init {
     searchedUsers = searchedUsersResult.map { result ->

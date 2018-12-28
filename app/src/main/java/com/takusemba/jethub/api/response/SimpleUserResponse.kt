@@ -1,9 +1,9 @@
 package com.takusemba.jethub.api.response
 
 import com.google.gson.annotations.SerializedName
-import com.takusemba.jethub.model.User
+import com.takusemba.jethub.model.SimpleUser
 
-class UserResponse : DataResponse<User>() {
+class SimpleUserResponse : DataResponse<SimpleUser>() {
 
   @SerializedName("login")
   var login: String? = null
@@ -98,19 +98,9 @@ class UserResponse : DataResponse<User>() {
   @SerializedName("updated_at")
   var updatedAt: String? = null
 
-  override fun toModel() = User(
+  override fun toModel() = SimpleUser(
     id = id ?: throw IllegalArgumentException("id not found"),
     login = login ?: "",
-    avatarUrl = avatarUrl ?: "",
-    name = name ?: "",
-    company = company ?: "",
-    blog = blog ?: "",
-    location = location ?: "",
-    email = email ?: "",
-    bio = bio ?: "",
-    publicRepositoriesCount = publicRepos ?: 0,
-    publicGistsCount = publicGists ?: 0,
-    followersCount = followers ?: 0,
-    followingCount = following ?: 0
+    avatarUrl = avatarUrl ?: ""
   )
 }
