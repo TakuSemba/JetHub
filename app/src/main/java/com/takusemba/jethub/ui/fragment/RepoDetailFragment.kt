@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.takusemba.jethub.R
-import com.takusemba.jethub.databinding.FragmentRepositoryDetailBinding
+import com.takusemba.jethub.databinding.FragmentRepoDetailBinding
 import dagger.android.support.DaggerFragment
 
-class RepositoryDetailFragment : DaggerFragment() {
+class RepoDetailFragment : DaggerFragment() {
 
   companion object {
 
-    fun newInstance() = RepositoryDetailFragment()
+    fun newInstance() = RepoDetailFragment()
   }
 
   override fun onCreateView(
@@ -21,11 +21,11 @@ class RepositoryDetailFragment : DaggerFragment() {
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-    return inflater.inflate(R.layout.fragment_repository_detail, container, false)
+    return inflater.inflate(R.layout.fragment_repo_detail, container, false)
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    val binding = DataBindingUtil.bind<FragmentRepositoryDetailBinding>(view)!!
+    val binding = DataBindingUtil.bind<FragmentRepoDetailBinding>(view)!!
   }
 }

@@ -21,7 +21,7 @@
   </fragment>
   <fragment
     android:id="@+id/repositoryDetailFragment"
-    android:name="com.takusemba.jethub.ui.fragment.RepositoryDetailFragment"
+    android:name="com.takusemba.jethub.ui.fragment.RepoDetailFragment"
     android:label="RepositoryFragment"
     />
   <fragment

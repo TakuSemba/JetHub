@@ -3,17 +3,17 @@ package com.takusemba.jethub.ui.item
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.viewmodel.FeedViewModel
+import com.takusemba.jethub.viewmodel.SearchReposViewModel
 import com.xwray.groupie.Item
 import com.xwray.groupie.Section
 
-class FeedSection(
+class SearchReposSection(
   lifecycleOwner: LifecycleOwner,
-  feedViewModel: FeedViewModel
+  searchReposViewModel: SearchReposViewModel
 ) : Section() {
 
   init {
-    feedViewModel.hotRepos.observe(lifecycleOwner, Observer { repositories ->
+    searchReposViewModel.searchedRepos.observe(lifecycleOwner, Observer { repositories ->
       updateResult(repositories)
     })
   }

@@ -46,7 +46,7 @@ class MainTabFragment : DaggerFragment() {
           }
           R.id.repositories -> {
             childFragmentManager.transaction {
-              replace(R.id.container, SearchRepositoriesFragment.newInstance())
+              replace(R.id.container, SearchReposFragment.newInstance())
             }
             return@OnNavigationItemSelectedListener true
           }

@@ -5,8 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.takusemba.jethub.extension.map
 import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.model.User
-import com.takusemba.jethub.repository.FeedRepository
+import com.takusemba.jethub.repository.SearchReposRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -15,33 +14,24 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class FeedViewModel @Inject constructor(
-  private val feedRepository: FeedRepository
+class SearchReposViewModel @Inject constructor(
+  private val searchReposRepository: SearchReposRepository
 ) : ViewModel(), CoroutineScope {
 
   override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
 
-  private val hotReposResult = MutableLiveData<Result<List<Repository>>>()
-  private val hotUsersResult = MutableLiveData<Result<List<User>>>()
+  private val searchedReposResult = MutableLiveData<Result<List<Repository>>>()
 
-  val hotRepos: LiveData<List<Repository>>
-  val hotUsers: LiveData<List<User>>
+  val searchedRepos: LiveData<List<Repository>>
 
   init {
-    hotRepos = hotReposResult.map { result ->
-      result.getOrDefault(emptyList())
-    }
-
-    hotUsers = hotUsersResult.map { result ->
+    searchedRepos = searchedReposResult.map { result ->
       result.getOrDefault(emptyList())
     }
 
     launch {
-      val repositories = runCatching { feedRepository.getHotRepos() }
-      hotReposResult.value = repositories
-
-      val users = runCatching { feedRepository.getHotUsers() }
-      hotUsersResult.value = users
+      val repositories = runCatching { searchReposRepository.searchRepos("") }
+      searchedReposResult.value = repositories
     }
   }
 

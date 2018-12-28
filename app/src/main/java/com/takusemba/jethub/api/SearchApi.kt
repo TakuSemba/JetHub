@@ -7,7 +7,11 @@ import org.threeten.bp.LocalDateTime
 
 interface SearchApi {
 
-  suspend fun getHotRepositories(language: Language, from: LocalDateTime): List<Repository>
+  suspend fun getHotRepos(language: Language, from: LocalDateTime): List<Repository>
 
   suspend fun getHotUsers(language: Language, from: LocalDateTime): List<User>
+
+  suspend fun searchRepos(language: Language, query: String): List<Repository>
+
+  suspend fun searchUsers(language: Language, query: String): List<User>
 }
