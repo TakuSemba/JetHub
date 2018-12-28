@@ -53,10 +53,9 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
   }
 
   override suspend fun getHotUsers(
-    language: Language,
     from: LocalDateTime
   ): List<User> {
-    return service.getHotUsers("language:${language.name} created:>${from.format(DateFormatters.ofSearchQuery())}")
+    return service.getHotUsers("created:>${from.format(DateFormatters.ofSearchQuery())}")
       .await()
       .items
       ?.map { response -> response.toModel() } ?: emptyList()
@@ -69,8 +68,8 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
       ?.map { response -> response.toModel() } ?: emptyList()
   }
 
-  override suspend fun searchUsers(language: Language, query: String): List<User> {
-    return service.searchUsers("$query+language:${language.name}")
+  override suspend fun searchUsers(query: String): List<User> {
+    return service.searchUsers(query)
       .await()
       .items
       ?.map { response -> response.toModel() } ?: emptyList()

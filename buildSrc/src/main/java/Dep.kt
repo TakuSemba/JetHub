@@ -73,6 +73,12 @@ object Dep {
   // date
   val threetenabp = "com.jakewharton.threetenabp:threetenabp:1.1.1"
 
+  // ui
+  val circleImage = "de.hdodenhof:circleimageview:2.2.0"
+
+  // image
+  val picasso = "com.squareup.picasso:picasso:2.71828"
+
   // test
   val junit = "junit:junit:${Version.junit}"
 }

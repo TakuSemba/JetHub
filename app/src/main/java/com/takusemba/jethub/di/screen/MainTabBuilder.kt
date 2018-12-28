@@ -7,6 +7,7 @@ import com.takusemba.jethub.ui.fragment.SearchReposFragment
 import com.takusemba.jethub.ui.fragment.SearchUsersFragment
 import com.takusemba.jethub.viewmodel.FeedViewModel
 import com.takusemba.jethub.viewmodel.SearchReposViewModel
+import com.takusemba.jethub.viewmodel.SearchUsersViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -33,4 +34,9 @@ interface MainTabBuilder {
   @IntoMap
   @ViewModelKey(SearchReposViewModel::class)
   fun bindSearchReposViewModel(viewModel: SearchReposViewModel): ViewModel
+
+  @Binds
+  @IntoMap
+  @ViewModelKey(SearchUsersViewModel::class)
+  fun bindSearchUsersViewModel(viewModel: SearchUsersViewModel): ViewModel
 }

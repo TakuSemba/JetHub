@@ -80,6 +80,12 @@ dependencies {
   // date
   implementation(Dep.threetenabp)
 
+  // ui
+  implementation(Dep.circleImage)
+
+  // image
+  implementation(Dep.picasso)
+
   // test
   testImplementation(Dep.junit)
 }

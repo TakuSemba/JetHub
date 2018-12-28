@@ -37,8 +37,8 @@ class SearchUsersViewModel @Inject constructor(
 
   fun search(query: String) {
     launch {
-      val repositories = runCatching { searchUsersRepository.searchUsers(query) }
-      searchedUsersResult.value = repositories
+      val users = runCatching { searchUsersRepository.searchUsers(query) }
+      searchedUsersResult.value = users
     }
   }
 
