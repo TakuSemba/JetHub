@@ -9,30 +9,30 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.takusemba.jethub.R
-import com.takusemba.jethub.databinding.FragmentSearchUsersBinding
+import com.takusemba.jethub.databinding.FragmentSearchDevelopersBinding
 import com.takusemba.jethub.extension.parentViewModelProvider
 import com.takusemba.jethub.ui.item.SearchUsersSection
-import com.takusemba.jethub.viewmodel.SearchUsersViewModel
+import com.takusemba.jethub.viewmodel.SearchDevelopersViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class SearchUsersFragment : DaggerFragment() {
+class SearchDevelopersFragment : DaggerFragment() {
 
   companion object {
 
-    fun newInstance() = SearchUsersFragment()
+    fun newInstance() = SearchDevelopersFragment()
   }
 
   @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
 
-  private val searchUsersViewModel: SearchUsersViewModel by lazy {
-    parentViewModelProvider(viewModelFactory) as SearchUsersViewModel
+  private val searchDevelopersViewModel: SearchDevelopersViewModel by lazy {
+    parentViewModelProvider(viewModelFactory) as SearchDevelopersViewModel
   }
 
   private val searchUsersSection: SearchUsersSection by lazy {
-    SearchUsersSection(this, searchUsersViewModel)
+    SearchUsersSection(this, searchDevelopersViewModel)
   }
 
   override fun onCreateView(
@@ -40,12 +40,12 @@ class SearchUsersFragment : DaggerFragment() {
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-    return inflater.inflate(R.layout.fragment_search_users, container, false)
+    return inflater.inflate(R.layout.fragment_search_developers, container, false)
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    val binding = DataBindingUtil.bind<FragmentSearchUsersBinding>(view)!!
+    val binding = DataBindingUtil.bind<FragmentSearchDevelopersBinding>(view)!!
 
     val linearLayoutManager = LinearLayoutManager(context)
     val groupAdapter = GroupAdapter<ViewHolder>().apply {
@@ -61,7 +61,7 @@ class SearchUsersFragment : DaggerFragment() {
 
       override fun onQueryTextChange(newText: String): Boolean {
         if (newText.isBlank()) return false
-        searchUsersViewModel.search(newText)
+        searchDevelopersViewModel.search(newText)
         return true
       }
     })

@@ -2,7 +2,7 @@ package com.takusemba.jethub.di
 
 import com.takusemba.jethub.di.screen.MainTabBuilder
 import com.takusemba.jethub.ui.fragment.MainTabFragment
-import com.takusemba.jethub.ui.fragment.UserDetailFragment
+import com.takusemba.jethub.ui.fragment.DeveloperDetailFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -13,5 +13,5 @@ interface FragmentBuilder {
   fun contributeMainTabFragment(): MainTabFragment
 
   @ContributesAndroidInjector
-  fun contributeUserFragment(): UserDetailFragment
+  fun contributeUserFragment(): DeveloperDetailFragment
 }

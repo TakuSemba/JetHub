@@ -4,10 +4,10 @@ import androidx.lifecycle.ViewModel
 import com.takusemba.jethub.di.ViewModelKey
 import com.takusemba.jethub.ui.fragment.FeedFragment
 import com.takusemba.jethub.ui.fragment.SearchReposFragment
-import com.takusemba.jethub.ui.fragment.SearchUsersFragment
+import com.takusemba.jethub.ui.fragment.SearchDevelopersFragment
 import com.takusemba.jethub.viewmodel.FeedViewModel
 import com.takusemba.jethub.viewmodel.SearchReposViewModel
-import com.takusemba.jethub.viewmodel.SearchUsersViewModel
+import com.takusemba.jethub.viewmodel.SearchDevelopersViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -23,7 +23,7 @@ interface MainTabBuilder {
   fun contributeRepositoriesFragment(): SearchReposFragment
 
   @ContributesAndroidInjector
-  fun contributeUsersFragment(): SearchUsersFragment
+  fun contributeUsersFragment(): SearchDevelopersFragment
 
   @Binds
   @IntoMap
@@ -37,6 +37,6 @@ interface MainTabBuilder {
 
   @Binds
   @IntoMap
-  @ViewModelKey(SearchUsersViewModel::class)
-  fun bindSearchUsersViewModel(viewModel: SearchUsersViewModel): ViewModel
+  @ViewModelKey(SearchDevelopersViewModel::class)
+  fun bindSearchUsersViewModel(viewModel: SearchDevelopersViewModel): ViewModel
 }

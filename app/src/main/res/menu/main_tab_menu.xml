@@ -14,9 +14,9 @@
     />
 
   <item
-    android:id="@+id/users"
+    android:id="@+id/developers"
     android:icon="@drawable/ic_launcher_foreground"
-    android:title="users"
+    android:title="developers"
     />
 
 </menu>

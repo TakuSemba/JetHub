@@ -29,7 +29,7 @@
           android:layout_gravity="center"
           android:gravity="center"
           android:minHeight="?actionBarSize"
-          android:text="users"
+          android:text="developers"
           />
 
       </FrameLayout>

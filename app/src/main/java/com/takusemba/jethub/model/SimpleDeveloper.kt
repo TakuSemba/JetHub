@@ -1,6 +1,6 @@
 package com.takusemba.jethub.model
 
-data class SimpleUser(
+data class SimpleDeveloper(
   val id: Int,
   val login: String,
   val avatarUrl: String

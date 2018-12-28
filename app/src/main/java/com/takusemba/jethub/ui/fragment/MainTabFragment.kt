@@ -50,9 +50,9 @@ class MainTabFragment : DaggerFragment() {
             }
             return@OnNavigationItemSelectedListener true
           }
-          R.id.users -> {
+          R.id.developers -> {
             childFragmentManager.transaction {
-              replace(R.id.container, SearchUsersFragment.newInstance())
+              replace(R.id.container, SearchDevelopersFragment.newInstance())
             }
             return@OnNavigationItemSelectedListener true
           }

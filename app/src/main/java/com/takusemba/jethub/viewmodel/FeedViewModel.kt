@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.takusemba.jethub.extension.map
 import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.model.SimpleUser
+import com.takusemba.jethub.model.SimpleDeveloper
 import com.takusemba.jethub.repository.FeedRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,10 +22,10 @@ class FeedViewModel @Inject constructor(
   override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
 
   private val hotReposResult = MutableLiveData<Result<List<Repository>>>()
-  private val hotUsersResult = MutableLiveData<Result<List<SimpleUser>>>()
+  private val hotUsersResult = MutableLiveData<Result<List<SimpleDeveloper>>>()
 
   val hotRepos: LiveData<List<Repository>>
-  val hotUsers: LiveData<List<SimpleUser>>
+  val hotUsers: LiveData<List<SimpleDeveloper>>
 
   init {
     hotRepos = hotReposResult.map { result ->

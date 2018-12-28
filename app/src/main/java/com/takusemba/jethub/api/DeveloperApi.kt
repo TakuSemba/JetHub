@@ -1,3 +1,3 @@
 package com.takusemba.jethub.api
 
-interface UserApi
+interface DeveloperApi

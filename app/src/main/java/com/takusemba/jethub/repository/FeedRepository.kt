@@ -3,7 +3,7 @@ package com.takusemba.jethub.repository
 import com.takusemba.jethub.api.SearchApi
 import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.model.SimpleUser
+import com.takusemba.jethub.model.SimpleDeveloper
 import org.threeten.bp.LocalDateTime
 import javax.inject.Inject
 
@@ -15,7 +15,7 @@ class FeedRepository @Inject constructor(
     return searchApi.getHotRepos(Language.KOTLIN, LocalDateTime.now().minusMonths(1))
   }
 
-  suspend fun getHotUsers(): List<SimpleUser> {
+  suspend fun getHotUsers(): List<SimpleDeveloper> {
     return searchApi.getHotUsers(Language.KOTLIN, LocalDateTime.now().minusMonths(1))
   }
 }

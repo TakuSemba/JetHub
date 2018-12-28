@@ -6,8 +6,8 @@ import com.takusemba.jethub.api.RepositoryApi
 import com.takusemba.jethub.api.RepositoryApiClient
 import com.takusemba.jethub.api.SearchApi
 import com.takusemba.jethub.api.SearchApiClient
-import com.takusemba.jethub.api.UserApi
-import com.takusemba.jethub.api.UserApiClient
+import com.takusemba.jethub.api.DeveloperApi
+import com.takusemba.jethub.api.DeveloperApiClient
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -48,8 +48,8 @@ open class NetworkModule {
 
   @Singleton
   @Provides
-  fun provideUserApi(retrofit: Retrofit): UserApi {
-    return UserApiClient(retrofit)
+  fun provideUserApi(retrofit: Retrofit): DeveloperApi {
+    return DeveloperApiClient(retrofit)
   }
 
   @Singleton
