@@ -47,7 +47,7 @@
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintStart_toStartOf="@id/title"
       app:layout_constraintTop_toBottomOf="@id/description"
-      tools:src="@drawable/ic_circle_orange"
+      tools:src="@drawable/ic_circle_kotlin"
       />
 
     <TextView

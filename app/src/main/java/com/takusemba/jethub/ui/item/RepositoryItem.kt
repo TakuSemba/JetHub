@@ -24,6 +24,11 @@ data class RepositoryItem(
     binding.languageIcon.setImageResource(repository.language.icon)
     binding.starCount.text = repository.starsCount.toString()
     binding.forkCount.text = repository.forksCount.toString()
+
+    binding.root.setOnLongClickListener {
+      // do nothing
+      false
+    }
   }
 
   override fun getLayout() = R.layout.item_repository

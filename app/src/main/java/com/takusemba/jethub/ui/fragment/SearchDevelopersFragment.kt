@@ -60,7 +60,6 @@ class SearchDevelopersFragment : DaggerFragment() {
       }
 
       override fun onQueryTextChange(newText: String): Boolean {
-        if (newText.isBlank()) return false
         searchDevelopersViewModel.search(newText)
         return true
       }

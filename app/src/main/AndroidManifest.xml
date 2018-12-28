@@ -4,7 +4,7 @@
   package="com.takusemba.jethub"
   >
 
-  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.INTERNET"/>
 
   <application
     android:name=".App"
@@ -16,7 +16,10 @@
     android:theme="@style/AppTheme"
     tools:ignore="GoogleAppIndexingWarning"
     >
-    <activity android:name=".ui.activity.MainActivity">
+    <activity
+      android:name=".ui.activity.MainActivity"
+      android:windowSoftInputMode="adjustPan"
+      >
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
