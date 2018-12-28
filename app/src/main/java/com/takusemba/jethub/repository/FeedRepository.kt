@@ -16,6 +16,6 @@ class FeedRepository @Inject constructor(
   }
 
   suspend fun getHotUsers(): List<User> {
-    return searchApi.getHotUsers(LocalDateTime.now().minusMonths(1))
+    return searchApi.getHotUsers(Language.KOTLIN, LocalDateTime.now().minusMonths(1))
   }
 }

@@ -10,6 +10,6 @@ class SearchUsersRepository @Inject constructor(
 ) {
 
   suspend fun searchUsers(query: String): List<User> {
-    return searchApi.searchUsers(query)
+    return searchApi.searchUsers(Language.KOTLIN, query)
   }
 }

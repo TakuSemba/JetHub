@@ -34,7 +34,7 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="repositoryDetailFragment">
+                  <entry key="repoDetailFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
@@ -46,7 +46,7 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="userFragment">
+                  <entry key="userDetailFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">

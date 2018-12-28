@@ -13,12 +13,14 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
       android:id="@+id/icon"
-      android:layout_width="64dp"
-      android:layout_height="64dp"
+      android:layout_width="32dp"
+      android:layout_height="32dp"
+      android:layout_marginBottom="8dp"
       android:layout_marginStart="16dp"
-      app:layout_constraintBottom_toBottomOf="@id/followers"
+      android:layout_marginTop="8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@id/name"
+      app:layout_constraintTop_toTopOf="parent"
       tools:src="@mipmap/ic_launcher_round"
       />
 
@@ -27,46 +29,13 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginStart="16dp"
-      android:layout_marginTop="16dp"
+      android:lines="1"
       android:textSize="20sp"
       android:textStyle="bold"
+      app:layout_constraintBottom_toBottomOf="@id/icon"
       app:layout_constraintStart_toEndOf="@id/icon"
-      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintTop_toTopOf="@id/icon"
       tools:text="TakuSemba"
-      />
-
-    <TextView
-      android:id="@+id/description"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="12dp"
-      android:textSize="14sp"
-      app:layout_constraintStart_toStartOf="@id/name"
-      app:layout_constraintTop_toBottomOf="@id/name"
-      tools:text="I work at CyberAgent.Inc, AbemaTv.Inc"
-      />
-
-    <TextView
-      android:id="@+id/followers"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="4dp"
-      android:textSize="14sp"
-      app:layout_constraintStart_toStartOf="@id/name"
-      app:layout_constraintTop_toBottomOf="@id/description"
-      tools:text="followers 132"
-      />
-
-    <TextView
-      android:id="@+id/followings"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="8dp"
-      android:textSize="14sp"
-      app:layout_constraintBottom_toBottomOf="@id/followers"
-      app:layout_constraintStart_toEndOf="@id/followers"
-      app:layout_constraintTop_toTopOf="@id/followers"
-      tools:text="followings 13"
       />
 
   </androidx.constraintlayout.widget.ConstraintLayout>

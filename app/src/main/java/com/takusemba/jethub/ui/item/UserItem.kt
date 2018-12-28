@@ -14,12 +14,8 @@ data class UserItem(
 ) {
 
   override fun bind(binding: ItemUserBinding, position: Int) {
-    val context = binding.root.context
     Picasso.get().load(user.avatarUrl).into(binding.icon)
     binding.name.text = user.name
-    binding.description.text = user.bio
-    binding.followers.text = context.getString(R.string.followers_count, user.followersCount)
-    binding.followers.text = context.getString(R.string.followings_count, user.followingCount)
     binding.root.setOnClickListener { view ->
       view.findNavController().navigate(R.id.userDetailFragment)
     }
