@@ -1,16 +1,12 @@
 package com.takusemba.jethub.api.response
 
 import com.google.gson.annotations.SerializedName
+import com.takusemba.jethub.model.DateFormatters
 import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
 import org.threeten.bp.LocalDateTime
-import org.threeten.bp.format.DateTimeFormatter
 
 class RepositoryResponse : DataResponse<Repository>() {
-
-  companion object {
-    private val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
-  }
 
   @SerializedName("id")
   var id: Long? = null
@@ -236,8 +232,8 @@ class RepositoryResponse : DataResponse<Repository>() {
     owner = owner?.toModel() ?: throw IllegalArgumentException("owner not found"),
     name = name ?: "",
     description = description ?: "",
-    createdAt = LocalDateTime.from(formatter.parse(createdAt)),
-    updatedAt = LocalDateTime.from(formatter.parse(updatedAt)),
+    createdAt = LocalDateTime.from(DateFormatters.ofGithubApi().parse(createdAt)),
+    updatedAt = LocalDateTime.from(DateFormatters.ofGithubApi().parse(updatedAt)),
     starsCount = stargazersCount ?: 0,
     watchersCount = watchersCount ?: 0,
     forksCount = forksCount ?: 0,
