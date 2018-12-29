@@ -3,6 +3,7 @@ package com.takusemba.jethub.di.screen
 import androidx.lifecycle.ViewModel
 import com.takusemba.jethub.di.ViewModelKey
 import com.takusemba.jethub.ui.fragment.FeedFragment
+import com.takusemba.jethub.ui.fragment.PinFragment
 import com.takusemba.jethub.ui.fragment.SearchDevelopersFragment
 import com.takusemba.jethub.ui.fragment.SearchReposFragment
 import com.takusemba.jethub.viewmodel.FeedViewModel
@@ -24,6 +25,9 @@ interface MainTabBuilder {
 
   @ContributesAndroidInjector
   fun contributeUsersFragment(): SearchDevelopersFragment
+
+  @ContributesAndroidInjector
+  fun contributePinFragment(): PinFragment
 
   @Binds
   @IntoMap

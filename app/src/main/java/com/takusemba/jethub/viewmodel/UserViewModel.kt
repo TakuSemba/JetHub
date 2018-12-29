@@ -1,9 +1,9 @@
 package com.takusemba.jethub.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.UserRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,39 +21,30 @@ class UserViewModel @Inject constructor(
 
   override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
 
-  private val pinedRepositories: MutableLiveData<List<Long>> = MutableLiveData()
+  private val pinedRepositoriesResult: MutableLiveData<List<Repository>> = MutableLiveData()
 
-  fun pin(id: Long) {
+  val pinedRepositories: LiveData<List<Repository>> = pinedRepositoriesResult
+
+  fun pin(repository: Repository) {
     launch {
-      Log.d("UserViewModel ${System.identityHashCode(this@UserViewModel)}", "pin $id")
-      userRepository.pin(id)
-      val repositories = pinedRepositories.value?.toMutableList() ?: mutableListOf()
-      repositories.add(id)
-      pinedRepositories.value = repositories
+      userRepository.pin(repository)
+      val repositories = pinedRepositoriesResult.value?.toMutableList() ?: mutableListOf()
+      repositories.add(repository)
+      pinedRepositoriesResult.value = repositories
     }
   }
 
-  fun unpin(id: Long) {
+  fun unpin(repository: Repository) {
     launch {
-      Log.d("UserViewModel ${System.identityHashCode(this@UserViewModel)}", "unpin $id")
-      userRepository.unpin(id)
-      val repositories = pinedRepositories.value?.toMutableList() ?: mutableListOf()
-      repositories.remove(id)
-      pinedRepositories.value = repositories
+      userRepository.unpin(repository)
+      val repositories = pinedRepositoriesResult.value?.toMutableList() ?: mutableListOf()
+      repositories.remove(repository)
+      pinedRepositoriesResult.value = repositories
     }
-  }
-
-  fun pinedRepositories(): LiveData<List<Long>> {
-    return pinedRepositories
-  }
-
-  fun currentPinnedRepositories(): List<Long> {
-    return pinedRepositories.value!!
   }
 
   override fun onCleared() {
     super.onCleared()
     coroutineContext.cancel()
-    Log.d("UserViewModel ${System.identityHashCode(this)}", "onCleared")
   }
 }

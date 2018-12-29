@@ -10,18 +10,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentMainTabBinding
-import com.takusemba.jethub.extension.activityViewModelProvider
-import com.takusemba.jethub.viewmodel.UserViewModel
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
 class MainTabFragment : DaggerFragment() {
 
   @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-
-  private val userViewModel: UserViewModel by lazy {
-    activityViewModelProvider(viewModelFactory) as UserViewModel
-  }
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -53,6 +47,12 @@ class MainTabFragment : DaggerFragment() {
           R.id.developers -> {
             childFragmentManager.transaction {
               replace(R.id.container, SearchDevelopersFragment.newInstance())
+            }
+            return@OnNavigationItemSelectedListener true
+          }
+          R.id.pins -> {
+            childFragmentManager.transaction {
+              replace(R.id.container, PinFragment.newInstance())
             }
             return@OnNavigationItemSelectedListener true
           }
