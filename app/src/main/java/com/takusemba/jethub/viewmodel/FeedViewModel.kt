@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.takusemba.jethub.extension.map
+import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.model.SimpleDeveloper
 import com.takusemba.jethub.repository.FeedRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,28 +22,21 @@ class FeedViewModel @Inject constructor(
   override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
 
   // TODO Result型を独自のResult型にして外部に公開する
-  private val hotReposResult = MutableLiveData<Result<List<Repository>>>()
-  private val hotUsersResult = MutableLiveData<Result<List<SimpleDeveloper>>>()
+  private val hotReposMap = MutableLiveData<Map<Language, List<Repository>>>()
 
-  // TODO feedにタブをつける
-  val hotRepos: LiveData<List<Repository>>
-  val hotUsers: LiveData<List<SimpleDeveloper>>
+  fun hotRepos(language: Language): LiveData<List<Repository>> {
+    return hotReposMap.map { map ->
+      map[language] ?: emptyList()
+    }
+  }
 
   init {
-    hotRepos = hotReposResult.map { result ->
-      result.getOrDefault(emptyList())
-    }
-
-    hotUsers = hotUsersResult.map { result ->
-      result.getOrDefault(emptyList())
-    }
-
     launch {
-      val repositories = runCatching { feedRepository.getHotRepos() }
-      hotReposResult.value = repositories
-
-      val users = runCatching { feedRepository.getHotUsers() }
-      hotUsersResult.value = users
+      val map = mutableMapOf<Language, List<Repository>>()
+      Language.POPULAR_LANGUAGES.forEach { language ->
+        map[language] = feedRepository.getHotRepos(language)
+      }
+      hotReposMap.postValue(map)
     }
   }
 

@@ -2,18 +2,20 @@ package com.takusemba.jethub.ui.item
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.viewmodel.FeedViewModel
 import com.xwray.groupie.Item
 import com.xwray.groupie.Section
 
-class FeedSection(
+class FeedRepoSection(
+  language: Language,
   lifecycleOwner: LifecycleOwner,
   feedViewModel: FeedViewModel
 ) : Section() {
 
   init {
-    feedViewModel.hotRepos.observe(lifecycleOwner, Observer { repositories ->
+    feedViewModel.hotRepos(language).observe(lifecycleOwner, Observer { repositories ->
       updateResult(repositories)
     })
   }

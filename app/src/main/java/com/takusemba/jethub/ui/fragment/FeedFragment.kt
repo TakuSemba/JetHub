@@ -6,39 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentFeedBinding
-import com.takusemba.jethub.extension.activityViewModelProvider
 import com.takusemba.jethub.extension.parentViewModelProvider
-import com.takusemba.jethub.extension.viewModelProvider
-import com.takusemba.jethub.ui.item.FeedSection
+import com.takusemba.jethub.ui.adapter.FeedAdapter
 import com.takusemba.jethub.viewmodel.FeedViewModel
-import com.takusemba.jethub.viewmodel.UserViewModel
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.ViewHolder
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
 class FeedFragment : DaggerFragment() {
 
-  @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-
-  private val userViewModel: UserViewModel by lazy {
-    activityViewModelProvider(viewModelFactory) as UserViewModel
-  }
-
-  private val feedViewModel: FeedViewModel by lazy {
-    parentViewModelProvider(viewModelFactory) as FeedViewModel
-  }
-
-  private val feedSection: FeedSection by lazy {
-    FeedSection(this, feedViewModel)
-  }
-
   companion object {
 
     fun newInstance() = FeedFragment()
+  }
+
+  @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+
+  private val feedViewModel: FeedViewModel by lazy {
+    parentViewModelProvider(viewModelFactory) as FeedViewModel
   }
 
   override fun onCreateView(
@@ -53,11 +39,8 @@ class FeedFragment : DaggerFragment() {
     super.onViewCreated(view, savedInstanceState)
     val binding = DataBindingUtil.bind<FragmentFeedBinding>(view)!!
 
-    val linearLayoutManager = LinearLayoutManager(context)
-    val groupAdapter = GroupAdapter<ViewHolder>().apply {
-      add(feedSection)
-    }
-    binding.recyclerView.layoutManager = linearLayoutManager
-    binding.recyclerView.adapter = groupAdapter
+    val feedAdapter = FeedAdapter(feedViewModel, this)
+    binding.pager.adapter = feedAdapter
+    binding.tabLayout.setupWithViewPager(binding.pager)
   }
 }
