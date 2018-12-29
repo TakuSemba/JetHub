@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.appbar.AppBarLayout
 import com.squareup.picasso.Picasso
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentDeveloperDetailBinding
@@ -53,8 +55,9 @@ class DeveloperDetailFragment : DaggerFragment() {
 
     developerDetailViewModel.developer.observe(this, Observer { developer ->
       Picasso.get().load(developer.avatarUrl).into(binding.icon)
-      binding.name.text = developer.name
+      binding.name.text = developer.login
       binding.description.text = developer.bio
+      binding.toolbarTitle.text = developer.login
       binding.repositoriesCount.text =
           requireContext().getString(R.string.followers_count, developer.publicRepositoriesCount)
       binding.gistsCount.text =
@@ -63,6 +66,14 @@ class DeveloperDetailFragment : DaggerFragment() {
           requireContext().getString(R.string.followers_count, developer.followersCount)
       binding.followingsCount.text =
           requireContext().getString(R.string.followings_count, developer.followingCount)
+    })
+
+    binding.appbar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, offset ->
+      if (binding.collapsingToolbar.height + offset < 2 * ViewCompat.getMinimumHeight(binding.collapsingToolbar)) {
+        binding.toolbarTitle.animate().alpha(1f).setDuration(100).start()
+      } else {
+        binding.toolbarTitle.animate().alpha(0f).setDuration(100).start()
+      }
     })
 
     binding.backArrow.setOnClickListener {
