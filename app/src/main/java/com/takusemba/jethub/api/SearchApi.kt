@@ -11,7 +11,7 @@ interface SearchApi {
 
   suspend fun getHotUsers(language: Language, from: LocalDateTime): List<SimpleDeveloper>
 
-  suspend fun searchRepos(language: Language, query: String): List<Repository>
+  suspend fun searchRepos(query: String): List<Repository>
 
-  suspend fun searchUsers(language: Language, query: String): List<SimpleDeveloper>
+  suspend fun searchUsers(query: String): List<SimpleDeveloper>
 }

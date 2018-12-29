@@ -31,7 +31,7 @@ enum class Language(val title: String, @DrawableRes val icon: Int) {
 
   companion object {
 
-    val POPULAR_LANGUAGES = listOf(KOTLIN, JAVA, SWIFT, GO)
+    val POPULAR_LANGUAGES = listOf(KOTLIN, JAVA, SWIFT, PYTHON, RUBY, GO)
 
     fun of(name: String?) = when (name) {
       KOTLIN.title -> KOTLIN
