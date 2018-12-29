@@ -4,5 +4,5 @@ import com.takusemba.jethub.model.Repository
 
 interface RepoApi {
 
-  suspend fun getRepos(owner: String): List<Repository>
+  suspend fun getRepo(owner: String, repo: String): Repository
 }

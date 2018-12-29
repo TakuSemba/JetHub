@@ -9,6 +9,7 @@ object Dep {
     const val lifecycle = "2.0.0"
     const val constraintLayout = "2.0.0-alpha2"
     const val navigation = "1.0.0-alpha09"
+    const val room = "2.1.0-alpha03"
     const val dagger = "2.16"
     const val retrofit = "2.3.0"
     const val groupie = "2.3.0"
@@ -20,7 +21,8 @@ object Dep {
   // plugin
   val pluginBuildGradle = "com.android.tools.build:gradle:${Version.buildGradle}"
   val pluginkotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlin}"
-  val pluginsafeArgs = "android.arch.navigation:navigation-safe-args-gradle-plugin:${Version.navigation}"
+  val pluginsafeArgs =
+    "android.arch.navigation:navigation-safe-args-gradle-plugin:${Version.navigation}"
 
   // kotlin
   val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Version.kotlin}"
@@ -66,6 +68,12 @@ object Dep {
   val retrofitConverter = "com.squareup.retrofit2:converter-gson:${Version.retrofit}"
   val retrofitAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
   val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:3.11.0"
+
+  // storage
+  val room = "androidx.room:room-runtime:${Version.room}"
+  val roomCompiler = "androidx.room:room-compiler:${Version.room}"
+  val roomCoroutine = "androidx.room:room-coroutines:${Version.room}"
+  val roomTest = "androidx.room:room-testing:${Version.room}"
 
   // recycler view
   val groupie = "com.xwray:groupie:${Version.groupie}"

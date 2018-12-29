@@ -13,7 +13,7 @@ class ApiTokenInterceptor : Interceptor {
 
   override fun intercept(chain: Interceptor.Chain): Response {
     val builder = chain.request().newBuilder()
-    builder.addHeader(AUTHORIZATION_HEADER, "Bearer ${BuildConfig.API_KEY}")
+    builder.addHeader(AUTHORIZATION_HEADER, "token ${BuildConfig.API_KEY}")
     return chain.proceed(builder.build())
   }
 }

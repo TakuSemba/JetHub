@@ -11,15 +11,16 @@ class RepoApiClient(retrofit: Retrofit) : RepoApi {
 
   interface Service {
 
-    @GET("users/{owner}/repos")
-    fun getRepos(
-      @Path("owner") owner: String
-    ): Deferred<List<RepositoryResponse>>
+    @GET("repos/{owner}/{repo}")
+    fun getRepo(
+      @Path("owner") owner: String,
+      @Path("repo") repo: String
+    ): Deferred<RepositoryResponse>
   }
 
   private val service = retrofit.create(Service::class.java)
 
-  override suspend fun getRepos(owner: String): List<Repository> {
-    return service.getRepos(owner).await().map { response -> response.toModel() }
+  override suspend fun getRepo(owner: String, repo: String): Repository {
+    return service.getRepo(owner, repo).await().toModel()
   }
 }
