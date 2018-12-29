@@ -4,6 +4,7 @@ import androidx.navigation.findNavController
 import com.squareup.picasso.Picasso
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.ItemDeveloperBinding
+import com.takusemba.jethub.extension.util.Keyboard
 import com.takusemba.jethub.model.SimpleDeveloper
 import com.takusemba.jethub.ui.fragment.MainTabFragmentDirections
 import com.xwray.groupie.databinding.BindableItem
@@ -20,6 +21,7 @@ data class UserItem(
     binding.root.setOnClickListener { view ->
       val direction = MainTabFragmentDirections.actionMainTabToDeveloperDetail(developer.login)
       view.findNavController().navigate(direction)
+      Keyboard.hide(binding.root.windowToken, binding.root.context)
     }
   }
 
