@@ -10,9 +10,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentSearchReposBinding
+import com.takusemba.jethub.extension.activityViewModelProvider
 import com.takusemba.jethub.extension.parentViewModelProvider
 import com.takusemba.jethub.ui.item.SearchReposSection
 import com.takusemba.jethub.viewmodel.SearchReposViewModel
+import com.takusemba.jethub.viewmodel.UserViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import dagger.android.support.DaggerFragment
@@ -31,8 +33,12 @@ class SearchReposFragment : DaggerFragment() {
     parentViewModelProvider(viewModelFactory) as SearchReposViewModel
   }
 
+  private val userViewModel: UserViewModel by lazy {
+    activityViewModelProvider(viewModelFactory) as UserViewModel
+  }
+
   private val searchReposSection: SearchReposSection by lazy {
-    SearchReposSection(this, searchReposViewModel)
+    SearchReposSection(this, searchReposViewModel, userViewModel)
   }
 
   override fun onCreateView(

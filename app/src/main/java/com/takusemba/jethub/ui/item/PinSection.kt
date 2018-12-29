@@ -9,7 +9,7 @@ import com.xwray.groupie.Section
 
 class PinSection(
   lifecycleOwner: LifecycleOwner,
-  userViewModel: UserViewModel
+  private val userViewModel: UserViewModel
 ) : Section() {
 
   init {
@@ -20,7 +20,7 @@ class PinSection(
 
   private fun updateResult(repositories: List<Repository>) {
     val items = mutableListOf<Item<*>>()
-    (repositories).mapTo(items) { repository -> RepositoryItem(repository) }
+    (repositories).mapTo(items) { repository -> RepositoryItem(repository, userViewModel) }
     update(items)
   }
 }

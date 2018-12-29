@@ -43,6 +43,10 @@ class UserViewModel @Inject constructor(
     }
   }
 
+  fun isPinned(repository: Repository): Boolean {
+    return pinedRepositories.value?.contains(repository) ?: false
+  }
+
   override fun onCleared() {
     super.onCleared()
     coroutineContext.cancel()

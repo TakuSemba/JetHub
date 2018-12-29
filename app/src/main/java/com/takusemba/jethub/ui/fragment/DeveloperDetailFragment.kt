@@ -14,9 +14,11 @@ import com.google.android.material.appbar.AppBarLayout
 import com.squareup.picasso.Picasso
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentDeveloperDetailBinding
+import com.takusemba.jethub.extension.activityViewModelProvider
 import com.takusemba.jethub.extension.viewModelProvider
 import com.takusemba.jethub.ui.item.DeveloperDetailSection
 import com.takusemba.jethub.viewmodel.DeveloperDetailViewModel
+import com.takusemba.jethub.viewmodel.UserViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import dagger.android.support.DaggerFragment
@@ -30,8 +32,12 @@ class DeveloperDetailFragment : DaggerFragment() {
     viewModelProvider(viewModelFactory) as DeveloperDetailViewModel
   }
 
+  private val userViewModel: UserViewModel by lazy {
+    activityViewModelProvider(viewModelFactory) as UserViewModel
+  }
+
   private val developerDetailSection: DeveloperDetailSection by lazy {
-    DeveloperDetailSection(this, developerDetailViewModel)
+    DeveloperDetailSection(this, developerDetailViewModel, userViewModel)
   }
 
   override fun onCreateView(

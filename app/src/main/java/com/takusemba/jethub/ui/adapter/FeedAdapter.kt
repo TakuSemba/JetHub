@@ -12,10 +12,12 @@ import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.ui.fragment.FeedFragment
 import com.takusemba.jethub.ui.item.FeedRepoSection
 import com.takusemba.jethub.viewmodel.FeedViewModel
+import com.takusemba.jethub.viewmodel.UserViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 
 class FeedAdapter(
+  private val userViewModel: UserViewModel,
   private val feedViewModel: FeedViewModel,
   private val fragment: FeedFragment
 ) : PagerAdapter() {
@@ -29,7 +31,7 @@ class FeedAdapter(
 
     val context = binding.root.context
     val language = languages[position]
-    val feedRepoSection = FeedRepoSection(language, fragment, feedViewModel)
+    val feedRepoSection = FeedRepoSection(language, fragment, feedViewModel, userViewModel)
 
     val linearLayoutManager = LinearLayoutManager(context)
     val groupAdapter = GroupAdapter<ViewHolder>().apply {

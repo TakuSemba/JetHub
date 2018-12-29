@@ -8,9 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentFeedBinding
+import com.takusemba.jethub.extension.activityViewModelProvider
 import com.takusemba.jethub.extension.parentViewModelProvider
 import com.takusemba.jethub.ui.adapter.FeedAdapter
 import com.takusemba.jethub.viewmodel.FeedViewModel
+import com.takusemba.jethub.viewmodel.UserViewModel
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -27,6 +29,10 @@ class FeedFragment : DaggerFragment() {
     parentViewModelProvider(viewModelFactory) as FeedViewModel
   }
 
+  private val userViewModel: UserViewModel by lazy {
+    activityViewModelProvider(viewModelFactory) as UserViewModel
+  }
+
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
@@ -39,7 +45,7 @@ class FeedFragment : DaggerFragment() {
     super.onViewCreated(view, savedInstanceState)
     val binding = DataBindingUtil.bind<FragmentFeedBinding>(view)!!
 
-    val feedAdapter = FeedAdapter(feedViewModel, this)
+    val feedAdapter = FeedAdapter(userViewModel, feedViewModel, this)
     binding.pager.adapter = feedAdapter
     binding.tabLayout.setupWithViewPager(binding.pager)
   }
