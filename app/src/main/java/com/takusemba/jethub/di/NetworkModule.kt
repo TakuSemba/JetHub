@@ -2,6 +2,7 @@ package com.takusemba.jethub.di
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.takusemba.jethub.Config
+import com.takusemba.jethub.api.ApiTokenInterceptor
 import com.takusemba.jethub.api.RepoApi
 import com.takusemba.jethub.api.RepoApiClient
 import com.takusemba.jethub.api.SearchApi
@@ -26,6 +27,7 @@ open class NetworkModule {
       .connectTimeout(10L, TimeUnit.SECONDS)
       .writeTimeout(10L, TimeUnit.SECONDS)
       .readTimeout(30L, TimeUnit.SECONDS)
+      .addInterceptor(ApiTokenInterceptor())
       .build()
   }
 

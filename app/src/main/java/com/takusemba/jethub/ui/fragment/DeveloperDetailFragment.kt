@@ -5,8 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.squareup.picasso.Picasso
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentDeveloperDetailBinding
 import com.takusemba.jethub.extension.viewModelProvider
@@ -47,5 +50,23 @@ class DeveloperDetailFragment : DaggerFragment() {
     }
     binding.recyclerView.layoutManager = linearLayoutManager
     binding.recyclerView.adapter = groupAdapter
+
+    developerDetailViewModel.developer.observe(this, Observer { developer ->
+      Picasso.get().load(developer.avatarUrl).into(binding.icon)
+      binding.name.text = developer.name
+      binding.description.text = developer.bio
+      binding.repositoriesCount.text =
+          requireContext().getString(R.string.followers_count, developer.publicRepositoriesCount)
+      binding.gistsCount.text =
+          requireContext().getString(R.string.gists_count, developer.publicGistsCount)
+      binding.followersCount.text =
+          requireContext().getString(R.string.followers_count, developer.followersCount)
+      binding.followingsCount.text =
+          requireContext().getString(R.string.followings_count, developer.followingCount)
+    })
+
+    binding.backArrow.setOnClickListener {
+      view.findNavController().popBackStack()
+    }
   }
 }

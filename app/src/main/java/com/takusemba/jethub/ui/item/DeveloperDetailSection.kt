@@ -9,15 +9,11 @@ import com.xwray.groupie.Section
 
 class DeveloperDetailSection(
   lifecycleOwner: LifecycleOwner,
-  searchReposViewModel: DeveloperDetailViewModel
+  developerDetailViewModel: DeveloperDetailViewModel
 ) : Section() {
 
   init {
-    searchReposViewModel.developer.observe(lifecycleOwner, Observer { developer ->
-      setHeader(DeveloperDetailHeaderItem(developer))
-    })
-
-    searchReposViewModel.developerRepos.observe(lifecycleOwner, Observer { repos ->
+    developerDetailViewModel.developerRepos.observe(lifecycleOwner, Observer { repos ->
       updateResult(repos)
     })
   }

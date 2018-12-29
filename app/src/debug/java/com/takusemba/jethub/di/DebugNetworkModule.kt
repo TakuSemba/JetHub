@@ -1,5 +1,6 @@
 package com.takusemba.jethub.di
 
+import com.takusemba.jethub.api.ApiTokenInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
@@ -14,6 +15,7 @@ class DebugNetworkModule : NetworkModule() {
       .addInterceptor(HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
       })
+      .addInterceptor(ApiTokenInterceptor())
       .build()
   }
 }

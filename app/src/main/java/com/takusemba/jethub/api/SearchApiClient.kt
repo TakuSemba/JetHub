@@ -62,15 +62,25 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
       ?.map { response -> response.toModel() } ?: emptyList()
   }
 
-  override suspend fun searchRepos(language: Language, query: String): List<Repository> {
-    return service.searchRepos("$query language:${language.title}")
+  override suspend fun searchRepos(query: String): List<Repository> {
+    val q = if (query.isNotBlank()) {
+      query
+    } else {
+      "created:>${LocalDateTime.now().minusDays(7).format(DateFormatters.ofSearchQuery())}"
+    }
+    return service.searchRepos(q)
       .await()
       .items
       ?.map { response -> response.toModel() } ?: emptyList()
   }
 
-  override suspend fun searchUsers(language: Language, query: String): List<SimpleDeveloper> {
-    return service.searchUsers("$query language:${language.title}")
+  override suspend fun searchUsers(query: String): List<SimpleDeveloper> {
+    val q = if (query.isNotBlank()) {
+      query
+    } else {
+      "created:>${LocalDateTime.now().minusDays(7).format(DateFormatters.ofSearchQuery())}"
+    }
+    return service.searchUsers(q)
       .await()
       .items
       ?.map { response -> response.toModel() } ?: emptyList()

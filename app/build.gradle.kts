@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.util.Properties
 
 plugins {
   id("com.android.application")
@@ -16,6 +16,14 @@ android {
     versionCode = Config.versionCode
     versionName = Config.versionName
     testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+
+    val local = Properties()
+    val localProperties: File = rootProject.file("local.properties")
+    if (localProperties.exists()) {
+      localProperties.inputStream().use { local.load(it) }
+    }
+    buildConfigField("String", "API_KEY", "\"${local.getProperty("api_token")}\"")
+
   }
   buildTypes {
     getByName("release") {
