@@ -26,13 +26,15 @@
 
     <TextView
       android:id="@+id/name"
-      android:layout_width="wrap_content"
+      android:layout_width="0dp"
       android:layout_height="wrap_content"
+      android:layout_marginEnd="16dp"
       android:layout_marginStart="16dp"
       android:lines="1"
       android:textSize="20sp"
       android:textStyle="bold"
       app:layout_constraintBottom_toBottomOf="@id/icon"
+      app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toEndOf="@id/icon"
       app:layout_constraintTop_toTopOf="@id/icon"
       tools:text="TakuSemba"
