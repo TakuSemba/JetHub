@@ -66,6 +66,7 @@ object Dep {
   // network
   val retrofit = "com.squareup.retrofit2:retrofit:${Version.retrofit}"
   val retrofitConverter = "com.squareup.retrofit2:converter-gson:${Version.retrofit}"
+  // replace after merged to retrofit https://github.com/square/retrofit/pull/2886
   val retrofitAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
   val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:3.11.0"
 
