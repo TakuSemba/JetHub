@@ -8,6 +8,8 @@ import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.model.SimpleDeveloper
 import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.withContext
 import org.threeten.bp.LocalDateTime
 import retrofit2.Retrofit
 import retrofit2.http.GET
@@ -46,43 +48,51 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     language: Language,
     from: LocalDateTime
   ): List<Repository> {
-    return service.getHotRepos("language:${language.title} created:>${from.format(DateFormatters.ofSearchQuery())}")
-      .await()
-      .items
-      ?.map { response -> response.toModel() } ?: emptyList()
+    return withContext(IO) {
+      service.getHotRepos("language:${language.title} created:>${from.format(DateFormatters.ofSearchQuery())}")
+        .await()
+        .items
+        ?.map { response -> response.toModel() } ?: emptyList()
+    }
   }
 
   override suspend fun getHotUsers(
     language: Language,
     from: LocalDateTime
   ): List<SimpleDeveloper> {
-    return service.getHotUsers("language:${language.title} created:>${from.format(DateFormatters.ofSearchQuery())}")
-      .await()
-      .items
-      ?.map { response -> response.toModel() } ?: emptyList()
+    return withContext(IO) {
+      service.getHotUsers("language:${language.title} created:>${from.format(DateFormatters.ofSearchQuery())}")
+        .await()
+        .items
+        ?.map { response -> response.toModel() } ?: emptyList()
+    }
   }
 
   override suspend fun searchRepos(query: String): List<Repository> {
-    val q = if (query.isNotBlank()) {
-      query
-    } else {
-      "created:>${LocalDateTime.now().minusDays(7).format(DateFormatters.ofSearchQuery())}"
+    return withContext(IO) {
+      val q = if (query.isNotBlank()) {
+        query
+      } else {
+        "created:>${LocalDateTime.now().minusDays(7).format(DateFormatters.ofSearchQuery())}"
+      }
+      service.searchRepos(q)
+        .await()
+        .items
+        ?.map { response -> response.toModel() } ?: emptyList()
     }
-    return service.searchRepos(q)
-      .await()
-      .items
-      ?.map { response -> response.toModel() } ?: emptyList()
   }
 
   override suspend fun searchUsers(query: String): List<SimpleDeveloper> {
-    val q = if (query.isNotBlank()) {
-      query
-    } else {
-      "created:>${LocalDateTime.now().minusDays(7).format(DateFormatters.ofSearchQuery())}"
+    return withContext(IO) {
+      val q = if (query.isNotBlank()) {
+        query
+      } else {
+        "created:>${LocalDateTime.now().minusDays(7).format(DateFormatters.ofSearchQuery())}"
+      }
+      service.searchUsers(q)
+        .await()
+        .items
+        ?.map { response -> response.toModel() } ?: emptyList()
     }
-    return service.searchUsers(q)
-      .await()
-      .items
-      ?.map { response -> response.toModel() } ?: emptyList()
   }
 }
