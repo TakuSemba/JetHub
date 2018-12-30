@@ -10,7 +10,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
@@ -26,14 +25,14 @@ class UserViewModel @Inject constructor(
 
   init {
     launch {
-      val repos = withContext(Dispatchers.Default) { userRepository.findAll() }
+      val repos = userRepository.findAll()
       pinedRepositoriesResult.value = repos
     }
   }
 
   fun pin(repository: Repository) {
     launch {
-      withContext(Dispatchers.Default) { userRepository.pin(repository) }
+      userRepository.pin(repository)
       val repositories = pinedRepositoriesResult.value?.toMutableList() ?: mutableListOf()
       repositories.add(repository)
       pinedRepositoriesResult.value = repositories
@@ -42,7 +41,7 @@ class UserViewModel @Inject constructor(
 
   fun unpin(repository: Repository) {
     launch {
-      withContext(Dispatchers.Default) { userRepository.unpin(repository) }
+      userRepository.unpin(repository)
       val repositories = pinedRepositoriesResult.value?.toMutableList() ?: mutableListOf()
       repositories.remove(repository)
       pinedRepositoriesResult.value = repositories
