@@ -3,7 +3,6 @@ package com.takusemba.jethub.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.takusemba.jethub.extension.map
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.SearchReposRepository
 import kotlinx.coroutines.CoroutineScope
@@ -20,24 +19,20 @@ class SearchReposViewModel @Inject constructor(
 
   override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
 
-  private val searchedReposResult = MutableLiveData<Result<List<Repository>>>()
+  private val searchedReposResult = MutableLiveData<List<Repository>>()
 
-  val searchedRepos: LiveData<List<Repository>>
+  val searchedRepos: LiveData<List<Repository>> = searchedReposResult
 
   init {
-    searchedRepos = searchedReposResult.map { result ->
-      result.getOrDefault(emptyList())
-    }
-
     launch {
-      val repositories = runCatching { searchReposRepository.searchRepos("") }
+      val repositories = searchReposRepository.searchRepos("")
       searchedReposResult.value = repositories
     }
   }
 
   fun search(query: String) {
     launch {
-      val repositories = runCatching { searchReposRepository.searchRepos(query) }
+      val repositories = searchReposRepository.searchRepos(query)
       searchedReposResult.value = repositories
     }
   }

@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.takusemba.jethub.di.screen.DeveloperDetailModule.Qualifiers
-import com.takusemba.jethub.extension.map
 import com.takusemba.jethub.model.Developer
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.DeveloperDetailRepository
@@ -24,28 +23,18 @@ class DeveloperDetailViewModel @Inject constructor(
 
   override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
 
-  private val developerResult = MutableLiveData<Result<Developer>>()
-  private val developerReposResult = MutableLiveData<Result<List<Repository>>>()
+  private val developerResult = MutableLiveData<Developer>()
+  private val developerReposResult = MutableLiveData<List<Repository>>()
 
-  val developer: LiveData<Developer>
-  val developerRepos: LiveData<List<Repository>>
+  val developer: LiveData<Developer> = developerResult
+  val developerRepos: LiveData<List<Repository>> = developerReposResult
 
   init {
-    developer = developerResult.map { result ->
-      result.getOrDefault(Developer.EMPTY)
-    }
-
-    developerRepos = developerReposResult.map { result ->
-      result.getOrDefault(emptyList())
-    }
-
     launch {
-      val developer = runCatching {
-        developerDetailRepository.getDeveloper(developerName)
-      }
+      val developer = developerDetailRepository.getDeveloper(developerName)
       developerResult.value = developer
 
-      val developerRepos = runCatching { developerDetailRepository.getRepos(developerName) }
+      val developerRepos = developerDetailRepository.getRepos(developerName)
       developerReposResult.value = developerRepos
     }
   }

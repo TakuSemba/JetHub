@@ -21,7 +21,6 @@ class FeedViewModel @Inject constructor(
 
   override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
 
-  // TODO Result型を独自のResult型にして外部に公開する
   private val hotReposMap = MutableLiveData<Map<Language, List<Repository>>>()
 
   fun hotRepos(language: Language): LiveData<List<Repository>> {

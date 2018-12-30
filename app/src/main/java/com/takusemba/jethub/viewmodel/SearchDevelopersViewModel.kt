@@ -3,7 +3,6 @@ package com.takusemba.jethub.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.takusemba.jethub.extension.map
 import com.takusemba.jethub.model.SimpleDeveloper
 import com.takusemba.jethub.repository.SearchDevelopersRepository
 import kotlinx.coroutines.CoroutineScope
@@ -20,24 +19,20 @@ class SearchDevelopersViewModel @Inject constructor(
 
   override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
 
-  private val searchedUsersResult = MutableLiveData<Result<List<SimpleDeveloper>>>()
+  private val searchedUsersResult = MutableLiveData<List<SimpleDeveloper>>()
 
-  val searchedUsers: LiveData<List<SimpleDeveloper>>
+  val searchedUsers: LiveData<List<SimpleDeveloper>> = searchedUsersResult
 
   init {
-    searchedUsers = searchedUsersResult.map { result ->
-      result.getOrDefault(emptyList())
-    }
-
     launch {
-      val repositories = runCatching { searchDevelopersRepository.searchUsers("") }
+      val repositories = searchDevelopersRepository.searchUsers("")
       searchedUsersResult.value = repositories
     }
   }
 
   fun search(query: String) {
     launch {
-      val users = runCatching { searchDevelopersRepository.searchUsers(query) }
+      val users = searchDevelopersRepository.searchUsers(query)
       searchedUsersResult.value = users
     }
   }
