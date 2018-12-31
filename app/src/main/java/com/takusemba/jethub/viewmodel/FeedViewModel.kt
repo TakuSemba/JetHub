@@ -21,7 +21,7 @@ class FeedViewModel @Inject constructor(
 
   override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
 
-  private val mutableHotReposMap = MutableLiveData<Map<Language, List<Repository>>>()
+  val mutableHotReposMap = MutableLiveData<Map<Language, List<Repository>>>()
 
   fun hotRepos(language: Language): LiveData<List<Repository>> {
     return mutableHotReposMap.map { map -> map[language] ?: emptyList() }
@@ -37,6 +37,8 @@ class FeedViewModel @Inject constructor(
         }
       }.onSuccess { map ->
         mutableHotReposMap.value = map
+      }.onFailure {
+        println("failed")
       }
     }
   }
