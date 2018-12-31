@@ -9,19 +9,21 @@
 
 ## What's JetHub? 
 
-JetHub is a GitHub client app that uses Jetpack components (LiveData, ViewModel, Room, Navigation etc...). 
+JetHub is a sample app using Github API and Jetpack components (LiveData, ViewModel, Room, Navigation etc...). 
 
 
 The purpose of this app is to try new Android technologies and learn how it works and how it can be used in an app.
 
 
 ## Used Libraries
- 
+ - LiveData (Observable data)
+ - ViewModel (Store and manage UI-related data)
+ - Kotlin Coroutine (light-weight threads)
  - Navigation (Fragment transitions)
  - Dagger2 (Dependency Injection)
- - Kotlin Coroutine (light-weight threads)
  - Room (Abstraction layer over SQLite)
  - Retrofit (HTTP client)
+ - Ktx (kotlin extension)
  - Mockk (Unit testing)
 
 
