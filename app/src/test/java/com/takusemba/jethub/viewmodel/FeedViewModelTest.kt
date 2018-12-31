@@ -1,12 +1,16 @@
 package com.takusemba.jethub.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.Observer
 import com.takusemba.jethub.model.Language
+import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.FeedRepository
 import com.takusemba.jethub.util.createRepository
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
+import io.mockk.mockk
+import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.ObsoleteCoroutinesApi
@@ -14,7 +18,6 @@ import kotlinx.coroutines.newSingleThreadContext
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
-import org.assertj.core.api.Assertions.assertThat
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -48,6 +51,8 @@ class FeedViewModelTest {
   fun `initial state`() {
     runBlocking {
 
+      val observer = mockk<Observer<List<Repository>>>(relaxed = true)
+
       coEvery { feedRepository.getHotRepos(any()) } returns listOf(
         createRepository(id = 1),
         createRepository(id = 2),
@@ -56,11 +61,10 @@ class FeedViewModelTest {
 
       val viewModel = FeedViewModel(feedRepository)
 
+      viewModel.hotRepos(Language.KOTLIN).observeForever(observer)
       viewModel.coroutineContext[Job]!!.children.forEach { it.join() }
 
-      val data = viewModel.hotRepos(Language.KOTLIN)
-      data.observeForever { }
-      assertThat(data.value).hasSize(3)
+      verify { observer.onChanged(match { it.size == 3 }) }
     }
   }
 }

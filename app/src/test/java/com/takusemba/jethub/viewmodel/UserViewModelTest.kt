@@ -1,6 +1,8 @@
 package com.takusemba.jethub.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.Observer
+import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.UserRepository
 import com.takusemba.jethub.util.createRepository
 import io.mockk.MockKAnnotations
@@ -8,6 +10,8 @@ import io.mockk.Runs
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import io.mockk.just
+import io.mockk.mockk
+import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.ObsoleteCoroutinesApi
@@ -15,7 +19,6 @@ import kotlinx.coroutines.newSingleThreadContext
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
-import org.assertj.core.api.Assertions.assertThat
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -49,23 +52,28 @@ class UserViewModelTest {
   fun `initial state`() {
     runBlocking {
 
+      val observer = mockk<Observer<List<Repository>>>(relaxed = true)
+
       coEvery { userRepository.findAll() } returns listOf(
         createRepository(id = 1),
         createRepository(id = 2),
         createRepository(id = 3)
       )
 
-      val userViewModel = UserViewModel(userRepository)
+      val viewModel = UserViewModel(userRepository)
 
-      userViewModel.coroutineContext[Job]!!.children.forEach { it.join() }
+      viewModel.pinedRepositories.observeForever(observer)
+      viewModel.coroutineContext[Job]!!.children.forEach { it.join() }
 
-      assertThat(userViewModel.pinedRepositories.value).hasSize(3)
+      verify { observer.onChanged(match { it.size == 3 }) }
     }
   }
 
   @Test
   fun `pin repo`() {
     runBlocking {
+
+      val observer = mockk<Observer<List<Repository>>>(relaxed = true)
 
       coEvery { userRepository.findAll() } returns listOf(
         createRepository(id = 1),
@@ -74,14 +82,15 @@ class UserViewModelTest {
       )
       coEvery { userRepository.pin(any()) } just Runs
 
-      val userViewModel = UserViewModel(userRepository)
+      val viewModel = UserViewModel(userRepository)
 
       val repo = createRepository(id = 4)
-      userViewModel.pin(repo)
+      viewModel.pin(repo)
 
-      userViewModel.coroutineContext[Job]!!.children.forEach { it.join() }
+      viewModel.pinedRepositories.observeForever(observer)
+      viewModel.coroutineContext[Job]!!.children.forEach { it.join() }
 
-      assertThat(userViewModel.pinedRepositories.value).hasSize(4)
+      verify { observer.onChanged(match { it.size == 3 }) }
     }
   }
 
@@ -89,7 +98,9 @@ class UserViewModelTest {
   fun `unpin repo`() {
     runBlocking {
 
+      val observer = mockk<Observer<List<Repository>>>(relaxed = true)
       val repoToBeRemoved = createRepository(id = 3)
+
       coEvery { userRepository.findAll() } returns listOf(
         createRepository(id = 1),
         createRepository(id = 2),
@@ -97,13 +108,14 @@ class UserViewModelTest {
       )
       coEvery { userRepository.unpin(any()) } just Runs
 
-      val userViewModel = UserViewModel(userRepository)
+      val viewModel = UserViewModel(userRepository)
 
-      userViewModel.unpin(repoToBeRemoved)
+      viewModel.unpin(repoToBeRemoved)
 
-      userViewModel.coroutineContext[Job]!!.children.forEach { it.join() }
+      viewModel.pinedRepositories.observeForever(observer)
+      viewModel.coroutineContext[Job]!!.children.forEach { it.join() }
 
-      assertThat(userViewModel.pinedRepositories.value).hasSize(2)
+      verify { observer.onChanged(match { it.size == 3 }) }
     }
   }
 }

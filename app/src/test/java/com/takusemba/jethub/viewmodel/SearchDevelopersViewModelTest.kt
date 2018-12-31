@@ -1,11 +1,15 @@
 package com.takusemba.jethub.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.Observer
+import com.takusemba.jethub.model.SimpleDeveloper
 import com.takusemba.jethub.repository.SearchDevelopersRepository
 import com.takusemba.jethub.util.createSimpleDeveloper
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
+import io.mockk.mockk
+import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.ObsoleteCoroutinesApi
@@ -13,7 +17,6 @@ import kotlinx.coroutines.newSingleThreadContext
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
-import org.assertj.core.api.Assertions
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -47,6 +50,8 @@ class SearchDevelopersViewModelTest {
   fun `initial state`() {
     runBlocking {
 
+      val observer = mockk<Observer<List<SimpleDeveloper>>>(relaxed = true)
+
       coEvery { searchDevelopersRepository.searchDevelopers("") } returns listOf(
         createSimpleDeveloper(id = 1),
         createSimpleDeveloper(id = 2),
@@ -55,15 +60,18 @@ class SearchDevelopersViewModelTest {
 
       val viewModel = SearchDevelopersViewModel(searchDevelopersRepository)
 
+      viewModel.searchedDevelopers.observeForever(observer)
       viewModel.coroutineContext[Job]!!.children.forEach { it.join() }
 
-      Assertions.assertThat(viewModel.searchedDevelopers.value).hasSize(3)
+      verify { observer.onChanged(match { it.size == 3 }) }
     }
   }
 
   @Test
   fun `search repos`() {
     runBlocking {
+
+      val observer = mockk<Observer<List<SimpleDeveloper>>>(relaxed = true)
 
       coEvery { searchDevelopersRepository.searchDevelopers("") } returns emptyList()
 
@@ -77,9 +85,10 @@ class SearchDevelopersViewModelTest {
 
       viewModel.search("something")
 
+      viewModel.searchedDevelopers.observeForever(observer)
       viewModel.coroutineContext[Job]!!.children.forEach { it.join() }
 
-      Assertions.assertThat(viewModel.searchedDevelopers.value).hasSize(3)
+      verify { observer.onChanged(match { it.size == 3 }) }
     }
   }
 }
