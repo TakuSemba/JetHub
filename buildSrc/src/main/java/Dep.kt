@@ -30,6 +30,7 @@ object Dep {
   // coroutine
   val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.coroutine}"
   val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutine}"
+  val coroutineTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.coroutine}"
 
   // androidx
   val appCompat = "androidx.appcompat:appcompat:${Version.androidX}"
@@ -91,4 +92,9 @@ object Dep {
 
   // test
   val junit = "junit:junit:${Version.junit}"
+  val mockk = "io.mockk:mockk:1.8.8.kotlin13"
+  val assertj = "com.squareup.assertj:assertj-android:1.2.0"
+  val testCore = "android.arch.core:core-testing:1.1.0"
+  val orgThreetenbp = "org.threeten:threetenbp:1.3.3"
+  val kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:${Version.kotlin}"
 }

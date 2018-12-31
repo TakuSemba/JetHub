@@ -47,7 +47,7 @@ class UserViewModel @Inject constructor(
       runCatching {
         userRepository.unpin(repository)
         val repositories = mutablePinedRepositories.value?.toMutableList() ?: mutableListOf()
-        repositories.apply { add(repository) }
+        repositories.apply { remove(repository) }
       }.onSuccess { repos ->
         mutablePinedRepositories.value = repos
       }

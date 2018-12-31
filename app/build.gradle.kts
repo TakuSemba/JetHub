@@ -43,6 +43,7 @@ dependencies {
   // coroutine
   implementation(Dep.coroutineCore)
   implementation(Dep.coroutineAndroid)
+  testImplementation(Dep.coroutineTest)
 
   // androidx
   implementation(Dep.appCompat)
@@ -103,4 +104,11 @@ dependencies {
 
   // test
   testImplementation(Dep.junit)
+  testImplementation(Dep.assertj)
+  testImplementation(Dep.testCore)
+  testImplementation(Dep.mockk) {
+    exclude(group = "org.jetbrains.kotlin", module = "kotlin-reflect")
+  }
+  testImplementation(Dep.orgThreetenbp)
+  testImplementation(Dep.kotlinReflect)
 }
