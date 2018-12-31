@@ -26,7 +26,7 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     ): Deferred<ListResponse<RepositoryResponse>>
 
     @GET("search/users")
-    fun getHotUsers(
+    fun getHotDevelopers(
       @Query("q") query: String,
       @Query("sort") sort: String = "stars"
     ): Deferred<ListResponse<SimpleDeveloperResponse>>
@@ -37,7 +37,7 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     ): Deferred<ListResponse<RepositoryResponse>>
 
     @GET("search/users")
-    fun searchUsers(
+    fun searchDevelopers(
       @Query("q") query: String
     ): Deferred<ListResponse<SimpleDeveloperResponse>>
   }
@@ -56,12 +56,12 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     }
   }
 
-  override suspend fun getHotUsers(
+  override suspend fun getHotDevelopers(
     language: Language,
     from: LocalDateTime
   ): List<SimpleDeveloper> {
     return withContext(IO) {
-      service.getHotUsers("language:${language.title} created:>${from.format(DateFormatters.ofSearchQuery())}")
+      service.getHotDevelopers("language:${language.title} created:>${from.format(DateFormatters.ofSearchQuery())}")
         .await()
         .items
         ?.map { response -> response.toModel() } ?: emptyList()
@@ -82,14 +82,14 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     }
   }
 
-  override suspend fun searchUsers(query: String): List<SimpleDeveloper> {
+  override suspend fun searchDevelopers(query: String): List<SimpleDeveloper> {
     return withContext(IO) {
       val q = if (query.isNotBlank()) {
         query
       } else {
         "created:>${LocalDateTime.now().minusDays(7).format(DateFormatters.ofSearchQuery())}"
       }
-      service.searchUsers(q)
+      service.searchDevelopers(q)
         .await()
         .items
         ?.map { response -> response.toModel() } ?: emptyList()

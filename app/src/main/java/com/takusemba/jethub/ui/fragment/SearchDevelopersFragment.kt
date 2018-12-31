@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentSearchDevelopersBinding
 import com.takusemba.jethub.extension.parentViewModelProvider
-import com.takusemba.jethub.ui.item.SearchUsersSection
+import com.takusemba.jethub.ui.item.SearchDevelopersSection
 import com.takusemba.jethub.viewmodel.SearchDevelopersViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
@@ -31,8 +31,8 @@ class SearchDevelopersFragment : DaggerFragment() {
     parentViewModelProvider(viewModelFactory) as SearchDevelopersViewModel
   }
 
-  private val searchUsersSection: SearchUsersSection by lazy {
-    SearchUsersSection(this, searchDevelopersViewModel)
+  private val searchDevelopersSection: SearchDevelopersSection by lazy {
+    SearchDevelopersSection(this, searchDevelopersViewModel)
   }
 
   override fun onCreateView(
@@ -49,7 +49,7 @@ class SearchDevelopersFragment : DaggerFragment() {
 
     val linearLayoutManager = LinearLayoutManager(context)
     val groupAdapter = GroupAdapter<ViewHolder>().apply {
-      add(searchUsersSection)
+      add(searchDevelopersSection)
     }
     binding.recyclerView.layoutManager = linearLayoutManager
     binding.recyclerView.adapter = groupAdapter

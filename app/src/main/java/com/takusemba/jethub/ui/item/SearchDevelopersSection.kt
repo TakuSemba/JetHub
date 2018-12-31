@@ -7,13 +7,13 @@ import com.takusemba.jethub.viewmodel.SearchDevelopersViewModel
 import com.xwray.groupie.Item
 import com.xwray.groupie.Section
 
-class SearchUsersSection(
+class SearchDevelopersSection(
   lifecycleOwner: LifecycleOwner,
   searchDevelopersViewModel: SearchDevelopersViewModel
 ) : Section() {
 
   init {
-    searchDevelopersViewModel.searchedUsers.observe(lifecycleOwner, Observer { repositories ->
+    searchDevelopersViewModel.searchedDevelopers.observe(lifecycleOwner, Observer { repositories ->
       updateResult(repositories)
     })
   }

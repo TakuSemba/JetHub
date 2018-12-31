@@ -9,9 +9,9 @@ interface SearchApi {
 
   suspend fun getHotRepos(language: Language, from: LocalDateTime): List<Repository>
 
-  suspend fun getHotUsers(language: Language, from: LocalDateTime): List<SimpleDeveloper>
+  suspend fun getHotDevelopers(language: Language, from: LocalDateTime): List<SimpleDeveloper>
 
   suspend fun searchRepos(query: String): List<Repository>
 
-  suspend fun searchUsers(query: String): List<SimpleDeveloper>
+  suspend fun searchDevelopers(query: String): List<SimpleDeveloper>
 }

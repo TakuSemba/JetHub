@@ -19,16 +19,16 @@ class SearchDevelopersViewModel @Inject constructor(
 
   override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
 
-  private val searchedUsersResult = MutableLiveData<List<SimpleDeveloper>>()
+  private val searchedDevelopersResult = MutableLiveData<List<SimpleDeveloper>>()
 
-  val searchedUsers: LiveData<List<SimpleDeveloper>> = searchedUsersResult
+  val searchedDevelopers: LiveData<List<SimpleDeveloper>> = searchedDevelopersResult
 
   init {
     launch {
       runCatching {
-        searchDevelopersRepository.searchUsers("")
-      }.onSuccess { repos ->
-        searchedUsersResult.value = repos
+        searchDevelopersRepository.searchDevelopers("")
+      }.onSuccess { developers ->
+        searchedDevelopersResult.value = developers
       }
     }
   }
@@ -36,9 +36,9 @@ class SearchDevelopersViewModel @Inject constructor(
   fun search(query: String) {
     launch {
       runCatching {
-        searchDevelopersRepository.searchUsers(query)
+        searchDevelopersRepository.searchDevelopers(query)
       }.onSuccess { developers ->
-        searchedUsersResult.value = developers
+        searchedDevelopersResult.value = developers
       }
     }
   }

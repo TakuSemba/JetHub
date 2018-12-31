@@ -8,7 +8,7 @@ class SearchDevelopersRepository @Inject constructor(
   private val searchApi: SearchApi
 ) {
 
-  suspend fun searchUsers(query: String): List<SimpleDeveloper> {
-    return searchApi.searchUsers(query)
+  suspend fun searchDevelopers(query: String): List<SimpleDeveloper> {
+    return searchApi.searchDevelopers(query)
   }
 }
