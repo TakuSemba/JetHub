@@ -90,7 +90,7 @@ class UserViewModelTest {
       viewModel.pinedRepositories.observeForever(observer)
       viewModel.coroutineContext[Job]!!.children.forEach { it.join() }
 
-      verify { observer.onChanged(match { it.size == 3 }) }
+      verify { observer.onChanged(match { it.size == 4 }) }
     }
   }
 
@@ -115,7 +115,7 @@ class UserViewModelTest {
       viewModel.pinedRepositories.observeForever(observer)
       viewModel.coroutineContext[Job]!!.children.forEach { it.join() }
 
-      verify { observer.onChanged(match { it.size == 3 }) }
+      verify { observer.onChanged(match { it.size == 2 }) }
     }
   }
 }
