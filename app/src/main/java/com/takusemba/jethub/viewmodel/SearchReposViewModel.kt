@@ -19,21 +19,26 @@ class SearchReposViewModel @Inject constructor(
 
   override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
 
-  private val searchedReposResult = MutableLiveData<List<Repository>>()
-
-  val searchedRepos: LiveData<List<Repository>> = searchedReposResult
+  private val mutableSearchedRepos = MutableLiveData<List<Repository>>()
+  val searchedRepos: LiveData<List<Repository>> = mutableSearchedRepos
 
   init {
     launch {
-      val repositories = searchReposRepository.searchRepos("")
-      searchedReposResult.value = repositories
+      runCatching {
+        searchReposRepository.searchRepos("")
+      }.onSuccess { repos ->
+        mutableSearchedRepos.value = repos
+      }
     }
   }
 
   fun search(query: String) {
     launch {
-      val repositories = searchReposRepository.searchRepos(query)
-      searchedReposResult.value = repositories
+      runCatching {
+        searchReposRepository.searchRepos(query)
+      }.onSuccess { repos ->
+        mutableSearchedRepos.value = repos
+      }
     }
   }
 

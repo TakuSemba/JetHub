@@ -19,32 +19,38 @@ class UserViewModel @Inject constructor(
 
   override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
 
-  private val pinedRepositoriesResult: MutableLiveData<List<Repository>> = MutableLiveData()
-
-  val pinedRepositories: LiveData<List<Repository>> = pinedRepositoriesResult
+  private val mutablePinedRepositories: MutableLiveData<List<Repository>> = MutableLiveData()
+  val pinedRepositories: LiveData<List<Repository>> = mutablePinedRepositories
 
   init {
     launch {
-      val repos = userRepository.findAll()
-      pinedRepositoriesResult.value = repos
+      runCatching {
+        userRepository.findAll()
+      }.onSuccess { repos -> mutablePinedRepositories.value = repos }
     }
   }
 
   fun pin(repository: Repository) {
     launch {
-      userRepository.pin(repository)
-      val repositories = pinedRepositoriesResult.value?.toMutableList() ?: mutableListOf()
-      repositories.add(repository)
-      pinedRepositoriesResult.value = repositories
+      runCatching {
+        userRepository.pin(repository)
+        val repositories = mutablePinedRepositories.value?.toMutableList() ?: mutableListOf()
+        repositories.apply { add(repository) }
+      }.onSuccess { repos ->
+        mutablePinedRepositories.value = repos
+      }
     }
   }
 
   fun unpin(repository: Repository) {
     launch {
-      userRepository.unpin(repository)
-      val repositories = pinedRepositoriesResult.value?.toMutableList() ?: mutableListOf()
-      repositories.remove(repository)
-      pinedRepositoriesResult.value = repositories
+      runCatching {
+        userRepository.unpin(repository)
+        val repositories = mutablePinedRepositories.value?.toMutableList() ?: mutableListOf()
+        repositories.apply { add(repository) }
+      }.onSuccess { repos ->
+        mutablePinedRepositories.value = repos
+      }
     }
   }
 

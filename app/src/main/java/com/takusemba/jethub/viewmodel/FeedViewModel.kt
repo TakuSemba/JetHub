@@ -21,21 +21,23 @@ class FeedViewModel @Inject constructor(
 
   override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
 
-  private val hotReposMap = MutableLiveData<Map<Language, List<Repository>>>()
+  private val mutableHotReposMap = MutableLiveData<Map<Language, List<Repository>>>()
 
   fun hotRepos(language: Language): LiveData<List<Repository>> {
-    return hotReposMap.map { map ->
-      map[language] ?: emptyList()
-    }
+    return mutableHotReposMap.map { map -> map[language] ?: emptyList() }
   }
 
   init {
     launch {
-      val map = mutableMapOf<Language, List<Repository>>()
-      Language.POPULAR_LANGUAGES.forEach { language ->
-        map[language] = feedRepository.getHotRepos(language)
+      runCatching {
+        mutableMapOf<Language, List<Repository>>().also { map ->
+          Language.POPULAR_LANGUAGES.forEach { language ->
+            map[language] = feedRepository.getHotRepos(language)
+          }
+        }
+      }.onSuccess { map ->
+        mutableHotReposMap.value = map
       }
-      hotReposMap.postValue(map)
     }
   }
 

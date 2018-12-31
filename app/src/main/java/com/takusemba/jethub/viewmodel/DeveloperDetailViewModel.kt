@@ -31,11 +31,17 @@ class DeveloperDetailViewModel @Inject constructor(
 
   init {
     launch {
-      val developer = developerDetailRepository.getDeveloper(developerName)
-      developerResult.value = developer
+      runCatching {
+        developerDetailRepository.getDeveloper(developerName)
+      }.onSuccess { developer ->
+        developerResult.value = developer
+      }
 
-      val developerRepos = developerDetailRepository.getRepos(developerName)
-      developerReposResult.value = developerRepos
+      runCatching {
+        developerDetailRepository.getRepos(developerName)
+      }.onSuccess { developerRepos ->
+        developerReposResult.value = developerRepos
+      }
     }
   }
 
