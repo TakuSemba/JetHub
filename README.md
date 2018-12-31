@@ -32,9 +32,9 @@ The purpose of this app is to try new Android technologies and learn how it work
 
 ## Architecture
 
-This app uses MVVM architecture with a Repository layer, which is for interacting with API calls or DB transactions.
+This app uses MVVM architecture. There is also a Repository layer, which is for interacting with API calls or DB transactions.
 
-Also, this is a single-activity application.
+This is a single-activity application.
 
 ```kt
 //--- Activity / Fragments ---//
