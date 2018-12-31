@@ -5,6 +5,9 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 
+/**
+ * Database Module for debugging.
+ */
 class DebugNetworkModule : NetworkModule() {
 
   override fun provideOkHttpClient(): OkHttpClient {

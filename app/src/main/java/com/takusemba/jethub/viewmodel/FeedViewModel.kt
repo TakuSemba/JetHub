@@ -15,13 +15,16 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
+/**
+ * [ViewModel] to store and manage Feed data.
+ */
 class FeedViewModel @Inject constructor(
   private val feedRepository: FeedRepository
 ) : ViewModel(), CoroutineScope {
 
   override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
 
-  val mutableHotReposMap = MutableLiveData<Map<Language, List<Repository>>>()
+  private val mutableHotReposMap = MutableLiveData<Map<Language, List<Repository>>>()
 
   fun hotRepos(language: Language): LiveData<List<Repository>> {
     return mutableHotReposMap.map { map -> map[language] ?: emptyList() }

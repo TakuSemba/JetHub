@@ -15,6 +15,9 @@ import retrofit2.Retrofit
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+/**
+ * Search API client
+ */
 class SearchApiClient(retrofit: Retrofit) : SearchApi {
 
   interface Service {

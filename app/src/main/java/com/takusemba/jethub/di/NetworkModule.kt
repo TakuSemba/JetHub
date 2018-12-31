@@ -17,6 +17,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+/**
+ * Database Module
+ * Define all the network-related classes that need to be provided in the scope of Application.
+ */
 @Module
 open class NetworkModule {
 

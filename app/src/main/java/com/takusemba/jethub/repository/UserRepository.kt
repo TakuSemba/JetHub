@@ -9,6 +9,9 @@ import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 import javax.inject.Inject
 
+/**
+ * Repository for `UserViewModel`
+ */
 class UserRepository @Inject constructor(
   private val repoDb: RepoDb,
   private val repoApi: RepoApi

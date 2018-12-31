@@ -11,6 +11,9 @@ import retrofit2.Retrofit
 import retrofit2.http.GET
 import retrofit2.http.Path
 
+/**
+ * Developer API client
+ */
 class DeveloperApiClient(retrofit: Retrofit) : DeveloperApi {
 
   interface Service {

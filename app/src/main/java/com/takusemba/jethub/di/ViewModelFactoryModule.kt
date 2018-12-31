@@ -4,6 +4,9 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
 
+/**
+ * Module to provide [ViewModelProvider.Factory]
+ */
 @Module
 interface ViewModelFactoryModule {
 

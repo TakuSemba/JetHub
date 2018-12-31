@@ -4,6 +4,9 @@ import android.content.Context
 import android.os.IBinder
 import android.view.inputmethod.InputMethodManager
 
+/**
+ * Keyboard Utility
+ */
 object Keyboard {
 
   fun show(context: Context) {

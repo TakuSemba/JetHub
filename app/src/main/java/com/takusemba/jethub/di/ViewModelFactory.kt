@@ -5,6 +5,10 @@ import androidx.lifecycle.ViewModelProvider
 import javax.inject.Inject
 import javax.inject.Provider
 
+/**
+ * This Factory creates ViewModel.
+ * The scope of the ViewModel is determined by the lifecycle added to `ViewModelProviders.of(lifecycle, factory)`
+ */
 class ViewModelFactory @Inject constructor(
   private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
 ) : ViewModelProvider.Factory {

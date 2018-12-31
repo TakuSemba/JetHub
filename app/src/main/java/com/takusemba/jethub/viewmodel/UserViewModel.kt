@@ -13,6 +13,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
+/**
+ * [ViewModel] to store and manage user-related data.
+ * This should be Activity-Scope, because the data is used across screens.
+ */
 class UserViewModel @Inject constructor(
   private val userRepository: UserRepository
 ) : ViewModel(), CoroutineScope {

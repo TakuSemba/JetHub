@@ -8,6 +8,10 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
 
+/**
+ * Builder for activity.
+ * [MainActivity] is an only activity of this app, since this is single-activity application.
+ */
 @Module
 interface ActivityBuilder {
 

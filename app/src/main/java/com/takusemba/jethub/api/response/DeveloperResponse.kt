@@ -3,6 +3,9 @@ package com.takusemba.jethub.api.response
 import com.google.gson.annotations.SerializedName
 import com.takusemba.jethub.model.Developer
 
+/**
+ * Developer response data.
+ */
 class DeveloperResponse : DataResponse<Developer>() {
 
   @SerializedName("login")

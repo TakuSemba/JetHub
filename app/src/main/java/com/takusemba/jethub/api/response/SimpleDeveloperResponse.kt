@@ -3,6 +3,9 @@ package com.takusemba.jethub.api.response
 import com.google.gson.annotations.SerializedName
 import com.takusemba.jethub.model.SimpleDeveloper
 
+/**
+ * Simplified repository response data.
+ */
 class SimpleDeveloperResponse : DataResponse<SimpleDeveloper>() {
 
   @SerializedName("login")

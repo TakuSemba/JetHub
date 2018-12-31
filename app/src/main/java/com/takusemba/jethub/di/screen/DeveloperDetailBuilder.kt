@@ -7,6 +7,9 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 
+/**
+ * Builder to construct developer detail screen.
+ */
 @Module
 interface DeveloperDetailBuilder {
 

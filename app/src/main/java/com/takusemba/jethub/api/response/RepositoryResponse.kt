@@ -6,6 +6,9 @@ import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
 import org.threeten.bp.LocalDateTime
 
+/**
+ * Repository response data.
+ */
 class RepositoryResponse : DataResponse<Repository>() {
 
   @SerializedName("id")

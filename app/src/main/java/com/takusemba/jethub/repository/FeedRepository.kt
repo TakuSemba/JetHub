@@ -6,6 +6,9 @@ import com.takusemba.jethub.model.Repository
 import org.threeten.bp.LocalDateTime
 import javax.inject.Inject
 
+/**
+ * Repository for `FeedViewModel`
+ */
 class FeedRepository @Inject constructor(
   private val searchApi: SearchApi
 ) {

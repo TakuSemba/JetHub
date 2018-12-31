@@ -5,6 +5,9 @@ import com.takusemba.jethub.di.DebugNetworkModule
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 
+/**
+ * Application class for debugging.
+ */
 class DebugApp : App() {
 
   override fun applicationInjector(): AndroidInjector<out DaggerApplication> {

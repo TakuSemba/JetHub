@@ -13,6 +13,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
+/**
+ * [ViewModel] to store and manage searched developers data.
+ */
 class SearchDevelopersViewModel @Inject constructor(
   private val searchDevelopersRepository: SearchDevelopersRepository
 ) : ViewModel(), CoroutineScope {

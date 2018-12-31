@@ -7,6 +7,9 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Named
 
+/**
+ * Module for developer detail screen.
+ */
 @Module
 class DeveloperDetailModule {
 

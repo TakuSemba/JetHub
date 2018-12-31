@@ -13,6 +13,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
+/**
+ * [ViewModel] to store and manage searched repos data.
+ */
 class SearchReposViewModel @Inject constructor(
   private val searchReposRepository: SearchReposRepository
 ) : ViewModel(), CoroutineScope {

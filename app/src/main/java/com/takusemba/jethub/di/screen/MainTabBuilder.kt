@@ -14,6 +14,9 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
 
+/**
+ * Builder to construct main tab screen.
+ */
 @Module
 interface MainTabBuilder {
 

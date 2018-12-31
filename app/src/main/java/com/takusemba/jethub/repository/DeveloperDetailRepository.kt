@@ -5,6 +5,9 @@ import com.takusemba.jethub.model.Developer
 import com.takusemba.jethub.model.Repository
 import javax.inject.Inject
 
+/**
+ * Repository for `DeveloperDetailViewModel`
+ */
 class DeveloperDetailRepository @Inject constructor(
   private val developerApi: DeveloperApi
 ) {

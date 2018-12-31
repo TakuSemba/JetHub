@@ -3,6 +3,9 @@ package com.takusemba.jethub.database.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/**
+ * Repository Entity
+ */
 @Entity(tableName = "repository")
 class RepositoryEntity(
   @PrimaryKey

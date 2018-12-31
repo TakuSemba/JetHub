@@ -16,6 +16,9 @@ import javax.inject.Inject
 import javax.inject.Named
 import kotlin.coroutines.CoroutineContext
 
+/**
+ * [ViewModel] to store and manage DeveloperDetail data.
+ */
 class DeveloperDetailViewModel @Inject constructor(
   @Named(Qualifiers.DEVELOPER_NAME) private val developerName: String,
   private val developerDetailRepository: DeveloperDetailRepository

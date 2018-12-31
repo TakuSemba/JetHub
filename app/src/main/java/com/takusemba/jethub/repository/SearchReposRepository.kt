@@ -5,6 +5,9 @@ import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
 import javax.inject.Inject
 
+/**
+ * Repository for `SearchReposViewModel`
+ */
 class SearchReposRepository @Inject constructor(
   private val searchApi: SearchApi
 ) {

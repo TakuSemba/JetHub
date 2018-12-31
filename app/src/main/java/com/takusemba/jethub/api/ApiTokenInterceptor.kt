@@ -4,6 +4,9 @@ import com.takusemba.jethub.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 
+/**
+ * Interceptor to add API token to a Authorization header.
+ */
 class ApiTokenInterceptor : Interceptor {
 
   companion object {

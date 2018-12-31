@@ -9,6 +9,10 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
+/**
+ * Database Module
+ * Define all the database-related classes that need to be provided in the scope of Application.
+ */
 @Module
 class DatabaseModule {
 

@@ -9,6 +9,9 @@ import retrofit2.Retrofit
 import retrofit2.http.GET
 import retrofit2.http.Path
 
+/**
+ * Repository API client
+ */
 class RepoApiClient(retrofit: Retrofit) : RepoApi {
 
   interface Service {

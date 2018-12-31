@@ -6,6 +6,9 @@ import com.takusemba.jethub.model.SimpleRepository
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
 
+/**
+ * Repository DB client
+ */
 class RepoDbClient(private val repositoryDao: RepositoryDao) : RepoDb {
 
   override suspend fun getAll(): List<SimpleRepository> {
