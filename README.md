@@ -5,7 +5,7 @@
 
 <img src="https://github.com/TakuSemba/JetHub/blob/master/art/screen.gif" align="right" width="30%">
 
-## What's JetHub? 
+## What's JetHub? :rocket:
 
 JetHub is a sample app using Github API and Jetpack components (LiveData, ViewModel, Room, Navigation etc...). 
 
@@ -14,15 +14,15 @@ The purpose of this app is to try new Android technologies and learn how it work
 
 
 ## Used Libraries
- - LiveData (Observable data)
- - ViewModel (Store and manage UI-related data)
- - Kotlin Coroutine (light-weight threads)
- - Navigation (Fragment transitions)
- - Dagger2 (Dependency Injection)
- - Room (Abstraction layer over SQLite)
- - Retrofit (HTTP client)
- - Ktx (kotlin extension)
- - Mockk (Unit testing)
+ - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)  (Observable data)
+ - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) (Store and manage UI-related data)
+ - [Kotlin Coroutine](https://github.com/Kotlin/kotlinx.coroutines) (Light-weight threads)
+ - [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) (Fragment transitions)
+ - [Dagger2](https://github.com/google/dagger) (Dependency Injection)
+ - [Room](https://developer.android.com/topic/libraries/architecture/room) (Abstraction layer over SQLite)
+ - [Retrofit](https://github.com/square/retrofit) (HTTP client)
+ - [Ktx](https://developer.android.com/kotlin/ktx) (Kotlin extension)
+ - [Mockk](https://github.com/mockk/mockk) (Unit testing)
 
 
 </br>
@@ -60,13 +60,13 @@ db.getData() // get data from DB
 
 This app uses Kotlin coroutine to archive asynchronize calls. The layer below the ViewModel are all suspend functions.
 
-The basics of Kotlin coroutine can be learned from this doc.
+The basics of Kotlin coroutine can be learned from this [doc](https://github.com/Kotlin/kotlinx.coroutines/tree/master/docs).
 
 ## Github API Token
 
 This project is based on GitHub API. You can set your own token in local.properties and app will use the toekn everytime app requests network calls to Github API. 
 
-If you do not have a GitHub token, that's fine. You can use this app without any token, but the number of the API call is very limited by Github. You can see the detail from this link.
+If you do not have a GitHub token, that's fine. You can use this app without any token, but the number of the API call is very limited by Github. You can see the detail from this [link](https://developer.github.com/v3/#rate-limiting).
 
 ```local.properties
 // local.properties
