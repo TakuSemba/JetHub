@@ -3,8 +3,6 @@
 <img src="https://github.com/TakuSemba/JetHub/blob/master/art/logo.png">
 
 
-<br/>
-
 <img src="https://github.com/TakuSemba/JetHub/blob/master/art/screen.gif" align="right" width="30%">
 
 ## What's JetHub? 
@@ -27,8 +25,6 @@ The purpose of this app is to try new Android technologies and learn how it work
  - Mockk (Unit testing)
 
 
-</br>
-</br>
 </br>
 
 <img src="https://github.com/TakuSemba/JetHub/blob/master/art/architecture.png" align="left" width="40%">
@@ -58,11 +54,6 @@ api.getData() // get data from API
 db.getData() // get data from DB
 
 ```
-
-
-</br>
-</br>
-</br>
 
 
 ## Threading
