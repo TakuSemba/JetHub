@@ -15,8 +15,11 @@ class ApiTokenInterceptor : Interceptor {
   }
 
   override fun intercept(chain: Interceptor.Chain): Response {
+    val token = BuildConfig.API_KEY
     val builder = chain.request().newBuilder()
-    builder.addHeader(AUTHORIZATION_HEADER, "token ${BuildConfig.API_KEY}")
+    if (token.isNotBlank() && token != "null") {
+      builder.addHeader(AUTHORIZATION_HEADER, "token ${BuildConfig.API_KEY}")
+    }
     return chain.proceed(builder.build())
   }
 }
