@@ -58,7 +58,7 @@ db.getData() // get data from DB
 
 ## Threading
 
-This app uses Kotlin coroutine to archive asynchronize calls. The layer below the ViewModel are all suspend functions.
+This app uses Kotlin coroutine to archive asynchronize calls. The layers below the ViewModel are all suspend functions.
 
 The basics of Kotlin coroutine can be learned from this [doc](https://github.com/Kotlin/kotlinx.coroutines/tree/master/docs).
 
