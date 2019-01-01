@@ -1,38 +1,31 @@
-import java.util.Properties
-
-plugins {
-  id("com.android.application")
-  id("kotlin-android")
-  id("kotlin-kapt")
-  id("androidx.navigation.safeargs")
-}
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-kapt"
+apply plugin: "androidx.navigation.safeargs"
 
 android {
   compileSdkVersion(Config.compileSdkVersion)
   defaultConfig {
-    applicationId = Config.packageName
-    minSdkVersion(Config.minSdkVersion)
-    targetSdkVersion(Config.targetSdkVersion)
-    versionCode = Config.versionCode
-    versionName = Config.versionName
-    testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+    applicationId  Config.packageName
+    minSdkVersion Config.minSdkVersion
+    targetSdkVersion Config.targetSdkVersion
+    versionCode  Config.versionCode
+    versionName  Config.versionName
+    testInstrumentationRunner  "android.support.test.runner.AndroidJUnitRunner"
 
-    val local = Properties()
-    val localProperties: File = rootProject.file("local.properties")
-    if (localProperties.exists()) {
-      localProperties.inputStream().use { local.load(it) }
-    }
-    buildConfigField("String", "API_KEY", "\"${local.getProperty("api_token")}\"")
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    buildConfigField "String", "API_KEY", "\"" + properties.getProperty("api_token") + "\""
 
   }
   buildTypes {
-    getByName("release") {
-      isMinifyEnabled = true
+    release {
+      minifyEnabled true
       proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
     }
   }
   dataBinding {
-    isEnabled = true
+    enabled = true
   }
 }
 
@@ -107,7 +100,7 @@ dependencies {
   testImplementation(Dep.assertj)
   testImplementation(Dep.testCore)
   testImplementation(Dep.mockk) {
-    exclude(group = "org.jetbrains.kotlin", module = "kotlin-reflect")
+    exclude group: "org.jetbrains.kotlin",  module: "kotlin-reflect"
   }
   testImplementation(Dep.orgThreetenbp)
   testImplementation(Dep.kotlinReflect)
