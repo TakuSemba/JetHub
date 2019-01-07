@@ -1,7 +1,7 @@
 package com.takusemba.jethub.ui.item
 
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.viewmodel.FeedViewModel
@@ -17,9 +17,9 @@ class FeedRepoSection(
 ) : Section() {
 
   init {
-    feedViewModel.hotRepos(language).observe(lifecycleOwner, Observer { repositories ->
+    feedViewModel.hotRepos(language).observe(lifecycleOwner) { repositories ->
       updateResult(repositories)
-    })
+    }
   }
 
   private fun updateResult(repositories: List<Repository>) {

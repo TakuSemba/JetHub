@@ -1,7 +1,7 @@
 package com.takusemba.jethub.ui.item
 
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import com.takusemba.jethub.model.SimpleDeveloper
 import com.takusemba.jethub.viewmodel.SearchDevelopersViewModel
 import com.xwray.groupie.Item
@@ -13,9 +13,9 @@ class SearchDevelopersSection(
 ) : Section() {
 
   init {
-    searchDevelopersViewModel.searchedDevelopers.observe(lifecycleOwner, Observer { repositories ->
+    searchDevelopersViewModel.searchedDevelopers.observe(lifecycleOwner) { repositories ->
       updateResult(repositories)
-    })
+    }
   }
 
   private fun updateResult(developers: List<SimpleDeveloper>) {

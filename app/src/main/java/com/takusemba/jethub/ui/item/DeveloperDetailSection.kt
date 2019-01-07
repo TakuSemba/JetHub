@@ -1,7 +1,7 @@
 package com.takusemba.jethub.ui.item
 
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.viewmodel.DeveloperDetailViewModel
 import com.takusemba.jethub.viewmodel.UserViewModel
@@ -15,9 +15,9 @@ class DeveloperDetailSection(
 ) : Section() {
 
   init {
-    developerDetailViewModel.developerRepos.observe(lifecycleOwner, Observer { repos ->
+    developerDetailViewModel.developerRepos.observe(lifecycleOwner) { repos ->
       updateResult(repos)
-    })
+    }
   }
 
   private fun updateResult(repos: List<Repository>) {

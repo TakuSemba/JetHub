@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -59,7 +59,7 @@ class DeveloperDetailFragment : DaggerFragment() {
     binding.recyclerView.layoutManager = linearLayoutManager
     binding.recyclerView.adapter = groupAdapter
 
-    developerDetailViewModel.developer.observe(this, Observer { developer ->
+    developerDetailViewModel.developer.observe(this) { developer ->
       Picasso.get().load(developer.avatarUrl).into(binding.icon)
       binding.name.text = developer.login
       binding.description.text = developer.bio
@@ -72,7 +72,7 @@ class DeveloperDetailFragment : DaggerFragment() {
           requireContext().getString(R.string.followers_count, developer.followersCount)
       binding.followingsCount.text =
           requireContext().getString(R.string.followings_count, developer.followingCount)
-    })
+    }
 
     binding.appbar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, offset ->
       if (binding.collapsingToolbar.height + offset < 2 * ViewCompat.getMinimumHeight(binding.collapsingToolbar)) {
