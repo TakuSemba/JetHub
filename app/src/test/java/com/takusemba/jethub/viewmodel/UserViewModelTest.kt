@@ -64,7 +64,7 @@ class UserViewModelTest {
       val viewModel = UserViewModel(userRepository)
 
       viewModel.pinedRepositories.observeForever(observer)
-      viewModel.coroutineContext[Job]!!.children.forEach { it.join() }
+      viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
 
       verify { observer.onChanged(match { it.size == 3 }) }
     }
