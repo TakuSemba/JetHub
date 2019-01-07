@@ -53,6 +53,7 @@ dependencies {
   kapt(Dep.lifecycleCompiler)
   implementation(Dep.viewModel)
   implementation(Dep.viewmodelKtx)
+  implementation(Dep.livedataKtx)
 
   // navigation
   implementation(Dep.navFragment)

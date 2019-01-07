@@ -6,7 +6,7 @@ object Dep {
     const val kotlin = "1.3.11"
     const val coroutine = "1.1.0"
     const val androidX = "1.0.0"
-    const val lifecycle = "2.0.0"
+    const val lifecycle = "2.1.0-alpha01"
     const val constraintLayout = "2.0.0-alpha2"
     const val navigation = "1.0.0-alpha09"
     const val room = "2.1.0-alpha03"
@@ -57,6 +57,7 @@ object Dep {
   val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Version.lifecycle}"
   val viewModel = "androidx.lifecycle:lifecycle-viewmodel:${Version.lifecycle}"
   val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifecycle}"
+  val livedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:${Version.lifecycle}"
 
   // dependency injection
   val dagger = "com.google.dagger:dagger:${Version.dagger}"

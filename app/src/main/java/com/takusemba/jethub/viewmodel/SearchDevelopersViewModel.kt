@@ -3,31 +3,25 @@ package com.takusemba.jethub.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.model.SimpleDeveloper
 import com.takusemba.jethub.repository.SearchDevelopersRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.coroutines.CoroutineContext
 
 /**
  * [ViewModel] to store and manage searched developers data.
  */
 class SearchDevelopersViewModel @Inject constructor(
   private val searchDevelopersRepository: SearchDevelopersRepository
-) : ViewModel(), CoroutineScope {
-
-  override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
+) : ViewModel() {
 
   private val searchedDevelopersResult = MutableLiveData<List<SimpleDeveloper>>()
 
   val searchedDevelopers: LiveData<List<SimpleDeveloper>> = searchedDevelopersResult
 
   init {
-    launch {
+    viewModelScope.launch {
       runCatching {
         searchDevelopersRepository.searchDevelopers("")
       }.onSuccess { developers ->
@@ -37,17 +31,12 @@ class SearchDevelopersViewModel @Inject constructor(
   }
 
   fun search(query: String) {
-    launch {
+    viewModelScope.launch {
       runCatching {
         searchDevelopersRepository.searchDevelopers(query)
       }.onSuccess { developers ->
         searchedDevelopersResult.value = developers
       }
     }
-  }
-
-  override fun onCleared() {
-    super.onCleared()
-    coroutineContext.cancel()
   }
 }

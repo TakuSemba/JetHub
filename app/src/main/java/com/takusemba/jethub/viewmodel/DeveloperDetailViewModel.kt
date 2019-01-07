@@ -3,18 +3,14 @@ package com.takusemba.jethub.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.di.screen.DeveloperDetailModule.Qualifiers
 import com.takusemba.jethub.model.Developer
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.DeveloperDetailRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Named
-import kotlin.coroutines.CoroutineContext
 
 /**
  * [ViewModel] to store and manage DeveloperDetail data.
@@ -22,9 +18,7 @@ import kotlin.coroutines.CoroutineContext
 class DeveloperDetailViewModel @Inject constructor(
   @Named(Qualifiers.DEVELOPER_NAME) private val developerName: String,
   private val developerDetailRepository: DeveloperDetailRepository
-) : ViewModel(), CoroutineScope {
-
-  override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
+) : ViewModel() {
 
   private val developerResult = MutableLiveData<Developer>()
   private val developerReposResult = MutableLiveData<List<Repository>>()
@@ -33,7 +27,7 @@ class DeveloperDetailViewModel @Inject constructor(
   val developerRepos: LiveData<List<Repository>> = developerReposResult
 
   init {
-    launch {
+    viewModelScope.launch {
       runCatching {
         developerDetailRepository.getDeveloper(developerName)
       }.onSuccess { developer ->
@@ -46,10 +40,5 @@ class DeveloperDetailViewModel @Inject constructor(
         developerReposResult.value = developerRepos
       }
     }
-  }
-
-  override fun onCleared() {
-    super.onCleared()
-    coroutineContext.cancel()
   }
 }

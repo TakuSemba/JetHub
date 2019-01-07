@@ -3,6 +3,7 @@ package com.takusemba.jethub.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.extension.map
 import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
@@ -20,9 +21,7 @@ import kotlin.coroutines.CoroutineContext
  */
 class FeedViewModel @Inject constructor(
   private val feedRepository: FeedRepository
-) : ViewModel(), CoroutineScope {
-
-  override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
+) : ViewModel() {
 
   private val mutableHotReposMap = MutableLiveData<Map<Language, List<Repository>>>()
 
@@ -31,7 +30,7 @@ class FeedViewModel @Inject constructor(
   }
 
   init {
-    launch {
+    viewModelScope.launch {
       runCatching {
         mutableMapOf<Language, List<Repository>>().also { map ->
           Language.POPULAR_LANGUAGES.forEach { language ->
@@ -44,10 +43,5 @@ class FeedViewModel @Inject constructor(
         println("failed")
       }
     }
-  }
-
-  override fun onCleared() {
-    super.onCleared()
-    coroutineContext.cancel()
   }
 }

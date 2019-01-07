@@ -2,6 +2,7 @@
   <dictionary name="takusemba">
     <words>
       <w>coroutine</w>
+      <w>okhttp</w>
     </words>
   </dictionary>
 </component>

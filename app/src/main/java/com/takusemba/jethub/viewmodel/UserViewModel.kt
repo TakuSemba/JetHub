@@ -3,15 +3,11 @@ package com.takusemba.jethub.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.UserRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.coroutines.CoroutineContext
 
 /**
  * [ViewModel] to store and manage user-related data.
@@ -19,15 +15,13 @@ import kotlin.coroutines.CoroutineContext
  */
 class UserViewModel @Inject constructor(
   private val userRepository: UserRepository
-) : ViewModel(), CoroutineScope {
-
-  override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
+) : ViewModel() {
 
   private val mutablePinedRepositories: MutableLiveData<List<Repository>> = MutableLiveData()
   val pinedRepositories: LiveData<List<Repository>> = mutablePinedRepositories
 
   init {
-    launch {
+    viewModelScope.launch {
       runCatching {
         userRepository.findAll()
       }.onSuccess { repos -> mutablePinedRepositories.value = repos }
@@ -35,7 +29,7 @@ class UserViewModel @Inject constructor(
   }
 
   fun pin(repository: Repository) {
-    launch {
+    viewModelScope.launch {
       runCatching {
         userRepository.pin(repository)
         val repositories = mutablePinedRepositories.value?.toMutableList() ?: mutableListOf()
@@ -47,7 +41,7 @@ class UserViewModel @Inject constructor(
   }
 
   fun unpin(repository: Repository) {
-    launch {
+    viewModelScope.launch {
       runCatching {
         userRepository.unpin(repository)
         val repositories = mutablePinedRepositories.value?.toMutableList() ?: mutableListOf()
@@ -60,10 +54,5 @@ class UserViewModel @Inject constructor(
 
   fun isPinned(repository: Repository): Boolean {
     return pinedRepositories.value?.contains(repository) ?: false
-  }
-
-  override fun onCleared() {
-    super.onCleared()
-    coroutineContext.cancel()
   }
 }
