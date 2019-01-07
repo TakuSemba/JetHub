@@ -2,8 +2,6 @@
   <dictionary name="takusemba">
     <words>
       <w>coroutine</w>
-      <w>formatters</w>
-      <w>spdx</w>
     </words>
   </dictionary>
 </component>

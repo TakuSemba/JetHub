@@ -75,6 +75,7 @@ dependencies {
   implementation(Dep.retrofitConverter)
   implementation(Dep.retrofitAdapter)
   debugImplementation(Dep.loggingInterceptor)
+  testImplementation(Dep.mockWebServer)
 
   // database
   implementation(Dep.room)
