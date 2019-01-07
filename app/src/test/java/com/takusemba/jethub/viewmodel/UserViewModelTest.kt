@@ -2,6 +2,7 @@ package com.takusemba.jethub.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.UserRepository
 import com.takusemba.jethub.util.createRepository
@@ -88,7 +89,7 @@ class UserViewModelTest {
       viewModel.pin(repo)
 
       viewModel.pinedRepositories.observeForever(observer)
-      viewModel.coroutineContext[Job]!!.children.forEach { it.join() }
+      viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
 
       verify { observer.onChanged(match { it.size == 4 }) }
     }
@@ -113,7 +114,7 @@ class UserViewModelTest {
       viewModel.unpin(repoToBeRemoved)
 
       viewModel.pinedRepositories.observeForever(observer)
-      viewModel.coroutineContext[Job]!!.children.forEach { it.join() }
+      viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
 
       verify { observer.onChanged(match { it.size == 2 }) }
     }

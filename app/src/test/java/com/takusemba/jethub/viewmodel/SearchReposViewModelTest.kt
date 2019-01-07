@@ -2,6 +2,7 @@ package com.takusemba.jethub.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.SearchReposRepository
 import com.takusemba.jethub.util.createRepository
@@ -61,7 +62,7 @@ class SearchReposViewModelTest {
       val viewModel = SearchReposViewModel(searchReposRepository)
 
       viewModel.searchedRepos.observeForever(observer)
-      viewModel.coroutineContext[Job]!!.children.forEach { it.join() }
+      viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
 
       verify { observer.onChanged(match { it.size == 3 }) }
     }
@@ -84,7 +85,7 @@ class SearchReposViewModelTest {
       viewModel.search("something")
 
       viewModel.searchedRepos.observeForever(observer)
-      viewModel.coroutineContext[Job]!!.children.forEach { it.join() }
+      viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
 
       verify { observer.onChanged(match { it.size == 3 }) }
     }

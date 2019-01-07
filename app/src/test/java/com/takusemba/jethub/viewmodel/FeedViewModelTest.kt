@@ -2,6 +2,7 @@ package com.takusemba.jethub.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.FeedRepository
@@ -62,7 +63,7 @@ class FeedViewModelTest {
       val viewModel = FeedViewModel(feedRepository)
 
       viewModel.hotRepos(Language.KOTLIN).observeForever(observer)
-      viewModel.coroutineContext[Job]!!.children.forEach { it.join() }
+      viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
 
       verify { observer.onChanged(match { it.size == 3 }) }
     }
