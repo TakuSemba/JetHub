@@ -9,9 +9,7 @@
         <option name="TAB_SIZE" value="2" />
       </value>
     </option>
-    <option name="RIGHT_MARGIN" value="100" />
     <AndroidXmlCodeStyleSettings>
-      <option name="USE_CUSTOM_SETTINGS" value="true" />
       <option name="LAYOUT_SETTINGS">
         <value>
           <option name="INSERT_BLANK_LINE_BEFORE_TAG" value="false" />
@@ -32,13 +30,10 @@
     <JavaCodeStyleSettings>
       <option name="CLASS_COUNT_TO_USE_IMPORT_ON_DEMAND" value="999" />
       <option name="NAMES_COUNT_TO_USE_IMPORT_ON_DEMAND" value="999" />
-      <option name="PACKAGES_TO_USE_IMPORT_ON_DEMAND">
-        <value />
-      </option>
       <option name="IMPORT_LAYOUT_TABLE">
         <value>
-          <package name="" withSubpackages="true" static="false" />
           <emptyLine />
+          <package name="" withSubpackages="true" static="false" />
           <package name="" withSubpackages="true" static="true" />
         </value>
       </option>
@@ -59,6 +54,18 @@
       <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
     </JetCodeStyleSettings>
     <Objective-C-extensions>
+      <class>
+        <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="Property" />
+        <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="Synthesize" />
+        <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="InitMethod" />
+        <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="StaticMethod" />
+        <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="InstanceMethod" />
+        <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="DeallocMethod" />
+      </class>
+      <extensions>
+        <pair fileNamingConvention="NONE" header="h" source="cpp" />
+        <pair fileNamingConvention="NONE" header="h" source="c" />
+      </extensions>
       <file>
         <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="Import" />
         <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="Macro" />
@@ -70,21 +77,8 @@
         <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="FunctionPredecl" />
         <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="Function" />
       </file>
-      <class>
-        <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="Property" />
-        <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="Synthesize" />
-        <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="InitMethod" />
-        <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="StaticMethod" />
-        <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="InstanceMethod" />
-        <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="DeallocMethod" />
-      </class>
-      <extensions>
-        <pair source="cpp" header="h" fileNamingConvention="NONE" />
-        <pair source="c" header="h" fileNamingConvention="NONE" />
-      </extensions>
     </Objective-C-extensions>
     <XML>
-      <option name="XML_ALIGN_ATTRIBUTES" value="false" />
       <option name="XML_LEGACY_SETTINGS_IMPORTED" value="true" />
     </XML>
     <ADDITIONAL_INDENT_OPTIONS fileType="php">
@@ -186,6 +180,10 @@
       </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="JavaScript">
+      <indentOptions>
+        <option name="INDENT_SIZE" value="2" />
+        <option name="TAB_SIZE" value="2" />
+      </indentOptions>
       <option name="KEEP_LINE_BREAKS" value="false" />
       <option name="KEEP_FIRST_COLUMN_COMMENT" value="false" />
       <option name="KEEP_BLANK_LINES_IN_CODE" value="1" />
@@ -204,10 +202,6 @@
       <option name="DOWHILE_BRACE_FORCE" value="1" />
       <option name="WHILE_BRACE_FORCE" value="1" />
       <option name="PARENT_SETTINGS_INSTALLED" value="true" />
-      <indentOptions>
-        <option name="INDENT_SIZE" value="2" />
-        <option name="TAB_SIZE" value="2" />
-      </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="XML">
       <indentOptions>
@@ -222,6 +216,7 @@
               <match>
                 <AND>
                   <NAME>xmlns:android</NAME>
+                  <XML_ATTRIBUTE />
                   <XML_NAMESPACE>.*</XML_NAMESPACE>
                 </AND>
               </match>
@@ -232,6 +227,7 @@
               <match>
                 <AND>
                   <NAME>xmlns:.*</NAME>
+                  <XML_ATTRIBUTE />
                   <XML_NAMESPACE>.*</XML_NAMESPACE>
                 </AND>
               </match>
@@ -243,7 +239,8 @@
               <match>
                 <AND>
                   <NAME>.*:id</NAME>
-                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
+                  <XML_ATTRIBUTE />
+                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android\n\n\n</XML_NAMESPACE>
                 </AND>
               </match>
             </rule>
@@ -253,7 +250,8 @@
               <match>
                 <AND>
                   <NAME>.*:name</NAME>
-                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
+                  <XML_ATTRIBUTE />
+                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android\n\n\n</XML_NAMESPACE>
                 </AND>
               </match>
             </rule>
@@ -263,6 +261,7 @@
               <match>
                 <AND>
                   <NAME>name</NAME>
+                  <XML_ATTRIBUTE />
                   <XML_NAMESPACE>^$</XML_NAMESPACE>
                 </AND>
               </match>
@@ -273,6 +272,7 @@
               <match>
                 <AND>
                   <NAME>style</NAME>
+                  <XML_ATTRIBUTE />
                   <XML_NAMESPACE>^$</XML_NAMESPACE>
                 </AND>
               </match>
@@ -283,6 +283,7 @@
               <match>
                 <AND>
                   <NAME>.*</NAME>
+                  <XML_ATTRIBUTE />
                   <XML_NAMESPACE>^$</XML_NAMESPACE>
                 </AND>
               </match>
@@ -294,7 +295,8 @@
               <match>
                 <AND>
                   <NAME>.*:orientation</NAME>
-                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
+                  <XML_ATTRIBUTE />
+                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android\n\n\n</XML_NAMESPACE>
                 </AND>
               </match>
             </rule>
@@ -304,7 +306,8 @@
               <match>
                 <AND>
                   <NAME>.*:layout_width</NAME>
-                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
+                  <XML_ATTRIBUTE />
+                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android\n\n\n</XML_NAMESPACE>
                 </AND>
               </match>
             </rule>
@@ -314,7 +317,8 @@
               <match>
                 <AND>
                   <NAME>.*:layout_height</NAME>
-                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
+                  <XML_ATTRIBUTE />
+                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android\n\n\n</XML_NAMESPACE>
                 </AND>
               </match>
             </rule>
@@ -324,7 +328,8 @@
               <match>
                 <AND>
                   <NAME>.*:layout_weight</NAME>
-                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
+                  <XML_ATTRIBUTE />
+                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android\n\n\n</XML_NAMESPACE>
                 </AND>
               </match>
             </rule>
@@ -334,7 +339,8 @@
               <match>
                 <AND>
                   <NAME>.*:layout_.*</NAME>
-                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
+                  <XML_ATTRIBUTE />
+                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android\n\n\n</XML_NAMESPACE>
                 </AND>
               </match>
               <order>BY_NAME</order>
@@ -345,7 +351,8 @@
               <match>
                 <AND>
                   <NAME>.*:width</NAME>
-                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
+                  <XML_ATTRIBUTE />
+                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android\n\n\n</XML_NAMESPACE>
                 </AND>
               </match>
               <order>BY_NAME</order>
@@ -356,7 +363,8 @@
               <match>
                 <AND>
                   <NAME>.*:height</NAME>
-                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
+                  <XML_ATTRIBUTE />
+                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android\n\n\n</XML_NAMESPACE>
                 </AND>
               </match>
               <order>BY_NAME</order>
@@ -367,7 +375,8 @@
               <match>
                 <AND>
                   <NAME>.*</NAME>
-                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
+                  <XML_ATTRIBUTE />
+                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android\n\n\n</XML_NAMESPACE>
                 </AND>
               </match>
               <order>BY_NAME</order>
@@ -378,6 +387,7 @@
               <match>
                 <AND>
                   <NAME>.*</NAME>
+                  <XML_ATTRIBUTE />
                   <XML_NAMESPACE>.*</XML_NAMESPACE>
                 </AND>
               </match>
