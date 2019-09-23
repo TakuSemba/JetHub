@@ -22,8 +22,7 @@ object Dep {
   // plugin
   val pluginBuildGradle = "com.android.tools.build:gradle:${Version.buildGradle}"
   val pluginkotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlin}"
-  val pluginsafeArgs =
-    "android.arch.navigation:navigation-safe-args-gradle-plugin:${Version.navigation}"
+  val pluginsafeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Version.navigation}"
 
   // kotlin
   val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Version.kotlin}"
@@ -42,13 +41,10 @@ object Dep {
   val collectionKtx = "androidx.collection:collection-ktx:${Version.androidX}"
 
   // navigation
-  val navFragment = "android.arch.navigation:navigation-fragment:${Version.navigation}"
-  val navUi = "android.arch.navigation:navigation-ui:${Version.navigation}"
-  val navCommonKtx = "android.arch.navigation:navigation-common-ktx:${Version.navigation}"
-  val navRuntimeKtx = "android.arch.navigation:navigation-runtime-ktx:${Version.navigation}"
-  val navFragmentKtx = "android.arch.navigation:navigation-fragment-ktx:${Version.navigation}"
-  val navUiKtx = "android.arch.navigation:navigation-ui-ktx:${Version.navigation}"
-  val navTestKtx = "android.arch.navigation:navigation-testing-ktx:1.0.0-alpha01"
+  val navCommonKtx = "androidx.navigation:navigation-common-ktx:${Version.navigation}"
+  val navRuntimeKtx = "androidx.navigation:navigation-runtime-ktx:${Version.navigation}"
+  val navFragmentKtx = "androidx.navigation:navigation-fragment-ktx:${Version.navigation}"
+  val navUiKtx = "androidx.navigation:navigation-ui-ktx:${Version.navigation}"
 
   // android architecture component
   val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime:${Version.lifecycle}"

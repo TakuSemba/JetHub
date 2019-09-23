@@ -1,7 +1,7 @@
 apply plugin: "com.android.application"
 apply plugin: "kotlin-android"
 apply plugin: "kotlin-kapt"
-apply plugin: "androidx.navigation.safeargs"
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
   compileSdkVersion(Config.compileSdkVersion)
@@ -56,13 +56,10 @@ dependencies {
   implementation(Dep.livedataKtx)
 
   // navigation
-  implementation(Dep.navFragment)
-  implementation(Dep.navUi)
   implementation(Dep.navCommonKtx)
   implementation(Dep.navRuntimeKtx)
   implementation(Dep.navFragmentKtx)
   implementation(Dep.navUiKtx)
-  testImplementation(Dep.navTestKtx)
 
   // dependency injection
   implementation(Dep.dagger)
@@ -74,7 +71,6 @@ dependencies {
   // network
   implementation(Dep.retrofit)
   implementation(Dep.retrofitConverter)
-  implementation(Dep.retrofitAdapter)
   debugImplementation(Dep.loggingInterceptor)
   testImplementation(Dep.mockWebServer)
 
