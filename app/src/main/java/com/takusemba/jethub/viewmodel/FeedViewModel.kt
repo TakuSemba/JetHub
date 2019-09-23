@@ -34,8 +34,6 @@ class FeedViewModel @Inject constructor(
         }
       }.onSuccess { map ->
         mutableHotReposMap.value = map
-      }.onFailure {
-        println("failed")
       }
     }
   }

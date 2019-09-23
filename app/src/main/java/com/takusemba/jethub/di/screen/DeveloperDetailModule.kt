@@ -20,6 +20,6 @@ class DeveloperDetailModule {
   @Provides
   @Named(DEVELOPER_NAME)
   fun provideDeveloperName(fragment: DeveloperDetailFragment): String {
-    return DeveloperDetailFragmentArgs.fromBundle(fragment.arguments!!).developerName
+    return DeveloperDetailFragmentArgs.fromBundle(fragment.requireArguments()).developerName
   }
 }

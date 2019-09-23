@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.commit
 import androidx.fragment.app.transaction
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -33,25 +34,25 @@ class MainTabFragment : DaggerFragment() {
       BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
           R.id.feed -> {
-            childFragmentManager.transaction {
+            childFragmentManager.commit {
               replace(R.id.container, FeedFragment.newInstance())
             }
             return@OnNavigationItemSelectedListener true
           }
           R.id.repositories -> {
-            childFragmentManager.transaction {
+            childFragmentManager.commit {
               replace(R.id.container, SearchReposFragment.newInstance())
             }
             return@OnNavigationItemSelectedListener true
           }
           R.id.developers -> {
-            childFragmentManager.transaction {
+            childFragmentManager.commit {
               replace(R.id.container, SearchDevelopersFragment.newInstance())
             }
             return@OnNavigationItemSelectedListener true
           }
           R.id.pins -> {
-            childFragmentManager.transaction {
+            childFragmentManager.commit {
               replace(R.id.container, PinFragment.newInstance())
             }
             return@OnNavigationItemSelectedListener true
