@@ -3,12 +3,12 @@ package com.takusemba.jethub.di
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.takusemba.jethub.Config
 import com.takusemba.jethub.api.ApiTokenInterceptor
+import com.takusemba.jethub.api.DeveloperApi
+import com.takusemba.jethub.api.DeveloperApiClient
 import com.takusemba.jethub.api.RepoApi
 import com.takusemba.jethub.api.RepoApiClient
 import com.takusemba.jethub.api.SearchApi
 import com.takusemba.jethub.api.SearchApiClient
-import com.takusemba.jethub.api.DeveloperApi
-import com.takusemba.jethub.api.DeveloperApiClient
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

@@ -52,7 +52,8 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     from: LocalDateTime
   ): List<Repository> {
     return withContext(IO) {
-      service.getHotRepos("language:${language.title} created:>${from.format(DateFormatters.ofSearchQuery())}")
+      service.getHotRepos(
+        "language:${language.title} created:>${from.format(DateFormatters.ofSearchQuery())}")
         .await()
         .items
         ?.map { response -> response.toModel() } ?: emptyList()
@@ -64,7 +65,8 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     from: LocalDateTime
   ): List<SimpleDeveloper> {
     return withContext(IO) {
-      service.getHotDevelopers("language:${language.title} created:>${from.format(DateFormatters.ofSearchQuery())}")
+      service.getHotDevelopers(
+        "language:${language.title} created:>${from.format(DateFormatters.ofSearchQuery())}")
         .await()
         .items
         ?.map { response -> response.toModel() } ?: emptyList()

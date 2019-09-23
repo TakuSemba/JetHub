@@ -4,13 +4,12 @@
   xmlns:tools="http://schemas.android.com/tools"
   >
 
-  <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
   <application
     android:name="com.takusemba.jethub.DebugApp"
     tools:ignore="AllowBackup,GoogleAppIndexingWarning"
     tools:replace="name"
-    >
-  </application>
+    ></application>
 
 </manifest>

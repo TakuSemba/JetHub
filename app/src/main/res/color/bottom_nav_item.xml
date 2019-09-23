@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2018 Google LLC
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,9 +16,7 @@
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-  <item
-    android:color="@color/white"
-    android:state_checked="true"/>
-  <item android:color="@color/white_54"/>
+  <item android:color="@color/white" android:state_checked="true" />
+  <item android:color="@color/white_54" />
 
 </selector>

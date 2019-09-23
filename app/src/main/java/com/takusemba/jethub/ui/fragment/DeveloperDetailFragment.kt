@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.observe
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.AppBarLayout
@@ -65,17 +65,18 @@ class DeveloperDetailFragment : DaggerFragment() {
       binding.description.text = developer.bio
       binding.toolbarTitle.text = developer.login
       binding.repositoriesCount.text =
-          requireContext().getString(R.string.followers_count, developer.publicRepositoriesCount)
+        requireContext().getString(R.string.followers_count, developer.publicRepositoriesCount)
       binding.gistsCount.text =
-          requireContext().getString(R.string.gists_count, developer.publicGistsCount)
+        requireContext().getString(R.string.gists_count, developer.publicGistsCount)
       binding.followersCount.text =
-          requireContext().getString(R.string.followers_count, developer.followersCount)
+        requireContext().getString(R.string.followers_count, developer.followersCount)
       binding.followingsCount.text =
-          requireContext().getString(R.string.followings_count, developer.followingCount)
+        requireContext().getString(R.string.followings_count, developer.followingCount)
     }
 
     binding.appbar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, offset ->
-      if (binding.collapsingToolbar.height + offset < 2 * ViewCompat.getMinimumHeight(binding.collapsingToolbar)) {
+      if (binding.collapsingToolbar.height + offset < 2 * ViewCompat.getMinimumHeight(
+          binding.collapsingToolbar)) {
         binding.toolbarTitle.animate().alpha(1f).setDuration(100).start()
       } else {
         binding.toolbarTitle.animate().alpha(0f).setDuration(100).start()
