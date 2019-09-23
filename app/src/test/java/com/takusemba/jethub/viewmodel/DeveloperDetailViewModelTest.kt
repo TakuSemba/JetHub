@@ -14,10 +14,11 @@ import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.ObsoleteCoroutinesApi
-import kotlinx.coroutines.newSingleThreadContext
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.After
@@ -35,18 +36,16 @@ class DeveloperDetailViewModelTest {
 
   @MockK private lateinit var developerDetailRepository: DeveloperDetailRepository
 
-  private val mainThreadSurrogate = newSingleThreadContext("UI thread")
-
   @Before
+  @ExperimentalCoroutinesApi
   fun setUp() {
     MockKAnnotations.init(this)
-    Dispatchers.setMain(mainThreadSurrogate)
+    Dispatchers.setMain(TestCoroutineDispatcher())
   }
 
   @After
   fun tearDown() {
     Dispatchers.resetMain()
-    mainThreadSurrogate.close()
   }
 
   @Test

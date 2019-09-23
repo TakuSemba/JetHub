@@ -1,12 +1,12 @@
 package com.takusemba.jethub.database
 
+import com.google.common.truth.Truth.assertThat
 import com.takusemba.jethub.database.dao.RepositoryDao
 import com.takusemba.jethub.database.entity.RepositoryEntity
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
-import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith

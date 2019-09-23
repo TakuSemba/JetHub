@@ -85,7 +85,7 @@ object Dep {
   // test
   val junit = "junit:junit:${Version.junit}"
   val mockk = "io.mockk:mockk:1.9.3"
-  val assertj = "com.squareup.assertj:assertj-android:1.2.0"
+  val truth = "com.google.truth:truth:1.0"
   val testCore = "android.arch.core:core-testing:1.1.0"
   val orgThreetenbp = "org.threeten:threetenbp:1.3.3"
 }

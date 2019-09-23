@@ -90,7 +90,7 @@ dependencies {
 
   // test
   testImplementation(Dep.junit)
-  testImplementation(Dep.assertj)
+  testImplementation(Dep.truth)
   testImplementation(Dep.testCore)
   testImplementation(Dep.mockk)
   testImplementation(Dep.orgThreetenbp)
