@@ -1,6 +1,5 @@
 package com.takusemba.jethub.di
 
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.takusemba.jethub.Config
 import com.takusemba.jethub.api.ApiTokenInterceptor
 import com.takusemba.jethub.api.DeveloperApi
@@ -42,7 +41,6 @@ open class NetworkModule {
       .client(okHttpClient)
       .baseUrl(Config.API_ENDPOINT)
       .addConverterFactory(GsonConverterFactory.create())
-      .addCallAdapterFactory(CoroutineCallAdapterFactory())
       .build()
   }
 

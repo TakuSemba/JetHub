@@ -2,7 +2,6 @@ package com.takusemba.jethub.api
 
 import com.takusemba.jethub.api.response.RepositoryResponse
 import com.takusemba.jethub.model.Repository
-import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
@@ -17,17 +16,14 @@ class RepoApiClient(retrofit: Retrofit) : RepoApi {
   interface Service {
 
     @GET("repos/{owner}/{repo}")
-    fun getRepo(
-      @Path("owner") owner: String,
-      @Path("repo") repo: String
-    ): Deferred<RepositoryResponse>
+    fun getRepo(@Path("owner") owner: String, @Path("repo") repo: String): RepositoryResponse
   }
 
   private val service = retrofit.create(Service::class.java)
 
   override suspend fun getRepo(owner: String, repo: String): Repository {
     return withContext(IO) {
-      service.getRepo(owner, repo).await().toModel()
+      service.getRepo(owner, repo).toModel()
     }
   }
 }

@@ -8,10 +8,10 @@ object Dep {
     const val androidX = "1.0.0"
     const val lifecycle = "2.1.0-alpha01"
     const val constraintLayout = "2.0.0-alpha2"
-    const val navigation = "1.0.0-alpha09"
+    const val navigation = "2.1.0"
     const val room = "2.1.0-alpha03"
     const val dagger = "2.16"
-    const val retrofit = "2.3.0"
+    const val retrofit = "2.6.1"
     const val okhttp = "3.11.0"
     const val groupie = "2.3.0"
 
@@ -65,8 +65,6 @@ object Dep {
   // network
   val retrofit = "com.squareup.retrofit2:retrofit:${Version.retrofit}"
   val retrofitConverter = "com.squareup.retrofit2:converter-gson:${Version.retrofit}"
-  // replace after merged to retrofit https://github.com/square/retrofit/pull/2886
-  val retrofitAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
   val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Version.okhttp}"
   val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Version.okhttp}"
 

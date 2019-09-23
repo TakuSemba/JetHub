@@ -7,7 +7,6 @@ import com.takusemba.jethub.model.DateFormatters
 import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.model.SimpleDeveloper
-import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
 import org.threeten.bp.LocalDateTime
@@ -26,23 +25,19 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     fun getHotRepos(
       @Query("q") query: String,
       @Query("sort") sort: String = "stars"
-    ): Deferred<ListResponse<RepositoryResponse>>
+    ): ListResponse<RepositoryResponse>
 
     @GET("search/users")
     fun getHotDevelopers(
       @Query("q") query: String,
       @Query("sort") sort: String = "stars"
-    ): Deferred<ListResponse<SimpleDeveloperResponse>>
+    ): ListResponse<SimpleDeveloperResponse>
 
     @GET("search/repositories")
-    fun searchRepos(
-      @Query("q") query: String
-    ): Deferred<ListResponse<RepositoryResponse>>
+    fun searchRepos(@Query("q") query: String): ListResponse<RepositoryResponse>
 
     @GET("search/users")
-    fun searchDevelopers(
-      @Query("q") query: String
-    ): Deferred<ListResponse<SimpleDeveloperResponse>>
+    fun searchDevelopers(@Query("q") query: String): ListResponse<SimpleDeveloperResponse>
   }
 
   private val service = retrofit.create(Service::class.java)
@@ -54,7 +49,6 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     return withContext(IO) {
       service.getHotRepos(
         "language:${language.title} created:>${from.format(DateFormatters.ofSearchQuery())}")
-        .await()
         .items
         ?.map { response -> response.toModel() } ?: emptyList()
     }
@@ -67,7 +61,6 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     return withContext(IO) {
       service.getHotDevelopers(
         "language:${language.title} created:>${from.format(DateFormatters.ofSearchQuery())}")
-        .await()
         .items
         ?.map { response -> response.toModel() } ?: emptyList()
     }
@@ -81,7 +74,6 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
         "created:>${LocalDateTime.now().minusDays(7).format(DateFormatters.ofSearchQuery())}"
       }
       service.searchRepos(q)
-        .await()
         .items
         ?.map { response -> response.toModel() } ?: emptyList()
     }
@@ -95,7 +87,6 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
         "created:>${LocalDateTime.now().minusDays(7).format(DateFormatters.ofSearchQuery())}"
       }
       service.searchDevelopers(q)
-        .await()
         .items
         ?.map { response -> response.toModel() } ?: emptyList()
     }
