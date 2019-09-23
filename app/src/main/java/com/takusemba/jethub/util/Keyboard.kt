@@ -1,4 +1,4 @@
-package com.takusemba.jethub.extension.util
+package com.takusemba.jethub.util
 
 import android.content.Context
 import android.os.IBinder
