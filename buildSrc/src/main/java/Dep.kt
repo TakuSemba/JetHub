@@ -66,8 +66,9 @@ object Dep {
   val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Version.okhttp}"
 
   // storage
-  val room = "androidx.room:room-runtime:${Version.room}"
+  val roomRuntime = "androidx.room:room-runtime:${Version.room}"
   val roomCompiler = "androidx.room:room-compiler:${Version.room}"
+  val roomKtx = "androidx.room:room-ktx:${Version.room}"
 
   // recycler view
   val groupie = "com.xwray:groupie:${Version.groupie}"

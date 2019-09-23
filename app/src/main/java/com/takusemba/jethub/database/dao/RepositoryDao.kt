@@ -14,15 +14,15 @@ import com.takusemba.jethub.database.entity.RepositoryEntity
 abstract class RepositoryDao {
 
   @Query("SELECT * FROM repository")
-  abstract fun getAll(): List<RepositoryEntity>
+  abstract suspend fun getAll(): List<RepositoryEntity>
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
-  abstract fun insert(repositoryEntity: RepositoryEntity)
+  abstract suspend fun insert(repositoryEntity: RepositoryEntity)
 
   @Delete
-  abstract fun delete(repositoryEntity: RepositoryEntity)
+  abstract suspend fun delete(repositoryEntity: RepositoryEntity)
 
   @Query("DELETE FROM repository")
-  abstract fun deleteAll()
+  abstract suspend fun deleteAll()
 }
 

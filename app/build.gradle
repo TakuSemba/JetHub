@@ -72,8 +72,9 @@ dependencies {
   testImplementation(Dep.mockWebServer)
 
   // database
-  implementation(Dep.room)
+  implementation(Dep.roomRuntime)
   kapt(Dep.roomCompiler)
+  implementation(Dep.roomKtx)
 
   // recycler view
   implementation(Dep.groupie)
