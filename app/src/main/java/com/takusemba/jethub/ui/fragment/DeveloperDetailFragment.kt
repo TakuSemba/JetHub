@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
@@ -14,8 +16,6 @@ import com.google.android.material.appbar.AppBarLayout
 import com.squareup.picasso.Picasso
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentDeveloperDetailBinding
-import com.takusemba.jethub.extension.activityViewModelProvider
-import com.takusemba.jethub.extension.viewModelProvider
 import com.takusemba.jethub.ui.item.DeveloperDetailSection
 import com.takusemba.jethub.viewmodel.DeveloperDetailViewModel
 import com.takusemba.jethub.viewmodel.UserViewModel
@@ -28,13 +28,9 @@ class DeveloperDetailFragment : DaggerFragment() {
 
   @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
 
-  private val developerDetailViewModel: DeveloperDetailViewModel by lazy {
-    viewModelProvider(viewModelFactory) as DeveloperDetailViewModel
-  }
+  private val developerDetailViewModel: DeveloperDetailViewModel by viewModels { viewModelFactory }
 
-  private val userViewModel: UserViewModel by lazy {
-    activityViewModelProvider(viewModelFactory) as UserViewModel
-  }
+  private val userViewModel: UserViewModel by activityViewModels { viewModelFactory }
 
   private val developerDetailSection: DeveloperDetailSection by lazy {
     DeveloperDetailSection(this, developerDetailViewModel, userViewModel)

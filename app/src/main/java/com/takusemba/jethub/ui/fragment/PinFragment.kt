@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentPinBinding
-import com.takusemba.jethub.extension.activityViewModelProvider
 import com.takusemba.jethub.ui.item.PinSection
 import com.takusemba.jethub.viewmodel.UserViewModel
 import com.xwray.groupie.GroupAdapter
@@ -27,9 +27,7 @@ class PinFragment : DaggerFragment() {
 
   @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
 
-  private val userViewModel: UserViewModel by lazy {
-    activityViewModelProvider(viewModelFactory) as UserViewModel
-  }
+  private val userViewModel: UserViewModel by activityViewModels { viewModelFactory }
 
   private val pinSection: PinSection by lazy {
     PinSection(this, userViewModel)

@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentSearchReposBinding
-import com.takusemba.jethub.extension.activityViewModelProvider
-import com.takusemba.jethub.extension.parentViewModelProvider
 import com.takusemba.jethub.ui.item.SearchReposSection
 import com.takusemba.jethub.viewmodel.SearchReposViewModel
 import com.takusemba.jethub.viewmodel.UserViewModel
@@ -29,13 +29,12 @@ class SearchReposFragment : DaggerFragment() {
 
   @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
 
-  private val searchReposViewModel: SearchReposViewModel by lazy {
-    parentViewModelProvider(viewModelFactory) as SearchReposViewModel
-  }
+  private val searchReposViewModel: SearchReposViewModel by viewModels(
+    ownerProducer = { requireParentFragment() },
+    factoryProducer = { viewModelFactory }
+  )
 
-  private val userViewModel: UserViewModel by lazy {
-    activityViewModelProvider(viewModelFactory) as UserViewModel
-  }
+  private val userViewModel: UserViewModel by activityViewModels { viewModelFactory }
 
   private val searchReposSection: SearchReposSection by lazy {
     SearchReposSection(this, searchReposViewModel, userViewModel)

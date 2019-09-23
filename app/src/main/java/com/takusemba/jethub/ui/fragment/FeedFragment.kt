@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentFeedBinding
-import com.takusemba.jethub.extension.activityViewModelProvider
-import com.takusemba.jethub.extension.parentViewModelProvider
 import com.takusemba.jethub.ui.adapter.FeedAdapter
 import com.takusemba.jethub.viewmodel.FeedViewModel
 import com.takusemba.jethub.viewmodel.UserViewModel
@@ -25,13 +25,12 @@ class FeedFragment : DaggerFragment() {
 
   @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
 
-  private val feedViewModel: FeedViewModel by lazy {
-    parentViewModelProvider(viewModelFactory) as FeedViewModel
-  }
+  private val feedViewModel: FeedViewModel by viewModels(
+    ownerProducer = { requireParentFragment() },
+    factoryProducer = { viewModelFactory }
+  )
 
-  private val userViewModel: UserViewModel by lazy {
-    activityViewModelProvider(viewModelFactory) as UserViewModel
-  }
+  private val userViewModel: UserViewModel by activityViewModels { viewModelFactory }
 
   override fun onCreateView(
     inflater: LayoutInflater,

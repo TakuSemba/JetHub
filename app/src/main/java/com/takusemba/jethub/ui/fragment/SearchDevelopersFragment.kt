@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentSearchDevelopersBinding
-import com.takusemba.jethub.extension.parentViewModelProvider
 import com.takusemba.jethub.ui.item.SearchDevelopersSection
 import com.takusemba.jethub.viewmodel.SearchDevelopersViewModel
 import com.xwray.groupie.GroupAdapter
@@ -27,9 +27,10 @@ class SearchDevelopersFragment : DaggerFragment() {
 
   @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
 
-  private val searchDevelopersViewModel: SearchDevelopersViewModel by lazy {
-    parentViewModelProvider(viewModelFactory) as SearchDevelopersViewModel
-  }
+  private val searchDevelopersViewModel: SearchDevelopersViewModel by viewModels(
+    ownerProducer = { requireParentFragment() },
+    factoryProducer = { viewModelFactory }
+  )
 
   private val searchDevelopersSection: SearchDevelopersSection by lazy {
     SearchDevelopersSection(this, searchDevelopersViewModel)
