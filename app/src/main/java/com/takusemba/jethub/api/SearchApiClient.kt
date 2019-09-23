@@ -22,22 +22,22 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
   interface Service {
 
     @GET("search/repositories")
-    fun getHotRepos(
+    suspend fun getHotRepos(
       @Query("q") query: String,
       @Query("sort") sort: String = "stars"
     ): ListResponse<RepositoryResponse>
 
     @GET("search/users")
-    fun getHotDevelopers(
+    suspend fun getHotDevelopers(
       @Query("q") query: String,
       @Query("sort") sort: String = "stars"
     ): ListResponse<SimpleDeveloperResponse>
 
     @GET("search/repositories")
-    fun searchRepos(@Query("q") query: String): ListResponse<RepositoryResponse>
+    suspend fun searchRepos(@Query("q") query: String): ListResponse<RepositoryResponse>
 
     @GET("search/users")
-    fun searchDevelopers(@Query("q") query: String): ListResponse<SimpleDeveloperResponse>
+    suspend fun searchDevelopers(@Query("q") query: String): ListResponse<SimpleDeveloperResponse>
   }
 
   private val service = retrofit.create(Service::class.java)

@@ -16,7 +16,10 @@ class RepoApiClient(retrofit: Retrofit) : RepoApi {
   interface Service {
 
     @GET("repos/{owner}/{repo}")
-    fun getRepo(@Path("owner") owner: String, @Path("repo") repo: String): RepositoryResponse
+    suspend fun getRepo(
+      @Path("owner") owner: String,
+      @Path("repo") repo: String
+    ): RepositoryResponse
   }
 
   private val service = retrofit.create(Service::class.java)

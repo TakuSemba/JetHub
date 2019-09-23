@@ -1,6 +1,5 @@
 package com.takusemba.jethub.api
 
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.takusemba.jethub.model.Language
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockResponse
@@ -28,7 +27,6 @@ class SearchApiClientTest {
     val retrofit = Retrofit.Builder()
       .baseUrl(mockWebServer.url("/").toString())
       .addConverterFactory(GsonConverterFactory.create())
-      .addCallAdapterFactory(CoroutineCallAdapterFactory())
       .build()
     client = SearchApiClient(retrofit)
   }
