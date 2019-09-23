@@ -3,17 +3,17 @@ object Dep {
   object Version {
     // library
     const val buildGradle = "3.2.0"
-    const val kotlin = "1.3.11"
-    const val coroutine = "1.1.0"
+    const val kotlin = "1.3.50"
+    const val coroutine = "1.3.1"
     const val androidX = "1.0.0"
-    const val lifecycle = "2.1.0-alpha01"
-    const val constraintLayout = "2.0.0-alpha2"
+    const val lifecycle = "2.1.0"
+    const val constraintLayout = "2.0.0-beta2"
     const val navigation = "2.1.0"
-    const val room = "2.1.0-alpha03"
-    const val dagger = "2.16"
+    const val room = "2.1.0"
+    const val dagger = "2.24"
     const val retrofit = "2.6.1"
-    const val okhttp = "3.11.0"
-    const val groupie = "2.3.0"
+    const val okhttp = "4.2.0"
+    const val groupie = "2.5.1"
 
     // library (test)
     const val junit = "4.12"
@@ -36,9 +36,8 @@ object Dep {
   val appCompat = "androidx.appcompat:appcompat:${Version.androidX}"
   val material = "com.google.android.material:material:${Version.androidX}"
   val constraintLayout = "androidx.constraintlayout:constraintlayout:${Version.constraintLayout}"
-  val coreKtx = "androidx.core:core-ktx:${Version.androidX}"
+  val activityKtx = "androidx.activity:activity-ktx:${Version.androidX}"
   val fragmentKtx = "androidx.fragment:fragment-ktx:${Version.androidX}"
-  val collectionKtx = "androidx.collection:collection-ktx:${Version.androidX}"
 
   // navigation
   val navCommonKtx = "androidx.navigation:navigation-common-ktx:${Version.navigation}"
@@ -46,12 +45,10 @@ object Dep {
   val navFragmentKtx = "androidx.navigation:navigation-fragment-ktx:${Version.navigation}"
   val navUiKtx = "androidx.navigation:navigation-ui-ktx:${Version.navigation}"
 
-  // android architecture component
+  // lifecycle
   val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime:${Version.lifecycle}"
   val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Version.lifecycle}"
-  val lifecycleReactivestreams = "androidx.lifecycle:lifecycle-reactivestreams:${Version.lifecycle}"
   val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Version.lifecycle}"
-  val viewModel = "androidx.lifecycle:lifecycle-viewmodel:${Version.lifecycle}"
   val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifecycle}"
   val livedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:${Version.lifecycle}"
 
@@ -71,8 +68,6 @@ object Dep {
   // storage
   val room = "androidx.room:room-runtime:${Version.room}"
   val roomCompiler = "androidx.room:room-compiler:${Version.room}"
-  val roomCoroutine = "androidx.room:room-coroutines:${Version.room}"
-  val roomTest = "androidx.room:room-testing:${Version.room}"
 
   // recycler view
   val groupie = "com.xwray:groupie:${Version.groupie}"
@@ -89,9 +84,8 @@ object Dep {
 
   // test
   val junit = "junit:junit:${Version.junit}"
-  val mockk = "io.mockk:mockk:1.8.8.kotlin13"
+  val mockk = "io.mockk:mockk:1.9.3"
   val assertj = "com.squareup.assertj:assertj-android:1.2.0"
   val testCore = "android.arch.core:core-testing:1.1.0"
   val orgThreetenbp = "org.threeten:threetenbp:1.3.3"
-  val kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:${Version.kotlin}"
 }
