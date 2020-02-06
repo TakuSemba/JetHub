@@ -4,6 +4,7 @@ import com.google.common.truth.Truth.assertThat
 import com.takusemba.jethub.database.dao.RepositoryDao
 import com.takusemba.jethub.database.entity.RepositoryEntity
 import io.mockk.MockKAnnotations
+import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
@@ -30,7 +31,7 @@ class RepoDbClientTest {
   fun `get all`() {
     runBlocking {
 
-      every { mockRepositoryDao.getAll() } returns listOf(
+      coEvery { mockRepositoryDao.getAll() } returns listOf(
         RepositoryEntity(1, "name-1", "owner-1"),
         RepositoryEntity(2, "name-2", "owner-2"),
         RepositoryEntity(3, "name-3", "owner-3")
