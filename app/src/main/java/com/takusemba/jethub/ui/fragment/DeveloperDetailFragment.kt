@@ -20,7 +20,7 @@ import com.takusemba.jethub.ui.item.DeveloperDetailSection
 import com.takusemba.jethub.viewmodel.DeveloperDetailViewModel
 import com.takusemba.jethub.viewmodel.UserViewModel
 import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.ViewHolder
+import com.xwray.groupie.GroupieViewHolder
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -49,13 +49,13 @@ class DeveloperDetailFragment : DaggerFragment() {
     val binding = DataBindingUtil.bind<FragmentDeveloperDetailBinding>(view)!!
 
     val linearLayoutManager = LinearLayoutManager(context)
-    val groupAdapter = GroupAdapter<ViewHolder>().apply {
+    val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
       add(developerDetailSection)
     }
     binding.recyclerView.layoutManager = linearLayoutManager
     binding.recyclerView.adapter = groupAdapter
 
-    developerDetailViewModel.developer.observe(this) { developer ->
+    developerDetailViewModel.developer.observe(viewLifecycleOwner) { developer ->
       Picasso.get().load(developer.avatarUrl).into(binding.icon)
       binding.name.text = developer.login
       binding.description.text = developer.bio

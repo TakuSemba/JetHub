@@ -14,7 +14,7 @@ import com.takusemba.jethub.databinding.FragmentSearchDevelopersBinding
 import com.takusemba.jethub.ui.item.SearchDevelopersSection
 import com.takusemba.jethub.viewmodel.SearchDevelopersViewModel
 import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.ViewHolder
+import com.xwray.groupie.GroupieViewHolder
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -49,7 +49,7 @@ class SearchDevelopersFragment : DaggerFragment() {
     val binding = DataBindingUtil.bind<FragmentSearchDevelopersBinding>(view)!!
 
     val linearLayoutManager = LinearLayoutManager(context)
-    val groupAdapter = GroupAdapter<ViewHolder>().apply {
+    val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
       add(searchDevelopersSection)
     }
     binding.recyclerView.layoutManager = linearLayoutManager

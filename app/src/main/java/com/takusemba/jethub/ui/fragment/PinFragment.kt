@@ -14,7 +14,7 @@ import com.takusemba.jethub.databinding.FragmentPinBinding
 import com.takusemba.jethub.ui.item.PinSection
 import com.takusemba.jethub.viewmodel.UserViewModel
 import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.ViewHolder
+import com.xwray.groupie.GroupieViewHolder
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -46,7 +46,7 @@ class PinFragment : DaggerFragment() {
     val binding = DataBindingUtil.bind<FragmentPinBinding>(view)!!
 
     val linearLayoutManager = LinearLayoutManager(context)
-    val groupAdapter = GroupAdapter<ViewHolder>().apply {
+    val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
       add(pinSection)
     }
     binding.recyclerView.layoutManager = linearLayoutManager

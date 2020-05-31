@@ -13,7 +13,7 @@ object Dep {
     const val dagger = "2.28"
     const val retrofit = "2.9.0"
     const val okhttp = "4.7.2"
-    const val groupie = "2.7.2"
+    const val groupie = "2.8.0"
 
     // library (test)
     const val junit = "4.12"

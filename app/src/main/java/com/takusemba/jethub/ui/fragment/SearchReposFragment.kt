@@ -16,7 +16,7 @@ import com.takusemba.jethub.ui.item.SearchReposSection
 import com.takusemba.jethub.viewmodel.SearchReposViewModel
 import com.takusemba.jethub.viewmodel.UserViewModel
 import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.ViewHolder
+import com.xwray.groupie.GroupieViewHolder
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -53,7 +53,7 @@ class SearchReposFragment : DaggerFragment() {
     val binding = DataBindingUtil.bind<FragmentSearchReposBinding>(view)!!
 
     val linearLayoutManager = LinearLayoutManager(context)
-    val groupAdapter = GroupAdapter<ViewHolder>().apply {
+    val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
       add(searchReposSection)
     }
     binding.recyclerView.layoutManager = linearLayoutManager

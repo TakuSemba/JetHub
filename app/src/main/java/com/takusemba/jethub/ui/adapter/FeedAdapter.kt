@@ -14,7 +14,7 @@ import com.takusemba.jethub.ui.item.FeedRepoSection
 import com.takusemba.jethub.viewmodel.FeedViewModel
 import com.takusemba.jethub.viewmodel.UserViewModel
 import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.ViewHolder
+import com.xwray.groupie.GroupieViewHolder
 
 class FeedAdapter(
   private val userViewModel: UserViewModel,
@@ -34,7 +34,7 @@ class FeedAdapter(
     val feedRepoSection = FeedRepoSection(language, fragment, feedViewModel, userViewModel)
 
     val linearLayoutManager = LinearLayoutManager(context)
-    val groupAdapter = GroupAdapter<ViewHolder>().apply {
+    val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
       add(feedRepoSection)
     }
     binding.recyclerView.layoutManager = linearLayoutManager
