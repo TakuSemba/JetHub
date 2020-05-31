@@ -2,12 +2,12 @@ object Dep {
 
   object Version {
     // library
-    const val buildGradle = "3.2.0"
+    const val buildGradle = "4.0.0"
     const val kotlin = "1.3.50"
     const val coroutine = "1.3.1"
     const val androidX = "1.0.0"
     const val lifecycle = "2.1.0"
-    const val constraintLayout = "2.0.0-beta2"
+    const val constraintLayout = "2.0.0-beta6"
     const val navigation = "2.1.0"
     const val room = "2.1.0"
     const val dagger = "2.24"
