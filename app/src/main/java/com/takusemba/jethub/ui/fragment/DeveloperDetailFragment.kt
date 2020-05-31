@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -46,7 +45,7 @@ class DeveloperDetailFragment : DaggerFragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    val binding = DataBindingUtil.bind<FragmentDeveloperDetailBinding>(view)!!
+    val binding = FragmentDeveloperDetailBinding.bind(view)
 
     val linearLayoutManager = LinearLayoutManager(context)
     val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {

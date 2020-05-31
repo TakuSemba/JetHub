@@ -43,7 +43,7 @@ class PinFragment : DaggerFragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    val binding = DataBindingUtil.bind<FragmentPinBinding>(view)!!
+    val binding = FragmentPinBinding.bind(view)
 
     val linearLayoutManager = LinearLayoutManager(context)
     val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {

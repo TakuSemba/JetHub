@@ -1,264 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-  xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
+  android:layout_height="match_parent"
+  android:layout_width="match_parent"
   >
 
-  <androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:layout_width="match_parent"
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recycler_view"
     android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    />
+
+
+  <com.google.android.material.appbar.AppBarLayout
+    android:background="@color/white"
+    android:id="@+id/appbar"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
     >
 
-    <com.google.android.material.appbar.AppBarLayout
-      android:id="@+id/appbar"
+    <com.google.android.material.appbar.CollapsingToolbarLayout
+      android:id="@+id/collapsing_toolbar"
+      android:layout_height="match_parent"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:background="@color/white"
+      app:contentScrim="@color/white"
+      app:layout_scrollFlags="scroll|exitUntilCollapsed"
+      app:scrimAnimationDuration="300"
+      app:scrimVisibleHeightTrigger="120dp"
       >
 
-      <com.google.android.material.appbar.CollapsingToolbarLayout
-        android:id="@+id/collapsing_toolbar"
+      <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_height="?attr/actionBarSize"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:contentScrim="@color/white"
-        app:layout_scrollFlags="scroll|exitUntilCollapsed"
-        app:scrimAnimationDuration="300"
-        app:scrimVisibleHeightTrigger="120dp"
+        app:layout_collapseMode="pin"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_height="match_parent"
+          android:layout_marginEnd="0dp"
+          android:layout_marginStart="0dp"
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          app:layout_collapseMode="parallax"
           >
 
-          <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/icon"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:layout_marginTop="62dp"
-            app:layout_constraintEnd_toEndOf="parent"
+          <ImageView
+            android:background="@drawable/ripple_light_borderless"
+            android:id="@+id/back_arrow"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:padding="8dp"
+            android:src="@drawable/ic_left_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@mipmap/ic_launcher_round"
             />
 
           <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
+            android:alpha="0"
+            android:gravity="center_vertical"
+            android:id="@+id/toolbar_title"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_width="wrap_content"
             android:textColor="@color/black_87"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/icon"
-            tools:text="TakuSemba"
-            />
-
-          <TextView
-            android:id="@+id/description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:textColor="@color/black_50"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/name"
-            tools:text="Android Developer at AbemaTV.Inc"
-            />
-
-          <View
-            android:id="@+id/partition_line"
-            android:layout_width="0.5dp"
-            android:layout_height="96dp"
-            android:layout_marginTop="32dp"
-            android:background="@color/black_50"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/description"
-            />
-
-          <ImageView
-            android:id="@+id/repositories_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/ic_repository"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/partition_line"
-            />
-
-          <TextView
-            android:id="@+id/repositories_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@id/repositories_icon"
-            app:layout_constraintStart_toEndOf="@id/repositories_icon"
-            app:layout_constraintTop_toTopOf="@id/repositories_icon"
-            tools:text="123 repos"
-            />
-
-          <ImageView
-            android:id="@+id/gists_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/ic_gist"
-            app:layout_constraintBottom_toBottomOf="@id/partition_line"
-            app:layout_constraintStart_toStartOf="parent"
-            />
-
-          <TextView
-            android:id="@+id/gists_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@id/gists_icon"
-            app:layout_constraintStart_toEndOf="@id/gists_icon"
-            app:layout_constraintTop_toTopOf="@id/gists_icon"
-            tools:text="43 gists"
-            />
-
-          <ImageView
-            android:id="@+id/followers_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/ic_followers"
-            app:layout_constraintStart_toStartOf="@id/partition_line"
-            app:layout_constraintTop_toTopOf="@id/partition_line"
-            />
-
-          <TextView
-            android:id="@+id/followers_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@id/followers_icon"
-            app:layout_constraintStart_toEndOf="@id/followers_icon"
-            app:layout_constraintTop_toTopOf="@id/followers_icon"
-            tools:text="123 followers"
-            />
-
-          <ImageView
-            android:id="@+id/followings_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/ic_followings"
-            app:layout_constraintBottom_toBottomOf="@id/partition_line"
-            app:layout_constraintStart_toStartOf="@id/partition_line"
-            />
-
-          <TextView
-            android:id="@+id/followings_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@id/followings_icon"
-            app:layout_constraintStart_toEndOf="@id/followings_icon"
-            app:layout_constraintTop_toTopOf="@id/followings_icon"
-            tools:text="43 followings"
-            />
-
-          <TextView
-            android:id="@+id/repositories_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="16dp"
-            android:text="@string/repositories"
-            android:textColor="@color/black_54"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/partition_line"
+            app:layout_constraintStart_toEndOf="@id/back_arrow"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:alpha="1"
+            tools:text="TakuSemba"
             />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.appcompat.widget.Toolbar
-          android:id="@+id/toolbar"
-          android:layout_width="match_parent"
-          android:layout_height="?attr/actionBarSize"
-          app:layout_collapseMode="pin"
-          >
+      </androidx.appcompat.widget.Toolbar>
 
-          <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="0dp"
-            >
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_collapseMode="parallax"
+        >
 
-            <ImageView
-              android:id="@+id/back_arrow"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:background="@drawable/ripple_light_borderless"
-              android:padding="8dp"
-              android:src="@drawable/ic_left_arrow"
-              app:layout_constraintBottom_toBottomOf="parent"
-              app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toTopOf="parent"
-              />
+        <ImageView
+          android:id="@+id/repositories_icon"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="32dp"
+          android:layout_marginTop="8dp"
+          android:layout_width="wrap_content"
+          android:src="@drawable/ic_repository"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="@id/partition_line"
+          />
 
-            <TextView
-              android:id="@+id/toolbar_title"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginStart="16dp"
-              android:alpha="0"
-              android:gravity="center_vertical"
-              android:textColor="@color/black_87"
-              android:textSize="22sp"
-              app:layout_constraintBottom_toBottomOf="parent"
-              app:layout_constraintStart_toEndOf="@id/back_arrow"
-              app:layout_constraintTop_toTopOf="parent"
-              tools:alpha="1"
-              tools:text="TakuSemba"
-              />
+        <ImageView
+          android:id="@+id/gists_icon"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="16dp"
+          android:layout_marginStart="32dp"
+          android:layout_marginTop="8dp"
+          android:layout_width="wrap_content"
+          android:src="@drawable/ic_gist"
+          app:layout_constraintBottom_toBottomOf="@id/partition_line"
+          app:layout_constraintStart_toStartOf="parent"
+          />
 
-          </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+          android:id="@+id/followers_icon"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="32dp"
+          android:layout_marginTop="8dp"
+          android:layout_width="wrap_content"
+          android:src="@drawable/ic_followers"
+          app:layout_constraintStart_toStartOf="@id/partition_line"
+          app:layout_constraintTop_toTopOf="@id/partition_line"
+          />
 
-        </androidx.appcompat.widget.Toolbar>
+        <ImageView
+          android:id="@+id/followings_icon"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="16dp"
+          android:layout_marginStart="32dp"
+          android:layout_marginTop="8dp"
+          android:layout_width="wrap_content"
+          android:src="@drawable/ic_followings"
+          app:layout_constraintBottom_toBottomOf="@id/partition_line"
+          app:layout_constraintStart_toStartOf="@id/partition_line"
+          />
 
-      </com.google.android.material.appbar.CollapsingToolbarLayout>
+        <TextView
+          android:id="@+id/name"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="24dp"
+          android:layout_width="wrap_content"
+          android:textColor="@color/black_87"
+          android:textSize="24sp"
+          android:textStyle="bold"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/icon"
+          tools:text="TakuSemba"
+          />
 
-    </com.google.android.material.appbar.AppBarLayout>
+        <TextView
+          android:gravity="center"
+          android:id="@+id/description"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="16dp"
+          android:layout_marginStart="16dp"
+          android:layout_marginTop="8dp"
+          android:layout_width="0dp"
+          android:textAlignment="center"
+          android:textColor="@color/black_50"
+          android:textSize="18sp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/name"
+          tools:text="Android Developer at AbemaTV.Inc"
+          />
 
+        <TextView
+          android:id="@+id/repositories_count"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="16dp"
+          android:layout_width="wrap_content"
+          android:textSize="14sp"
+          app:layout_constraintBottom_toBottomOf="@id/repositories_icon"
+          app:layout_constraintStart_toEndOf="@id/repositories_icon"
+          app:layout_constraintTop_toTopOf="@id/repositories_icon"
+          tools:text="123 repos"
+          />
 
-    <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/recycler_view"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      app:layout_behavior="@string/appbar_scrolling_view_behavior"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      />
+        <TextView
+          android:id="@+id/gists_count"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="16dp"
+          android:layout_width="wrap_content"
+          android:textSize="14sp"
+          app:layout_constraintBottom_toBottomOf="@id/gists_icon"
+          app:layout_constraintStart_toEndOf="@id/gists_icon"
+          app:layout_constraintTop_toTopOf="@id/gists_icon"
+          tools:text="43 gists"
+          />
 
-  </androidx.coordinatorlayout.widget.CoordinatorLayout>
-</layout>
+        <TextView
+          android:id="@+id/followers_count"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="16dp"
+          android:layout_width="wrap_content"
+          android:textSize="14sp"
+          app:layout_constraintBottom_toBottomOf="@id/followers_icon"
+          app:layout_constraintStart_toEndOf="@id/followers_icon"
+          app:layout_constraintTop_toTopOf="@id/followers_icon"
+          tools:text="123 followers"
+          />
+
+        <TextView
+          android:id="@+id/followings_count"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="16dp"
+          android:layout_width="wrap_content"
+          android:textSize="14sp"
+          app:layout_constraintBottom_toBottomOf="@id/followings_icon"
+          app:layout_constraintStart_toEndOf="@id/followings_icon"
+          app:layout_constraintTop_toTopOf="@id/followings_icon"
+          tools:text="43 followings"
+          />
+
+        <TextView
+          android:id="@+id/repositories_title"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="16dp"
+          android:layout_marginTop="24dp"
+          android:layout_width="wrap_content"
+          android:text="@string/repositories"
+          android:textColor="@color/black_54"
+          android:textSize="18sp"
+          android:textStyle="bold"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/partition_line"
+          />
+
+        <View
+          android:background="@color/black_50"
+          android:id="@+id/partition_line"
+          android:layout_height="96dp"
+          android:layout_marginTop="32dp"
+          android:layout_width="0.5dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/description"
+          />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+          android:id="@+id/icon"
+          android:layout_height="96dp"
+          android:layout_marginTop="62dp"
+          android:layout_width="96dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:src="@mipmap/ic_launcher_round"
+          />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+  </com.google.android.material.appbar.AppBarLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

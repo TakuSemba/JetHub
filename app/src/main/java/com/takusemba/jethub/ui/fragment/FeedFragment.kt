@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -42,7 +41,7 @@ class FeedFragment : DaggerFragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    val binding = DataBindingUtil.bind<FragmentFeedBinding>(view)!!
+    val binding = FragmentFeedBinding.bind(view)
 
     val feedAdapter = FeedAdapter(userViewModel, feedViewModel, this)
     binding.pager.adapter = feedAdapter
