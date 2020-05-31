@@ -30,9 +30,6 @@ android {
   viewBinding {
     enabled = true
   }
-  dataBinding {
-    enabled = true
-  }
 }
 
 dependencies {
@@ -84,7 +81,6 @@ dependencies {
 
   // recycler view
   implementation(Dep.groupie)
-  implementation(Dep.groupieDataBinding)
   implementation(Dep.groupieViewBinding)
 
   // date
