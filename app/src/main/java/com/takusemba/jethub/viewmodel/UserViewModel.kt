@@ -1,5 +1,6 @@
 package com.takusemba.jethub.viewmodel
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,13 +8,12 @@ import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.UserRepository
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 /**
  * [ViewModel] to store and manage user-related data.
  * This should be Activity-Scope, because the data is used across screens.
  */
-class UserViewModel @Inject constructor(
+class UserViewModel @ViewModelInject constructor(
   private val userRepository: UserRepository
 ) : ViewModel() {
 

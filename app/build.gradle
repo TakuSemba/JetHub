@@ -2,6 +2,7 @@ apply plugin: "com.android.application"
 apply plugin: "kotlin-android"
 apply plugin: "kotlin-kapt"
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
   compileSdkVersion(Config.compileSdkVersion)
@@ -23,6 +24,10 @@ android {
       minifyEnabled true
       proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
     }
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
   }
   kotlinOptions {
     jvmTarget = '1.8'
@@ -55,6 +60,7 @@ dependencies {
   implementation(Dep.viewmodelKtx)
   implementation(Dep.livedataKtx)
 
+
   // navigation
   implementation(Dep.navCommonKtx)
   implementation(Dep.navRuntimeKtx)
@@ -67,6 +73,11 @@ dependencies {
   implementation(Dep.daggerAndroid)
   implementation(Dep.daggerAndroidSupport)
   kapt(Dep.daggerAndroidProcessor)
+  implementation(Dep.daggerHilt)
+  kapt(Dep.daggerHiltCompiler)
+  implementation(Dep.androidHilt)
+  implementation(Dep.androidHiltViewModel)
+  kapt(Dep.androidHiltCompiler)
 
   // network
   implementation(Dep.retrofit)

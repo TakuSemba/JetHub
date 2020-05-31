@@ -1,23 +1,20 @@
 package com.takusemba.jethub
 
+import android.app.Application
 import android.content.Context
 import com.jakewharton.threetenabp.AndroidThreeTen
-import com.takusemba.jethub.di.DaggerAppComponent
-import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
+import dagger.hilt.android.HiltAndroidApp
 
 /**
  * Application class. [DaggerApplication] injects classes behind scene.
  */
-open class App : DaggerApplication() {
+@HiltAndroidApp
+open class App : Application() {
 
   override fun attachBaseContext(base: Context) {
     super.attachBaseContext(base)
     initAndroidThreeTen()
-  }
-
-  override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-    return DaggerAppComponent.builder().application(this).build()
   }
 
   /**

@@ -11,6 +11,8 @@ object Dep {
     const val navigation = "2.2.2"
     const val room = "2.2.5"
     const val dagger = "2.28"
+    const val daggerHilt = "2.28-alpha"
+    const val androidHilt = "1.0.0-SNAPSHOT"
     const val retrofit = "2.9.0"
     const val okhttp = "4.7.2"
     const val groupie = "2.8.0"
@@ -23,6 +25,7 @@ object Dep {
   val pluginBuildGradle = "com.android.tools.build:gradle:${Version.buildGradle}"
   val pluginKotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlin}"
   val pluginSafeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Version.navigation}"
+  val pluginDaggerHilt = "com.google.dagger:hilt-android-gradle-plugin:${Version.daggerHilt}"
 
   // kotlin
   val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Version.kotlin}"
@@ -58,6 +61,13 @@ object Dep {
   val daggerAndroid = "com.google.dagger:dagger-android:${Version.dagger}"
   val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Version.dagger}"
   val daggerAndroidProcessor = "com.google.dagger:dagger-android-processor:${Version.dagger}"
+  val daggerHilt = "com.google.dagger:hilt-android:${Version.daggerHilt}"
+  val daggerHiltCompiler = "com.google.dagger:hilt-android-compiler:${Version.daggerHilt}"
+
+  // android hilt
+  val androidHilt = "androidx.hilt:hilt-common:${Version.androidHilt}"
+  val androidHiltViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Version.androidHilt}"
+  val androidHiltCompiler = "androidx.hilt:hilt-compiler:${Version.androidHilt}"
 
   // network
   val retrofit = "com.squareup.retrofit2:retrofit:${Version.retrofit}"

@@ -2,32 +2,29 @@ package com.takusemba.jethub.ui.fragment
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentFeedBinding
 import com.takusemba.jethub.ui.adapter.FeedAdapter
 import com.takusemba.jethub.viewmodel.FeedViewModel
 import com.takusemba.jethub.viewmodel.UserViewModel
-import dagger.android.support.DaggerFragment
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
-class FeedFragment : DaggerFragment(R.layout.fragment_feed) {
+@AndroidEntryPoint
+class FeedFragment : Fragment(R.layout.fragment_feed) {
 
   companion object {
 
     fun newInstance() = FeedFragment()
   }
 
-  @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-
   private val feedViewModel: FeedViewModel by viewModels(
-    ownerProducer = { requireParentFragment() },
-    factoryProducer = { viewModelFactory }
+    ownerProducer = { requireParentFragment() }
   )
 
-  private val userViewModel: UserViewModel by activityViewModels { viewModelFactory }
+  private val userViewModel: UserViewModel by activityViewModels()
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)

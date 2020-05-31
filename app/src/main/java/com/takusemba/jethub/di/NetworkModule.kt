@@ -10,6 +10,8 @@ import com.takusemba.jethub.api.SearchApi
 import com.takusemba.jethub.api.SearchApiClient
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -21,6 +23,7 @@ import javax.inject.Singleton
  * Define all the network-related classes that need to be provided in the scope of Application.
  */
 @Module
+@InstallIn(ApplicationComponent::class)
 open class NetworkModule {
 
   @Provides

@@ -2,18 +2,16 @@ package com.takusemba.jethub.ui.fragment
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.transaction
-import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentMainTabBinding
-import dagger.android.support.DaggerFragment
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainTabFragment : DaggerFragment(R.layout.fragment_main_tab) {
-
-  @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+@AndroidEntryPoint
+class MainTabFragment : Fragment(R.layout.fragment_main_tab) {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
