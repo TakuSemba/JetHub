@@ -1,44 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-  xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
+  android:background="@drawable/ripple_light_with_border"
+  android:layout_height="wrap_content"
+  android:layout_width="match_parent"
   >
 
-  <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
+  <TextView
+    android:id="@+id/name"
     android:layout_height="wrap_content"
-    android:background="@drawable/ripple_light_with_border"
-    >
+    android:layout_marginEnd="16dp"
+    android:layout_marginStart="16dp"
+    android:layout_width="0dp"
+    android:lines="1"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toBottomOf="@id/icon"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@id/icon"
+    app:layout_constraintTop_toTopOf="@id/icon"
+    tools:text="TakuSemba"
+    />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-      android:id="@+id/icon"
-      android:layout_width="32dp"
-      android:layout_height="32dp"
-      android:layout_marginStart="16dp"
-      android:layout_marginTop="8dp"
-      android:layout_marginBottom="8dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      tools:src="@mipmap/ic_launcher_round"
-      />
+  <de.hdodenhof.circleimageview.CircleImageView
+    android:id="@+id/icon"
+    android:layout_height="32dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_width="32dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    />
 
-    <TextView
-      android:id="@+id/name"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="16dp"
-      android:layout_marginEnd="16dp"
-      android:lines="1"
-      android:textSize="20sp"
-      android:textStyle="bold"
-      app:layout_constraintBottom_toBottomOf="@id/icon"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="@id/icon"
-      app:layout_constraintTop_toTopOf="@id/icon"
-      tools:text="TakuSemba"
-      />
-
-  </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>

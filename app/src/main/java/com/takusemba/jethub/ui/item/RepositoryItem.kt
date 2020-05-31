@@ -7,7 +7,7 @@ import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.ItemRepositoryBinding
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.viewmodel.UserViewModel
-import com.xwray.groupie.databinding.BindableItem
+import com.xwray.groupie.viewbinding.BindableItem
 
 data class RepositoryItem(
   val repository: Repository,
@@ -15,6 +15,10 @@ data class RepositoryItem(
 ) : BindableItem<ItemRepositoryBinding>(
   repository.hashCode().toLong()
 ) {
+
+  override fun initializeViewBinding(view: View): ItemRepositoryBinding {
+    return ItemRepositoryBinding.bind(view)
+  }
 
   override fun bind(binding: ItemRepositoryBinding, position: Int) {
     binding.title.text = repository.name

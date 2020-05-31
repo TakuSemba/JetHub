@@ -72,7 +72,8 @@ object Dep {
 
   // recycler view
   val groupie = "com.xwray:groupie:${Version.groupie}"
-  val groupieDatabinding = "com.xwray:groupie-databinding:${Version.groupie}"
+  val groupieDataBinding = "com.xwray:groupie-databinding:${Version.groupie}"
+  val groupieViewBinding = "com.xwray:groupie-viewbinding:${Version.groupie}"
 
   // date
   val threetenabp = "com.jakewharton.threetenabp:threetenabp:1.1.1"

@@ -3,10 +3,8 @@ package com.takusemba.jethub.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.PagerAdapter
-import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.ItemFeedBinding
 import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.ui.fragment.FeedFragment
@@ -26,8 +24,7 @@ class FeedAdapter(
 
   override fun instantiateItem(group: ViewGroup, position: Int): Any {
     val inflater = LayoutInflater.from(group.context)
-    val binding = DataBindingUtil
-      .inflate<ItemFeedBinding>(inflater, R.layout.item_feed, group, false)
+    val binding = ItemFeedBinding.inflate(inflater, group, false)
 
     val context = binding.root.context
     val language = languages[position]
