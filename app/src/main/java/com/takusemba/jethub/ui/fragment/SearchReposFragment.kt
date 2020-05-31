@@ -1,9 +1,7 @@
 package com.takusemba.jethub.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -19,7 +17,7 @@ import com.xwray.groupie.GroupieViewHolder
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class SearchReposFragment : DaggerFragment() {
+class SearchReposFragment : DaggerFragment(R.layout.fragment_search_repos) {
 
   companion object {
 
@@ -37,14 +35,6 @@ class SearchReposFragment : DaggerFragment() {
 
   private val searchReposSection: SearchReposSection by lazy {
     SearchReposSection(this, searchReposViewModel, userViewModel)
-  }
-
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View {
-    return inflater.inflate(R.layout.fragment_search_repos, container, false)
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -1,9 +1,7 @@
 package com.takusemba.jethub.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -15,7 +13,7 @@ import com.takusemba.jethub.viewmodel.UserViewModel
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class FeedFragment : DaggerFragment() {
+class FeedFragment : DaggerFragment(R.layout.fragment_feed) {
 
   companion object {
 
@@ -30,14 +28,6 @@ class FeedFragment : DaggerFragment() {
   )
 
   private val userViewModel: UserViewModel by activityViewModels { viewModelFactory }
-
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View {
-    return inflater.inflate(R.layout.fragment_feed, container, false)
-  }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)

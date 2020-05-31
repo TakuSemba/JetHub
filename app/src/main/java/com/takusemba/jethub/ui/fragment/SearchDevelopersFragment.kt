@@ -1,9 +1,7 @@
 package com.takusemba.jethub.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -17,7 +15,7 @@ import com.xwray.groupie.GroupieViewHolder
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class SearchDevelopersFragment : DaggerFragment() {
+class SearchDevelopersFragment : DaggerFragment(R.layout.fragment_search_developers) {
 
   companion object {
 
@@ -33,14 +31,6 @@ class SearchDevelopersFragment : DaggerFragment() {
 
   private val searchDevelopersSection: SearchDevelopersSection by lazy {
     SearchDevelopersSection(this, searchDevelopersViewModel)
-  }
-
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View {
-    return inflater.inflate(R.layout.fragment_search_developers, container, false)
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

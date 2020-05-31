@@ -1,9 +1,7 @@
 package com.takusemba.jethub.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -23,7 +21,7 @@ import com.xwray.groupie.GroupieViewHolder
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class DeveloperDetailFragment : DaggerFragment() {
+class DeveloperDetailFragment : DaggerFragment(R.layout.fragment_developer_detail) {
 
   @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
 
@@ -33,14 +31,6 @@ class DeveloperDetailFragment : DaggerFragment() {
 
   private val developerDetailSection: DeveloperDetailSection by lazy {
     DeveloperDetailSection(this, developerDetailViewModel, userViewModel)
-  }
-
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View {
-    return inflater.inflate(R.layout.fragment_developer_detail, container, false)
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

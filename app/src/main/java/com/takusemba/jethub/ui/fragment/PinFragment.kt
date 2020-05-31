@@ -1,9 +1,7 @@
 package com.takusemba.jethub.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
@@ -17,7 +15,7 @@ import com.xwray.groupie.GroupieViewHolder
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class PinFragment : DaggerFragment() {
+class PinFragment : DaggerFragment(R.layout.fragment_pin) {
 
   companion object {
 
@@ -30,14 +28,6 @@ class PinFragment : DaggerFragment() {
 
   private val pinSection: PinSection by lazy {
     PinSection(this, userViewModel)
-  }
-
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View {
-    return inflater.inflate(R.layout.fragment_pin, container, false)
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
