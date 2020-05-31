@@ -3,17 +3,17 @@ object Dep {
   object Version {
     // library
     const val buildGradle = "4.0.0"
-    const val kotlin = "1.3.50"
-    const val coroutine = "1.3.1"
-    const val androidX = "1.0.0"
-    const val lifecycle = "2.1.0"
+    const val kotlin = "1.3.72"
+    const val coroutine = "1.3.7"
+    const val androidX = "1.1.0"
+    const val lifecycle = "2.2.0"
     const val constraintLayout = "2.0.0-beta6"
-    const val navigation = "2.1.0"
-    const val room = "2.1.0"
-    const val dagger = "2.24"
-    const val retrofit = "2.6.1"
-    const val okhttp = "4.2.0"
-    const val groupie = "2.5.1"
+    const val navigation = "2.2.2"
+    const val room = "2.2.5"
+    const val dagger = "2.28"
+    const val retrofit = "2.9.0"
+    const val okhttp = "4.7.2"
+    const val groupie = "2.7.2"
 
     // library (test)
     const val junit = "4.12"
