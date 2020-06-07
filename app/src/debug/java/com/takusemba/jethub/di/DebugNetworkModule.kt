@@ -16,7 +16,7 @@ class DebugNetworkModule : NetworkModule() {
       .writeTimeout(10L, TimeUnit.SECONDS)
       .readTimeout(30L, TimeUnit.SECONDS)
       .addNetworkInterceptor(HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY
+        level = HttpLoggingInterceptor.Level.HEADERS
       })
       .addInterceptor(ApiTokenInterceptor())
       .build()
