@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="color_primary">#4688f1</color>
-  <color name="color_primary_light">#6da1f0</color>
+  <color name="color_primary">#6da1f0</color>
+  <color name="color_primary_dark">#4688f1</color>
   <color name="color_accent">#37ab10</color>
 
   <color name="ripple_light">@color/black_12</color>
