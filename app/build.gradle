@@ -103,5 +103,4 @@ dependencies {
   testImplementation(Dep.truth)
   testImplementation(Dep.testCore)
   testImplementation(Dep.mockk)
-  testImplementation(Dep.orgThreetenbp)
 }

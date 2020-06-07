@@ -3,7 +3,7 @@ package com.takusemba.jethub.util
 import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Owner
 import com.takusemba.jethub.model.Repository
-import org.threeten.bp.LocalDateTime
+import java.time.LocalDateTime
 
 fun createRepository(
   id: Int = -1,

@@ -88,5 +88,4 @@ object Dep {
   val mockk = "io.mockk:mockk:1.9.3"
   val truth = "com.google.truth:truth:1.0"
   val testCore = "android.arch.core:core-testing:1.1.0"
-  val orgThreetenbp = "org.threeten:threetenbp:1.3.3"
 }
