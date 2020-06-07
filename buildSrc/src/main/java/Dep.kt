@@ -24,6 +24,9 @@ object Dep {
   val pluginKotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlin}"
   val pluginSafeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Version.navigation}"
 
+  // desugar
+  val desugar = "com.android.tools:desugar_jdk_libs:1.0.5"
+
   // kotlin
   val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Version.kotlin}"
 
@@ -73,9 +76,6 @@ object Dep {
   // recycler view
   val groupie = "com.xwray:groupie:${Version.groupie}"
   val groupieViewBinding = "com.xwray:groupie-viewbinding:${Version.groupie}"
-
-  // date
-  val threetenabp = "com.jakewharton.threetenabp:threetenabp:1.1.1"
 
   // ui
   val circleImage = "de.hdodenhof:circleimageview:2.2.0"

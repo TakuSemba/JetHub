@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 import com.takusemba.jethub.model.DateFormatters
 import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
-import org.threeten.bp.LocalDateTime
+import java.time.LocalDateTime
 
 /**
  * Repository response data.

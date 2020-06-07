@@ -9,10 +9,10 @@ import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.model.SimpleDeveloper
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
-import org.threeten.bp.LocalDateTime
 import retrofit2.Retrofit
 import retrofit2.http.GET
 import retrofit2.http.Query
+import java.time.LocalDateTime
 
 /**
  * Search API client

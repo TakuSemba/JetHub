@@ -24,6 +24,11 @@ android {
       proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
     }
   }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+    coreLibraryDesugaringEnabled true
+  }
   kotlinOptions {
     jvmTarget = '1.8'
   }
@@ -33,6 +38,10 @@ android {
 }
 
 dependencies {
+
+  // desugar
+  coreLibraryDesugaring(Dep.desugar)
+
   // kotlin
   implementation(Dep.kotlin)
 
@@ -82,9 +91,6 @@ dependencies {
   // recycler view
   implementation(Dep.groupie)
   implementation(Dep.groupieViewBinding)
-
-  // date
-  implementation(Dep.threetenabp)
 
   // ui
   implementation(Dep.circleImage)

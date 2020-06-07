@@ -1,6 +1,6 @@
 package com.takusemba.jethub.model
 
-import org.threeten.bp.LocalDateTime
+import java.time.LocalDateTime
 
 class Repository(
   val id: Int,

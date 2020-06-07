@@ -3,7 +3,7 @@ package com.takusemba.jethub.api
 import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.model.SimpleDeveloper
-import org.threeten.bp.LocalDateTime
+import java.time.LocalDateTime
 
 /**
  * Search API

@@ -1,6 +1,6 @@
 package com.takusemba.jethub.model
 
-import org.threeten.bp.format.DateTimeFormatter
+import java.time.format.DateTimeFormatter
 
 /**
  * list of formatters to be used in this app.
