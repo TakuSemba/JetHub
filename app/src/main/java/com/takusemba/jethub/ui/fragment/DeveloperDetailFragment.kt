@@ -63,8 +63,10 @@ class DeveloperDetailFragment : DaggerFragment(R.layout.fragment_developer_detai
       if (binding.collapsingToolbar.height + offset < 2 * ViewCompat.getMinimumHeight(
           binding.collapsingToolbar)) {
         binding.toolbarTitle.animate().alpha(1f).setDuration(100).start()
+        binding.header.animate().alpha(0f).setDuration(100).start()
       } else {
         binding.toolbarTitle.animate().alpha(0f).setDuration(100).start()
+        binding.header.animate().alpha(1f).setDuration(100).start()
       }
     })
 
