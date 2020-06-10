@@ -58,13 +58,8 @@ object Dep {
   // dependency injection
   val dagger = "com.google.dagger:dagger:${Version.dagger}"
   val daggerCompiler = "com.google.dagger:dagger-compiler:${Version.dagger}"
-  val daggerAndroid = "com.google.dagger:dagger-android:${Version.dagger}"
-  val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Version.dagger}"
-  val daggerAndroidProcessor = "com.google.dagger:dagger-android-processor:${Version.dagger}"
   val daggerHilt = "com.google.dagger:hilt-android:${Version.daggerHilt}"
   val daggerHiltCompiler = "com.google.dagger:hilt-android-compiler:${Version.daggerHilt}"
-
-  // android hilt
   val androidHilt = "androidx.hilt:hilt-common:${Version.androidHilt}"
   val androidHiltViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Version.androidHilt}"
   val androidHiltCompiler = "androidx.hilt:hilt-compiler:${Version.androidHilt}"

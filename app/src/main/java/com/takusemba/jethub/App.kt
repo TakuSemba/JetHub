@@ -3,12 +3,8 @@ package com.takusemba.jethub
 import android.app.Application
 import android.content.Context
 import com.jakewharton.threetenabp.AndroidThreeTen
-import dagger.android.DaggerApplication
 import dagger.hilt.android.HiltAndroidApp
 
-/**
- * Application class. [DaggerApplication] injects classes behind scene.
- */
 @HiltAndroidApp
 open class App : Application() {
 

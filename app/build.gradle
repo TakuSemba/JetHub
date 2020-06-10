@@ -32,6 +32,9 @@ android {
   kotlinOptions {
     jvmTarget = '1.8'
   }
+  kapt {
+    correctErrorTypes true
+  }
   viewBinding {
     enabled = true
   }
@@ -70,9 +73,6 @@ dependencies {
   // dependency injection
   implementation(Dep.dagger)
   kapt(Dep.daggerCompiler)
-  implementation(Dep.daggerAndroid)
-  implementation(Dep.daggerAndroidSupport)
-  kapt(Dep.daggerAndroidProcessor)
   implementation(Dep.daggerHilt)
   kapt(Dep.daggerHiltCompiler)
   implementation(Dep.androidHilt)
