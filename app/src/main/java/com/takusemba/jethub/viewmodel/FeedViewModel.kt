@@ -1,5 +1,6 @@
 package com.takusemba.jethub.viewmodel
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,12 +10,11 @@ import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.FeedRepository
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 /**
  * [ViewModel] to store and manage Feed data.
  */
-class FeedViewModel @Inject constructor(
+class FeedViewModel @ViewModelInject constructor(
   private val feedRepository: FeedRepository
 ) : ViewModel() {
 

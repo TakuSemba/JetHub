@@ -3,8 +3,8 @@ package com.takusemba.jethub.ui.fragment
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentSearchDevelopersBinding
@@ -12,21 +12,18 @@ import com.takusemba.jethub.ui.item.SearchDevelopersSection
 import com.takusemba.jethub.viewmodel.SearchDevelopersViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
-import dagger.android.support.DaggerFragment
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
-class SearchDevelopersFragment : DaggerFragment(R.layout.fragment_search_developers) {
+@AndroidEntryPoint
+class SearchDevelopersFragment : Fragment(R.layout.fragment_search_developers) {
 
   companion object {
 
     fun newInstance() = SearchDevelopersFragment()
   }
 
-  @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-
   private val searchDevelopersViewModel: SearchDevelopersViewModel by viewModels(
-    ownerProducer = { requireParentFragment() },
-    factoryProducer = { viewModelFactory }
+    ownerProducer = { requireParentFragment() }
   )
 
   private val searchDevelopersSection: SearchDevelopersSection by lazy {

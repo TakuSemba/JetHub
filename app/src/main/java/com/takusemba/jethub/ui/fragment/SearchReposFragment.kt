@@ -3,9 +3,9 @@ package com.takusemba.jethub.ui.fragment
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentSearchReposBinding
@@ -14,24 +14,21 @@ import com.takusemba.jethub.viewmodel.SearchReposViewModel
 import com.takusemba.jethub.viewmodel.UserViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
-import dagger.android.support.DaggerFragment
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
-class SearchReposFragment : DaggerFragment(R.layout.fragment_search_repos) {
+@AndroidEntryPoint
+class SearchReposFragment : Fragment(R.layout.fragment_search_repos) {
 
   companion object {
 
     fun newInstance() = SearchReposFragment()
   }
 
-  @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-
   private val searchReposViewModel: SearchReposViewModel by viewModels(
-    ownerProducer = { requireParentFragment() },
-    factoryProducer = { viewModelFactory }
+    ownerProducer = { requireParentFragment() }
   )
 
-  private val userViewModel: UserViewModel by activityViewModels { viewModelFactory }
+  private val userViewModel: UserViewModel by activityViewModels()
 
   private val searchReposSection: SearchReposSection by lazy {
     SearchReposSection(this, searchReposViewModel, userViewModel)

@@ -2,8 +2,8 @@ package com.takusemba.jethub.ui.fragment
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.takusemba.jethub.R
@@ -12,19 +12,17 @@ import com.takusemba.jethub.ui.item.PinSection
 import com.takusemba.jethub.viewmodel.UserViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
-import dagger.android.support.DaggerFragment
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
-class PinFragment : DaggerFragment(R.layout.fragment_pin) {
+@AndroidEntryPoint
+class PinFragment : Fragment(R.layout.fragment_pin) {
 
   companion object {
 
     fun newInstance() = PinFragment()
   }
 
-  @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-
-  private val userViewModel: UserViewModel by activityViewModels { viewModelFactory }
+  private val userViewModel: UserViewModel by activityViewModels()
 
   private val pinSection: PinSection by lazy {
     PinSection(this, userViewModel)

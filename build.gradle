@@ -9,6 +9,7 @@ buildscript {
     classpath(Dep.pluginBuildGradle)
     classpath(Dep.pluginKotlinGradle)
     classpath(Dep.pluginSafeArgs)
+    classpath(Dep.pluginDaggerHilt)
 
     // NOTE: Do not place your application dependencies here; they belong
     // in the individual module build.gradle files
@@ -20,5 +21,9 @@ allprojects {
     google()
     jcenter()
     maven { url 'https://dl.bintray.com/lisawray/maven' }
+    maven {
+      // to use androidx.hilt
+      url "https://androidx.dev/snapshots/builds/6543454/artifacts/repository/"
+    }
   }
 }

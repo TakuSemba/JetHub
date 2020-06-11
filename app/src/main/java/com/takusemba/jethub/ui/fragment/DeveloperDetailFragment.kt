@@ -3,9 +3,9 @@ package com.takusemba.jethub.ui.fragment
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.ViewCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,16 +18,14 @@ import com.takusemba.jethub.viewmodel.DeveloperDetailViewModel
 import com.takusemba.jethub.viewmodel.UserViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
-import dagger.android.support.DaggerFragment
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
-class DeveloperDetailFragment : DaggerFragment(R.layout.fragment_developer_detail) {
+@AndroidEntryPoint
+class DeveloperDetailFragment : Fragment(R.layout.fragment_developer_detail) {
 
-  @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+  private val developerDetailViewModel: DeveloperDetailViewModel by viewModels()
 
-  private val developerDetailViewModel: DeveloperDetailViewModel by viewModels { viewModelFactory }
-
-  private val userViewModel: UserViewModel by activityViewModels { viewModelFactory }
+  private val userViewModel: UserViewModel by activityViewModels()
 
   private val developerDetailSection: DeveloperDetailSection by lazy {
     DeveloperDetailSection(this, developerDetailViewModel, userViewModel)
@@ -72,6 +70,12 @@ class DeveloperDetailFragment : DaggerFragment(R.layout.fragment_developer_detai
 
     binding.backArrow.setOnClickListener {
       view.findNavController().popBackStack()
+    }
+
+    if (savedInstanceState == null) {
+      // TODO want to inject developerName into developerDetailViewModel's constructor
+      val developerName = DeveloperDetailFragmentArgs.fromBundle(requireArguments()).developerName
+      developerDetailViewModel.load(developerName)
     }
   }
 }
