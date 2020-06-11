@@ -1,21 +1,12 @@
 package com.takusemba.jethub.di
 
-import com.takusemba.jethub.Config
 import com.takusemba.jethub.api.ApiTokenInterceptor
-import com.takusemba.jethub.api.DeveloperApi
-import com.takusemba.jethub.api.DeveloperApiClient
-import com.takusemba.jethub.api.RepoApi
-import com.takusemba.jethub.api.RepoApiClient
-import com.takusemba.jethub.api.SearchApi
-import com.takusemba.jethub.api.SearchApiClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 

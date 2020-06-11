@@ -73,7 +73,6 @@ class DeveloperDetailFragment : Fragment(R.layout.fragment_developer_detail) {
     }
 
     if (savedInstanceState == null) {
-      // TODO want to inject developerName into developerDetailViewModel's constructor
       val developerName = DeveloperDetailFragmentArgs.fromBundle(requireArguments()).developerName
       developerDetailViewModel.load(developerName)
     }
