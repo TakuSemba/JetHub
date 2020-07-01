@@ -4,7 +4,6 @@ apply plugin: "kotlin-kapt"
 apply plugin: 'kotlinx-serialization'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'dagger.hilt.android.plugin'
-apply from: "../constants.gradle"
 
 android {
   compileSdkVersion config.compileSdkVersion
@@ -42,8 +41,7 @@ dependencies {
 
   // module
   implementation(project(':model'))
-  implementation(project(':api'))
-  implementation(project(':database'))
+  implementation(project(':repository'))
 
   // desugar
   coreLibraryDesugaring(deps.desugar)
