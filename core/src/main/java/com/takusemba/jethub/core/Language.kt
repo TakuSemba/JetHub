@@ -1,4 +1,4 @@
-package com.takusemba.jethub.feed
+package com.takusemba.jethub.core
 
 import androidx.annotation.DrawableRes
 

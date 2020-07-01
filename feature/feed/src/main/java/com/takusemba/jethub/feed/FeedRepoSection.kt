@@ -2,6 +2,9 @@ package com.takusemba.jethub.feed
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.observe
+import com.takusemba.jethub.core.Language
+import com.takusemba.jethub.core.RepositoryItem
+import com.takusemba.jethub.core.UserViewModel
 import com.takusemba.jethub.model.Repository
 import com.xwray.groupie.Item
 import com.xwray.groupie.Section

@@ -1,35 +1,30 @@
-apply plugin: "com.android.application"
-apply plugin: "kotlin-android"
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 apply plugin: "kotlin-kapt"
-apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'dagger.hilt.android.plugin'
 
 android {
   compileSdkVersion config.compileSdkVersion
   defaultConfig {
-    applicationId config.packageName
     minSdkVersion config.minSdkVersion
     targetSdkVersion config.targetSdkVersion
     versionCode config.versionCode
     versionName config.versionName
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
+
   buildTypes {
     release {
-      minifyEnabled true
-      proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
   }
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
-    coreLibraryDesugaringEnabled true
   }
   kotlinOptions {
     jvmTarget = '1.8'
-  }
-  kapt {
-    correctErrorTypes true
   }
   buildFeatures {
     viewBinding = true
@@ -39,9 +34,7 @@ android {
 dependencies {
 
   // module
-  implementation(project(':core'))
   implementation(project(':model'))
-  implementation(project(':feature:feed'))
   implementation(project(':data:repository'))
 
   // desugar
@@ -94,13 +87,4 @@ dependencies {
 
   // image
   implementation(deps.picasso)
-
-  // test modules
-  testImplementation(project(':testutils'))
-
-  // test
-  testImplementation(deps.junit)
-  testImplementation(deps.truth)
-  testImplementation(deps.testCore)
-  testImplementation(deps.mockk)
 }

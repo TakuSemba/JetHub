@@ -1,4 +1,4 @@
-package com.takusemba.jethub.feed
+package com.takusemba.jethub.core
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData

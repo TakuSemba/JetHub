@@ -5,6 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.PagerAdapter
+import com.takusemba.jethub.core.Language
+import com.takusemba.jethub.core.UserViewModel
 import com.takusemba.jethub.feed.databinding.ItemFeedBinding
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder

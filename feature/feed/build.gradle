@@ -31,7 +31,9 @@ android {
 }
 
 dependencies {
+
   // module
+  implementation(project(':core'))
   implementation(project(':model'))
   implementation(project(':data:repository'))
 
