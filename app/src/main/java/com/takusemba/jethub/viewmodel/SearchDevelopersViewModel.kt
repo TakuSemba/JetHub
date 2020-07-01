@@ -6,14 +6,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.model.SimpleDeveloper
-import com.takusemba.jethub.repository.SearchDevelopersRepository
+import com.takusemba.jethub.repository.SearchRepository
 import kotlinx.coroutines.launch
 
 /**
  * [ViewModel] to store and manage searched developers data.
  */
 class SearchDevelopersViewModel @ViewModelInject constructor(
-  private val searchDevelopersRepository: SearchDevelopersRepository
+  private val searchRepository: SearchRepository
 ) : ViewModel() {
 
   private val searchedDevelopersResult = MutableLiveData<List<SimpleDeveloper>>()
@@ -23,7 +23,7 @@ class SearchDevelopersViewModel @ViewModelInject constructor(
   init {
     viewModelScope.launch {
       runCatching {
-        searchDevelopersRepository.searchDevelopers("")
+        searchRepository.searchDevelopers("")
       }.onSuccess { developers ->
         searchedDevelopersResult.value = developers
       }
@@ -33,7 +33,7 @@ class SearchDevelopersViewModel @ViewModelInject constructor(
   fun search(query: String) {
     viewModelScope.launch {
       runCatching {
-        searchDevelopersRepository.searchDevelopers(query)
+        searchRepository.searchDevelopers(query)
       }.onSuccess { developers ->
         searchedDevelopersResult.value = developers
       }

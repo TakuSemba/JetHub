@@ -1,15 +1,14 @@
 package com.takusemba.jethub.repository
 
 import com.takusemba.jethub.api.SearchApi
-import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
 import java.time.LocalDateTime
 import javax.inject.Inject
 
 /**
- * Repository for `FeedViewModel`
+ * Repository for Repo
  */
-class FeedRepository @Inject constructor(
+class RepoRepository @Inject constructor(
   private val searchApi: SearchApi
 ) {
 

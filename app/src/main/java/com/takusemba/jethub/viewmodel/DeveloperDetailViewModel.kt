@@ -7,14 +7,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.model.Developer
 import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.repository.DeveloperDetailRepository
+import com.takusemba.jethub.repository.DeveloperRepository
 import kotlinx.coroutines.launch
 
 /**
  * [ViewModel] to store and manage DeveloperDetail data.
  */
 class DeveloperDetailViewModel @ViewModelInject constructor(
-  private val developerDetailRepository: DeveloperDetailRepository
+  private val developerRepository: DeveloperRepository
 ) : ViewModel() {
 
   private val developerResult = MutableLiveData<Developer>()
@@ -25,13 +25,13 @@ class DeveloperDetailViewModel @ViewModelInject constructor(
 
   fun load(developerName: String) = viewModelScope.launch {
     runCatching {
-      developerDetailRepository.getDeveloper(developerName)
+      developerRepository.getDeveloper(developerName)
     }.onSuccess { developer ->
       developerResult.value = developer
     }
 
     runCatching {
-      developerDetailRepository.getRepos(developerName)
+      developerRepository.getDeveloperRepos(developerName)
     }.onSuccess { developerRepos ->
       developerReposResult.value = developerRepos
     }

@@ -10,7 +10,7 @@ import kotlinx.coroutines.coroutineScope
 import javax.inject.Inject
 
 /**
- * Repository for `UserViewModel`
+ * Repository for user
  */
 class UserRepository @Inject constructor(
   private val repoDb: RepoDb,
@@ -25,7 +25,7 @@ class UserRepository @Inject constructor(
     repoDb.delete(SimpleRepository(repository.id, repository.name, repository.owner.login))
   }
 
-  suspend fun findAll(): List<Repository> {
+  suspend fun findAllPins(): List<Repository> {
     return coroutineScope {
       repoDb.getAll()
         .map { entity -> SimpleRepository(entity.id, entity.name, entity.owner) }

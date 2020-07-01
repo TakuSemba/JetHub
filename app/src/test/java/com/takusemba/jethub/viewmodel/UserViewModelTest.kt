@@ -54,7 +54,7 @@ class UserViewModelTest {
 
       val observer = mockk<Observer<List<Repository>>>(relaxed = true)
 
-      coEvery { userRepository.findAll() } returns listOf(
+      coEvery { userRepository.findAllPins() } returns listOf(
         createRepository(id = 1),
         createRepository(id = 2),
         createRepository(id = 3)
@@ -75,7 +75,7 @@ class UserViewModelTest {
 
       val observer = mockk<Observer<List<Repository>>>(relaxed = true)
 
-      coEvery { userRepository.findAll() } returns listOf(
+      coEvery { userRepository.findAllPins() } returns listOf(
         createRepository(id = 1),
         createRepository(id = 2),
         createRepository(id = 3)
@@ -101,7 +101,7 @@ class UserViewModelTest {
       val observer = mockk<Observer<List<Repository>>>(relaxed = true)
       val repoToBeRemoved = createRepository(id = 3)
 
-      coEvery { userRepository.findAll() } returns listOf(
+      coEvery { userRepository.findAllPins() } returns listOf(
         createRepository(id = 1),
         createRepository(id = 2),
         repoToBeRemoved

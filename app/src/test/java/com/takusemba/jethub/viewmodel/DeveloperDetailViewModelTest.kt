@@ -5,7 +5,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.model.Developer
 import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.repository.DeveloperDetailRepository
+import com.takusemba.jethub.repository.DeveloperRepository
 import com.takusemba.jethub.util.createDeveloper
 import com.takusemba.jethub.util.createRepository
 import io.mockk.MockKAnnotations
@@ -34,7 +34,7 @@ class DeveloperDetailViewModelTest {
 
   @get:Rule var instantTaskExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
 
-  @MockK private lateinit var developerDetailRepository: DeveloperDetailRepository
+  @MockK private lateinit var developerRepository: DeveloperRepository
 
   @Before
   @ExperimentalCoroutinesApi
@@ -56,14 +56,14 @@ class DeveloperDetailViewModelTest {
       val developerObserver = mockk<Observer<Developer>>(relaxed = true)
       val reposObserver = mockk<Observer<List<Repository>>>(relaxed = true)
 
-      coEvery { developerDetailRepository.getDeveloper(any()) } returns createDeveloper(name = name)
-      coEvery { developerDetailRepository.getRepos(any()) } returns listOf(
+      coEvery { developerRepository.getDeveloper(any()) } returns createDeveloper(name = name)
+      coEvery { developerRepository.getDeveloperRepos(any()) } returns listOf(
         createRepository(id = 1),
         createRepository(id = 2),
         createRepository(id = 3)
       )
 
-      val viewModel = DeveloperDetailViewModel(name, developerDetailRepository)
+      val viewModel = DeveloperDetailViewModel(name, developerRepository)
 
       viewModel.developer.observeForever(developerObserver)
       viewModel.developerRepos.observeForever(reposObserver)

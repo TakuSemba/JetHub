@@ -8,14 +8,14 @@ import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.repository.FeedRepository
+import com.takusemba.jethub.repository.RepoRepository
 import kotlinx.coroutines.launch
 
 /**
  * [ViewModel] to store and manage Feed data.
  */
 class FeedViewModel @ViewModelInject constructor(
-  private val feedRepository: FeedRepository
+  private val repoRepository: RepoRepository
 ) : ViewModel() {
 
   private val mutableHotReposMap = MutableLiveData<Map<Language, List<Repository>>>()
@@ -29,7 +29,7 @@ class FeedViewModel @ViewModelInject constructor(
       runCatching {
         mutableMapOf<Language, List<Repository>>().also { map ->
           Language.POPULAR_LANGUAGES.forEach { language ->
-            map[language] = feedRepository.getHotRepos(language.title)
+            map[language] = repoRepository.getHotRepos(language.title)
           }
         }
       }.onSuccess { map ->

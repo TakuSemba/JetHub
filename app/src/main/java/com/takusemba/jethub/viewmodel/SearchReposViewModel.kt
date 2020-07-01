@@ -6,14 +6,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.repository.SearchReposRepository
+import com.takusemba.jethub.repository.SearchRepository
 import kotlinx.coroutines.launch
 
 /**
  * [ViewModel] to store and manage searched repos data.
  */
 class SearchReposViewModel @ViewModelInject constructor(
-  private val searchReposRepository: SearchReposRepository
+  private val searchRepository: SearchRepository
 ) : ViewModel() {
 
   private val mutableSearchedRepos = MutableLiveData<List<Repository>>()
@@ -22,7 +22,7 @@ class SearchReposViewModel @ViewModelInject constructor(
   init {
     viewModelScope.launch {
       runCatching {
-        searchReposRepository.searchRepos("")
+        searchRepository.searchRepos("")
       }.onSuccess { repos ->
         mutableSearchedRepos.value = repos
       }
@@ -32,7 +32,7 @@ class SearchReposViewModel @ViewModelInject constructor(
   fun search(query: String) {
     viewModelScope.launch {
       runCatching {
-        searchReposRepository.searchRepos(query)
+        searchRepository.searchRepos(query)
       }.onSuccess { repos ->
         mutableSearchedRepos.value = repos
       }

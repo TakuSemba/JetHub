@@ -23,7 +23,7 @@ class UserViewModel @ViewModelInject constructor(
   init {
     viewModelScope.launch {
       runCatching {
-        userRepository.findAll()
+        userRepository.findAllPins()
       }.onSuccess { repos -> mutablePinedRepositories.value = repos }
     }
   }

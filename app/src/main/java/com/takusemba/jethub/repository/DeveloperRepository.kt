@@ -6,9 +6,9 @@ import com.takusemba.jethub.model.Repository
 import javax.inject.Inject
 
 /**
- * Repository for `DeveloperDetailViewModel`
+ * Repository for Developer
  */
-class DeveloperDetailRepository @Inject constructor(
+class DeveloperRepository @Inject constructor(
   private val developerApi: DeveloperApi
 ) {
 
@@ -16,7 +16,7 @@ class DeveloperDetailRepository @Inject constructor(
     return developerApi.getDeveloper(name)
   }
 
-  suspend fun getRepos(owner: String): List<Repository> {
+  suspend fun getDeveloperRepos(owner: String): List<Repository> {
     return developerApi.getRepos(owner)
   }
 }

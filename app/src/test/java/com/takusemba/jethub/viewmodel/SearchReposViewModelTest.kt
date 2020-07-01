@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.repository.SearchReposRepository
+import com.takusemba.jethub.repository.SearchRepository
 import com.takusemba.jethub.util.createRepository
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
@@ -32,7 +32,7 @@ class SearchReposViewModelTest {
 
   @get:Rule var instantTaskExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
 
-  @MockK private lateinit var searchReposRepository: SearchReposRepository
+  @MockK private lateinit var searchRepository: SearchRepository
 
   @Before
   @ExperimentalCoroutinesApi
@@ -52,13 +52,13 @@ class SearchReposViewModelTest {
 
       val observer = mockk<Observer<List<Repository>>>(relaxed = true)
 
-      coEvery { searchReposRepository.searchRepos("") } returns listOf(
+      coEvery { searchRepository.searchRepos("") } returns listOf(
         createRepository(id = 1),
         createRepository(id = 2),
         createRepository(id = 3)
       )
 
-      val viewModel = SearchReposViewModel(searchReposRepository)
+      val viewModel = SearchReposViewModel(searchRepository)
 
       viewModel.searchedRepos.observeForever(observer)
       viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
@@ -72,14 +72,14 @@ class SearchReposViewModelTest {
     runBlocking {
       val observer = mockk<Observer<List<Repository>>>(relaxed = true)
 
-      coEvery { searchReposRepository.searchRepos("") } returns emptyList()
-      coEvery { searchReposRepository.searchRepos("something") } returns listOf(
+      coEvery { searchRepository.searchRepos("") } returns emptyList()
+      coEvery { searchRepository.searchRepos("something") } returns listOf(
         createRepository(id = 1),
         createRepository(id = 2),
         createRepository(id = 3)
       )
 
-      val viewModel = SearchReposViewModel(searchReposRepository)
+      val viewModel = SearchReposViewModel(searchRepository)
 
       viewModel.search("something")
 

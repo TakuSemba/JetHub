@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.model.SimpleDeveloper
-import com.takusemba.jethub.repository.SearchDevelopersRepository
+import com.takusemba.jethub.repository.SearchRepository
 import com.takusemba.jethub.util.createSimpleDeveloper
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
@@ -32,7 +32,7 @@ class SearchDevelopersViewModelTest {
 
   @get:Rule var instantTaskExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
 
-  @MockK private lateinit var searchDevelopersRepository: SearchDevelopersRepository
+  @MockK private lateinit var searchRepository: SearchRepository
 
   @Before
   @ExperimentalCoroutinesApi
@@ -52,13 +52,13 @@ class SearchDevelopersViewModelTest {
 
       val observer = mockk<Observer<List<SimpleDeveloper>>>(relaxed = true)
 
-      coEvery { searchDevelopersRepository.searchDevelopers("") } returns listOf(
+      coEvery { searchRepository.searchDevelopers("") } returns listOf(
         createSimpleDeveloper(id = 1),
         createSimpleDeveloper(id = 2),
         createSimpleDeveloper(id = 3)
       )
 
-      val viewModel = SearchDevelopersViewModel(searchDevelopersRepository)
+      val viewModel = SearchDevelopersViewModel(searchRepository)
 
       viewModel.searchedDevelopers.observeForever(observer)
       viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
@@ -73,15 +73,15 @@ class SearchDevelopersViewModelTest {
 
       val observer = mockk<Observer<List<SimpleDeveloper>>>(relaxed = true)
 
-      coEvery { searchDevelopersRepository.searchDevelopers("") } returns emptyList()
+      coEvery { searchRepository.searchDevelopers("") } returns emptyList()
 
-      coEvery { searchDevelopersRepository.searchDevelopers("something") } returns listOf(
+      coEvery { searchRepository.searchDevelopers("something") } returns listOf(
         createSimpleDeveloper(id = 1),
         createSimpleDeveloper(id = 2),
         createSimpleDeveloper(id = 3)
       )
 
-      val viewModel = SearchDevelopersViewModel(searchDevelopersRepository)
+      val viewModel = SearchDevelopersViewModel(searchRepository)
 
       viewModel.search("something")
 
