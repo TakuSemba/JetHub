@@ -1,9 +1,11 @@
-package com.takusemba.jethub.viewmodel
+package com.takusemba.jethub.feed
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import androidx.lifecycle.viewModelScope
+import com.takusemba.jethub.core.Language
 import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.repository.SearchRepository
+import com.takusemba.jethub.repository.RepoRepository
 import com.takusema.jethub.testutils.createRepository
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
@@ -27,11 +29,11 @@ import org.junit.runners.JUnit4
 
 @ObsoleteCoroutinesApi
 @RunWith(JUnit4::class)
-class SearchViewModelTest {
+class FeedViewModelTest {
 
   @get:Rule var instantTaskExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
 
-  @MockK private lateinit var searchRepository: SearchRepository
+  @MockK private lateinit var repoRepository: RepoRepository
 
   @Before
   @ExperimentalCoroutinesApi
@@ -51,38 +53,15 @@ class SearchViewModelTest {
 
       val observer = mockk<Observer<List<Repository>>>(relaxed = true)
 
-      coEvery { searchRepository.searchRepos("") } returns listOf(
+      coEvery { repoRepository.getHotRepos(any()) } returns listOf(
         createRepository(id = 1),
         createRepository(id = 2),
         createRepository(id = 3)
       )
 
-      val viewModel = SearchViewModel(searchRepository)
+      val viewModel = FeedViewModel(repoRepository)
 
-      viewModel.searchedRepos.observeForever(observer)
-      viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
-
-      verify { observer.onChanged(match { it.size == 3 }) }
-    }
-  }
-
-  @Test
-  fun `search repos`() {
-    runBlocking {
-      val observer = mockk<Observer<List<Repository>>>(relaxed = true)
-
-      coEvery { searchRepository.searchRepos("") } returns emptyList()
-      coEvery { searchRepository.searchRepos("something") } returns listOf(
-        createRepository(id = 1),
-        createRepository(id = 2),
-        createRepository(id = 3)
-      )
-
-      val viewModel = SearchViewModel(searchRepository)
-
-      viewModel.search("something")
-
-      viewModel.searchedRepos.observeForever(observer)
+      viewModel.hotRepos(Language.KOTLIN).observeForever(observer)
       viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
 
       verify { observer.onChanged(match { it.size == 3 }) }

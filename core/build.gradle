@@ -87,4 +87,13 @@ dependencies {
 
   // image
   implementation(deps.picasso)
+
+  // test modules
+  testImplementation(project(':testutils'))
+
+  // test
+  testImplementation(deps.junit)
+  testImplementation(deps.truth)
+  testImplementation(deps.testCore)
+  testImplementation(deps.mockk)
 }
