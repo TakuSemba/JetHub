@@ -44,8 +44,6 @@ dependencies {
   implementation(project(':feature:feed'))
   implementation(project(':feature:search'))
   implementation(project(':feature:pin'))
-  // FIXME :data:repository have to be api to make hilt code generation success.
-  implementation(project(':data:repository'))
 
   // desugar
   coreLibraryDesugaring(deps.desugar)

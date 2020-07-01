@@ -23,7 +23,6 @@ dependencies {
 
   // module
   implementation(project(':model'))
-  // FIXME api, database have to be api to make hilt code generation success.
   api(project(':data:api'))
   api(project(':data:database'))
 

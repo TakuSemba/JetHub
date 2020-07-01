@@ -35,7 +35,6 @@ dependencies {
   testImplementation(deps.coroutineTest)
 
   // database
-  // FIXME roomRuntime has to be api to make hilt code generation success.
   api(deps.roomRuntime)
   kapt(deps.roomCompiler)
   implementation(deps.roomKtx)

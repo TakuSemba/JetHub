@@ -44,7 +44,6 @@ dependencies {
   testImplementation(deps.coroutineTest)
 
   // network
-  // FIXME retrofit, retrofitConverter have to be api to make hilt code generation success.
   api(deps.retrofit)
   api(deps.retrofitConverter)
   debugImplementation(deps.loggingInterceptor)
