@@ -1,4 +1,4 @@
-package com.takusemba.jethub.ui.fragment
+package com.takusemba.jethub.pin
 
 import android.os.Bundle
 import android.view.View
@@ -6,10 +6,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.takusemba.jethub.R
-import com.takusemba.jethub.databinding.FragmentPinBinding
-import com.takusemba.jethub.ui.item.PinSection
 import com.takusemba.jethub.core.UserViewModel
+import com.takusemba.jethub.pin.databinding.FragmentPinBinding
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,7 +37,7 @@ class PinFragment : Fragment(R.layout.fragment_pin) {
     binding.recyclerView.layoutManager = linearLayoutManager
     binding.recyclerView.adapter = groupAdapter
 
-    userViewModel.pinedRepositories.observe(this) { repositories ->
+    userViewModel.pinedRepositories.observe(viewLifecycleOwner) { repositories ->
       binding.emptyLayout.visibility = if (repositories.isEmpty()) View.VISIBLE else View.INVISIBLE
     }
   }
