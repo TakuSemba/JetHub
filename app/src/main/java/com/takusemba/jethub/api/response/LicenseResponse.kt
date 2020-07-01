@@ -1,26 +1,28 @@
 package com.takusemba.jethub.api.response
 
-import com.google.gson.annotations.SerializedName
 import com.takusemba.jethub.model.License
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * License response data.
  */
+@Serializable
 class LicenseResponse : DataResponse<License>() {
 
-  @SerializedName("key")
+  @SerialName("key")
   var key: String? = null
 
-  @SerializedName("name")
+  @SerialName("name")
   var name: String? = null
 
-  @SerializedName("spdx_id")
+  @SerialName("spdx_id")
   var spdxId: String? = null
 
-  @SerializedName("url")
+  @SerialName("url")
   var url: String? = null
 
-  @SerializedName("node_id")
+  @SerialName("node_id")
   var nodeId: String? = null
 
   override fun toModel() = License(

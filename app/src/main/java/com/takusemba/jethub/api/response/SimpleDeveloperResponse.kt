@@ -1,104 +1,106 @@
 package com.takusemba.jethub.api.response
 
-import com.google.gson.annotations.SerializedName
 import com.takusemba.jethub.model.SimpleDeveloper
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Simplified repository response data.
  */
+@Serializable
 class SimpleDeveloperResponse : DataResponse<SimpleDeveloper>() {
 
-  @SerializedName("login")
+  @SerialName("login")
   var login: String? = null
 
-  @SerializedName("id")
+  @SerialName("id")
   var id: Int? = null
 
-  @SerializedName("node_id")
+  @SerialName("node_id")
   var nodeId: String? = null
 
-  @SerializedName("avatar_url")
+  @SerialName("avatar_url")
   var avatarUrl: String? = null
 
-  @SerializedName("gravatar_id")
+  @SerialName("gravatar_id")
   var gravatarId: String? = null
 
-  @SerializedName("url")
+  @SerialName("url")
   var url: String? = null
 
-  @SerializedName("html_url")
+  @SerialName("html_url")
   var htmlUrl: String? = null
 
-  @SerializedName("followers_url")
+  @SerialName("followers_url")
   var followersUrl: String? = null
 
-  @SerializedName("following_url")
+  @SerialName("following_url")
   var followingUrl: String? = null
 
-  @SerializedName("gists_url")
+  @SerialName("gists_url")
   var gistsUrl: String? = null
 
-  @SerializedName("starred_url")
+  @SerialName("starred_url")
   var starredUrl: String? = null
 
-  @SerializedName("subscriptions_url")
+  @SerialName("subscriptions_url")
   var subscriptionsUrl: String? = null
 
-  @SerializedName("organizations_url")
+  @SerialName("organizations_url")
   var organizationsUrl: String? = null
 
-  @SerializedName("repos_url")
+  @SerialName("repos_url")
   var reposUrl: String? = null
 
-  @SerializedName("events_url")
+  @SerialName("events_url")
   var eventsUrl: String? = null
 
-  @SerializedName("received_events_url")
+  @SerialName("received_events_url")
   var receivedEventsUrl: String? = null
 
-  @SerializedName("type")
+  @SerialName("type")
   var type: String? = null
 
-  @SerializedName("site_admin")
+  @SerialName("site_admin")
   var siteAdmin: Boolean? = null
 
-  @SerializedName("name")
+  @SerialName("name")
   var name: String? = null
 
-  @SerializedName("company")
+  @SerialName("company")
   var company: String? = null
 
-  @SerializedName("blog")
+  @SerialName("blog")
   var blog: String? = null
 
-  @SerializedName("location")
+  @SerialName("location")
   var location: String? = null
 
-  @SerializedName("email")
+  @SerialName("email")
   var email: String? = null
 
-  @SerializedName("hireable")
+  @SerialName("hireable")
   var hireable: String? = null
 
-  @SerializedName("bio")
+  @SerialName("bio")
   var bio: String? = null
 
-  @SerializedName("public_repos")
+  @SerialName("public_repos")
   var publicRepos: Int? = null
 
-  @SerializedName("public_gists")
+  @SerialName("public_gists")
   var publicGists: Int? = null
 
-  @SerializedName("followers")
+  @SerialName("followers")
   var followers: Int? = null
 
-  @SerializedName("following")
+  @SerialName("following")
   var following: Int? = null
 
-  @SerializedName("created_at")
+  @SerialName("created_at")
   var createdAt: String? = null
 
-  @SerializedName("updated_at")
+  @SerialName("updated_at")
   var updatedAt: String? = null
 
   override fun toModel() = SimpleDeveloper(

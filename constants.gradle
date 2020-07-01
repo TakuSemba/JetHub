@@ -36,12 +36,14 @@ project.ext {
       pluginKotlinGradle: "org.jetbrains.kotlin:kotlin-gradle-plugin:${version.kotlin}",
       pluginSafeArgs: "androidx.navigation:navigation-safe-args-gradle-plugin:${version.navigation}",
       pluginDaggerHilt: "com.google.dagger:hilt-android-gradle-plugin:${version.daggerHilt}",
+      pluginKotlinSerialization: "org.jetbrains.kotlin:kotlin-serialization:${version.kotlin}",
 
       // desugar
       desugar: "com.android.tools:desugar_jdk_libs:1.0.5",
 
       // kotlin
-      kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${version.kotlin}",
+      kotlin: "org.jetbrains.kotlin:kotlin-stdlib:${version.kotlin}",
+      kotlinSerialization: "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0",
 
       // coroutine
       coroutineCore: "org.jetbrains.kotlinx:kotlinx-coroutines-core:${version.coroutine}",
@@ -79,7 +81,7 @@ project.ext {
 
       // network
       retrofit: "com.squareup.retrofit2:retrofit:${version.retrofit}",
-      retrofitConverter: "com.squareup.retrofit2:converter-gson:${version.retrofit}",
+      retrofitConverter: "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.5.0",
       loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:${version.okhttp}",
       mockWebServer: "com.squareup.okhttp3:mockwebserver:${version.okhttp}",
 

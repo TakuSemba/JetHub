@@ -1,5 +1,6 @@
 package com.takusemba.jethub.di
 
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.takusemba.jethub.Config
 import com.takusemba.jethub.api.DeveloperApi
 import com.takusemba.jethub.api.DeveloperApiClient
@@ -11,9 +12,12 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonConfiguration
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
+import retrofit2.Converter
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -22,11 +26,20 @@ class NetworkModule {
 
   @Singleton
   @Provides
-  fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+  fun provideConverterFactory(): Converter.Factory {
+    return Json(JsonConfiguration.Stable.copy(
+      isLenient = true,
+      ignoreUnknownKeys = true
+    )).asConverterFactory("application/json".toMediaType())
+  }
+
+  @Singleton
+  @Provides
+  fun provideRetrofit(okHttpClient: OkHttpClient, converterFactory: Converter.Factory): Retrofit {
     return Retrofit.Builder()
       .client(okHttpClient)
       .baseUrl(Config.API_ENDPOINT)
-      .addConverterFactory(GsonConverterFactory.create())
+      .addConverterFactory(converterFactory)
       .build()
   }
 

@@ -1,6 +1,7 @@
 apply plugin: "com.android.application"
 apply plugin: "kotlin-android"
 apply plugin: "kotlin-kapt"
+apply plugin: 'kotlinx-serialization'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'dagger.hilt.android.plugin'
 apply from: "../constants.gradle"
@@ -48,6 +49,7 @@ dependencies {
 
   // kotlin
   implementation(deps.kotlin)
+  implementation(deps.kotlinSerialization)
 
   // coroutine
   implementation(deps.coroutineCore)

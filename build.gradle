@@ -11,6 +11,7 @@ buildscript {
     classpath deps.pluginKotlinGradle
     classpath deps.pluginSafeArgs
     classpath deps.pluginDaggerHilt
+    classpath deps.pluginKotlinSerialization
 
     // NOTE: Do not place your application dependencies here; they belong
     // in the individual module build.gradle files

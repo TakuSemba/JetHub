@@ -1,18 +1,20 @@
 package com.takusemba.jethub.api.response
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Response data with [items] in it.
  */
+@Serializable
 class ListResponse<T : Any> {
 
-  @SerializedName("total_count")
+  @SerialName("total_count")
   var totalCount: Int? = null
 
-  @SerializedName("incomplete_results")
+  @SerialName("incomplete_results")
   var incompleteResults: Boolean? = null
 
-  @SerializedName("items")
+  @SerialName("items")
   var items: List<T>? = null
 }

@@ -1,233 +1,235 @@
 package com.takusemba.jethub.api.response
 
-import com.google.gson.annotations.SerializedName
 import com.takusemba.jethub.model.DateFormatters
 import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 import java.time.LocalDateTime
 
 /**
  * Repository response data.
  */
+@Serializable
 class RepositoryResponse : DataResponse<Repository>() {
 
-  @SerializedName("id")
+  @SerialName("id")
   var id: Int? = null
 
-  @SerializedName("node_id")
+  @SerialName("node_id")
   var nodeId: String? = null
 
-  @SerializedName("name")
+  @SerialName("name")
   var name: String? = null
 
-  @SerializedName("full_name")
+  @SerialName("full_name")
   var fullName: String? = null
 
-  @SerializedName("private")
+  @SerialName("private")
   var private: Boolean? = null
 
-  @SerializedName("owner")
+  @SerialName("owner")
   var owner: OwnerResponse? = null
 
-  @SerializedName("html_url")
+  @SerialName("html_url")
   var htmlUrl: String? = null
 
-  @SerializedName("description")
+  @SerialName("description")
   var description: String? = null
 
-  @SerializedName("fork")
+  @SerialName("fork")
   var fork: Boolean? = null
 
-  @SerializedName("url")
+  @SerialName("url")
   var url: String? = null
 
-  @SerializedName("forks_url")
+  @SerialName("forks_url")
   var forksUrl: String? = null
 
-  @SerializedName("keys_url")
+  @SerialName("keys_url")
   var keysUrl: String? = null
 
-  @SerializedName("collaborators_url")
+  @SerialName("collaborators_url")
   var collaboratorsUrl: String? = null
 
-  @SerializedName("teams_url")
+  @SerialName("teams_url")
   var teamsUrl: String? = null
 
-  @SerializedName("hooks_url")
+  @SerialName("hooks_url")
   var hooksUrl: String? = null
 
-  @SerializedName("issue_events_url")
+  @SerialName("issue_events_url")
   var issueEventsUrl: String? = null
 
-  @SerializedName("events_url")
+  @SerialName("events_url")
   var eventsUrl: String? = null
 
-  @SerializedName("assignees_url")
+  @SerialName("assignees_url")
   var assigneesUrl: String? = null
 
-  @SerializedName("branches_url")
+  @SerialName("branches_url")
   var branchesUrl: String? = null
 
-  @SerializedName("tags_url")
+  @SerialName("tags_url")
   var tagsUrl: String? = null
 
-  @SerializedName("blobs_url")
+  @SerialName("blobs_url")
   var blobsUrl: String? = null
 
-  @SerializedName("git_tags_url")
+  @SerialName("git_tags_url")
   var gitTagsUrl: String? = null
 
-  @SerializedName("git_refs_url")
+  @SerialName("git_refs_url")
   var gitRefsUrl: String? = null
 
-  @SerializedName("trees_url")
+  @SerialName("trees_url")
   var treesUrl: String? = null
 
-  @SerializedName("statuses_url")
+  @SerialName("statuses_url")
   var statusesUrl: String? = null
 
-  @SerializedName("languages_url")
+  @SerialName("languages_url")
   var languagesUrl: String? = null
 
-  @SerializedName("stargazers_url")
+  @SerialName("stargazers_url")
   var stargazersUrl: String? = null
 
-  @SerializedName("contributors_url")
+  @SerialName("contributors_url")
   var contributorsUrl: String? = null
 
-  @SerializedName("subscribers_url")
+  @SerialName("subscribers_url")
   var subscribersUrl: String? = null
 
-  @SerializedName("subscription_url")
+  @SerialName("subscription_url")
   var subscriptionUrl: String? = null
 
-  @SerializedName("commits_url")
+  @SerialName("commits_url")
   var commitsUrl: String? = null
 
-  @SerializedName("git_commits_url")
+  @SerialName("git_commits_url")
   var git_commitsUrl: String? = null
 
-  @SerializedName("comments_url")
+  @SerialName("comments_url")
   var commentsUrl: String? = null
 
-  @SerializedName("issue_comment_url")
+  @SerialName("issue_comment_url")
   var issueCommentUrl: String? = null
 
-  @SerializedName("contents_url")
+  @SerialName("contents_url")
   var contentsUrl: String? = null
 
-  @SerializedName("compare_url")
+  @SerialName("compare_url")
   var compareUrl: String? = null
 
-  @SerializedName("merges_url")
+  @SerialName("merges_url")
   var mergesUrl: String? = null
 
-  @SerializedName("archive_url")
+  @SerialName("archive_url")
   var archiveUrl: String? = null
 
-  @SerializedName("downloads_url")
+  @SerialName("downloads_url")
   var downloadsUrl: String? = null
 
-  @SerializedName("issues_url")
+  @SerialName("issues_url")
   var issuesUrl: String? = null
 
-  @SerializedName("pulls_url")
+  @SerialName("pulls_url")
   var pullsUrl: String? = null
 
-  @SerializedName("milestones_url")
+  @SerialName("milestones_url")
   var milestonesUrl: String? = null
 
-  @SerializedName("notifications_url")
+  @SerialName("notifications_url")
   var notificationsUrl: String? = null
 
-  @SerializedName("labels_url")
+  @SerialName("labels_url")
   var labelsUrl: String? = null
 
-  @SerializedName("releases_url")
+  @SerialName("releases_url")
   var releasesUrl: String? = null
 
-  @SerializedName("deployments_url")
+  @SerialName("deployments_url")
   var deploymentsUrl: String? = null
 
-  @SerializedName("created_at")
+  @SerialName("created_at")
   var createdAt: String? = null
 
-  @SerializedName("updated_at")
+  @SerialName("updated_at")
   var updatedAt: String? = null
 
-  @SerializedName("pushed_at")
+  @SerialName("pushed_at")
   var pushedAt: String? = null
 
-  @SerializedName("git_url")
+  @SerialName("git_url")
   var gitUrl: String? = null
 
-  @SerializedName("ssh_url")
+  @SerialName("ssh_url")
   var sshUrl: String? = null
 
-  @SerializedName("clone_url")
+  @SerialName("clone_url")
   var cloneUrl: String? = null
 
-  @SerializedName("svn_url")
+  @SerialName("svn_url")
   var svnUrl: String? = null
 
-  @SerializedName("homepage")
+  @SerialName("homepage")
   var homepage: String? = null
 
-  @SerializedName("size")
+  @SerialName("size")
   var size: Int? = null
 
-  @SerializedName("stargazers_count")
+  @SerialName("stargazers_count")
   var stargazersCount: Int? = null
 
-  @SerializedName("watchers_count")
+  @SerialName("watchers_count")
   var watchersCount: Int? = null
 
-  @SerializedName("language")
+  @SerialName("language")
   var language: String? = null
 
-  @SerializedName("has_issues")
+  @SerialName("has_issues")
   var hasIssues: Boolean? = null
 
-  @SerializedName("has_projects")
+  @SerialName("has_projects")
   var hasProjects: Boolean? = null
 
-  @SerializedName("has_downloads")
+  @SerialName("has_downloads")
   var hasDownloads: Boolean? = null
 
-  @SerializedName("has_wiki")
+  @SerialName("has_wiki")
   var hasWiki: Boolean? = null
 
-  @SerializedName("has_pages")
+  @SerialName("has_pages")
   var hasPages: Boolean? = null
 
-  @SerializedName("forks_count")
+  @SerialName("forks_count")
   var forksCount: Int? = null
 
-  @SerializedName("mirror_url")
+  @SerialName("mirror_url")
   var mirrorUrl: String? = null
 
-  @SerializedName("archived")
+  @SerialName("archived")
   var archived: String? = null
 
-  @SerializedName("open_issues_count")
+  @SerialName("open_issues_count")
   var openIssuesCount: Int? = null
 
-  @SerializedName("license")
+  @SerialName("license")
   var license: LicenseResponse? = null
 
-  @SerializedName("forks")
+  @SerialName("forks")
   var forks: Int? = null
 
-  @SerializedName("open_issues")
+  @SerialName("open_issues")
   var openIssues: Int? = null
 
-  @SerializedName("watchers")
+  @SerialName("watchers")
   var watchers: Int? = null
 
-  @SerializedName("default_branch")
+  @SerialName("default_branch")
   var defaultBranch: String? = null
 
-  @SerializedName("score")
+  @SerialName("score")
   var score: Double? = null
 
   override fun toModel() = Repository(
