@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 /**
  * [ViewModel] to store and manage searched repos data.
  */
-class SearchReposViewModel @ViewModelInject constructor(
+class SearchViewModel @ViewModelInject constructor(
   private val searchRepository: SearchRepository
 ) : ViewModel() {
 

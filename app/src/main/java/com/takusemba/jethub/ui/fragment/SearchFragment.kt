@@ -8,39 +8,39 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.takusemba.jethub.R
-import com.takusemba.jethub.databinding.FragmentSearchReposBinding
-import com.takusemba.jethub.ui.item.SearchReposSection
-import com.takusemba.jethub.viewmodel.SearchReposViewModel
+import com.takusemba.jethub.ui.item.SearchSection
+import com.takusemba.jethub.viewmodel.SearchViewModel
 import com.takusemba.jethub.core.UserViewModel
+import com.takusemba.jethub.databinding.FragmentSearchBinding
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SearchReposFragment : Fragment(R.layout.fragment_search_repos) {
+class SearchFragment : Fragment(R.layout.fragment_search) {
 
   companion object {
 
-    fun newInstance() = SearchReposFragment()
+    fun newInstance() = SearchFragment()
   }
 
-  private val searchReposViewModel: SearchReposViewModel by viewModels(
+  private val searchViewModel: SearchViewModel by viewModels(
     ownerProducer = { requireParentFragment() }
   )
 
   private val userViewModel: UserViewModel by activityViewModels()
 
-  private val searchReposSection: SearchReposSection by lazy {
-    SearchReposSection(this, searchReposViewModel, userViewModel)
+  private val searchSection: SearchSection by lazy {
+    SearchSection(this, searchViewModel, userViewModel)
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    val binding = FragmentSearchReposBinding.bind(view)
+    val binding = FragmentSearchBinding.bind(view)
 
     val linearLayoutManager = LinearLayoutManager(context)
     val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
-      add(searchReposSection)
+      add(searchSection)
     }
     binding.recyclerView.layoutManager = linearLayoutManager
     binding.recyclerView.adapter = groupAdapter
@@ -51,7 +51,7 @@ class SearchReposFragment : Fragment(R.layout.fragment_search_repos) {
       }
 
       override fun onQueryTextChange(newText: String): Boolean {
-        searchReposViewModel.search(newText)
+        searchViewModel.search(newText)
         return true
       }
     })

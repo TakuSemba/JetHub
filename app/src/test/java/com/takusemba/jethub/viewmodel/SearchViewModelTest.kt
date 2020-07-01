@@ -28,7 +28,7 @@ import org.junit.runners.JUnit4
 
 @ObsoleteCoroutinesApi
 @RunWith(JUnit4::class)
-class SearchReposViewModelTest {
+class SearchViewModelTest {
 
   @get:Rule var instantTaskExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
 
@@ -58,7 +58,7 @@ class SearchReposViewModelTest {
         createRepository(id = 3)
       )
 
-      val viewModel = SearchReposViewModel(searchRepository)
+      val viewModel = SearchViewModel(searchRepository)
 
       viewModel.searchedRepos.observeForever(observer)
       viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
@@ -79,7 +79,7 @@ class SearchReposViewModelTest {
         createRepository(id = 3)
       )
 
-      val viewModel = SearchReposViewModel(searchRepository)
+      val viewModel = SearchViewModel(searchRepository)
 
       viewModel.search("something")
 

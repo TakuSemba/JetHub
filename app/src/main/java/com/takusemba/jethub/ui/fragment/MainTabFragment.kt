@@ -27,15 +27,9 @@ class MainTabFragment : Fragment(R.layout.fragment_main_tab) {
             }
             return@OnNavigationItemSelectedListener true
           }
-          R.id.repositories -> {
+          R.id.search -> {
             childFragmentManager.commit {
-              replace(R.id.container, SearchReposFragment.newInstance())
-            }
-            return@OnNavigationItemSelectedListener true
-          }
-          R.id.developers -> {
-            childFragmentManager.commit {
-              replace(R.id.container, SearchDevelopersFragment.newInstance())
+              replace(R.id.container, SearchFragment.newInstance())
             }
             return@OnNavigationItemSelectedListener true
           }

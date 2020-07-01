@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-  xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:id="@+id/mobile_navigation"
   app:startDestination="@id/mainTabFragment"
@@ -8,24 +7,7 @@
 
   <fragment
     android:id="@+id/mainTabFragment"
-    android:name="com.takusemba.jethub.ui.fragment.MainTabFragment"
     android:label="MainTabFragment"
-    >
-    <action
-      android:id="@+id/action_main_tab_to_developer_detail"
-      app:destination="@id/developerDetailFragment"
-      />
-  </fragment>
-  <fragment
-    android:id="@+id/developerDetailFragment"
-    android:name="com.takusemba.jethub.ui.fragment.DeveloperDetailFragment"
-    android:label="DeveloperDetailFragment"
-    >
-    <argument
-      android:name="developerName"
-      app:argType="string"
-      />
-  </fragment>
-
-
+    android:name="com.takusemba.jethub.ui.fragment.MainTabFragment"
+    />
 </navigation>

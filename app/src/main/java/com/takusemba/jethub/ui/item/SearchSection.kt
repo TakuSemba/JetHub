@@ -4,26 +4,26 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.observe
 import com.takusemba.jethub.core.RepositoryItem
 import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.viewmodel.DeveloperDetailViewModel
+import com.takusemba.jethub.viewmodel.SearchViewModel
 import com.takusemba.jethub.core.UserViewModel
 import com.xwray.groupie.Item
 import com.xwray.groupie.Section
 
-class DeveloperDetailSection(
+class SearchSection(
   lifecycleOwner: LifecycleOwner,
-  developerDetailViewModel: DeveloperDetailViewModel,
+  searchViewModel: SearchViewModel,
   private val userViewModel: UserViewModel
 ) : Section() {
 
   init {
-    developerDetailViewModel.developerRepos.observe(lifecycleOwner) { repos ->
-      updateResult(repos)
+    searchViewModel.searchedRepos.observe(lifecycleOwner) { repositories ->
+      updateResult(repositories)
     }
   }
 
-  private fun updateResult(repos: List<Repository>) {
+  private fun updateResult(repositories: List<Repository>) {
     val items = mutableListOf<Item<*>>()
-    (repos).mapTo(items) { repository ->
+    (repositories).mapTo(items) { repository ->
       RepositoryItem(repository, userViewModel)
     }
     update(items)

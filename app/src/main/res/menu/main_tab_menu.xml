@@ -9,15 +9,9 @@
     />
 
   <item
-    android:id="@+id/repositories"
+    android:id="@+id/search"
     android:icon="@drawable/ic_tab_repository"
-    android:title="@string/repositories"
-    />
-
-  <item
-    android:id="@+id/developers"
-    android:icon="@drawable/ic_tab_developer"
-    android:title="@string/developers"
+    android:title="@string/search"
     />
 
   <item
