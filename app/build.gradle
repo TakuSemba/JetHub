@@ -44,70 +44,70 @@ android {
 dependencies {
 
   // desugar
-  coreLibraryDesugaring(Dep.desugar)
+  coreLibraryDesugaring(deps.desugar)
 
   // kotlin
-  implementation(Dep.kotlin)
+  implementation(deps.kotlin)
 
   // coroutine
-  implementation(Dep.coroutineCore)
-  implementation(Dep.coroutineAndroid)
-  testImplementation(Dep.coroutineTest)
+  implementation(deps.coroutineCore)
+  implementation(deps.coroutineAndroid)
+  testImplementation(deps.coroutineTest)
 
   // androidx
-  implementation(Dep.appCompat)
-  implementation(Dep.material)
-  implementation(Dep.constraintLayout)
-  implementation(Dep.activityKtx)
-  implementation(Dep.fragmentKtx)
+  implementation(deps.appCompat)
+  implementation(deps.material)
+  implementation(deps.constraintLayout)
+  implementation(deps.activityKtx)
+  implementation(deps.fragmentKtx)
 
   // lifecycle
-  implementation(Dep.lifecycleRuntime)
-  implementation(Dep.lifecycleExtensions)
-  kapt(Dep.lifecycleCompiler)
-  implementation(Dep.viewmodelKtx)
-  implementation(Dep.livedataKtx)
+  implementation(deps.lifecycleRuntime)
+  implementation(deps.lifecycleExtensions)
+  kapt(deps.lifecycleCompiler)
+  implementation(deps.viewmodelKtx)
+  implementation(deps.livedataKtx)
 
 
   // navigation
-  implementation(Dep.navCommonKtx)
-  implementation(Dep.navRuntimeKtx)
-  implementation(Dep.navFragmentKtx)
-  implementation(Dep.navUiKtx)
+  implementation(deps.navCommonKtx)
+  implementation(deps.navRuntimeKtx)
+  implementation(deps.navFragmentKtx)
+  implementation(deps.navUiKtx)
 
   // dependency injection
-  implementation(Dep.dagger)
-  kapt(Dep.daggerCompiler)
-  implementation(Dep.daggerHilt)
-  kapt(Dep.daggerHiltCompiler)
-  implementation(Dep.androidHilt)
-  implementation(Dep.androidHiltViewModel)
-  kapt(Dep.androidHiltCompiler)
+  implementation(deps.dagger)
+  kapt(deps.daggerCompiler)
+  implementation(deps.daggerHilt)
+  kapt(deps.daggerHiltCompiler)
+  implementation(deps.androidHilt)
+  implementation(deps.androidHiltViewModel)
+  kapt(deps.androidHiltCompiler)
 
   // network
-  implementation(Dep.retrofit)
-  implementation(Dep.retrofitConverter)
-  debugImplementation(Dep.loggingInterceptor)
-  testImplementation(Dep.mockWebServer)
+  implementation(deps.retrofit)
+  implementation(deps.retrofitConverter)
+  debugImplementation(deps.loggingInterceptor)
+  testImplementation(deps.mockWebServer)
 
   // database
-  implementation(Dep.roomRuntime)
-  kapt(Dep.roomCompiler)
-  implementation(Dep.roomKtx)
+  implementation(deps.roomRuntime)
+  kapt(deps.roomCompiler)
+  implementation(deps.roomKtx)
 
   // recycler view
-  implementation(Dep.groupie)
-  implementation(Dep.groupieViewBinding)
+  implementation(deps.groupie)
+  implementation(deps.groupieViewBinding)
 
   // ui
-  implementation(Dep.circleImage)
+  implementation(deps.circleImage)
 
   // image
-  implementation(Dep.picasso)
+  implementation(deps.picasso)
 
   // test
-  testImplementation(Dep.junit)
-  testImplementation(Dep.truth)
-  testImplementation(Dep.testCore)
-  testImplementation(Dep.mockk)
+  testImplementation(deps.junit)
+  testImplementation(deps.truth)
+  testImplementation(deps.testCore)
+  testImplementation(deps.mockk)
 }

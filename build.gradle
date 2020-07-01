@@ -1,15 +1,16 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+  apply from: "constants.gradle"
   repositories {
     google()
     jcenter()
   }
   dependencies {
-    classpath(Dep.pluginBuildGradle)
-    classpath(Dep.pluginKotlinGradle)
-    classpath(Dep.pluginSafeArgs)
-    classpath(Dep.pluginDaggerHilt)
+    classpath(deps.pluginBuildGradle)
+    classpath(deps.pluginKotlinGradle)
+    classpath(deps.pluginSafeArgs)
+    classpath(deps.pluginDaggerHilt)
 
     // NOTE: Do not place your application dependencies here; they belong
     // in the individual module build.gradle files
