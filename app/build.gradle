@@ -5,19 +5,18 @@ apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'dagger.hilt.android.plugin'
 
 android {
-  compileSdkVersion(Config.compileSdkVersion)
+  compileSdkVersion Config.compileSdkVersion
   defaultConfig {
-    applicationId  Config.packageName
+    applicationId Config.packageName
     minSdkVersion Config.minSdkVersion
     targetSdkVersion Config.targetSdkVersion
-    versionCode  Config.versionCode
-    versionName  Config.versionName
-    testInstrumentationRunner  "android.support.test.runner.AndroidJUnitRunner"
+    versionCode Config.versionCode
+    versionName Config.versionName
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     Properties properties = new Properties()
     properties.load(project.rootProject.file('local.properties').newDataInputStream())
     buildConfigField "String", "API_KEY", "\"" + properties.getProperty("api_token") + "\""
-
   }
   buildTypes {
     release {
