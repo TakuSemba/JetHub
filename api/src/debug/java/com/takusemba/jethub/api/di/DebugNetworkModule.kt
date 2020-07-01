@@ -1,4 +1,4 @@
-package com.takusemba.jethub.di
+package com.takusemba.jethub.api.di
 
 import com.takusemba.jethub.api.ApiTokenInterceptor
 import dagger.Module

@@ -1,6 +1,8 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: "kotlin-kapt"
 apply plugin: 'kotlinx-serialization'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
   compileSdkVersion config.compileSdkVersion
@@ -46,4 +48,13 @@ dependencies {
   implementation(deps.retrofitConverter)
   debugImplementation(deps.loggingInterceptor)
   testImplementation(deps.mockWebServer)
+
+  // dependency injection
+  implementation(deps.dagger)
+  kapt(deps.daggerCompiler)
+  implementation(deps.daggerHilt)
+  kapt(deps.daggerHiltCompiler)
+  implementation(deps.androidHilt)
+  implementation(deps.androidHiltViewModel)
+  kapt(deps.androidHiltCompiler)
 }

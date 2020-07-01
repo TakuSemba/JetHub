@@ -1,7 +1,6 @@
-package com.takusemba.jethub.di
+package com.takusemba.jethub.api.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.takusemba.jethub.Config
 import com.takusemba.jethub.api.DeveloperApi
 import com.takusemba.jethub.api.DeveloperApiClient
 import com.takusemba.jethub.api.RepoApi
@@ -38,7 +37,7 @@ class NetworkModule {
   fun provideRetrofit(okHttpClient: OkHttpClient, converterFactory: Converter.Factory): Retrofit {
     return Retrofit.Builder()
       .client(okHttpClient)
-      .baseUrl(Config.API_ENDPOINT)
+      .baseUrl("https://api.github.com/")
       .addConverterFactory(converterFactory)
       .build()
   }

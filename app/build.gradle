@@ -86,12 +86,6 @@ dependencies {
   implementation(deps.androidHiltViewModel)
   kapt(deps.androidHiltCompiler)
 
-  // network
-  implementation(deps.retrofit)
-  implementation(deps.retrofitConverter)
-  debugImplementation(deps.loggingInterceptor)
-  testImplementation(deps.mockWebServer)
-
   // database
   implementation(deps.roomRuntime)
   kapt(deps.roomCompiler)
