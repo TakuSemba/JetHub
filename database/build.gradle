@@ -1,0 +1,40 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: "kotlin-kapt"
+
+android {
+  compileSdkVersion config.compileSdkVersion
+  defaultConfig {
+    minSdkVersion config.minSdkVersion
+    targetSdkVersion config.targetSdkVersion
+    versionCode config.versionCode
+    versionName config.versionName
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+
+  // module
+  implementation(project(':model'))
+
+  // kotlin
+  implementation(deps.kotlin)
+
+  // coroutine
+  implementation(deps.coroutineCore)
+  implementation(deps.coroutineAndroid)
+  testImplementation(deps.coroutineTest)
+
+  // database
+  implementation(deps.roomRuntime)
+  kapt(deps.roomCompiler)
+  implementation(deps.roomKtx)
+}
