@@ -9,6 +9,7 @@ import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentMainTabBinding
 import com.takusemba.jethub.feed.FeedFragment
 import com.takusemba.jethub.pin.PinFragment
+import com.takusemba.jethub.search.SearchFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

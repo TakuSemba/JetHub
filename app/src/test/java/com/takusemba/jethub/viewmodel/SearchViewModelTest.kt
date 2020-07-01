@@ -2,7 +2,6 @@ package com.takusemba.jethub.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.SearchRepository
 import com.takusema.jethub.testutils.createRepository
