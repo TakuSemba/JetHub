@@ -4,7 +4,7 @@ import java.time.LocalDateTime
 
 class Repository(
   val id: Int,
-  val owner: Owner,
+  val owner: com.takusemba.jethub.model.Owner,
   val name: String,
   val description: String,
   val createdAt: LocalDateTime,

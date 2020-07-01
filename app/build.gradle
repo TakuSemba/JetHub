@@ -44,6 +44,9 @@ android {
 
 dependencies {
 
+  // module
+  implementation(project(':model'))
+
   // desugar
   coreLibraryDesugaring(deps.desugar)
 
