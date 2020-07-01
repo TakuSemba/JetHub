@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentPinBinding
 import com.takusemba.jethub.ui.item.PinSection
-import com.takusemba.jethub.viewmodel.UserViewModel
+import com.takusemba.jethub.feed.UserViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import dagger.hilt.android.AndroidEntryPoint

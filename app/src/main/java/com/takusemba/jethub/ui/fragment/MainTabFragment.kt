@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import androidx.fragment.app.transaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentMainTabBinding
+import com.takusemba.jethub.feed.FeedFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

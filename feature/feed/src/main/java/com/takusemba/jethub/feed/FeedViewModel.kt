@@ -1,4 +1,4 @@
-package com.takusemba.jethub.viewmodel
+package com.takusemba.jethub.feed
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
-import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.RepoRepository
 import kotlinx.coroutines.launch

@@ -1,13 +1,11 @@
-package com.takusemba.jethub.ui.item
+package com.takusemba.jethub.feed
 
 import android.view.View
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
-import com.takusemba.jethub.R
-import com.takusemba.jethub.databinding.ItemRepositoryBinding
-import com.takusemba.jethub.model.Language
+import com.takusemba.jethub.feed.R
+import com.takusemba.jethub.feed.databinding.ItemRepositoryBinding
 import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.viewmodel.UserViewModel
 import com.xwray.groupie.viewbinding.BindableItem
 
 data class RepositoryItem(

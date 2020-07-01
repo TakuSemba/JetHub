@@ -1,11 +1,8 @@
-package com.takusemba.jethub.ui.item
+package com.takusemba.jethub.feed
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.observe
-import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.viewmodel.FeedViewModel
-import com.takusemba.jethub.viewmodel.UserViewModel
 import com.xwray.groupie.Item
 import com.xwray.groupie.Section
 

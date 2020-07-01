@@ -1,16 +1,11 @@
-package com.takusemba.jethub.ui.adapter
+package com.takusemba.jethub.feed
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.PagerAdapter
-import com.takusemba.jethub.databinding.ItemFeedBinding
-import com.takusemba.jethub.model.Language
-import com.takusemba.jethub.ui.fragment.FeedFragment
-import com.takusemba.jethub.ui.item.FeedRepoSection
-import com.takusemba.jethub.viewmodel.FeedViewModel
-import com.takusemba.jethub.viewmodel.UserViewModel
+import com.takusemba.jethub.feed.databinding.ItemFeedBinding
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 

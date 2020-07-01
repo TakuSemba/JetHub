@@ -1,15 +1,11 @@
-package com.takusemba.jethub.ui.fragment
+package com.takusemba.jethub.feed
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import com.takusemba.jethub.R
-import com.takusemba.jethub.databinding.FragmentFeedBinding
-import com.takusemba.jethub.ui.adapter.FeedAdapter
-import com.takusemba.jethub.viewmodel.FeedViewModel
-import com.takusemba.jethub.viewmodel.UserViewModel
+import com.takusemba.jethub.feed.databinding.FragmentFeedBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
