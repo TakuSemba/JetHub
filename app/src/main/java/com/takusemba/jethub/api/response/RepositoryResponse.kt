@@ -1,7 +1,6 @@
 package com.takusemba.jethub.api.response
 
 import com.takusemba.jethub.model.DateFormatters
-import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -242,6 +241,6 @@ class RepositoryResponse : DataResponse<Repository>() {
     starsCount = stargazersCount ?: 0,
     watchersCount = watchersCount ?: 0,
     forksCount = forksCount ?: 0,
-    language = Language.of(language)
+    language = language ?: ""
   )
 }

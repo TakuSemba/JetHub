@@ -5,6 +5,7 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.ItemRepositoryBinding
+import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.viewmodel.UserViewModel
 import com.xwray.groupie.viewbinding.BindableItem
@@ -28,8 +29,9 @@ data class RepositoryItem(
     } else {
       View.VISIBLE
     }
-    binding.languageName.text = repository.language.title
-    binding.languageIcon.setImageResource(repository.language.icon)
+    val language = Language.of(repository.language)
+    binding.languageName.text = language.title
+    binding.languageIcon.setImageResource(language.icon)
     binding.starCount.text = repository.starsCount.toString()
     binding.forkCount.text = repository.forksCount.toString()
 

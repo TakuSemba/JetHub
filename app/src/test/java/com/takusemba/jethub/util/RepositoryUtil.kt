@@ -1,6 +1,5 @@
 package com.takusemba.jethub.util
 
-import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Owner
 import com.takusemba.jethub.model.Repository
 import java.time.LocalDateTime
@@ -15,7 +14,7 @@ fun createRepository(
   starsCount: Int = 0,
   watchersCount: Int = 0,
   forksCount: Int = 0,
-  language: Language = Language.KOTLIN
+  language: String = "Kotlin"
 ) = Repository(
   id = id,
   owner = owner,

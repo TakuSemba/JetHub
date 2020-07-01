@@ -12,5 +12,5 @@ class Repository(
   val starsCount: Int,
   val watchersCount: Int,
   val forksCount: Int,
-  val language: Language
+  val language: String
 )
