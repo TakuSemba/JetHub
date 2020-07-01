@@ -63,12 +63,6 @@ dependencies {
   implementation(deps.viewmodelKtx)
   implementation(deps.livedataKtx)
 
-  // navigation
-  implementation(deps.navCommonKtx)
-  implementation(deps.navRuntimeKtx)
-  implementation(deps.navFragmentKtx)
-  implementation(deps.navUiKtx)
-
   // dependency injection
   implementation(deps.dagger)
   kapt(deps.daggerCompiler)
