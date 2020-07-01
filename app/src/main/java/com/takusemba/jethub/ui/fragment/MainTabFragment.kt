@@ -49,7 +49,7 @@ class MainTabFragment : Fragment(R.layout.fragment_main_tab) {
       })
 
     if (childFragmentManager.findFragmentById(R.id.container) == null) {
-      childFragmentManager.transaction {
+      childFragmentManager.commit {
         replace(R.id.container, FeedFragment.newInstance())
       }
     }
