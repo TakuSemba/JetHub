@@ -35,8 +35,6 @@ class FeedViewModel @ViewModelInject constructor(
         }
       }.onSuccess { map ->
         mutableHotReposMap.value = map
-      }.onFailure {
-        Log.d("test", "e: ${it.message}")
       }
     }
   }
