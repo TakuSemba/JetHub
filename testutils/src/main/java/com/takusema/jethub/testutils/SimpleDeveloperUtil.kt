@@ -1,4 +1,4 @@
-package com.takusemba.jethub.util
+package com.takusema.jethub.testutils
 
 import com.takusemba.jethub.model.SimpleDeveloper
 

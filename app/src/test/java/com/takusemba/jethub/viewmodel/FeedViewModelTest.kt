@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.RepoRepository
-import com.takusemba.jethub.util.createRepository
+import com.takusema.jethub.testutils.createRepository
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK

@@ -5,7 +5,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.model.SimpleDeveloper
 import com.takusemba.jethub.repository.SearchRepository
-import com.takusemba.jethub.util.createSimpleDeveloper
+import com.takusema.jethub.testutils.createSimpleDeveloper
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
