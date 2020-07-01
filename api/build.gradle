@@ -57,4 +57,10 @@ dependencies {
   implementation(deps.androidHilt)
   implementation(deps.androidHiltViewModel)
   kapt(deps.androidHiltCompiler)
+
+  // test
+  testImplementation(deps.junit)
+  testImplementation(deps.truth)
+  testImplementation(deps.testCore)
+  testImplementation(deps.mockk)
 }

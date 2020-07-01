@@ -1,7 +1,11 @@
 package com.takusemba.jethub.api
 
 import com.google.common.truth.Truth.assertThat
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.coroutines.runBlocking
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonConfiguration
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.Before
@@ -10,7 +14,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 @RunWith(JUnit4::class)
 class RepoApiClientTest {
@@ -22,9 +25,13 @@ class RepoApiClientTest {
 
   @Before
   fun setUp() {
+    val converterFactory = Json(JsonConfiguration.Stable.copy(
+      isLenient = true,
+      ignoreUnknownKeys = true
+    )).asConverterFactory("application/json".toMediaType())
     val retrofit = Retrofit.Builder()
       .baseUrl(mockWebServer.url("/").toString())
-      .addConverterFactory(GsonConverterFactory.create())
+      .addConverterFactory(converterFactory)
       .build()
     client = RepoApiClient(retrofit)
   }

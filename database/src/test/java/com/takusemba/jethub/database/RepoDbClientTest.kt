@@ -5,7 +5,6 @@ import com.takusemba.jethub.database.dao.RepositoryDao
 import com.takusemba.jethub.database.entity.RepositoryEntity
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
-import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
