@@ -1,6 +1,5 @@
 package com.takusemba.jethub.api
 
-import com.takusemba.jethub.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 
@@ -19,7 +18,7 @@ class ApiTokenInterceptor : Interceptor {
     val builder = chain.request().newBuilder()
     // API_KEY will be `null` if nothing is set in local.properties
     if (token.isNotBlank() && token != "null") {
-      builder.addHeader(AUTHORIZATION_HEADER, "token ${BuildConfig.API_KEY}")
+      builder.addHeader(AUTHORIZATION_HEADER, "token $token")
     }
     return chain.proceed(builder.build())
   }

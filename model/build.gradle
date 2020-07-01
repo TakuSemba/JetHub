@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
   compileSdkVersion config.compileSdkVersion
@@ -10,10 +9,6 @@ android {
     versionCode config.versionCode
     versionName config.versionName
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-    Properties properties = new Properties()
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
-    buildConfigField "String", "API_KEY", "\"" + properties.getProperty("api_token") + "\""
   }
 
   buildTypes {
@@ -25,6 +20,7 @@ android {
 }
 
 dependencies {
+
   // desugar
   coreLibraryDesugaring(deps.desugar)
 

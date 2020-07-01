@@ -1,6 +1,5 @@
 package com.takusemba.jethub.api
 
-import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.model.SimpleDeveloper
 import java.time.LocalDateTime
@@ -11,14 +10,14 @@ import java.time.LocalDateTime
 interface SearchApi {
 
   /**
-   * get hot list of [Repository] from [Language] created after [from].
+   * get hot list of [Repository] from [language] created after [from].
    */
-  suspend fun getHotRepos(language: Language, from: LocalDateTime): List<Repository>
+  suspend fun getHotRepos(language: String, from: LocalDateTime): List<Repository>
 
   /**
-   * get hot list of [SimpleDeveloper] from [Language] created after [from].
+   * get hot list of [SimpleDeveloper] from [language] created after [from].
    */
-  suspend fun getHotDevelopers(language: Language, from: LocalDateTime): List<SimpleDeveloper>
+  suspend fun getHotDevelopers(language: String, from: LocalDateTime): List<SimpleDeveloper>
 
   /**
    * search [Repository] from query.

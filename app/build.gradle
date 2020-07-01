@@ -15,10 +15,6 @@ android {
     versionCode config.versionCode
     versionName config.versionName
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-    Properties properties = new Properties()
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
-    buildConfigField "String", "API_KEY", "\"" + properties.getProperty("api_token") + "\""
   }
   buildTypes {
     release {
@@ -46,6 +42,7 @@ dependencies {
 
   // module
   implementation(project(':model'))
+  implementation(project(':api'))
 
   // desugar
   coreLibraryDesugaring(deps.desugar)
@@ -72,7 +69,6 @@ dependencies {
   kapt(deps.lifecycleCompiler)
   implementation(deps.viewmodelKtx)
   implementation(deps.livedataKtx)
-
 
   // navigation
   implementation(deps.navCommonKtx)

@@ -29,7 +29,7 @@ class FeedViewModel @ViewModelInject constructor(
       runCatching {
         mutableMapOf<Language, List<Repository>>().also { map ->
           Language.POPULAR_LANGUAGES.forEach { language ->
-            map[language] = feedRepository.getHotRepos(language)
+            map[language] = feedRepository.getHotRepos(language.title)
           }
         }
       }.onSuccess { map ->

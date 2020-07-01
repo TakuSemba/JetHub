@@ -4,7 +4,6 @@ import com.takusemba.jethub.api.response.ListResponse
 import com.takusemba.jethub.api.response.RepositoryResponse
 import com.takusemba.jethub.api.response.SimpleDeveloperResponse
 import com.takusemba.jethub.model.DateFormatters
-import com.takusemba.jethub.model.Language
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.model.SimpleDeveloper
 import kotlinx.coroutines.Dispatchers.IO
@@ -43,24 +42,24 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
   private val service = retrofit.create(Service::class.java)
 
   override suspend fun getHotRepos(
-    language: Language,
+    language: String,
     from: LocalDateTime
   ): List<Repository> {
     return withContext(IO) {
       service.getHotRepos(
-        "language:${language.title} created:>${from.format(DateFormatters.ofSearchQuery())}")
+        "language:${language} created:>${from.format(DateFormatters.ofSearchQuery())}")
         .items
         ?.map { response -> response.toModel() } ?: emptyList()
     }
   }
 
   override suspend fun getHotDevelopers(
-    language: Language,
+    language: String,
     from: LocalDateTime
   ): List<SimpleDeveloper> {
     return withContext(IO) {
       service.getHotDevelopers(
-        "language:${language.title} created:>${from.format(DateFormatters.ofSearchQuery())}")
+        "language:${language} created:>${from.format(DateFormatters.ofSearchQuery())}")
         .items
         ?.map { response -> response.toModel() } ?: emptyList()
     }

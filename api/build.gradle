@@ -1,0 +1,49 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlinx-serialization'
+
+android {
+  compileSdkVersion config.compileSdkVersion
+  defaultConfig {
+    minSdkVersion config.minSdkVersion
+    targetSdkVersion config.targetSdkVersion
+    versionCode config.versionCode
+    versionName config.versionName
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    buildConfigField "String", "API_KEY", "\"" + properties.getProperty("api_token") + "\""
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+
+  // module
+  implementation(project(':model'))
+
+  // desugar
+  coreLibraryDesugaring(deps.desugar)
+
+  // kotlin
+  implementation(deps.kotlin)
+  implementation(deps.kotlinSerialization)
+
+  // coroutine
+  implementation(deps.coroutineCore)
+  implementation(deps.coroutineAndroid)
+  testImplementation(deps.coroutineTest)
+
+  // network
+  implementation(deps.retrofit)
+  implementation(deps.retrofitConverter)
+  debugImplementation(deps.loggingInterceptor)
+  testImplementation(deps.mockWebServer)
+}

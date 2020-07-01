@@ -13,7 +13,7 @@ class FeedRepository @Inject constructor(
   private val searchApi: SearchApi
 ) {
 
-  suspend fun getHotRepos(language: Language): List<Repository> {
+  suspend fun getHotRepos(language: String): List<Repository> {
     return searchApi.getHotRepos(language, LocalDateTime.now().minusMonths(1))
   }
 }
