@@ -3,15 +3,16 @@ apply plugin: "kotlin-android"
 apply plugin: "kotlin-kapt"
 apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'dagger.hilt.android.plugin'
+apply from: "../constants.gradle"
 
 android {
-  compileSdkVersion Config.compileSdkVersion
+  compileSdkVersion config.compileSdkVersion
   defaultConfig {
-    applicationId Config.packageName
-    minSdkVersion Config.minSdkVersion
-    targetSdkVersion Config.targetSdkVersion
-    versionCode Config.versionCode
-    versionName Config.versionName
+    applicationId config.packageName
+    minSdkVersion config.minSdkVersion
+    targetSdkVersion config.targetSdkVersion
+    versionCode config.versionCode
+    versionName config.versionName
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     Properties properties = new Properties()
