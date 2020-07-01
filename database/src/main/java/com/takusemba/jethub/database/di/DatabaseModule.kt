@@ -1,4 +1,4 @@
-package com.takusemba.jethub.di
+package com.takusemba.jethub.database.di
 
 import android.app.Application
 import androidx.room.Room

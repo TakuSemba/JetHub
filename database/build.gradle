@@ -35,7 +35,7 @@ dependencies {
   testImplementation(deps.coroutineTest)
 
   // database
-  implementation(deps.roomRuntime)
+  api(deps.roomRuntime)
   kapt(deps.roomCompiler)
   implementation(deps.roomKtx)
 

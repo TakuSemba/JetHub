@@ -44,8 +44,8 @@ dependencies {
   testImplementation(deps.coroutineTest)
 
   // network
-  implementation(deps.retrofit)
-  implementation(deps.retrofitConverter)
+  api(deps.retrofit)
+  api(deps.retrofitConverter)
   debugImplementation(deps.loggingInterceptor)
   testImplementation(deps.mockWebServer)
 

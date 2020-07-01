@@ -1,4 +1,4 @@
-package com.takusemba.jethub.di
+package com.takusemba.jethub.api.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.takusemba.jethub.api.DeveloperApi
