@@ -40,7 +40,7 @@ android {
 dependencies {
 
   // module
-  implementation(project(':core'))
+  implementation(project(':base'))
   implementation(project(':model'))
   implementation(project(':feature:feed'))
   implementation(project(':feature:search'))

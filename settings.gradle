@@ -1,6 +1,6 @@
 include ':app'
 include ':model'
-include ':core'
+include ':base'
 include ':feature:feed'
 include ':feature:search'
 include ':feature:pin'
