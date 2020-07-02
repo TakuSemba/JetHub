@@ -35,7 +35,6 @@ dependencies {
   // module
   implementation(project(':core'))
   implementation(project(':model'))
-  api(project(':data:repository'))
 
   // desugar
   coreLibraryDesugaring(deps.desugar)
