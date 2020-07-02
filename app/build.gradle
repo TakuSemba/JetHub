@@ -51,12 +51,6 @@ dependencies {
 
   // kotlin
   implementation(deps.kotlin)
-  implementation(deps.kotlinSerialization)
-
-  // coroutine
-  implementation(deps.coroutineCore)
-  implementation(deps.coroutineAndroid)
-  testImplementation(deps.coroutineTest)
 
   // androidx
   implementation(deps.appCompat)
@@ -86,16 +80,6 @@ dependencies {
   implementation(deps.androidHilt)
   implementation(deps.androidHiltViewModel)
   kapt(deps.androidHiltCompiler)
-
-  // recycler view
-  implementation(deps.groupie)
-  implementation(deps.groupieViewBinding)
-
-  // ui
-  implementation(deps.circleImage)
-
-  // image
-  implementation(deps.picasso)
 
   // test modules
   testImplementation(project(':testutils'))
