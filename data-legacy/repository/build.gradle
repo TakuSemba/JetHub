@@ -23,8 +23,8 @@ dependencies {
 
   // module
   implementation(project(':model'))
-  api(project(':data:api'))
-  api(project(':data:database'))
+  api(project(':data-legacy:api'))
+  api(project(':data-legacy:database'))
 
   // kotlin
   implementation(deps.kotlin)
