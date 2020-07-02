@@ -5,6 +5,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import com.takusemba.jethub.base.Direction
+import com.takusemba.jethub.base.NavigationViewModel
 import com.takusemba.jethub.base.UserViewModel
 import com.takusemba.jethub.feed.databinding.FragmentFeedBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,6 +23,8 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
     ownerProducer = { requireParentFragment() }
   )
 
+  private val navigationViewModel: NavigationViewModel by activityViewModels()
+
   private val userViewModel: UserViewModel by activityViewModels()
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,5 +34,9 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
     val feedAdapter = FeedAdapter(userViewModel, feedViewModel, this)
     binding.pager.adapter = feedAdapter
     binding.tabLayout.setupWithViewPager(binding.pager)
+
+    binding.account.setOnClickListener {
+      navigationViewModel.onDirectionChanged(Direction.ACCOUNT)
+    }
   }
 }

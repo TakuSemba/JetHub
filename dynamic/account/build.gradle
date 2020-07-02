@@ -1,14 +1,11 @@
-apply plugin: "com.android.application"
-apply plugin: "kotlin-android"
+apply plugin: "com.android.dynamic-feature"
+apply plugin: 'kotlin-android'
 apply plugin: "kotlin-kapt"
-apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'dagger.hilt.android.plugin'
-apply from: file('../depgraph.gradle')
 
 android {
   compileSdkVersion config.compileSdkVersion
   defaultConfig {
-    applicationId config.packageName
     minSdkVersion config.minSdkVersion
     targetSdkVersion config.targetSdkVersion
     versionCode config.versionCode
@@ -17,40 +14,37 @@ android {
   }
   buildTypes {
     release {
-      minifyEnabled true
-      proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
   }
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
-    coreLibraryDesugaringEnabled true
   }
   kotlinOptions {
     jvmTarget = '1.8'
   }
-  kapt {
-    correctErrorTypes true
-  }
   buildFeatures {
     viewBinding = true
   }
-  dynamicFeatures = [':dynamic:account']
 }
 
 dependencies {
 
   // module
-  implementation(project(':base'))
-  implementation(project(':feature:feed'))
-  implementation(project(':feature:search'))
-  implementation(project(':feature:pin'))
+  implementation(project(':app'))
 
   // desugar
   coreLibraryDesugaring(deps.desugar)
 
   // kotlin
   implementation(deps.kotlin)
+
+  // coroutine
+  implementation(deps.coroutineCore)
+  implementation(deps.coroutineAndroid)
+  testImplementation(deps.coroutineTest)
 
   // androidx
   implementation(deps.appCompat)
@@ -74,6 +68,16 @@ dependencies {
   implementation(deps.androidHilt)
   implementation(deps.androidHiltViewModel)
   kapt(deps.androidHiltCompiler)
+
+  // recycler view
+  implementation(deps.groupie)
+  implementation(deps.groupieViewBinding)
+
+  // ui
+  implementation(deps.circleImage)
+
+  // image
+  implementation(deps.picasso)
 
   // test modules
   testImplementation(project(':testutils'))

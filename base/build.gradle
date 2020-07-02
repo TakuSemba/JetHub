@@ -54,6 +54,13 @@ dependencies {
   implementation(deps.activityKtx)
   implementation(deps.fragmentKtx)
 
+  // navigation
+  api(deps.navCommonKtx)
+  api(deps.navRuntimeKtx)
+  api(deps.navFragmentKtx)
+  api(deps.navUiKtx)
+  api(deps.navDfm)
+
   // lifecycle
   implementation(deps.lifecycleRuntime)
   implementation(deps.lifecycleExtensions)

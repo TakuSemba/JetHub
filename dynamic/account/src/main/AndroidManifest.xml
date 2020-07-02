@@ -1,0 +1,19 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:dist="http://schemas.android.com/apk/distribution"
+  package="com.takusemba.jethub.account"
+  >
+
+  <application>
+    <activity android:name=".AccountActivity" />
+  </application>
+
+  <dist:module
+    dist:instant="false"
+    dist:title="@string/dynamic_module_account"
+    >
+    <dist:delivery>
+      <dist:on-demand />
+    </dist:delivery>
+    <dist:fusing dist:include="true" />
+  </dist:module>
+</manifest>

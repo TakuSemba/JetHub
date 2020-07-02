@@ -5,9 +5,23 @@
   app:startDestination="@id/mainTabFragment"
   >
 
+  <activity
+    android:id="@+id/accountActivity"
+    android:name="com.takusemba.jethub.account.AccountActivity"
+    app:moduleName="@string/dynamic_module_account"
+    />
+
   <fragment
     android:id="@+id/mainTabFragment"
     android:label="MainTabFragment"
     android:name="com.takusemba.jethub.ui.fragment.MainTabFragment"
-    />
+    >
+
+    <action
+      android:id="@+id/action_main_tab_to_account"
+      app:destination="@id/accountActivity"
+      />
+
+  </fragment>
+
 </navigation>
