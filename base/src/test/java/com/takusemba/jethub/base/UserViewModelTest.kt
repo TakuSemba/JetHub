@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.UserRepository
 import com.takusema.jethub.testutils.createRepository
+import com.takusemba.jethub.base.viewmodel.UserViewModel
 import io.mockk.MockKAnnotations
 import io.mockk.Runs
 import io.mockk.coEvery
@@ -60,7 +61,8 @@ class UserViewModelTest {
         createRepository(id = 3)
       )
 
-      val viewModel = UserViewModel(userRepository)
+      val viewModel = UserViewModel(
+        userRepository)
 
       viewModel.pinedRepositories.observeForever(observer)
       viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
@@ -82,7 +84,8 @@ class UserViewModelTest {
       )
       coEvery { userRepository.pin(any()) } just Runs
 
-      val viewModel = UserViewModel(userRepository)
+      val viewModel = UserViewModel(
+        userRepository)
 
       val repo = createRepository(id = 4)
       viewModel.pin(repo)
@@ -108,7 +111,8 @@ class UserViewModelTest {
       )
       coEvery { userRepository.unpin(any()) } just Runs
 
-      val viewModel = UserViewModel(userRepository)
+      val viewModel = UserViewModel(
+        userRepository)
 
       viewModel.unpin(repoToBeRemoved)
 

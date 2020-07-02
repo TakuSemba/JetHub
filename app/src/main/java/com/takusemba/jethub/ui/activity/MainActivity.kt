@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import com.takusemba.jethub.R
-import com.takusemba.jethub.base.Direction
-import com.takusemba.jethub.base.NavigationViewModel
+import com.takusemba.jethub.base.model.Direction
+import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.ui.fragment.MainTabFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -5,9 +5,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import com.takusemba.jethub.base.Direction
-import com.takusemba.jethub.base.NavigationViewModel
-import com.takusemba.jethub.base.UserViewModel
+import com.takusemba.jethub.base.model.Direction
+import com.takusemba.jethub.base.viewmodel.NavigationViewModel
+import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.feed.databinding.FragmentFeedBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,7 +36,8 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
     binding.tabLayout.setupWithViewPager(binding.pager)
 
     binding.account.setOnClickListener {
-      navigationViewModel.onDirectionChanged(Direction.ACCOUNT)
+      navigationViewModel.onDirectionChanged(
+        Direction.ACCOUNT)
     }
   }
 }

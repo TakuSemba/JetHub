@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
-import com.takusemba.jethub.base.Language
+import com.takusemba.jethub.base.model.Language
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.RepoRepository
 import kotlinx.coroutines.launch

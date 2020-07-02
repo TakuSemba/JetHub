@@ -1,6 +1,7 @@
-package com.takusemba.jethub.base
+package com.takusemba.jethub.base.model
 
 import androidx.annotation.DrawableRes
+import com.takusemba.jethub.base.R
 
 enum class Language(val title: String, @DrawableRes val icon: Int) {
 
@@ -8,7 +9,8 @@ enum class Language(val title: String, @DrawableRes val icon: Int) {
 
   JAVA("Java", R.drawable.ic_circle_java),
 
-  JAVA_SCRIPT("JavaScript", R.drawable.ic_circle_java_script),
+  JAVA_SCRIPT("JavaScript",
+    R.drawable.ic_circle_java_script),
 
   PYTHON("Python", R.drawable.ic_circle_python),
 
@@ -30,7 +32,8 @@ enum class Language(val title: String, @DrawableRes val icon: Int) {
 
   companion object {
 
-    val POPULAR_LANGUAGES = listOf(KOTLIN,
+    val POPULAR_LANGUAGES = listOf(
+      KOTLIN,
       JAVA,
       SWIFT,
       PYTHON,

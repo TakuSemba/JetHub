@@ -2,9 +2,9 @@ package com.takusemba.jethub.feed
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.observe
-import com.takusemba.jethub.base.Language
-import com.takusemba.jethub.base.RepositoryItem
-import com.takusemba.jethub.base.UserViewModel
+import com.takusemba.jethub.base.model.Language
+import com.takusemba.jethub.base.ui.RepositoryItem
+import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.model.Repository
 import com.xwray.groupie.Item
 import com.xwray.groupie.Section
@@ -24,7 +24,9 @@ class FeedRepoSection(
 
   private fun updateResult(repositories: List<Repository>) {
     val items = mutableListOf<Item<*>>()
-    (repositories).mapTo(items) { repository -> RepositoryItem(repository, userViewModel) }
+    (repositories).mapTo(items) { repository ->
+      RepositoryItem(repository, userViewModel)
+    }
     update(items)
   }
 }

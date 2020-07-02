@@ -2,8 +2,8 @@ package com.takusemba.jethub.search
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.observe
-import com.takusemba.jethub.base.RepositoryItem
-import com.takusemba.jethub.base.UserViewModel
+import com.takusemba.jethub.base.ui.RepositoryItem
+import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.model.Repository
 import com.xwray.groupie.Item
 import com.xwray.groupie.Section

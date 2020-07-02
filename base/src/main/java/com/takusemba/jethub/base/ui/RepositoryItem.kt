@@ -1,9 +1,12 @@
-package com.takusemba.jethub.base
+package com.takusemba.jethub.base.ui
 
 import android.view.View
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
+import com.takusemba.jethub.base.R
 import com.takusemba.jethub.base.databinding.ItemRepositoryBinding
+import com.takusemba.jethub.base.model.Language
+import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.model.Repository
 import com.xwray.groupie.viewbinding.BindableItem
 
@@ -35,10 +38,12 @@ data class RepositoryItem(
     binding.root.setOnLongClickListener { v ->
       if (userViewModel.isPinned(repository)) {
         userViewModel.unpin(repository)
-        Toast.makeText(v.context, R.string.unpinned_repository, LENGTH_SHORT).show()
+        Toast.makeText(v.context,
+          R.string.unpinned_repository, LENGTH_SHORT).show()
       } else {
         userViewModel.pin(repository)
-        Toast.makeText(v.context, R.string.pinned_repository, LENGTH_SHORT).show()
+        Toast.makeText(v.context,
+          R.string.pinned_repository, LENGTH_SHORT).show()
       }
       false
     }

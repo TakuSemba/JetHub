@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.takusemba.jethub.base.UserViewModel
+import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.pin.databinding.FragmentPinBinding
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder

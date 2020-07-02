@@ -3,7 +3,7 @@ package com.takusemba.jethub.feed
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
-import com.takusemba.jethub.base.Language
+import com.takusemba.jethub.base.model.Language
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.RepoRepository
 import com.takusema.jethub.testutils.createRepository
