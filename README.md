@@ -39,7 +39,7 @@ This is a single-activity application.
 ```kt
 //--- Activity / Fragments ---//
 
-viewModel.data.observe(this, Observe { data ->
+viewModel.data.observe(this) { data ->
     // do fun things
 }) 
 
@@ -58,15 +58,15 @@ db.getData() // get data from DB
 
 ## Threading
 
-This app uses Kotlin coroutine to archive asynchronize calls. The layers below the ViewModel are all suspend functions.
+This app uses Kotlin coroutine to archive asynchronize programing. The layers below ViewModel are all suspend functions.
 
 The basics of Kotlin coroutine can be learned from this [doc](https://github.com/Kotlin/kotlinx.coroutines/tree/master/docs).
 
 ## Github API Token
 
-This project is based on GitHub API. You can set your own token in local.properties and app will use the toekn everytime app requests network calls to Github API. 
+This project is based on GitHub API. You can set your own token in local.properties and app will use the token everytime app requests network calls to Github API. 
 
-If you do not have a GitHub token, that's fine. You can use this app without any token, but the number of the API call is very limited by Github. You can see the detail from this [link](https://developer.github.com/v3/#rate-limiting).
+If you do not have a GitHub token, that's fine. You can use this app without token, but the number of API call is very limited by Github. You can see the details from this [link](https://developer.github.com/v3/#rate-limiting).
 
 ```local.properties
 // local.properties
