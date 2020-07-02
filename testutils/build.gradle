@@ -18,6 +18,9 @@ dependencies {
   // module
   implementation(project(':model'))
 
+  // desugar
+  coreLibraryDesugaring(deps.desugar)
+
   // kotlin
   implementation(deps.kotlin)
 }

@@ -41,7 +41,6 @@ dependencies {
 
   // kotlin
   implementation(deps.kotlin)
-  implementation(deps.kotlinSerialization)
 
   // coroutine
   implementation(deps.coroutineCore)
@@ -61,12 +60,6 @@ dependencies {
   kapt(deps.lifecycleCompiler)
   implementation(deps.viewmodelKtx)
   implementation(deps.livedataKtx)
-
-  // navigation
-  implementation(deps.navCommonKtx)
-  implementation(deps.navRuntimeKtx)
-  implementation(deps.navFragmentKtx)
-  implementation(deps.navUiKtx)
 
   // dependency injection
   implementation(deps.dagger)

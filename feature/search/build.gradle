@@ -40,7 +40,6 @@ dependencies {
 
   // kotlin
   implementation(deps.kotlin)
-  implementation(deps.kotlinSerialization)
 
   // coroutine
   implementation(deps.coroutineCore)
