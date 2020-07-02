@@ -41,7 +41,6 @@ dependencies {
 
   // module
   implementation(project(':base'))
-  implementation(project(':model'))
   implementation(project(':feature:feed'))
   implementation(project(':feature:search'))
   implementation(project(':feature:pin'))

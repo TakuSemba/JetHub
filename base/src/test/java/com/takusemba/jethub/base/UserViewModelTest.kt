@@ -1,4 +1,4 @@
-package com.takusemba.jethub.core
+package com.takusemba.jethub.base
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer

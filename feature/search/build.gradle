@@ -34,7 +34,6 @@ dependencies {
 
   // module
   implementation(project(':base'))
-  implementation(project(':model'))
 
   // desugar
   coreLibraryDesugaring(deps.desugar)

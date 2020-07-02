@@ -5,7 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import com.takusemba.jethub.core.UserViewModel
+import com.takusemba.jethub.base.UserViewModel
 import com.takusemba.jethub.feed.databinding.FragmentFeedBinding
 import dagger.hilt.android.AndroidEntryPoint
 
