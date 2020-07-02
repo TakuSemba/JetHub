@@ -34,8 +34,7 @@ android {
 dependencies {
 
   // module
-  implementation(project(':model'))
-  api(project(':data-legacy:repository'))
+  api(project(':data'))
 
   // desugar
   coreLibraryDesugaring(deps.desugar)

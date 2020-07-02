@@ -1,5 +1,6 @@
 package com.takusemba.jethub.api
 
+import com.takusemba.jethub.data.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 
