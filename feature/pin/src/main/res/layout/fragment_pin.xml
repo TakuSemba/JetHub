@@ -65,7 +65,6 @@
     />
 
   <com.google.android.material.appbar.AppBarLayout
-    android:background="@color/white"
     android:id="@+id/appbar"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"

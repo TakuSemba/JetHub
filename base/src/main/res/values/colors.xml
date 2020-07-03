@@ -3,10 +3,4 @@
   <color name="color_primary">#6da1f0</color>
   <color name="color_primary_dark">#4688f1</color>
   <color name="color_accent">#37ab10</color>
-
-  <color name="ripple_light">#1F000000</color>
-  <color name="launcher_background">#FFFFFF</color>
-
-  <color name="white">#FFFFFF</color>
-  <color name="white_54">#8AFFFFFF</color>
 </resources>
