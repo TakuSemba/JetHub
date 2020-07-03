@@ -6,6 +6,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.search.databinding.FragmentSearchBinding
@@ -39,6 +40,8 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
       add(searchSection)
     }
+    val dividerItemDecoration = DividerItemDecoration(context, linearLayoutManager.orientation)
+    binding.recyclerView.addItemDecoration(dividerItemDecoration)
     binding.recyclerView.layoutManager = linearLayoutManager
     binding.recyclerView.adapter = groupAdapter
 

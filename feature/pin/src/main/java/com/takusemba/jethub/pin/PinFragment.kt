@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.pin.databinding.FragmentPinBinding
@@ -34,6 +35,8 @@ class PinFragment : Fragment(R.layout.fragment_pin) {
     val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
       add(pinSection)
     }
+    val dividerItemDecoration = DividerItemDecoration(context, linearLayoutManager.orientation)
+    binding.recyclerView.addItemDecoration(dividerItemDecoration)
     binding.recyclerView.layoutManager = linearLayoutManager
     binding.recyclerView.adapter = groupAdapter
 

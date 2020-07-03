@@ -3,6 +3,7 @@ package com.takusemba.jethub.feed
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.PagerAdapter
 import com.takusemba.jethub.base.model.Language
@@ -31,6 +32,8 @@ class FeedAdapter(
     val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
       add(feedRepoSection)
     }
+    val dividerItemDecoration = DividerItemDecoration(context, linearLayoutManager.orientation)
+    binding.recyclerView.addItemDecoration(dividerItemDecoration)
     binding.recyclerView.layoutManager = linearLayoutManager
     binding.recyclerView.adapter = groupAdapter
 
