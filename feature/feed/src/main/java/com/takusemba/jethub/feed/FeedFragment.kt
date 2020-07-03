@@ -7,6 +7,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.takusemba.jethub.base.model.Direction
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
+import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.feed.databinding.FragmentFeedBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,7 +25,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
   )
 
   private val navigationViewModel: NavigationViewModel by activityViewModels()
-
+  private val systemViewModel: SystemViewModel by activityViewModels()
   private val userViewModel: UserViewModel by activityViewModels()
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,8 +37,12 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
     binding.tabLayout.setupWithViewPager(binding.pager)
 
     // TODO navigate to account module
-//    binding.account.setOnClickListener {
-//      navigationViewModel.onDirectionChanged(Direction.ACCOUNT)
-//    }
+    binding.account.setOnClickListener {
+      navigationViewModel.onDirectionChanged(Direction.ACCOUNT)
+    }
+
+    binding.themeSwitch.setOnClickListener {
+      systemViewModel.setNightMode(!systemViewModel.isNightMode())
+    }
   }
 }
