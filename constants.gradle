@@ -96,9 +96,6 @@ project.ext {
       groupie: "com.xwray:groupie:${version.groupie}",
       groupieViewBinding: "com.xwray:groupie-viewbinding:${version.groupie}",
 
-      // ui
-      circleImage: "de.hdodenhof:circleimageview:2.2.0",
-
       // image
       picasso: "com.squareup.picasso:picasso:2.71828",
 

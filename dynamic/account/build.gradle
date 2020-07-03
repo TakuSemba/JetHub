@@ -75,9 +75,6 @@ dependencies {
   implementation(deps.groupie)
   implementation(deps.groupieViewBinding)
 
-  // ui
-  implementation(deps.circleImage)
-
   // image
   implementation(deps.picasso)
 
