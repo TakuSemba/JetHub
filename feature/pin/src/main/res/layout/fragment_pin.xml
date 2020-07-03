@@ -78,7 +78,7 @@
       android:layout_width="wrap_content"
       android:minHeight="?actionBarSize"
       android:text="@string/pin"
-      android:textColor="?android:attr/textColorPrimaryInverse"
+      android:textColor="?android:attr/textColorSecondary"
       android:textSize="22sp"
       />
 

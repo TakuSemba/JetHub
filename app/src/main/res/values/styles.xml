@@ -6,6 +6,7 @@
     <item name="colorAccent">@color/color_accent</item>
 
     <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView</item>
+    <item name="appBarLayoutStyle">@style/Widget.MaterialComponents.AppBarLayout.Surface</item>
   </style>
 
 </resources>
