@@ -15,7 +15,8 @@ android {
 
     Properties properties = new Properties()
     properties.load(project.rootProject.file('local.properties').newDataInputStream())
-    buildConfigField "String", "API_KEY", "\"" + properties.getProperty("api_token") + "\""
+    buildConfigField "String", "GITHUB_API_TOKEN",
+        "\"" + properties.getProperty("github_api_token") + "\""
   }
   buildTypes {
     release {
