@@ -54,6 +54,7 @@ project.ext {
       appCompat: "androidx.appcompat:appcompat:${version.androidX}",
       material: "com.google.android.material:material:${version.androidX}",
       constraintLayout: "androidx.constraintlayout:constraintlayout:${version.constraintLayout}",
+      coreKtx: "androidx.core:core-ktx:${version.androidX}",
       activityKtx: "androidx.activity:activity-ktx:${version.androidX}",
       fragmentKtx: "androidx.fragment:fragment-ktx:${version.androidX}",
 

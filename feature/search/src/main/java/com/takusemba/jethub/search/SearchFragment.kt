@@ -41,6 +41,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
       add(searchSection)
     }
     val dividerItemDecoration = DividerItemDecoration(context, linearLayoutManager.orientation)
+    dividerItemDecoration.setDrawable(requireNotNull(requireContext().getDrawable(R.color.divider)))
     binding.recyclerView.addItemDecoration(dividerItemDecoration)
     binding.recyclerView.layoutManager = linearLayoutManager
     binding.recyclerView.adapter = groupAdapter

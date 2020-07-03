@@ -56,6 +56,7 @@ dependencies {
   implementation(deps.appCompat)
   implementation(deps.material)
   implementation(deps.constraintLayout)
+  implementation(deps.coreKtx)
   implementation(deps.activityKtx)
   implementation(deps.fragmentKtx)
 
