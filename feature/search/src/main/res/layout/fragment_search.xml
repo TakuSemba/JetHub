@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:minHeight="?actionBarSize"
         android:text="@string/search"
-        android:textColor="?android:attr/textColorPrimary"
+        android:textColor="?android:attr/textColorPrimaryInverse"
         android:textSize="22sp"
         />
 

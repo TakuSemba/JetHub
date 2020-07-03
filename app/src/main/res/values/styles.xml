@@ -1,11 +1,11 @@
 <resources>
 
-  <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+  <style name="Jethub.Theme" parent="Theme.MaterialComponents.Light.NoActionBar">
     <item name="colorPrimary">@color/color_primary</item>
     <item name="colorPrimaryDark">@color/color_primary_dark</item>
     <item name="colorAccent">@color/color_accent</item>
 
-    <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView.PrimarySurface</item>
+    <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView</item>
   </style>
 
 </resources>
