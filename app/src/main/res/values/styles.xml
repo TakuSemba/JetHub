@@ -1,6 +1,6 @@
 <resources>
 
-  <style name="Jethub.Theme" parent="Theme.MaterialComponents.Light.NoActionBar">
+  <style name="Jethub.Theme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
     <item name="colorPrimary">@color/color_primary</item>
     <item name="colorPrimaryDark">@color/color_primary_dark</item>
     <item name="colorAccent">@color/color_accent</item>
