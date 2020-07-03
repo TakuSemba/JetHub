@@ -1,14 +1,13 @@
 <resources>
 
-  <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+  <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
     <item name="colorPrimary">@color/color_primary</item>
     <item name="colorPrimaryDark">@color/color_primary_dark</item>
     <item name="colorAccent">@color/color_accent</item>
 
-    <item name="android:navigationBarColor">@color/color_primary</item>
-
-    <item name="windowActionBar">false</item>
-    <item name="windowNoTitle">true</item>
+    <item name="bottomNavigationStyle">
+      @style/Widget.MaterialComponents.BottomNavigationView.Colored
+    </item>
   </style>
 
 </resources>

@@ -23,8 +23,6 @@
     android:layout_width="match_parent"
     android:textSize="14sp"
     app:itemIconSize="18dp"
-    app:itemIconTint="@color/bottom_nav_item"
-    app:itemTextColor="@color/bottom_nav_item"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"

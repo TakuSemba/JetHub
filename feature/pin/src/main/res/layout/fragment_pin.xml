@@ -28,7 +28,7 @@
       android:layout_marginTop="16dp"
       android:layout_width="wrap_content"
       android:text="@string/empty_pinned_repositories_title"
-      android:textColor="@color/black_32"
+      android:textColor="?android:attr/textColorSecondary"
       android:textSize="16sp"
       android:textStyle="bold"
       app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
       android:layout_marginTop="8dp"
       android:layout_width="wrap_content"
       android:text="@string/empty_pinned_repositories_description"
-      android:textColor="@color/black_32"
+      android:textColor="?android:attr/textColorSecondary"
       android:textSize="12sp"
       android:textStyle="bold"
       app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +79,7 @@
       android:layout_width="wrap_content"
       android:minHeight="?actionBarSize"
       android:text="@string/pins"
-      android:textColor="@color/black_87"
+      android:textColor="?android:attr/textColorPrimary"
       android:textSize="22sp"
       />
 

@@ -7,19 +7,6 @@
   <color name="ripple_light">#1F000000</color>
   <color name="launcher_background">#FFFFFF</color>
 
-  <color name="black">#000000</color>
-  <color name="black_87">#DE000000</color>
-  <color name="black_54">#8A000000</color>
-  <color name="black_50">#80000000</color>
-  <color name="black_32">#52000000</color>
-  <color name="black_20">#33000000</color>
-  <color name="black_12">#1F000000</color>
-
   <color name="white">#FFFFFF</color>
-  <color name="white_87">#DEFFFFFF</color>
   <color name="white_54">#8AFFFFFF</color>
-  <color name="white_50">#8FFFFFF0</color>
-  <color name="white_32">#52FFFFFF</color>
-  <color name="white_20">#33FFFFFF</color>
-  <color name="white_12">#1FFFFFFF</color>
 </resources>
