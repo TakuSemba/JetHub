@@ -34,7 +34,7 @@ class MainTabFragment : Fragment(R.layout.fragment_main_tab) {
             }
             return@OnNavigationItemSelectedListener true
           }
-          R.id.pins -> {
+          R.id.pin -> {
             childFragmentManager.commit {
               replace(R.id.container, PinFragment.newInstance())
             }

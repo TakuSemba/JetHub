@@ -35,9 +35,9 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
     binding.pager.adapter = feedAdapter
     binding.tabLayout.setupWithViewPager(binding.pager)
 
-    binding.account.setOnClickListener {
-      navigationViewModel.onDirectionChanged(
-        Direction.ACCOUNT)
-    }
+    // TODO navigate to account module
+//    binding.account.setOnClickListener {
+//      navigationViewModel.onDirectionChanged(Direction.ACCOUNT)
+//    }
   }
 }

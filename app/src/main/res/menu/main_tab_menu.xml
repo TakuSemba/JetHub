@@ -4,20 +4,20 @@
 
   <item
     android:id="@+id/feed"
-    android:icon="@drawable/ic_tab_feed"
+    android:icon="@drawable/ic_feed"
     android:title="@string/feed"
     />
 
   <item
     android:id="@+id/search"
-    android:icon="@drawable/ic_tab_repository"
+    android:icon="@drawable/ic_search"
     android:title="@string/search"
     />
 
   <item
-    android:id="@+id/pins"
-    android:icon="@drawable/ic_tab_pin"
-    android:title="@string/pins"
+    android:id="@+id/pin"
+    android:icon="@drawable/ic_pin"
+    android:title="@string/pin"
     />
 
 </menu>
