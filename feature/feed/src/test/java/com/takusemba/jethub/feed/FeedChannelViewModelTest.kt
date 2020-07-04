@@ -3,7 +3,6 @@ package com.takusemba.jethub.feed
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
-import com.takusemba.jethub.base.model.Language
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.model.Repository.Companion.createRepository
 import com.takusemba.jethub.repository.RepoRepository
@@ -29,7 +28,7 @@ import org.junit.runners.JUnit4
 
 @ObsoleteCoroutinesApi
 @RunWith(JUnit4::class)
-class FeedViewModelTest {
+class FeedChannelViewModelTest {
 
   @get:Rule var instantTaskExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
 
@@ -59,9 +58,9 @@ class FeedViewModelTest {
         createRepository(id = 3)
       )
 
-      val viewModel = FeedViewModel(repoRepository)
+      val viewModel = FeedChannelViewModel("Kotlin", repoRepository)
 
-      viewModel.hotRepos(Language.KOTLIN).observeForever(observer)
+      viewModel.hotRepos.observeForever(observer)
       viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
 
       verify { observer.onChanged(match { it.size == 3 }) }
