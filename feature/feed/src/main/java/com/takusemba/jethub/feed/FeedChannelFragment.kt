@@ -4,17 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.feed.databinding.FragmentFeedChannelBinding
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class FeedChannelFragment : Fragment(R.layout.fragment_feed_channel) {
@@ -28,15 +25,15 @@ class FeedChannelFragment : Fragment(R.layout.fragment_feed_channel) {
     }
   }
 
-  @Inject lateinit var factory: FeedChannelViewModelProviderFactory
-
-  private val feedChannelViewModel: FeedChannelViewModel by viewModels { factory }
-  private val userViewModel: UserViewModel by activityViewModels()
+  private val feedViewModel: FeedViewModel by viewModels(
+    ownerProducer = { requireParentFragment().requireParentFragment() }
+  )
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     val binding = FragmentFeedChannelBinding.bind(view)
-    val feedRepoSection = FeedRepoSection(this, feedChannelViewModel, userViewModel)
+    val language = requireNotNull(requireArguments().getString(KEY_LANGUAGE))
+    val feedRepoSection = FeedRepoSection(this, language)
 
     val linearLayoutManager = LinearLayoutManager(context)
     val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
@@ -50,7 +47,7 @@ class FeedChannelFragment : Fragment(R.layout.fragment_feed_channel) {
     binding.recyclerView.adapter = groupAdapter
 
     binding.progress.show()
-    feedChannelViewModel.hotRepos.observe(viewLifecycleOwner) {
+    feedViewModel.hotRepos(language).observe(viewLifecycleOwner) {
       binding.progress.hide()
     }
   }

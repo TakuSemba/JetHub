@@ -28,7 +28,7 @@ import org.junit.runners.JUnit4
 
 @ObsoleteCoroutinesApi
 @RunWith(JUnit4::class)
-class FeedChannelViewModelTest {
+class FeedViewModelTest {
 
   @get:Rule var instantTaskExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
 
@@ -53,14 +53,14 @@ class FeedChannelViewModelTest {
       val observer = mockk<Observer<List<Repository>>>(relaxed = true)
 
       coEvery { repoRepository.getHotRepos(any()) } returns listOf(
-        createRepository(id = 1),
-        createRepository(id = 2),
-        createRepository(id = 3)
+        createRepository(id = 1, language = "Kotlin"),
+        createRepository(id = 2, language = "Kotlin"),
+        createRepository(id = 3, language = "Kotlin")
       )
 
-      val viewModel = FeedChannelViewModel("Kotlin", repoRepository)
+      val viewModel = FeedViewModel(repoRepository)
 
-      viewModel.hotRepos.observeForever(observer)
+      viewModel.hotRepos("Kotlin").observeForever(observer)
       viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
 
       verify { observer.onChanged(match { it.size == 3 }) }

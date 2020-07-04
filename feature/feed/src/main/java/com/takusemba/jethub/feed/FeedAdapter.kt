@@ -8,8 +8,6 @@ class FeedAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
   private val languages = ColoredLanguage.POPULAR_LANGUAGES
 
-  private val cache = arrayOfNulls<Fragment>(languages.size)
-
   fun getTitle(position: Int): String {
     return languages[position].title
   }
@@ -19,12 +17,6 @@ class FeedAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
   }
 
   override fun createFragment(position: Int): Fragment {
-    val fragment = cache[position]
-    if (fragment != null) {
-      return fragment
-    }
-    val newFragment = FeedChannelFragment.newInstance(languages[position].title)
-    cache[position] = newFragment
-    return newFragment
+    return FeedChannelFragment.newInstance(languages[position].title)
   }
 }
