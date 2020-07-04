@@ -20,7 +20,7 @@
     android:layout_width="match_parent"
     >
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_height="wrap_content"
       android:layout_width="match_parent"
       app:layout_scrollFlags="scroll|snap|exitUntilCollapsed|enterAlways"
@@ -29,23 +29,37 @@
       <TextView
         android:gravity="center"
         android:id="@+id/title"
-        android:layout_gravity="center"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:minHeight="?actionBarSize"
         android:text="@string/search"
         android:textColor="?android:attr/textColorSecondary"
         android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         />
 
-    </FrameLayout>
+      <ImageView
+        android:id="@+id/theme_switch"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_width="wrap_content"
+        android:padding="8dp"
+        android:src="@drawable/ic_theme_switch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.SearchView
       android:id="@+id/search_view"
       android:layout_height="wrap_content"
       android:layout_width="match_parent"
       />
-
   </com.google.android.material.appbar.AppBarLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

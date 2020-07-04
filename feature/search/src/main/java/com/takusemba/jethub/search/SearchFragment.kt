@@ -8,6 +8,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.search.databinding.FragmentSearchBinding
 import com.xwray.groupie.GroupAdapter
@@ -26,6 +27,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     ownerProducer = { requireParentFragment() }
   )
 
+  private val systemViewModel: SystemViewModel by activityViewModels()
   private val userViewModel: UserViewModel by activityViewModels()
 
   private val searchSection: SearchSection by lazy {
@@ -57,5 +59,9 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         return true
       }
     })
+
+    binding.themeSwitch.setOnClickListener {
+      systemViewModel.setNightMode(!systemViewModel.isNightMode())
+    }
   }
 }

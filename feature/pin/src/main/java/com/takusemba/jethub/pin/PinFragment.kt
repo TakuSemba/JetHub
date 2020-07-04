@@ -7,6 +7,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.pin.databinding.FragmentPinBinding
 import com.xwray.groupie.GroupAdapter
@@ -21,6 +22,7 @@ class PinFragment : Fragment(R.layout.fragment_pin) {
     fun newInstance() = PinFragment()
   }
 
+  private val systemViewModel: SystemViewModel by activityViewModels()
   private val userViewModel: UserViewModel by activityViewModels()
 
   private val pinSection: PinSection by lazy {
@@ -44,6 +46,10 @@ class PinFragment : Fragment(R.layout.fragment_pin) {
 
     userViewModel.pinedRepositories.observe(viewLifecycleOwner) { repositories ->
       binding.emptyLayout.visibility = if (repositories.isEmpty()) View.VISIBLE else View.INVISIBLE
+    }
+
+    binding.themeSwitch.setOnClickListener {
+      systemViewModel.setNightMode(!systemViewModel.isNightMode())
     }
   }
 }
