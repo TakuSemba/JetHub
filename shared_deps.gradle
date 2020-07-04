@@ -1,0 +1,37 @@
+dependencies {
+
+  // desugar
+  coreLibraryDesugaring(deps.desugar)
+
+  // kotlin
+  implementation(deps.kotlin)
+
+  // coroutine
+  implementation(deps.coroutineCore)
+  implementation(deps.coroutineAndroid)
+  testImplementation(deps.coroutineTest)
+
+  // androidx
+  implementation(deps.appCompat)
+  implementation(deps.material)
+  implementation(deps.constraintLayout)
+  implementation(deps.coreKtx)
+  implementation(deps.activityKtx)
+  implementation(deps.fragmentKtx)
+
+  // lifecycle
+  implementation(deps.lifecycleRuntime)
+  implementation(deps.lifecycleExtensions)
+  kapt(deps.lifecycleCompiler)
+  implementation(deps.viewmodelKtx)
+  implementation(deps.livedataKtx)
+
+  // dependency injection
+  implementation(deps.dagger)
+  kapt(deps.daggerCompiler)
+  implementation(deps.daggerHilt)
+  kapt(deps.daggerHiltCompiler)
+  implementation(deps.androidHilt)
+  implementation(deps.androidHiltViewModel)
+  kapt(deps.androidHiltCompiler)
+}

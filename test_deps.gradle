@@ -1,0 +1,6 @@
+dependencies {
+  testImplementation(deps.junit)
+  testImplementation(deps.truth)
+  testImplementation(deps.testCore)
+  testImplementation(deps.mockk)
+}

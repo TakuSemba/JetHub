@@ -3,6 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: "kotlin-kapt"
 apply plugin: 'kotlinx-serialization'
 apply plugin: 'dagger.hilt.android.plugin'
+apply from: '../shared_deps.gradle'
+apply from: '../test_deps.gradle'
 
 android {
   compileSdkVersion config.compileSdkVersion
@@ -39,18 +41,6 @@ dependencies {
   // module
   api(project(':model'))
 
-  // desugar
-  coreLibraryDesugaring(deps.desugar)
-
-  // kotlin
-  implementation(deps.kotlin)
-  implementation(deps.kotlinSerialization)
-
-  // coroutine
-  implementation(deps.coroutineCore)
-  implementation(deps.coroutineAndroid)
-  testImplementation(deps.coroutineTest)
-
   // database
   api(deps.roomRuntime)
   kapt(deps.roomCompiler)
@@ -61,19 +51,4 @@ dependencies {
   api(deps.retrofitConverter)
   debugImplementation(deps.loggingInterceptor)
   testImplementation(deps.mockWebServer)
-
-  // dependency injection
-  implementation(deps.dagger)
-  kapt(deps.daggerCompiler)
-  implementation(deps.daggerHilt)
-  kapt(deps.daggerHiltCompiler)
-  implementation(deps.androidHilt)
-  implementation(deps.androidHiltViewModel)
-  kapt(deps.androidHiltCompiler)
-
-  // test
-  testImplementation(deps.junit)
-  testImplementation(deps.truth)
-  testImplementation(deps.testCore)
-  testImplementation(deps.mockk)
 }

@@ -1,5 +1,8 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: "kotlin-kapt"
+apply from: '../shared_deps.gradle'
+apply from: '../test_deps.gradle'
 
 android {
   compileSdkVersion config.compileSdkVersion
@@ -24,13 +27,4 @@ android {
   kotlinOptions {
     jvmTarget = '1.8'
   }
-}
-
-dependencies {
-
-  // desugar
-  coreLibraryDesugaring(deps.desugar)
-
-  // kotlin
-  implementation(deps.kotlin)
 }
