@@ -9,8 +9,7 @@ enum class Language(val title: String, @DrawableRes val icon: Int) {
 
   JAVA("Java", R.drawable.ic_circle_java),
 
-  JAVA_SCRIPT("JavaScript",
-    R.drawable.ic_circle_java_script),
+  JAVA_SCRIPT("JavaScript", R.drawable.ic_circle_java_script),
 
   PYTHON("Python", R.drawable.ic_circle_python),
 
@@ -26,7 +25,7 @@ enum class Language(val title: String, @DrawableRes val icon: Int) {
 
   GO("Go", R.drawable.ic_circle_go),
 
-  SWIFT("Swift", R.drawable.ic_circle_kotlin),
+  SWIFT("Swift", R.drawable.ic_circle_swift),
 
   OTHER("Other", R.drawable.ic_circle_other);
 

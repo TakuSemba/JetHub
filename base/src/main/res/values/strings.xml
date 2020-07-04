@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">JetHub</string>
   <string name="dynamic_module_account">account</string>
@@ -5,11 +6,6 @@
   <string name="feed">feed</string>
   <string name="search">search</string>
   <string name="pin">pin</string>
-
-  <string name="repos_count">%d repos</string>
-  <string name="gists_count">%d gists</string>
-  <string name="followers_count">%d followers</string>
-  <string name="followings_count">%d followings</string>
 
   <string name="pinned_repository">pinned repository</string>
   <string name="unpinned_repository">unpinned repository</string>
