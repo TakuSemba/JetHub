@@ -2,7 +2,7 @@ package com.takusemba.jethub.database
 
 import com.takusemba.jethub.database.dao.RepositoryDao
 import com.takusemba.jethub.database.entity.RepositoryEntity
-import com.takusemba.jethub.model.SimpleRepository
+import com.takusemba.jethub.model.Repository
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
 
@@ -11,22 +11,21 @@ import kotlinx.coroutines.withContext
  */
 class RepoDbClient(private val repositoryDao: RepositoryDao) : RepoDb {
 
-  override suspend fun getAll(): List<SimpleRepository> {
+  override suspend fun getAll(): List<Repository> {
     return withContext(IO) {
-      repositoryDao.getAll()
-        .map { entity -> SimpleRepository(entity.id, entity.name, entity.owner) }
+      repositoryDao.getAll().map { entity -> entity.toModel() }
     }
   }
 
-  override suspend fun insert(repository: SimpleRepository) {
+  override suspend fun insert(repository: Repository) {
     withContext(IO) {
-      repositoryDao.insert(RepositoryEntity(repository.id, repository.name, repository.owner))
+      repositoryDao.insert(RepositoryEntity.fromModel(repository))
     }
   }
 
-  override suspend fun delete(repository: SimpleRepository) {
+  override suspend fun delete(repository: Repository) {
     withContext(IO) {
-      repositoryDao.delete(RepositoryEntity(repository.id, repository.name, repository.owner))
+      repositoryDao.delete(RepositoryEntity.fromModel(repository))
     }
   }
 

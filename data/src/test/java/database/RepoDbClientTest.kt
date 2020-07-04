@@ -2,7 +2,7 @@ package com.takusemba.jethub.database
 
 import com.google.common.truth.Truth.assertThat
 import com.takusemba.jethub.database.dao.RepositoryDao
-import com.takusemba.jethub.database.entity.RepositoryEntity
+import com.takusemba.jethub.database.entity.RepositoryEntity.Companion.createRepositoryEntity
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
@@ -31,9 +31,9 @@ class RepoDbClientTest {
     runBlocking {
 
       coEvery { mockRepositoryDao.getAll() } returns listOf(
-        RepositoryEntity(1, "name-1", "owner-1"),
-        RepositoryEntity(2, "name-2", "owner-2"),
-        RepositoryEntity(3, "name-3", "owner-3")
+        createRepositoryEntity(id = 1, name = "name-1"),
+        createRepositoryEntity(id = 2, name = "name-2"),
+        createRepositoryEntity(id = 3, name = "name-3")
       )
 
       val repos = client.getAll()

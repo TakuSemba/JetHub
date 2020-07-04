@@ -6,7 +6,6 @@ import com.takusemba.jethub.api.response.OwnerResponse
 import com.takusemba.jethub.model.DateFormatters
 import com.takusemba.jethub.model.Owner
 import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.model.SimpleDeveloper
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
