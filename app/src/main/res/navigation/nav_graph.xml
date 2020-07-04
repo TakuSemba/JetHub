@@ -2,25 +2,21 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:id="@+id/mobile_navigation"
-  app:startDestination="@id/mainTabFragment"
-  >
+  app:startDestination="@id/mainTabFragment">
 
   <activity
     android:id="@+id/accountActivity"
     android:name="com.takusemba.jethub.account.AccountActivity"
-    app:moduleName="@string/dynamic_module_account"
-    />
+    app:moduleName="@string/dynamic_module_account" />
 
   <fragment
     android:id="@+id/mainTabFragment"
     android:label="MainTabFragment"
-    android:name="com.takusemba.jethub.ui.fragment.MainTabFragment"
-    >
+    android:name="com.takusemba.jethub.ui.fragment.MainTabFragment">
 
     <action
       android:id="@+id/action_main_tab_to_account"
-      app:destination="@id/accountActivity"
-      />
+      app:destination="@id/accountActivity" />
 
   </fragment>
 

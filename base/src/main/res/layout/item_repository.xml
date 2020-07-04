@@ -4,8 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:background="?attr/selectableItemBackground"
   android:layout_height="wrap_content"
-  android:layout_width="match_parent"
-  >
+  android:layout_width="match_parent">
 
   <ImageView
     android:id="@+id/language_icon"
@@ -16,8 +15,7 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="@id/title"
     app:layout_constraintTop_toBottomOf="@id/description"
-    tools:src="@drawable/ic_circle_kotlin"
-    />
+    tools:src="@drawable/ic_circle_kotlin" />
 
   <ImageView
     android:id="@+id/star_icon"
@@ -28,8 +26,7 @@
     app:layout_constraintBottom_toBottomOf="@id/language_name"
     app:layout_constraintStart_toEndOf="@id/language_name"
     app:layout_constraintTop_toBottomOf="@id/description"
-    app:layout_constraintTop_toTopOf="@id/language_name"
-    />
+    app:layout_constraintTop_toTopOf="@id/language_name" />
 
   <ImageView
     android:id="@+id/fork_icon"
@@ -40,8 +37,7 @@
     app:layout_constraintBottom_toBottomOf="@id/star_count"
     app:layout_constraintStart_toEndOf="@id/star_count"
     app:layout_constraintTop_toBottomOf="@id/description"
-    app:layout_constraintTop_toTopOf="@id/star_count"
-    />
+    app:layout_constraintTop_toTopOf="@id/star_count" />
 
   <TextView
     android:id="@+id/language_name"
@@ -52,8 +48,7 @@
     app:layout_constraintStart_toEndOf="@id/language_icon"
     app:layout_constraintTop_toBottomOf="@id/description"
     app:layout_constraintTop_toTopOf="@id/language_icon"
-    tools:text="Kotlin"
-    />
+    tools:text="Kotlin" />
 
   <TextView
     android:id="@+id/description"
@@ -64,8 +59,7 @@
     app:layout_constraintEnd_toEndOf="@id/title"
     app:layout_constraintStart_toStartOf="@id/title"
     app:layout_constraintTop_toBottomOf="@id/title"
-    tools:text="Android library for multiple snapping of RecyclerView"
-    />
+    tools:text="Android library for multiple snapping of RecyclerView" />
 
   <TextView
     android:id="@+id/star_count"
@@ -76,8 +70,7 @@
     app:layout_constraintStart_toEndOf="@id/star_icon"
     app:layout_constraintTop_toBottomOf="@id/description"
     app:layout_constraintTop_toTopOf="@id/star_icon"
-    tools:text="1520"
-    />
+    tools:text="1520" />
 
   <TextView
     android:id="@+id/title"
@@ -92,8 +85,7 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:text="MultiSnapRecyclerView"
-    />
+    tools:text="MultiSnapRecyclerView" />
 
   <TextView
     android:id="@+id/fork_count"
@@ -104,7 +96,6 @@
     app:layout_constraintStart_toEndOf="@id/fork_icon"
     app:layout_constraintTop_toBottomOf="@id/description"
     app:layout_constraintTop_toTopOf="@id/fork_icon"
-    tools:text="132"
-    />
+    tools:text="132" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

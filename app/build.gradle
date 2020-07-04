@@ -47,5 +47,4 @@ dependencies {
   implementation(project(':feature:feed'))
   implementation(project(':feature:search'))
   implementation(project(':feature:pin'))
-
 }

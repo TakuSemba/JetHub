@@ -2,64 +2,57 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:id="@+id/coordinator_layout"
-  android:layout_height="match_parent"
   android:layout_width="match_parent"
-  >
+  android:layout_height="match_parent">
 
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/recycler_view"
-    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    />
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
   <com.google.android.material.appbar.AppBarLayout
-    android:elevation="8dp"
     android:id="@+id/appbar"
-    android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    >
+    android:layout_height="wrap_content"
+    android:elevation="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-      android:layout_height="wrap_content"
       android:layout_width="match_parent"
-      app:layout_scrollFlags="scroll|snap|exitUntilCollapsed|enterAlways"
-      >
+      android:layout_height="wrap_content"
+      app:layout_scrollFlags="scroll|snap|exitUntilCollapsed|enterAlways">
 
       <ImageView
         android:id="@+id/theme_switch"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_width="wrap_content"
         android:padding="8dp"
         android:src="@drawable/ic_theme_switch"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
       <TextView
         android:id="@+id/title"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:minHeight="?actionBarSize"
         android:text="@string/search"
+        android:textAlignment="center"
         android:textColor="?android:attr/textColorSecondary"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- SearchView should come after ConstraintLayout-->
     <androidx.appcompat.widget.SearchView
       android:id="@+id/search_view"
-      android:layout_height="wrap_content"
       android:layout_width="match_parent"
-      />
+      android:layout_height="wrap_content" />
 
   </com.google.android.material.appbar.AppBarLayout>
 

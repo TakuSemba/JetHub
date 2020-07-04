@@ -3,28 +3,24 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:id="@+id/coordinator_layout"
   android:layout_height="match_parent"
-  android:layout_width="match_parent"
-  >
+  android:layout_width="match_parent">
 
   <androidx.viewpager.widget.ViewPager
     android:id="@+id/pager"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    />
+    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
   <com.google.android.material.appbar.AppBarLayout
     android:elevation="8dp"
     android:id="@+id/appbar"
     android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-    >
+    android:layout_width="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_height="wrap_content"
       android:layout_width="match_parent"
-      app:layout_scrollFlags="scroll|snap|exitUntilCollapsed|enterAlways"
-      >
+      app:layout_scrollFlags="scroll|snap|exitUntilCollapsed|enterAlways">
 
       <ImageView
         android:id="@+id/account"
@@ -35,8 +31,7 @@
         android:src="@drawable/ic_circle_java"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
       <ImageView
         android:id="@+id/theme_switch"
@@ -47,8 +42,7 @@
         android:src="@drawable/ic_theme_switch"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
       <TextView
         android:id="@+id/title"
@@ -61,8 +55,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -71,8 +64,7 @@
       android:layout_height="wrap_content"
       android:layout_width="match_parent"
       app:tabMinWidth="100dp"
-      app:tabMode="scrollable"
-      />
+      app:tabMode="scrollable" />
 
   </com.google.android.material.appbar.AppBarLayout>
 
