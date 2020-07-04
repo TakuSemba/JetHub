@@ -4,15 +4,23 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.Composable
+import androidx.compose.Recomposer
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.observe
 import androidx.ui.core.setContent
 import androidx.ui.foundation.Text
+import androidx.ui.livedata.observeAsState
 import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.di.AccountModuleDependencies
+import com.takusemba.jethub.model.Developer
 import dagger.hilt.android.EntryPointAccessors
 
+/**
+ * AccountFragment is under development...
+ */
 class AccountFragment : Fragment(R.layout.fragment_account) {
 
   private val userViewModel: UserViewModel by activityViewModels()
@@ -29,17 +37,33 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
       )
       .build()
       .inject(this)
-
-    userViewModel.developer.observe(this) { developer ->
-      Log.d("TEST", "developer: $developer")
-    }
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    (view as ViewGroup).setContent {
-      Text("Hello World")
+    val developer = userViewModel.developer
+
+    (view as ViewGroup).setContent(Recomposer()) {
+      DeveloperProfile(developer)
     }
+
+    userViewModel.developer.observe(viewLifecycleOwner) { developer ->
+      Log.d("TEST", "developer: $developer")
+    }
+
+    userViewModel.loadProfile(DEVELOPER_NAME)
   }
+
+  companion object {
+
+    // TODO retrieve name from local.properties later.
+    private const val DEVELOPER_NAME = "TakuSemba"
+  }
+}
+
+@Composable
+fun DeveloperProfile(developerLiveData: LiveData<Developer>) {
+  val developerState = developerLiveData.observeAsState().value
+  Text(text = "$developerState")
 }

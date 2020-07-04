@@ -34,10 +34,12 @@ class UserViewModel @ViewModelInject constructor(
         mutablePinedRepositories.value = repos
       }
     }
+  }
 
+  fun loadProfile(name: String) {
     viewModelScope.launch {
       runCatching {
-        developerRepository.getDeveloper("TakuSemba")
+        developerRepository.getDeveloper(name)
       }.onSuccess { developer ->
         mutableDeveloper.value = developer
       }
