@@ -11,13 +11,6 @@ dependencies {
   implementation(deps.coroutineAndroid)
   testImplementation(deps.coroutineTest)
 
-  // lifecycle
-  implementation(deps.lifecycleRuntime)
-  implementation(deps.lifecycleExtensions)
-  kapt(deps.lifecycleCompiler)
-  implementation(deps.viewmodelKtx)
-  implementation(deps.livedataKtx)
-
   // dependency injection
   implementation(deps.dagger)
   kapt(deps.daggerCompiler)
