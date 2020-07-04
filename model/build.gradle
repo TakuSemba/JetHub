@@ -5,12 +5,12 @@ apply from: '../shared_deps.gradle'
 apply from: '../test_deps.gradle'
 
 android {
-  compileSdkVersion config.compileSdkVersion
+  compileSdkVersion configs.compileSdkVersion
   defaultConfig {
-    minSdkVersion config.minSdkVersion
-    targetSdkVersion config.targetSdkVersion
-    versionCode config.versionCode
-    versionName config.versionName
+    minSdkVersion configs.minSdkVersion
+    targetSdkVersion configs.targetSdkVersion
+    versionCode configs.versionCode
+    versionName configs.versionName
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
   buildTypes {

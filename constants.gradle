@@ -1,6 +1,6 @@
 project.ext {
 
-  config = [
+  configs = [
       versionName: "1.0.0",
       versionCode: 1,
       packageName: "com.takusemba.jethub",
