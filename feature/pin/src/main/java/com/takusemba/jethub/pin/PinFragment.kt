@@ -7,6 +7,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.takusemba.jethub.base.model.Direction
+import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.pin.databinding.FragmentPinBinding
@@ -22,6 +24,7 @@ class PinFragment : Fragment(R.layout.fragment_pin) {
     fun newInstance() = PinFragment()
   }
 
+  private val navigationViewModel: NavigationViewModel by activityViewModels()
   private val systemViewModel: SystemViewModel by activityViewModels()
   private val userViewModel: UserViewModel by activityViewModels()
 
@@ -46,6 +49,10 @@ class PinFragment : Fragment(R.layout.fragment_pin) {
 
     userViewModel.pinedRepositories.observe(viewLifecycleOwner) { repositories ->
       binding.emptyLayout.visibility = if (repositories.isEmpty()) View.VISIBLE else View.INVISIBLE
+    }
+
+    binding.account.setOnClickListener {
+      navigationViewModel.onDirectionChanged(Direction.ACCOUNT)
     }
 
     binding.themeSwitch.setOnClickListener {
