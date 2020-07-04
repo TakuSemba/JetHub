@@ -1,12 +1,14 @@
 package com.takusemba.jethub.account
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
+import androidx.ui.core.setContent
+import androidx.ui.foundation.Text
 import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.di.AccountModuleDependencies
 import dagger.hilt.android.EntryPointAccessors
@@ -36,9 +38,8 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-//    (view as ViewGroup).setContent {
-//      Text("Hello World")
-//    }
-    startActivity(Intent(requireContext(), TestActivity::class.java))
+    (view as ViewGroup).setContent {
+      Text("Hello World")
+    }
   }
 }
