@@ -11,14 +11,6 @@ dependencies {
   implementation(deps.coroutineAndroid)
   testImplementation(deps.coroutineTest)
 
-  // androidx
-  implementation(deps.appCompat)
-  implementation(deps.material)
-  implementation(deps.constraintLayout)
-  implementation(deps.coreKtx)
-  implementation(deps.activityKtx)
-  implementation(deps.fragmentKtx)
-
   // lifecycle
   implementation(deps.lifecycleRuntime)
   implementation(deps.lifecycleExtensions)

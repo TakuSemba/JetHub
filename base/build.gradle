@@ -38,6 +38,14 @@ dependencies {
   // module
   api(project(':data'))
 
+  // design/core
+  api(deps.appCompat)
+  api(deps.material)
+  api(deps.constraintLayout)
+  api(deps.coreKtx)
+  api(deps.activityKtx)
+  api(deps.fragmentKtx)
+
   // navigation
   api(deps.navCommonKtx)
   api(deps.navRuntimeKtx)
