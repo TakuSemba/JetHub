@@ -9,12 +9,13 @@ project.ext {
       minSdkVersion: 21,
   ]
 
-  version = [
+  versions = [
       // library
       buildGradle: "4.0.0",
       kotlin: "1.3.72",
       coroutine: "1.3.7",
       androidX: "1.1.0",
+      compose: "0.1.0-dev14",
       lifecycle: "2.2.0",
       constraintLayout: "2.0.0-beta6",
       navigation: "2.3.0",
@@ -32,76 +33,85 @@ project.ext {
 
   deps = [
       // plugin
-      pluginBuildGradle: "com.android.tools.build:gradle:${version.buildGradle}",
-      pluginKotlinGradle: "org.jetbrains.kotlin:kotlin-gradle-plugin:${version.kotlin}",
-      pluginSafeArgs: "androidx.navigation:navigation-safe-args-gradle-plugin:${version.navigation}",
-      pluginDaggerHilt: "com.google.dagger:hilt-android-gradle-plugin:${version.daggerHilt}",
-      pluginKotlinSerialization: "org.jetbrains.kotlin:kotlin-serialization:${version.kotlin}",
+      pluginBuildGradle: "com.android.tools.build:gradle:${versions.buildGradle}",
+      pluginKotlinGradle: "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+      pluginSafeArgs: "androidx.navigation:navigation-safe-args-gradle-plugin:${versions.navigation}",
+      pluginDaggerHilt: "com.google.dagger:hilt-android-gradle-plugin:${versions.daggerHilt}",
+      pluginKotlinSerialization: "org.jetbrains.kotlin:kotlin-serialization:${versions.kotlin}",
       pluginResourceRemover: "gradle.plugin.com.github.konifar.gradle:plugin:0.3.3",
 
       // desugar
       desugar: "com.android.tools:desugar_jdk_libs:1.0.5",
 
       // kotlin
-      kotlin: "org.jetbrains.kotlin:kotlin-stdlib:${version.kotlin}",
+      kotlin: "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
       kotlinSerialization: "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0",
 
       // coroutine
-      coroutineCore: "org.jetbrains.kotlinx:kotlinx-coroutines-core:${version.coroutine}",
-      coroutineAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${version.coroutine}",
-      coroutineTest: "org.jetbrains.kotlinx:kotlinx-coroutines-test:${version.coroutine}",
+      coroutineCore: "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.coroutine}",
+      coroutineAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutine}",
+      coroutineTest: "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.coroutine}",
 
       // androidx
-      appCompat: "androidx.appcompat:appcompat:${version.androidX}",
+      appCompat: "androidx.appcompat:appcompat:${versions.androidX}",
       material: "com.google.android.material:material:1.3.0-alpha01",
-      constraintLayout: "androidx.constraintlayout:constraintlayout:${version.constraintLayout}",
-      coreKtx: "androidx.core:core-ktx:${version.androidX}",
-      activityKtx: "androidx.activity:activity-ktx:${version.androidX}",
-      fragmentKtx: "androidx.fragment:fragment-ktx:${version.androidX}",
+      constraintLayout: "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}",
+      coreKtx: "androidx.core:core-ktx:${versions.androidX}",
+      activityKtx: "androidx.activity:activity-ktx:${versions.androidX}",
+      fragmentKtx: "androidx.fragment:fragment-ktx:${versions.androidX}",
+
+      // compose
+      composeCore: "androidx.ui:ui-core:${versions.compose}",
+      composeLayout: "androidx.ui:ui-layout:${versions.compose}",
+      composeMaterial: "androidx.ui:ui-material:${versions.compose}",
+      composeFoundation: "androidx.ui:ui-foundation:${versions.compose}",
+      composeAnimation: "androidx.ui:ui-animation:${versions.compose}",
+      composeTooling: "androidx.ui:ui-tooling:${versions.compose}",
+      composeLivedata: "androidx.ui:ui-livedata:${versions.compose}",
 
       // navigation
-      navCommonKtx: "androidx.navigation:navigation-common-ktx:${version.navigation}",
-      navRuntimeKtx: "androidx.navigation:navigation-runtime-ktx:${version.navigation}",
-      navFragmentKtx: "androidx.navigation:navigation-fragment-ktx:${version.navigation}",
-      navUiKtx: "androidx.navigation:navigation-ui-ktx:${version.navigation}",
-      navDfm: "androidx.navigation:navigation-dynamic-features-fragment:${version.navigation}",
+      navCommonKtx: "androidx.navigation:navigation-common-ktx:${versions.navigation}",
+      navRuntimeKtx: "androidx.navigation:navigation-runtime-ktx:${versions.navigation}",
+      navFragmentKtx: "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
+      navUiKtx: "androidx.navigation:navigation-ui-ktx:${versions.navigation}",
+      navDfm: "androidx.navigation:navigation-dynamic-features-fragment:${versions.navigation}",
 
       // lifecycle
-      lifecycleRuntime: "androidx.lifecycle:lifecycle-runtime:${version.lifecycle}",
-      lifecycleExtensions: "androidx.lifecycle:lifecycle-extensions:${version.lifecycle}",
-      lifecycleCompiler: "androidx.lifecycle:lifecycle-compiler:${version.lifecycle}",
-      viewmodelKtx: "androidx.lifecycle:lifecycle-viewmodel-ktx:${version.lifecycle}",
-      livedataKtx: "androidx.lifecycle:lifecycle-livedata-ktx:${version.lifecycle}",
+      lifecycleRuntime: "androidx.lifecycle:lifecycle-runtime:${versions.lifecycle}",
+      lifecycleExtensions: "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}",
+      lifecycleCompiler: "androidx.lifecycle:lifecycle-compiler:${versions.lifecycle}",
+      viewmodelKtx: "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}",
+      livedataKtx: "androidx.lifecycle:lifecycle-livedata-ktx:${versions.lifecycle}",
 
       // dependency injection
-      dagger: "com.google.dagger:dagger:${version.dagger}",
-      daggerCompiler: "com.google.dagger:dagger-compiler:${version.dagger}",
-      daggerHilt: "com.google.dagger:hilt-android:${version.daggerHilt}",
-      daggerHiltCompiler: "com.google.dagger:hilt-android-compiler:${version.daggerHilt}",
-      androidHilt: "androidx.hilt:hilt-common:${version.androidHilt}",
-      androidHiltViewModel: "androidx.hilt:hilt-lifecycle-viewmodel:${version.androidHilt}",
-      androidHiltCompiler: "androidx.hilt:hilt-compiler:${version.androidHilt}",
+      dagger: "com.google.dagger:dagger:${versions.dagger}",
+      daggerCompiler: "com.google.dagger:dagger-compiler:${versions.dagger}",
+      daggerHilt: "com.google.dagger:hilt-android:${versions.daggerHilt}",
+      daggerHiltCompiler: "com.google.dagger:hilt-android-compiler:${versions.daggerHilt}",
+      androidHilt: "androidx.hilt:hilt-common:${versions.androidHilt}",
+      androidHiltViewModel: "androidx.hilt:hilt-lifecycle-viewmodel:${versions.androidHilt}",
+      androidHiltCompiler: "androidx.hilt:hilt-compiler:${versions.androidHilt}",
 
       // network
-      retrofit: "com.squareup.retrofit2:retrofit:${version.retrofit}",
+      retrofit: "com.squareup.retrofit2:retrofit:${versions.retrofit}",
       retrofitConverter: "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.5.0",
-      loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:${version.okhttp}",
-      mockWebServer: "com.squareup.okhttp3:mockwebserver:${version.okhttp}",
+      loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}",
+      mockWebServer: "com.squareup.okhttp3:mockwebserver:${versions.okhttp}",
 
       // storage
-      roomRuntime: "androidx.room:room-runtime:${version.room}",
-      roomCompiler: "androidx.room:room-compiler:${version.room}",
-      roomKtx: "androidx.room:room-ktx:${version.room}",
+      roomRuntime: "androidx.room:room-runtime:${versions.room}",
+      roomCompiler: "androidx.room:room-compiler:${versions.room}",
+      roomKtx: "androidx.room:room-ktx:${versions.room}",
 
       // recycler view
-      groupie: "com.xwray:groupie:${version.groupie}",
-      groupieViewBinding: "com.xwray:groupie-viewbinding:${version.groupie}",
+      groupie: "com.xwray:groupie:${versions.groupie}",
+      groupieViewBinding: "com.xwray:groupie-viewbinding:${versions.groupie}",
 
       // image
       picasso: "com.squareup.picasso:picasso:2.71828",
 
       // test
-      junit: "junit:junit:${version.junit}",
+      junit: "junit:junit:${versions.junit}",
       mockk: "io.mockk:mockk:1.9.3",
       truth: "com.google.truth:truth:1.0",
       testCore: "android.arch.core:core-testing:1.1.0",

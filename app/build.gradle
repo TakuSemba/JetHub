@@ -49,12 +49,11 @@ dependencies {
   implementation(project(':feature:search'))
   implementation(project(':feature:pin'))
 
-  implementation "androidx.ui:ui-core:0.1.0-dev14"
-  implementation "androidx.ui:ui-layout:0.1.0-dev14"
-  implementation "androidx.ui:ui-material:0.1.0-dev14"
-  implementation "androidx.ui:ui-material-icons-extended:0.1.0-dev14"
-  implementation "androidx.ui:ui-foundation:0.1.0-dev14"
-  implementation "androidx.ui:ui-animation:0.1.0-dev14"
-  implementation "androidx.ui:ui-tooling:0.1.0-dev14"
-  implementation "androidx.ui:ui-livedata:0.1.0-dev14"
+  implementation deps.composeCore
+  implementation deps.composeLayout
+  implementation deps.composeMaterial
+  implementation deps.composeFoundation
+  implementation deps.composeAnimation
+  implementation deps.composeTooling
+  implementation deps.composeLivedata
 }
