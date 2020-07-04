@@ -38,10 +38,13 @@ dependencies {
   implementation(project(':app'))
   implementation(project(':base'))
 
-  // recycler view
-  implementation(deps.groupie)
-  implementation(deps.groupieViewBinding)
-
-  // image
-  implementation(deps.picasso)
+  // compose
+  implementation "androidx.compose:compose-runtime:0.1.0-dev14"
+  implementation "androidx.ui:ui-core:0.1.0-dev14"
+  implementation "androidx.ui:ui-layout:0.1.0-dev14"
+  implementation "androidx.ui:ui-material:0.1.0-dev14"
+  implementation "androidx.ui:ui-material-icons-extended:0.1.0-dev14"
+  implementation "androidx.ui:ui-foundation:0.1.0-dev14"
+  implementation "androidx.ui:ui-animation:0.1.0-dev14"
+  implementation "androidx.ui:ui-tooling:0.1.0-dev14"
 }

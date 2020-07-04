@@ -1,12 +1,12 @@
 package com.takusemba.jethub.feed
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.tabs.TabLayout.Tab
 import com.google.android.material.tabs.TabLayoutMediator
-import com.takusemba.jethub.base.model.Direction
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.feed.databinding.FragmentFeedBinding
@@ -35,7 +35,13 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
     mediator.attach()
 
     binding.account.setOnClickListener {
-      navigationViewModel.onDirectionChanged(Direction.ACCOUNT)
+      val activityToStart = "com.takusemba.jethub.account.AccountActivity"
+      try {
+        val c = Class.forName(activityToStart)
+        val intent = Intent(activity, c)
+        startActivity(intent)
+      } catch (ignored: ClassNotFoundException) {
+      }
     }
 
     binding.themeSwitch.setOnClickListener {
