@@ -6,51 +6,6 @@
   android:layout_height="wrap_content"
   android:background="?attr/selectableItemBackground">
 
-  <ImageView
-    android:id="@+id/language_icon"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
-    android:layout_marginBottom="16dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="@id/title"
-    app:layout_constraintTop_toBottomOf="@id/description"
-    tools:src="@drawable/ic_circle_kotlin" />
-
-  <ImageView
-    android:id="@+id/star_icon"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:src="@drawable/ic_star"
-    app:layout_constraintBottom_toBottomOf="@id/language_name"
-    app:layout_constraintStart_toEndOf="@id/language_name"
-    app:layout_constraintTop_toBottomOf="@id/description"
-    app:layout_constraintTop_toTopOf="@id/language_name" />
-
-  <ImageView
-    android:id="@+id/fork_icon"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:src="@drawable/ic_fork"
-    app:layout_constraintBottom_toBottomOf="@id/star_count"
-    app:layout_constraintStart_toEndOf="@id/star_count"
-    app:layout_constraintTop_toBottomOf="@id/description"
-    app:layout_constraintTop_toTopOf="@id/star_count" />
-
-  <TextView
-    android:id="@+id/language_name"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:textAppearance="?attr/textAppearanceBody2"
-    app:layout_constraintBottom_toBottomOf="@id/language_icon"
-    app:layout_constraintStart_toEndOf="@id/language_icon"
-    app:layout_constraintTop_toBottomOf="@id/description"
-    app:layout_constraintTop_toTopOf="@id/language_icon"
-    tools:text="Kotlin" />
-
   <TextView
     android:id="@+id/description"
     android:layout_width="0dp"
@@ -61,19 +16,6 @@
     app:layout_constraintStart_toStartOf="@id/title"
     app:layout_constraintTop_toBottomOf="@id/title"
     tools:text="Android library for multiple snapping of RecyclerView" />
-
-  <TextView
-    android:id="@+id/star_count"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:textAppearance="?attr/textAppearanceBody2"
-    app:layout_constraintBottom_toBottomOf="@id/star_icon"
-    app:layout_constraintStart_toEndOf="@id/star_icon"
-    app:layout_constraintTop_toBottomOf="@id/description"
-    app:layout_constraintTop_toTopOf="@id/star_icon"
-    tools:text="1520" />
-
   <TextView
     android:id="@+id/title"
     android:layout_width="0dp"
@@ -89,16 +31,50 @@
     app:layout_constraintTop_toTopOf="parent"
     tools:text="MultiSnapRecyclerView" />
 
+  <ImageView
+    android:id="@+id/language_icon"
+    android:layout_width="12dp"
+    android:layout_height="12dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="@id/title"
+    app:layout_constraintTop_toBottomOf="@id/description"
+    tools:src="@drawable/ic_circle_kotlin" />
+
   <TextView
-    android:id="@+id/fork_count"
+    android:id="@+id/language_name"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
     android:textAppearance="?attr/textAppearanceBody2"
-    app:layout_constraintBottom_toBottomOf="@id/fork_icon"
-    app:layout_constraintStart_toEndOf="@id/fork_icon"
+    app:layout_constraintBottom_toBottomOf="@id/language_icon"
+    app:layout_constraintStart_toEndOf="@id/language_icon"
     app:layout_constraintTop_toBottomOf="@id/description"
-    app:layout_constraintTop_toTopOf="@id/fork_icon"
-    tools:text="132" />
+    app:layout_constraintTop_toTopOf="@id/language_icon"
+    tools:text="Kotlin" />
+
+  <ImageView
+    android:id="@+id/star_icon"
+    android:layout_width="12dp"
+    android:layout_height="12dp"
+    android:layout_marginStart="8dp"
+    android:src="@drawable/ic_star"
+    app:layout_constraintBottom_toBottomOf="@id/language_name"
+    app:layout_constraintStart_toEndOf="@id/language_name"
+    app:layout_constraintTop_toBottomOf="@id/description"
+    app:layout_constraintTop_toTopOf="@id/language_name" />
+
+  <TextView
+    android:id="@+id/star_count"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:textAppearance="?attr/textAppearanceBody2"
+    app:layout_constraintBottom_toBottomOf="@id/star_icon"
+    app:layout_constraintStart_toEndOf="@id/star_icon"
+    app:layout_constraintTop_toBottomOf="@id/description"
+    app:layout_constraintTop_toTopOf="@id/star_icon"
+    tools:text="1520" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

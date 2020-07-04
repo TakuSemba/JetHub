@@ -33,7 +33,6 @@ data class RepositoryItem(
     binding.languageName.text = language.title
     binding.languageIcon.setImageResource(language.icon)
     binding.starCount.text = repository.starsCount.toString()
-    binding.forkCount.text = repository.forksCount.toString()
 
     binding.root.setOnLongClickListener { v ->
       if (userViewModel.isPinned(repository)) {
