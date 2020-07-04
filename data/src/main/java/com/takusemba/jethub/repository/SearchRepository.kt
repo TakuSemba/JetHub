@@ -1,8 +1,8 @@
 package com.takusemba.jethub.repository
 
 import com.takusemba.jethub.api.SearchApi
+import com.takusemba.jethub.model.Owner
 import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.model.SimpleDeveloper
 import javax.inject.Inject
 
 /**
@@ -16,7 +16,7 @@ class SearchRepository @Inject constructor(
     return searchApi.searchRepos(query)
   }
 
-  suspend fun searchDevelopers(query: String): List<SimpleDeveloper> {
-    return searchApi.searchDevelopers(query)
+  suspend fun searchOwners(query: String): List<Owner> {
+    return searchApi.searchOwners(query)
   }
 }

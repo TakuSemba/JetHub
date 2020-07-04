@@ -71,7 +71,7 @@ class SearchApiClientTest {
 
       mockWebServer.enqueue(MockResponse().setResponseCode(200).setBody(json))
 
-      val developers = client.getHotDevelopers("Kotlin", LocalDateTime.now())
+      val developers = client.getHotOwners("Kotlin", LocalDateTime.now())
 
       assertThat(developers).hasSize(2)
 
@@ -231,7 +231,7 @@ class SearchApiClientTest {
 
       mockWebServer.enqueue(MockResponse().setResponseCode(200).setBody(json))
 
-      val developers = client.searchDevelopers("query")
+      val developers = client.searchOwners("query")
 
       assertThat(developers).hasSize(2)
 

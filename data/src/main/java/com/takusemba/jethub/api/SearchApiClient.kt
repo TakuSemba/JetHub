@@ -2,8 +2,9 @@ package com.takusemba.jethub.api
 
 import com.takusemba.jethub.api.response.ListResponse
 import com.takusemba.jethub.api.response.RepositoryResponse
-import com.takusemba.jethub.api.response.SimpleDeveloperResponse
+import com.takusemba.jethub.api.response.OwnerResponse
 import com.takusemba.jethub.model.DateFormatters
+import com.takusemba.jethub.model.Owner
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.model.SimpleDeveloper
 import kotlinx.coroutines.Dispatchers.IO
@@ -30,13 +31,13 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     suspend fun getHotDevelopers(
       @Query("q") query: String,
       @Query("sort") sort: String = "stars"
-    ): ListResponse<SimpleDeveloperResponse>
+    ): ListResponse<OwnerResponse>
 
     @GET("search/repositories")
     suspend fun searchRepos(@Query("q") query: String): ListResponse<RepositoryResponse>
 
     @GET("search/users")
-    suspend fun searchDevelopers(@Query("q") query: String): ListResponse<SimpleDeveloperResponse>
+    suspend fun searchDevelopers(@Query("q") query: String): ListResponse<OwnerResponse>
   }
 
   private val service = retrofit.create(Service::class.java)
@@ -53,10 +54,10 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     }
   }
 
-  override suspend fun getHotDevelopers(
+  override suspend fun getHotOwners(
     language: String,
     from: LocalDateTime
-  ): List<SimpleDeveloper> {
+  ): List<Owner> {
     return withContext(IO) {
       service.getHotDevelopers(
         "language:${language} created:>${from.format(DateFormatters.ofSearchQuery())}")
@@ -78,7 +79,7 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     }
   }
 
-  override suspend fun searchDevelopers(query: String): List<SimpleDeveloper> {
+  override suspend fun searchOwners(query: String): List<Owner> {
     return withContext(IO) {
       val q = if (query.isNotBlank()) {
         query
