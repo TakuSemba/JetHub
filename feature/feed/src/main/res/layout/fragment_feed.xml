@@ -2,31 +2,31 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:id="@+id/coordinator_layout"
-  android:layout_height="match_parent"
-  android:layout_width="match_parent">
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
 
   <androidx.viewpager.widget.ViewPager
     android:id="@+id/pager"
-    android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
   <com.google.android.material.appbar.AppBarLayout
-    android:elevation="8dp"
     android:id="@+id/appbar"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_width="match_parent">
+    android:elevation="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-      android:layout_height="wrap_content"
       android:layout_width="match_parent"
+      android:layout_height="wrap_content"
       app:layout_scrollFlags="scroll|snap|exitUntilCollapsed|enterAlways">
 
       <ImageView
         android:id="@+id/account"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_width="wrap_content"
         android:padding="8dp"
         android:src="@drawable/ic_circle_java"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,9 +35,9 @@
 
       <ImageView
         android:id="@+id/theme_switch"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_width="wrap_content"
         android:padding="8dp"
         android:src="@drawable/ic_theme_switch"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,12 +46,13 @@
 
       <TextView
         android:id="@+id/title"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:minHeight="?actionBarSize"
         android:text="@string/feed"
+        android:textAppearance="?textAppearanceHeadline6"
         android:textColor="?android:attr/textColorSecondary"
-        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,8 +62,8 @@
 
     <com.google.android.material.tabs.TabLayout
       android:id="@+id/tab_layout"
-      android:layout_height="wrap_content"
       android:layout_width="match_parent"
+      android:layout_height="wrap_content"
       app:tabMinWidth="100dp"
       app:tabMode="scrollable" />
 

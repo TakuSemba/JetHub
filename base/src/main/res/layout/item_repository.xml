@@ -2,16 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
-  android:background="?attr/selectableItemBackground"
+  android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:layout_width="match_parent">
+  android:background="?attr/selectableItemBackground">
 
   <ImageView
     android:id="@+id/language_icon"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
-    android:layout_marginTop="16dp"
     android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="@id/title"
     app:layout_constraintTop_toBottomOf="@id/description"
@@ -19,9 +19,9 @@
 
   <ImageView
     android:id="@+id/star_icon"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
-    android:layout_width="wrap_content"
     android:src="@drawable/ic_star"
     app:layout_constraintBottom_toBottomOf="@id/language_name"
     app:layout_constraintStart_toEndOf="@id/language_name"
@@ -30,9 +30,9 @@
 
   <ImageView
     android:id="@+id/fork_icon"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
-    android:layout_width="wrap_content"
     android:src="@drawable/ic_fork"
     app:layout_constraintBottom_toBottomOf="@id/star_count"
     app:layout_constraintStart_toEndOf="@id/star_count"
@@ -41,9 +41,10 @@
 
   <TextView
     android:id="@+id/language_name"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
-    android:layout_width="wrap_content"
+    android:textAppearance="?attr/textAppearanceBody2"
     app:layout_constraintBottom_toBottomOf="@id/language_icon"
     app:layout_constraintStart_toEndOf="@id/language_icon"
     app:layout_constraintTop_toBottomOf="@id/description"
@@ -52,10 +53,10 @@
 
   <TextView
     android:id="@+id/description"
+    android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="4dp"
-    android:layout_width="0dp"
-    android:textSize="14sp"
+    android:textAppearance="?attr/textAppearanceBody2"
     app:layout_constraintEnd_toEndOf="@id/title"
     app:layout_constraintStart_toStartOf="@id/title"
     app:layout_constraintTop_toBottomOf="@id/title"
@@ -63,9 +64,10 @@
 
   <TextView
     android:id="@+id/star_count"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
-    android:layout_width="wrap_content"
+    android:textAppearance="?attr/textAppearanceBody2"
     app:layout_constraintBottom_toBottomOf="@id/star_icon"
     app:layout_constraintStart_toEndOf="@id/star_icon"
     app:layout_constraintTop_toBottomOf="@id/description"
@@ -74,14 +76,14 @@
 
   <TextView
     android:id="@+id/title"
+    android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="16dp"
     android:layout_marginStart="16dp"
     android:layout_marginTop="16dp"
-    android:layout_width="0dp"
+    android:layout_marginEnd="16dp"
     android:lines="1"
-    android:textSize="20sp"
-    android:textStyle="bold"
+    android:textAppearance="?attr/textAppearanceHeadline6"
+    android:textColor="?android:attr/textColorSecondary"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
@@ -89,9 +91,10 @@
 
   <TextView
     android:id="@+id/fork_count"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
-    android:layout_width="wrap_content"
+    android:textAppearance="?attr/textAppearanceBody2"
     app:layout_constraintBottom_toBottomOf="@id/fork_icon"
     app:layout_constraintStart_toEndOf="@id/fork_icon"
     app:layout_constraintTop_toBottomOf="@id/description"
