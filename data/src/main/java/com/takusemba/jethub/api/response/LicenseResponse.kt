@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
  * License response data.
  */
 @Serializable
-class LicenseResponse : DataResponse<License>() {
+class LicenseResponse {
 
   @SerialName("key")
   var key: String? = null
@@ -25,7 +25,7 @@ class LicenseResponse : DataResponse<License>() {
   @SerialName("node_id")
   var nodeId: String? = null
 
-  override fun toModel() = License(
+  fun toModel() = License(
     key = key ?: "",
     name = name ?: "",
     spdxId = spdxId ?: ""

@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
  * Owner response data.
  */
 @Serializable
-class OwnerResponse : DataResponse<Owner>() {
+class OwnerResponse {
 
   @SerialName("login")
   var login: String? = null
@@ -64,7 +64,7 @@ class OwnerResponse : DataResponse<Owner>() {
   @SerialName("site_admin")
   var siteAdmin: Boolean? = null
 
-  override fun toModel() = Owner(
+  fun toModel() = Owner(
     id = id ?: throw IllegalArgumentException("id not found"),
     login = login ?: "",
     avatarUrl = avatarUrl ?: "",

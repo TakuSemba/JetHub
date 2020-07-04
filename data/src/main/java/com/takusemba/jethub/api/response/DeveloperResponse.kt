@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
  * Developer response data.
  */
 @Serializable
-class DeveloperResponse : DataResponse<Developer>() {
+class DeveloperResponse {
 
   @SerialName("login")
   var login: String? = null
@@ -103,7 +103,7 @@ class DeveloperResponse : DataResponse<Developer>() {
   @SerialName("updated_at")
   var updatedAt: String? = null
 
-  override fun toModel() = Developer(
+  fun toModel() = Developer(
     id = id ?: throw IllegalArgumentException("id not found"),
     login = login ?: "",
     avatarUrl = avatarUrl ?: "",

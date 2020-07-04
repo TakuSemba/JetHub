@@ -10,7 +10,7 @@ import java.time.LocalDateTime
  * Repository response data.
  */
 @Serializable
-class RepositoryResponse : DataResponse<Repository>() {
+class RepositoryResponse {
 
   @SerialName("id")
   var id: Int? = null
@@ -231,7 +231,7 @@ class RepositoryResponse : DataResponse<Repository>() {
   @SerialName("score")
   var score: Double? = null
 
-  override fun toModel() = Repository(
+  fun toModel() = Repository(
     id = id ?: throw IllegalArgumentException("id not found"),
     owner = owner?.toModel() ?: throw IllegalArgumentException("owner not found"),
     name = name ?: "",
