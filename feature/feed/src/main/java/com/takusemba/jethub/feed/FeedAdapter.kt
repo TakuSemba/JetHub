@@ -3,6 +3,7 @@ package com.takusemba.jethub.feed
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.PagerAdapter
@@ -37,6 +38,11 @@ class FeedAdapter(
     binding.recyclerView.addItemDecoration(dividerItemDecoration)
     binding.recyclerView.layoutManager = linearLayoutManager
     binding.recyclerView.adapter = groupAdapter
+
+    binding.progress.show()
+    feedViewModel.hotRepos(language).observe(fragment) {
+      binding.progress.hide()
+    }
 
     group.addView(binding.root)
     return binding.root
