@@ -1,5 +1,6 @@
 package com.takusemba.jethub.database.entity
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.takusemba.jethub.database.entity.OwnerEntity.Companion.createOwnerEntity
@@ -10,9 +11,8 @@ import java.time.LocalDateTime
 
 @Entity(tableName = "repository")
 class RepositoryEntity(
-  @PrimaryKey
-  val id: Int,
-  val owner: OwnerEntity,
+  @PrimaryKey val id: Int,
+  @Embedded val owner: OwnerEntity,
   val name: String,
   val description: String,
   val createdAt: String,

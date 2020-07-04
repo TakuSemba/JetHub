@@ -1,15 +1,11 @@
 package com.takusemba.jethub.database.entity
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.ColumnInfo
 import com.takusemba.jethub.model.Owner
-import com.takusemba.jethub.model.Repository
 import org.jetbrains.annotations.TestOnly
 
-@Entity(tableName = "owner")
 class OwnerEntity(
-  @PrimaryKey
-  val id: Int,
+  @ColumnInfo(name = "owner_id") val id: Int,
   val login: String,
   val avatarUrl: String,
   val url: String
