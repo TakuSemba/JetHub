@@ -1,6 +1,6 @@
 package com.takusemba.jethub.feed
 
-import androidx.lifecycle.LifecycleOwner
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import com.takusemba.jethub.base.model.Language
 import com.takusemba.jethub.base.ui.RepositoryItem
@@ -11,13 +11,13 @@ import com.xwray.groupie.Section
 
 class FeedRepoSection(
   language: Language,
-  lifecycleOwner: LifecycleOwner,
+  fragment: Fragment,
   feedViewModel: FeedViewModel,
   private val userViewModel: UserViewModel
 ) : Section() {
 
   init {
-    feedViewModel.hotRepos(language).observe(lifecycleOwner) { repositories ->
+    feedViewModel.hotRepos(language).observe(fragment.viewLifecycleOwner) { repositories ->
       updateResult(repositories)
     }
   }

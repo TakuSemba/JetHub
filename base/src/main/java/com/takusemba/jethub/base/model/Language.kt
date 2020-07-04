@@ -37,7 +37,8 @@ enum class Language(val title: String, @DrawableRes val icon: Int) {
       SWIFT,
       PYTHON,
       RUBY,
-      GO)
+      GO
+    )
 
     fun of(name: String?) = when (name) {
       KOTLIN.title -> KOTLIN

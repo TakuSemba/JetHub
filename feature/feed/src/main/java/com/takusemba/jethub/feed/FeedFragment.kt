@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
+import com.google.android.material.tabs.TabLayout.Tab
+import com.google.android.material.tabs.TabLayoutMediator
 import com.takusemba.jethub.base.model.Direction
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.SystemViewModel
-import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.feed.databinding.FragmentFeedBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,21 +20,19 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
     fun newInstance() = FeedFragment()
   }
 
-  private val feedViewModel: FeedViewModel by viewModels(
-    ownerProducer = { requireParentFragment() }
-  )
-
   private val navigationViewModel: NavigationViewModel by activityViewModels()
   private val systemViewModel: SystemViewModel by activityViewModels()
-  private val userViewModel: UserViewModel by activityViewModels()
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     val binding = FragmentFeedBinding.bind(view)
 
-    val feedAdapter = FeedAdapter(userViewModel, feedViewModel, this)
-    binding.pager.adapter = feedAdapter
-    binding.tabLayout.setupWithViewPager(binding.pager)
+    val adapter = FeedAdapter(this)
+    binding.pager.adapter = adapter
+    val mediator = TabLayoutMediator(binding.tabLayout, binding.pager) { tab: Tab, position: Int ->
+      tab.text = adapter.getTitle(position)
+    }
+    mediator.attach()
 
     binding.account.setOnClickListener {
       navigationViewModel.onDirectionChanged(Direction.ACCOUNT)

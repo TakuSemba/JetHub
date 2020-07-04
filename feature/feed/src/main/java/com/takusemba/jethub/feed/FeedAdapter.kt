@@ -1,66 +1,22 @@
 package com.takusemba.jethub.feed
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.lifecycle.observe
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager.widget.PagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.takusemba.jethub.base.model.Language
-import com.takusemba.jethub.base.viewmodel.UserViewModel
-import com.takusemba.jethub.feed.databinding.ItemFeedBinding
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.GroupieViewHolder
 
-class FeedAdapter(
-  private val userViewModel: UserViewModel,
-  private val feedViewModel: FeedViewModel,
-  private val fragment: FeedFragment
-) : PagerAdapter() {
+class FeedAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
   private val languages = Language.POPULAR_LANGUAGES
 
-  override fun instantiateItem(group: ViewGroup, position: Int): Any {
-    val inflater = LayoutInflater.from(group.context)
-    val binding = ItemFeedBinding.inflate(inflater, group, false)
-
-    val context = binding.root.context
-    val language = languages[position]
-    val feedRepoSection = FeedRepoSection(language, fragment, feedViewModel, userViewModel)
-
-    val linearLayoutManager = LinearLayoutManager(context)
-    val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
-      add(feedRepoSection)
-    }
-    val dividerItemDecoration = DividerItemDecoration(context, linearLayoutManager.orientation)
-    dividerItemDecoration.setDrawable(requireNotNull(context.getDrawable(R.drawable.shape_divider)))
-    binding.recyclerView.addItemDecoration(dividerItemDecoration)
-    binding.recyclerView.layoutManager = linearLayoutManager
-    binding.recyclerView.adapter = groupAdapter
-
-    binding.progress.show()
-    feedViewModel.hotRepos(language).observe(fragment) {
-      binding.progress.hide()
-    }
-
-    group.addView(binding.root)
-    return binding.root
-  }
-
-  override fun getPageTitle(position: Int): CharSequence? {
+  fun getTitle(position: Int): String {
     return languages[position].title
   }
 
-  override fun destroyItem(collection: ViewGroup, position: Int, view: Any) {
-    collection.removeView(view as View)
-  }
-
-  override fun getCount(): Int {
+  override fun getItemCount(): Int {
     return languages.size
   }
 
-  override fun isViewFromObject(view: View, anything: Any): Boolean {
-    return view === anything
+  override fun createFragment(position: Int): Fragment {
+    return FeedChannelFragment.newInstance(languages[position].title)
   }
 }
