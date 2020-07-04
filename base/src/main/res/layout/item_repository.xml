@@ -6,6 +6,45 @@
   android:layout_height="wrap_content"
   android:background="?attr/selectableItemBackground">
 
+  <com.google.android.material.imageview.ShapeableImageView
+    android:id="@+id/developer_icon"
+    android:layout_width="16dp"
+    android:layout_height="16dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginEnd="16dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:shapeAppearance="@style/ShapeAppearance.MaterialComponents.SmallComponent"
+    tools:src="@tools:sample/avatars" />
+
+  <TextView
+    android:id="@+id/developer_name"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="16dp"
+    android:lines="1"
+    android:textAppearance="?attr/textAppearanceBody1"
+    app:layout_constraintBottom_toBottomOf="@id/developer_icon"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@id/developer_icon"
+    app:layout_constraintTop_toTopOf="@id/developer_icon"
+    tools:text="TakuSemba" />
+
+  <TextView
+    android:id="@+id/title"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:lines="1"
+    android:textAppearance="?attr/textAppearanceHeadline6"
+    android:textColor="?android:attr/textColorSecondary"
+    app:layout_constraintEnd_toEndOf="@id/developer_name"
+    app:layout_constraintStart_toStartOf="@id/developer_icon"
+    app:layout_constraintTop_toBottomOf="@id/developer_icon"
+    tools:text="MultiSnapRecyclerView" />
+
   <TextView
     android:id="@+id/description"
     android:layout_width="0dp"
@@ -16,26 +55,12 @@
     app:layout_constraintStart_toStartOf="@id/title"
     app:layout_constraintTop_toBottomOf="@id/title"
     tools:text="Android library for multiple snapping of RecyclerView" />
-  <TextView
-    android:id="@+id/title"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="16dp"
-    android:lines="1"
-    android:textAppearance="?attr/textAppearanceHeadline6"
-    android:textColor="?android:attr/textColorSecondary"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    tools:text="MultiSnapRecyclerView" />
 
   <ImageView
     android:id="@+id/language_icon"
     android:layout_width="12dp"
     android:layout_height="12dp"
-    android:layout_marginTop="16dp"
+    android:layout_marginTop="8dp"
     android:layout_marginBottom="16dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="@id/title"
