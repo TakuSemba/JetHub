@@ -3,7 +3,7 @@ package com.takusemba.jethub.base.model
 import androidx.annotation.DrawableRes
 import com.takusemba.jethub.base.R
 
-enum class Language(val title: String, @DrawableRes val icon: Int) {
+enum class ColoredLanguage(val title: String, @DrawableRes val icon: Int) {
 
   KOTLIN("Kotlin", R.drawable.ic_circle_kotlin),
 

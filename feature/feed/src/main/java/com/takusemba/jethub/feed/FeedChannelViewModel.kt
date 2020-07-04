@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
  * [ViewModel] to store and manage Feed Channel data.
  */
 class FeedChannelViewModel(
-  private val languageName: String,
+  private val language: String,
   private val repoRepository: RepoRepository
 ) : ViewModel() {
 
@@ -21,7 +21,7 @@ class FeedChannelViewModel(
   init {
     viewModelScope.launch {
       runCatching {
-        repoRepository.getHotRepos(languageName)
+        repoRepository.getHotRepos(language)
       }.onSuccess { repos ->
         hotRepos.value = repos
       }

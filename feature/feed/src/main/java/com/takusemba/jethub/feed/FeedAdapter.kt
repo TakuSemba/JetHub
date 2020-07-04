@@ -2,11 +2,11 @@ package com.takusemba.jethub.feed
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.takusemba.jethub.base.model.Language
+import com.takusemba.jethub.base.model.ColoredLanguage
 
 class FeedAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
-  private val languages = Language.POPULAR_LANGUAGES
+  private val languages = ColoredLanguage.POPULAR_LANGUAGES
 
   fun getTitle(position: Int): String {
     return languages[position].title

@@ -6,7 +6,7 @@ import android.widget.Toast.LENGTH_SHORT
 import com.squareup.picasso.Picasso
 import com.takusemba.jethub.base.R
 import com.takusemba.jethub.base.databinding.ItemRepositoryBinding
-import com.takusemba.jethub.base.model.Language
+import com.takusemba.jethub.base.model.ColoredLanguage
 import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.model.Repository
 import com.xwray.groupie.viewbinding.BindableItem
@@ -32,7 +32,7 @@ data class RepositoryItem(
     } else {
       View.VISIBLE
     }
-    val language = Language.of(repository.language)
+    val language = ColoredLanguage.of(repository.language)
     binding.languageName.text = language.title
     binding.languageIcon.setImageResource(language.icon)
     binding.starCount.text = repository.starsCount.toString()
