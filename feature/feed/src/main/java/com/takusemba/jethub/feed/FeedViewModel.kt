@@ -9,6 +9,8 @@ import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.base.model.Language
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.RepoRepository
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 
 /**
@@ -28,9 +30,9 @@ class FeedViewModel @ViewModelInject constructor(
     viewModelScope.launch {
       runCatching {
         mutableMapOf<Language, List<Repository>>().also { map ->
-          Language.POPULAR_LANGUAGES.forEach { language ->
-            map[language] = repoRepository.getHotRepos(language.title)
-          }
+          Language.POPULAR_LANGUAGES.map { language ->
+            async { map[language] = repoRepository.getHotRepos(language.title) }
+          }.awaitAll()
         }
       }.onSuccess { map ->
         mutableHotReposMap.value = map
