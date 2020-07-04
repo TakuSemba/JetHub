@@ -3,10 +3,11 @@ package com.takusemba.jethub.base
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
-import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.repository.UserRepository
 import com.takusemba.jethub.base.viewmodel.UserViewModel
+import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.model.Repository.Companion.createRepository
+import com.takusemba.jethub.repository.DeveloperRepository
+import com.takusemba.jethub.repository.RepoRepository
 import io.mockk.MockKAnnotations
 import io.mockk.Runs
 import io.mockk.coEvery
@@ -35,7 +36,8 @@ class UserViewModelTest {
 
   @get:Rule var instantTaskExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
 
-  @MockK private lateinit var userRepository: UserRepository
+  @MockK private lateinit var repoRepository: RepoRepository
+  @MockK private lateinit var developerRepository: DeveloperRepository
 
   @Before
   @ExperimentalCoroutinesApi
@@ -55,14 +57,13 @@ class UserViewModelTest {
 
       val observer = mockk<Observer<List<Repository>>>(relaxed = true)
 
-      coEvery { userRepository.findAllPins() } returns listOf(
+      coEvery { repoRepository.findAllPins() } returns listOf(
         createRepository(id = 1),
         createRepository(id = 2),
         createRepository(id = 3)
       )
 
-      val viewModel = UserViewModel(
-        userRepository)
+      val viewModel = UserViewModel(repoRepository, developerRepository)
 
       viewModel.pinedRepositories.observeForever(observer)
       viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
@@ -77,15 +78,14 @@ class UserViewModelTest {
 
       val observer = mockk<Observer<List<Repository>>>(relaxed = true)
 
-      coEvery { userRepository.findAllPins() } returns listOf(
+      coEvery { repoRepository.findAllPins() } returns listOf(
         createRepository(id = 1),
         createRepository(id = 2),
         createRepository(id = 3)
       )
-      coEvery { userRepository.pin(any()) } just Runs
+      coEvery { repoRepository.pin(any()) } just Runs
 
-      val viewModel = UserViewModel(
-        userRepository)
+      val viewModel = UserViewModel(repoRepository, developerRepository)
 
       val repo = createRepository(id = 4)
       viewModel.pin(repo)
@@ -104,15 +104,14 @@ class UserViewModelTest {
       val observer = mockk<Observer<List<Repository>>>(relaxed = true)
       val repoToBeRemoved = createRepository(id = 3)
 
-      coEvery { userRepository.findAllPins() } returns listOf(
+      coEvery { repoRepository.findAllPins() } returns listOf(
         createRepository(id = 1),
         createRepository(id = 2),
         repoToBeRemoved
       )
-      coEvery { userRepository.unpin(any()) } just Runs
+      coEvery { repoRepository.unpin(any()) } just Runs
 
-      val viewModel = UserViewModel(
-        userRepository)
+      val viewModel = UserViewModel(repoRepository, developerRepository)
 
       viewModel.unpin(repoToBeRemoved)
 

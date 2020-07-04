@@ -4,9 +4,9 @@
   android:id="@+id/mobile_navigation"
   app:startDestination="@id/mainTabFragment">
 
-  <activity
-    android:id="@+id/accountActivity"
-    android:name="com.takusemba.jethub.account.AccountActivity"
+  <fragment
+    android:id="@+id/accountFragment"
+    android:name="com.takusemba.jethub.account.AccountFragment"
     app:moduleName="@string/dynamic_module_account" />
 
   <fragment
@@ -16,7 +16,7 @@
 
     <action
       android:id="@+id/action_main_tab_to_account"
-      app:destination="@id/accountActivity" />
+      app:destination="@id/accountFragment" />
 
   </fragment>
 

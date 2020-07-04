@@ -13,7 +13,7 @@ import dagger.Component
 @Component(dependencies = [AccountModuleDependencies::class])
 interface AccountComponent {
 
-  fun inject(activity: AccountActivity)
+  fun inject(fragment: AccountFragment)
 
   @Component.Builder
   interface Builder {

@@ -5,8 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.takusemba.jethub.model.Developer
 import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.repository.UserRepository
+import com.takusemba.jethub.repository.DeveloperRepository
+import com.takusemba.jethub.repository.RepoRepository
 import kotlinx.coroutines.launch
 
 /**
@@ -14,24 +16,38 @@ import kotlinx.coroutines.launch
  * This should be Activity-Scope, because the data is used across screens.
  */
 class UserViewModel @ViewModelInject constructor(
-  private val userRepository: UserRepository
+  private val repoRepository: RepoRepository,
+  private val developerRepository: DeveloperRepository
 ) : ViewModel() {
 
   private val mutablePinedRepositories: MutableLiveData<List<Repository>> = MutableLiveData()
   val pinedRepositories: LiveData<List<Repository>> = mutablePinedRepositories
 
+  private val mutableDeveloper: MutableLiveData<Developer> = MutableLiveData()
+  val developer: LiveData<Developer> = mutableDeveloper
+
   init {
     viewModelScope.launch {
       runCatching {
-        userRepository.findAllPins()
-      }.onSuccess { repos -> mutablePinedRepositories.value = repos }
+        repoRepository.findAllPins()
+      }.onSuccess { repos ->
+        mutablePinedRepositories.value = repos
+      }
+    }
+
+    viewModelScope.launch {
+      runCatching {
+        developerRepository.getDeveloper("TakuSemba")
+      }.onSuccess { developer ->
+        mutableDeveloper.value = developer
+      }
     }
   }
 
   fun pin(repository: Repository) {
     viewModelScope.launch {
       runCatching {
-        userRepository.pin(repository)
+        repoRepository.pin(repository)
         val repositories = mutablePinedRepositories.value?.toMutableList() ?: mutableListOf()
         repositories.apply { add(repository) }
       }.onSuccess { repos ->
@@ -43,7 +59,7 @@ class UserViewModel @ViewModelInject constructor(
   fun unpin(repository: Repository) {
     viewModelScope.launch {
       runCatching {
-        userRepository.unpin(repository)
+        repoRepository.unpin(repository)
         val repositories = mutablePinedRepositories.value?.toMutableList() ?: mutableListOf()
         repositories.apply { remove(repository) }
       }.onSuccess { repos ->
