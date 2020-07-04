@@ -3,20 +3,22 @@ package com.takusemba.jethub.database.entity
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.takusemba.jethub.database.LocalDateTimeConverter
 import com.takusemba.jethub.database.entity.OwnerEntity.Companion.createOwnerEntity
-import com.takusemba.jethub.model.DateFormatters
 import com.takusemba.jethub.model.Repository
 import org.jetbrains.annotations.TestOnly
 import java.time.LocalDateTime
 
 @Entity(tableName = "repository")
+@TypeConverters(LocalDateTimeConverter::class)
 class RepositoryEntity(
   @PrimaryKey val id: Int,
   @Embedded val owner: OwnerEntity,
   val name: String,
   val description: String,
-  val createdAt: String,
-  val updatedAt: String,
+  val createdAt: LocalDateTime,
+  val updatedAt: LocalDateTime,
   val starsCount: Int,
   val watchersCount: Int,
   val forksCount: Int,
@@ -28,8 +30,8 @@ class RepositoryEntity(
     owner = owner.toModel(),
     name = name,
     description = description,
-    createdAt = LocalDateTime.from(DateFormatters.ofDatabase().parse(createdAt)),
-    updatedAt = LocalDateTime.from(DateFormatters.ofDatabase().parse(updatedAt)),
+    createdAt = createdAt,
+    updatedAt = updatedAt,
     starsCount = starsCount,
     watchersCount = watchersCount,
     forksCount = forksCount,
@@ -44,8 +46,8 @@ class RepositoryEntity(
         owner = OwnerEntity.fromModel(repository.owner),
         name = repository.name,
         description = repository.description,
-        createdAt = repository.createdAt.format(DateFormatters.ofDatabase()),
-        updatedAt = repository.updatedAt.format(DateFormatters.ofDatabase()),
+        createdAt = repository.createdAt,
+        updatedAt = repository.updatedAt,
         starsCount = repository.starsCount,
         watchersCount = repository.watchersCount,
         forksCount = repository.forksCount,
@@ -70,8 +72,8 @@ class RepositoryEntity(
       owner = owner,
       name = name,
       description = description,
-      createdAt = createdAt.format(DateFormatters.ofDatabase()),
-      updatedAt = updatedAt.format(DateFormatters.ofDatabase()),
+      createdAt = createdAt,
+      updatedAt = updatedAt,
       starsCount = starsCount,
       watchersCount = watchersCount,
       forksCount = forksCount,
