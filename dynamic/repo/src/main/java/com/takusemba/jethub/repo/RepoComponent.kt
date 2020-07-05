@@ -1,7 +1,7 @@
-package com.takusemba.jethub.account
+package com.takusemba.jethub.repo
 
 import android.content.Context
-import com.takusemba.jethub.di.AccountModuleDependencies
+import com.takusemba.jethub.di.RepoModuleDependencies
 import dagger.BindsInstance
 import dagger.Component
 
@@ -10,18 +10,18 @@ import dagger.Component
  * Therefore, this is a alternative way to archive injection for now.
  * https://developer.android.com/training/dependency-injection/hilt-multi-module#dfm
  */
-@Component(dependencies = [AccountModuleDependencies::class])
-interface AccountComponent {
+@Component(dependencies = [RepoModuleDependencies::class])
+interface RepoComponent {
 
-  fun inject(fragment: AccountFragment)
+  fun inject(fragment: RepoFragment)
 
   @Component.Builder
   interface Builder {
 
     fun context(@BindsInstance context: Context): Builder
 
-    fun appDependencies(dependencies: AccountModuleDependencies): Builder
+    fun appDependencies(dependencies: RepoModuleDependencies): Builder
 
-    fun build(): AccountComponent
+    fun build(): RepoComponent
   }
 }
