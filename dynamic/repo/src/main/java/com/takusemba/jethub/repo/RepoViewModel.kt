@@ -15,15 +15,15 @@ class RepoViewModel @ViewModelInject constructor(
   private val repoRepository: RepoRepository
 ) : ViewModel() {
 
-  private val _repository: MutableLiveData<Repository> = MutableLiveData()
-  val repository: LiveData<Repository> get() = _repository
+  private val mutableRepository: MutableLiveData<Repository> = MutableLiveData()
+  val repository: LiveData<Repository> get() = mutableRepository
 
   init {
     viewModelScope.launch {
       runCatching {
         repoRepository.getRepo(owner, repo)
       }.onSuccess { repo ->
-        _repository.value = repo
+        mutableRepository.value = repo
       }
     }
   }
