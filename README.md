@@ -12,7 +12,7 @@ Android Sample App using Github API and Jetpack Component.</br>
 
 ## What's JetHub? :rocket:
 
-JetHub is a sample app using Github API and Jetpack components (LiveData, ViewModel, Room, Navigation etc...).
+JetHub is a sample app using Github API and Jetpack components.
 
 The purpose of this project is to try new Android technologies and learn how it works in an app.
 
