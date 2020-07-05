@@ -8,7 +8,7 @@ import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.base.model.ColoredLanguage
 import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.repository.RepoRepository
+import com.takusemba.jethub.repository.SearchRepository
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
  * [ViewModel] to store and manage Feed data.
  */
 class FeedViewModel @ViewModelInject constructor(
-  private val repoRepository: RepoRepository
+  private val searchRepository: SearchRepository
 ) : ViewModel() {
 
   private val mutableHotReposMap = MutableLiveData<Map<String, List<Repository>>>()
@@ -31,7 +31,7 @@ class FeedViewModel @ViewModelInject constructor(
       runCatching {
         mutableMapOf<String, List<Repository>>().also { map ->
           ColoredLanguage.POPULAR_LANGUAGES.map { language ->
-            async { map[language.title] = repoRepository.getHotRepos(language.title) }
+            async { map[language.title] = searchRepository.searchHotRepos(language.title) }
           }.awaitAll()
         }
       }.onSuccess { map ->

@@ -5,7 +5,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.model.Repository.Companion.createRepository
-import com.takusemba.jethub.repository.RepoRepository
+import com.takusemba.jethub.repository.SearchRepository
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
@@ -32,7 +32,7 @@ class FeedViewModelTest {
 
   @get:Rule var instantTaskExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
 
-  @MockK private lateinit var repoRepository: RepoRepository
+  @MockK private lateinit var searchRepository: SearchRepository
 
   @Before
   @ExperimentalCoroutinesApi
@@ -52,13 +52,13 @@ class FeedViewModelTest {
 
       val observer = mockk<Observer<List<Repository>>>(relaxed = true)
 
-      coEvery { repoRepository.getHotRepos(any()) } returns listOf(
+      coEvery { searchRepository.searchHotRepos(any()) } returns listOf(
         createRepository(id = 1, language = "Kotlin"),
         createRepository(id = 2, language = "Kotlin"),
         createRepository(id = 3, language = "Kotlin")
       )
 
-      val viewModel = FeedViewModel(repoRepository)
+      val viewModel = FeedViewModel(searchRepository)
 
       viewModel.hotRepos("Kotlin").observeForever(observer)
       viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }

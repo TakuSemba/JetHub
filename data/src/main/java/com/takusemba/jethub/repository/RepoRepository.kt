@@ -1,28 +1,20 @@
 package com.takusemba.jethub.repository
 
 import com.takusemba.jethub.api.RepoApi
-import com.takusemba.jethub.api.SearchApi
 import com.takusemba.jethub.database.RepoDb
 import com.takusemba.jethub.model.Repository
-import java.time.LocalDateTime
 import javax.inject.Inject
 
 /**
  * Repository for Repo
  */
 class RepoRepository @Inject constructor(
-  private val searchApi: SearchApi,
   private val repoDb: RepoDb,
   private val repoApi: RepoApi
 ) {
 
   suspend fun getRepo(owner: String, repo: String): Repository {
     return repoApi.getRepo(owner, repo)
-  }
-
-  // FIXME This should be in SearchRepository?
-  suspend fun getHotRepos(language: String): List<Repository> {
-    return searchApi.getHotRepos(language, LocalDateTime.now().minusMonths(1))
   }
 
   suspend fun pin(repository: Repository) {
