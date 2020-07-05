@@ -2,7 +2,10 @@ package com.takusemba.jethub.search
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.widget.SearchView
+import androidx.core.view.doOnLayout
+import androidx.core.view.marginBottom
+import androidx.core.view.marginTop
+import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -51,16 +54,21 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     binding.recyclerView.layoutManager = linearLayoutManager
     binding.recyclerView.adapter = groupAdapter
 
-    binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-      override fun onQueryTextSubmit(query: String): Boolean {
-        return false
-      }
+    binding.recyclerView.doOnLayout {
+      val padding = binding.searchView.height + binding.searchView.marginTop + binding.searchView.marginBottom
+      binding.recyclerView.updatePadding(top = padding)
+    }
 
-      override fun onQueryTextChange(newText: String): Boolean {
-        searchViewModel.search(newText)
-        return true
-      }
-    })
+//    binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//      override fun onQueryTextSubmit(query: String): Boolean {
+//        return false
+//      }
+//
+//      override fun onQueryTextChange(newText: String): Boolean {
+//        searchViewModel.search(newText)
+//        return true
+//      }
+//    })
 
     binding.themeSwitch.setOnClickListener {
       systemViewModel.setNightMode(!systemViewModel.isNightMode())
