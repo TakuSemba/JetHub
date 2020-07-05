@@ -75,7 +75,7 @@ db.getData() // get data from DB
 
 ```
 
-## Jetpack Compose (Under Development)
+## :construction: Jetpack Compose (Under Development) :construction:
 
 `:repo`, `:developer` UI is constructed using [Jetpack Compose](https://developer.android.com/jetpack/compose). But UI is not finished yet, so you will see unfinished UI for those screen just for now. I'm migrating to Jetpack Compose...
 
