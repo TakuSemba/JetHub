@@ -6,6 +6,8 @@
 Android Sample App using Github API and Jetpack Component.</br>
 </H3>
 
+<br/>
+
 <img src="https://github.com/TakuSemba/JetHub/blob/master/art/screen.gif" align="right" width="30%">
 
 ## What's JetHub? :rocket:
