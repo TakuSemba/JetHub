@@ -46,6 +46,8 @@ dependencies {
   implementation(project(':feature:search'))
   implementation(project(':feature:pin'))
 
+  // compose
+  // compose dependencies have to be included in base.apk, to use compose in dynamic feature module.
   implementation deps.composeCore
   implementation deps.composeLayout
   implementation deps.composeMaterial
