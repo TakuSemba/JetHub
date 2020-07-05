@@ -5,11 +5,6 @@
   app:startDestination="@id/mainTabFragment">
 
   <fragment
-    android:id="@+id/accountFragment"
-    android:name="com.takusemba.jethub.account.AccountFragment"
-    app:moduleName="@string/dynamic_module_account" />
-
-  <fragment
     android:id="@+id/mainTabFragment"
     android:name="com.takusemba.jethub.ui.fragment.MainTabFragment"
     android:label="MainTabFragment">
@@ -22,6 +17,39 @@
       app:popEnterAnim="@anim/nav_default_pop_enter_anim"
       app:popExitAnim="@anim/nav_default_pop_exit_anim" />
 
+    <action
+      android:id="@+id/action_main_tab_to_repo"
+      app:destination="@id/repoFragment"
+      app:enterAnim="@anim/nav_default_enter_anim"
+      app:exitAnim="@anim/nav_default_exit_anim"
+      app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+      app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
   </fragment>
+
+  <fragment
+    android:id="@+id/accountFragment"
+    android:name="com.takusemba.jethub.account.AccountFragment"
+    app:moduleName="@string/dynamic_module_account" />
+
+  <fragment
+    android:id="@+id/repoFragment"
+    android:name="com.takusemba.jethub.repo.RepoFragment"
+    app:moduleName="@string/dynamic_module_repo" >
+
+    <action
+      android:id="@+id/action_repo_to_developer"
+      app:destination="@id/developerFragment"
+      app:enterAnim="@anim/nav_default_enter_anim"
+      app:exitAnim="@anim/nav_default_exit_anim"
+      app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+      app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+  </fragment>
+
+  <fragment
+    android:id="@+id/developerFragment"
+    android:name="com.takusemba.jethub.developer.DeveloperFragment"
+    app:moduleName="@string/dynamic_module_developer" />
 
 </navigation>

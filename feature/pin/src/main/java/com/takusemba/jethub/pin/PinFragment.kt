@@ -28,7 +28,7 @@ class PinFragment : Fragment(R.layout.fragment_pin) {
   private val userViewModel: UserViewModel by activityViewModels()
 
   private val pinSection: PinSection by lazy {
-    PinSection(this, userViewModel)
+    PinSection(this, userViewModel, navigationViewModel)
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

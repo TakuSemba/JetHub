@@ -18,4 +18,12 @@ class NavigationViewModel @ViewModelInject constructor() : ViewModel() {
   fun openAccount() {
     mutableDirection.value = Event(Direction.ACCOUNT)
   }
+
+  fun openRepo() {
+    mutableDirection.value = Event(Direction.REPO)
+  }
+
+  fun openDeveloper() {
+    mutableDirection.value = Event(Direction.DEVELOPER)
+  }
 }

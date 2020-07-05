@@ -11,6 +11,7 @@ import com.takusemba.jethub.base.model.Direction
 import com.takusemba.jethub.base.model.EventObserver
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.SystemViewModel
+import com.takusemba.jethub.repo.RepoFragmentDirections
 import com.takusemba.jethub.ui.fragment.MainTabFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,6 +36,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     navigationViewModel.direction.observe(this, EventObserver { direction ->
       val navDirection = when (direction) {
         Direction.ACCOUNT -> MainTabFragmentDirections.actionMainTabToAccount()
+        Direction.REPO -> MainTabFragmentDirections.actionMainTabToRepo()
+        Direction.DEVELOPER -> RepoFragmentDirections.actionRepoToDeveloper()
       }
       findNavController(R.id.host_fragment).navigate(navDirection)
     })
