@@ -36,15 +36,24 @@ The purpose of this project is to try new Android technologies and learn how it 
 
 This projects consists of multiple modules and some of them are provided as Dynamic Feature Module.
 
+**Feature Module**
 
+`:feed`, `:search`, `:pin` are feature modules. These are included in base.apk and does not require user to download one.
+
+**Dynamic Feature Module**
+
+`:repo`, `:developer` are dynamic feature modules. These are not included in base.apk and require user to download one on demand.
+The details can be learned from [here](https://developer.android.com/guide/app-bundle/dynamic-delivery).
+
+<br/>
 
 <img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/architecture.png" align="right" width="40%">
 
 ## Architecture
 
-This app uses MVVM architecture. There is also a Repository layer, which is for interacting with API calls or DB transactions.
+This app uses MVVM architecture and follows the guildline shown [here](https://developer.android.com/jetpack/docs/guide).
 
-This is a single-activity application.
+This is also a single-activity application. All screen transitions are done by Navigation Component.
 
 ```kt
 //--- Activity / Fragments ---//
