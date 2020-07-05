@@ -16,6 +16,7 @@ import androidx.ui.layout.Column
 import androidx.ui.layout.fillMaxHeight
 import androidx.ui.layout.fillMaxWidth
 import androidx.ui.layout.padding
+import androidx.ui.text.font.FontWeight
 import androidx.ui.text.style.TextAlign
 import androidx.ui.unit.dp
 import com.takusemba.jethub.compose.JethubTheme
@@ -38,6 +39,7 @@ class DeveloperFragment : Fragment(R.layout.fragment_developer) {
             Text(
               text = "Developer Fragment",
               textAlign = TextAlign.Center,
+              fontWeight= FontWeight.Bold,
               modifier = Modifier.padding(22.dp)
             )
             Text(

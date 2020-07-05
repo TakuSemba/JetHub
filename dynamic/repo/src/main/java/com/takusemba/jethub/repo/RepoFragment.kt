@@ -18,6 +18,8 @@ import androidx.ui.layout.fillMaxHeight
 import androidx.ui.layout.fillMaxWidth
 import androidx.ui.layout.padding
 import androidx.ui.material.Button
+import androidx.ui.text.font.FontStyle
+import androidx.ui.text.font.FontWeight
 import androidx.ui.text.style.TextAlign
 import androidx.ui.unit.dp
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
@@ -58,6 +60,7 @@ class RepoFragment : Fragment(R.layout.fragment_repo) {
           ) {
             Text(
               text = "Repo Fragment",
+              fontWeight= FontWeight.Bold,
               textAlign = TextAlign.Center,
               modifier = Modifier.padding(22.dp)
             )
