@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.takusemba.jethub.base.ErrorHandler
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.RepoRepository
 import kotlinx.coroutines.launch
@@ -14,7 +15,8 @@ import kotlinx.coroutines.launch
  * This should be Activity-Scope, because the data is used across screens.
  */
 class UserViewModel @ViewModelInject constructor(
-  private val repoRepository: RepoRepository
+  private val repoRepository: RepoRepository,
+  private val errorHandler: ErrorHandler
 ) : ViewModel() {
 
   private val mutablePinedRepositories: MutableLiveData<List<Repository>> = MutableLiveData()
@@ -26,6 +28,8 @@ class UserViewModel @ViewModelInject constructor(
         repoRepository.findAllPins()
       }.onSuccess { repos ->
         mutablePinedRepositories.value = repos
+      }.onFailure { error ->
+        errorHandler.handleError(error)
       }
     }
   }
@@ -38,6 +42,8 @@ class UserViewModel @ViewModelInject constructor(
         repositories.apply { add(repository) }
       }.onSuccess { repos ->
         mutablePinedRepositories.value = repos
+      }.onFailure { error ->
+        errorHandler.handleError(error)
       }
     }
   }
@@ -50,6 +56,8 @@ class UserViewModel @ViewModelInject constructor(
         repositories.apply { remove(repository) }
       }.onSuccess { repos ->
         mutablePinedRepositories.value = repos
+      }.onFailure { error ->
+        errorHandler.handleError(error)
       }
     }
   }

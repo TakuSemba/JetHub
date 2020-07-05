@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
+import com.takusemba.jethub.base.ErrorHandler
 import com.takusemba.jethub.base.model.ColoredLanguage
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.SearchRepository
@@ -17,7 +18,8 @@ import kotlinx.coroutines.launch
  * [ViewModel] to store and manage Feed data.
  */
 class FeedViewModel @ViewModelInject constructor(
-  private val searchRepository: SearchRepository
+  private val searchRepository: SearchRepository,
+  private val errorHandler: ErrorHandler
 ) : ViewModel() {
 
   private val mutableHotReposMap = MutableLiveData<Map<String, List<Repository>>>()
@@ -36,6 +38,8 @@ class FeedViewModel @ViewModelInject constructor(
         }
       }.onSuccess { map ->
         mutableHotReposMap.value = map
+      }.onFailure { error ->
+        errorHandler.handleError(error)
       }
     }
   }
