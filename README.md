@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/TakuSemba/JetHub/blob/master/art/banner.png" width=250>
+<img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/banner.png" width=250>
 </p>
 
 <H3 align="center">
@@ -8,7 +8,7 @@ Android Sample App using Github API and Jetpack Component.</br>
 
 <br/>
 
-<img src="https://github.com/TakuSemba/JetHub/blob/master/art/screen.gif" align="right" width="30%">
+<img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/screen.gif" align="right" width="30%">
 
 ## What's JetHub? :rocket:
 
@@ -17,18 +17,20 @@ JetHub is a sample app using Github API and Jetpack components.
 The purpose of this project is to try new Android technologies and learn how it works in an app.
 
 ## Used Libraries
- - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)  (Observable data)
- - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) (Store and manage UI-related data)
- - [Kotlin Coroutine](https://github.com/Kotlin/kotlinx.coroutines) (Light-weight threads)
  - [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) (Fragment transitions)
+ - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) (Store and manage UI-related data)
+ - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)  (Observable data)
+ - [Jetpack Compose](https://developer.android.com/jetpack/compose) (Declarative UI)
+ - [Kotlin Coroutine](https://github.com/Kotlin/kotlinx.coroutines) (Light-weight threads)
  - [Dagger2](https://github.com/google/dagger) (Dependency Injection)
  - [Hilt](https://dagger.dev/hilt/) (Dependency Injection for Android)
  - [Room](https://developer.android.com/topic/libraries/architecture/room) (Abstraction layer over SQLite)
  - [Retrofit](https://github.com/square/retrofit) (HTTP client)
- - [Jetpack Compose](https://developer.android.com/jetpack/compose) (Declarative UI)
  - [Mockk](https://github.com/mockk/mockk) (Unit testing)
+ 
+<br/>
 
-<img src="https://github.com/TakuSemba/JetHub/blob/master/art/architecture.png" align="left" width="40%">
+<img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/modules.png" align="left" width="40%">
 
 ## Multi Module / Dynamic Feature Module
 
@@ -36,7 +38,7 @@ This projects consists of multiple modules and some of them are provided as Dyna
 
 
 
-<img src="https://github.com/TakuSemba/JetHub/blob/master/art/architecture.png" align="right" width="40%">
+<img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/architecture.png" align="right" width="40%">
 
 ## Architecture
 
