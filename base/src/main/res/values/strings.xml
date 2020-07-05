@@ -11,5 +11,5 @@
   <string name="unpinned_repository">unpinned repository</string>
 
   <string name="empty_pinned_repositories_title">empty pinned repositories</string>
-  <string name="empty_pinned_repositories_description">pin / unpin by long clicking a repository item</string>
+  <string name="empty_pinned_repositories_description">long tap to pin / unpin a repository</string>
 </resources>
