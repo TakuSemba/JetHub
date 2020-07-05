@@ -45,7 +45,7 @@ class SearchViewModel @ViewModelInject constructor(
     }
     searchJob = viewModelScope.launch {
       runCatching {
-        delay(1000)
+        delay(500)
         searchRepository.searchRepos(query)
       }.onSuccess { repos ->
         mutableSearchedRepos.value = repos

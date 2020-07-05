@@ -53,7 +53,7 @@ data class RepositoryItem(
         Toast.makeText(v.context,
           R.string.pinned_repository, LENGTH_SHORT).show()
       }
-      false
+      true
     }
   }
 
