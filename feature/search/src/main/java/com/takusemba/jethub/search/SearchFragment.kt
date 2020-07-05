@@ -58,7 +58,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     binding.searchView.doOnLayout {
       val padding = binding.searchView.height + binding.searchView.marginTop + binding.searchView.marginBottom
       binding.recyclerView.updatePadding(top = padding)
-      binding.recyclerView.scrollTo(0, 0)
+      binding.recyclerView.scrollToPosition(0)
     }
 
     binding.searchView.setEndIconOnClickListener {
