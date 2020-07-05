@@ -1,11 +1,14 @@
 package com.takusemba.jethub.repo
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.Recomposer
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.core.setContent
@@ -18,7 +21,6 @@ import androidx.ui.layout.fillMaxHeight
 import androidx.ui.layout.fillMaxWidth
 import androidx.ui.layout.padding
 import androidx.ui.material.Button
-import androidx.ui.text.font.FontStyle
 import androidx.ui.text.font.FontWeight
 import androidx.ui.text.style.TextAlign
 import androidx.ui.unit.dp
@@ -26,15 +28,19 @@ import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.compose.JethubTheme
 import com.takusemba.jethub.di.RepoModuleDependencies
 import dagger.hilt.android.EntryPointAccessors
+import javax.inject.Inject
 
 class RepoFragment : Fragment(R.layout.fragment_repo) {
 
+  @Inject lateinit var repoViewModelProviderFactory: RepoViewModelProviderFactory
+
   private val navigationViewModel: NavigationViewModel by activityViewModels()
+  private val repoViewModel: RepoViewModel by viewModels { repoViewModelProviderFactory }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     DaggerRepoComponent.builder()
-      .context(requireContext())
+      .fragment(this)
       .appDependencies(
         EntryPointAccessors.fromApplication(
           requireContext().applicationContext,
@@ -60,7 +66,7 @@ class RepoFragment : Fragment(R.layout.fragment_repo) {
           ) {
             Text(
               text = "Repo Fragment",
-              fontWeight= FontWeight.Bold,
+              fontWeight = FontWeight.Bold,
               textAlign = TextAlign.Center,
               modifier = Modifier.padding(22.dp)
             )
@@ -70,7 +76,10 @@ class RepoFragment : Fragment(R.layout.fragment_repo) {
               modifier = Modifier.padding(16.dp)
             )
             Button(
-              onClick = { navigationViewModel.openDeveloper() } // TODO navigate to DeveloperFragment
+              onClick = {
+                val owner = RepoFragmentArgs.fromBundle(requireArguments()).ownerName
+                navigationViewModel.openDeveloper(owner)
+              }
             ) {
               Text(
                 text = "Go to Developer Fragment",
@@ -80,6 +89,10 @@ class RepoFragment : Fragment(R.layout.fragment_repo) {
           }
         }
       }
+    }
+
+    repoViewModel.repository.observe(viewLifecycleOwner) { repository ->
+      Log.d("TEST", "repository: $repository")
     }
   }
 }

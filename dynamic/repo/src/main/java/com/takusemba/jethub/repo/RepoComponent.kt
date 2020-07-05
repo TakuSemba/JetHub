@@ -1,6 +1,6 @@
 package com.takusemba.jethub.repo
 
-import android.content.Context
+import androidx.fragment.app.Fragment
 import com.takusemba.jethub.di.RepoModuleDependencies
 import dagger.BindsInstance
 import dagger.Component
@@ -18,7 +18,7 @@ interface RepoComponent {
   @Component.Builder
   interface Builder {
 
-    fun context(@BindsInstance context: Context): Builder
+    fun fragment(@BindsInstance fragment: Fragment): Builder
 
     fun appDependencies(dependencies: RepoModuleDependencies): Builder
 

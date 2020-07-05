@@ -40,7 +40,7 @@ data class RepositoryItem(
     binding.starCount.text = repository.starsCount.toString()
 
     binding.root.setOnClickListener {
-      navigationViewModel.openRepo()
+      navigationViewModel.openRepo(repository.owner.login, repository.name)
     }
 
     binding.root.setOnLongClickListener { v ->

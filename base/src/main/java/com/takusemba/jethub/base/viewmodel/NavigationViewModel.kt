@@ -16,14 +16,14 @@ class NavigationViewModel @ViewModelInject constructor() : ViewModel() {
   val direction: LiveData<Event<Direction>> = mutableDirection
 
   fun openAccount() {
-    mutableDirection.value = Event(Direction.ACCOUNT)
+    mutableDirection.value = Event(Direction.Account)
   }
 
-  fun openRepo() {
-    mutableDirection.value = Event(Direction.REPO)
+  fun openRepo(owner: String, repo: String) {
+    mutableDirection.value = Event(Direction.Repo(owner, repo))
   }
 
-  fun openDeveloper() {
-    mutableDirection.value = Event(Direction.DEVELOPER)
+  fun openDeveloper(name: String) {
+    mutableDirection.value = Event(Direction.Developer(name))
   }
 }

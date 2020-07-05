@@ -1,5 +1,10 @@
 package com.takusemba.jethub.base.model
 
-enum class Direction {
-  ACCOUNT, REPO, DEVELOPER
+sealed class Direction {
+
+  object Account : Direction()
+
+  class Repo(val owner: String, val repo: String) : Direction()
+
+  class Developer(val name: String) : Direction()
 }
