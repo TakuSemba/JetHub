@@ -1,5 +1,6 @@
 include ':app'
 include ':base'
+include ':base-compose'
 include ':data'
 include ':model'
 include ':feature:feed'
