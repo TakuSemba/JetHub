@@ -31,7 +31,7 @@ The purpose of this project is to try new Android technologies and learn how it 
 <br/>
 <br/>
 
-<img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/modules.png" align="left" width="400">
+<img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/modules.png" align="left" width="380">
 
 ## Multi Module / Dynamic Feature Module
 
