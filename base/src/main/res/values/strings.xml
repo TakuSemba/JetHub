@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">JetHub</string>
-  <string name="dynamic_module_account">account</string>
   <string name="dynamic_module_repo">repo</string>
   <string name="dynamic_module_developer">developer</string>
 

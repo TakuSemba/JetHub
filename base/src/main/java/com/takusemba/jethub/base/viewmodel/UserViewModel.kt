@@ -5,9 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.takusemba.jethub.model.Developer
 import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.repository.DeveloperRepository
 import com.takusemba.jethub.repository.RepoRepository
 import kotlinx.coroutines.launch
 
@@ -16,15 +14,11 @@ import kotlinx.coroutines.launch
  * This should be Activity-Scope, because the data is used across screens.
  */
 class UserViewModel @ViewModelInject constructor(
-  private val repoRepository: RepoRepository,
-  private val developerRepository: DeveloperRepository
+  private val repoRepository: RepoRepository
 ) : ViewModel() {
 
   private val mutablePinedRepositories: MutableLiveData<List<Repository>> = MutableLiveData()
   val pinedRepositories: LiveData<List<Repository>> = mutablePinedRepositories
-
-  private val mutableDeveloper: MutableLiveData<Developer> = MutableLiveData()
-  val developer: LiveData<Developer> = mutableDeveloper
 
   init {
     viewModelScope.launch {
@@ -32,16 +26,6 @@ class UserViewModel @ViewModelInject constructor(
         repoRepository.findAllPins()
       }.onSuccess { repos ->
         mutablePinedRepositories.value = repos
-      }
-    }
-  }
-
-  fun loadProfile(name: String) {
-    viewModelScope.launch {
-      runCatching {
-        developerRepository.getDeveloper(name)
-      }.onSuccess { developer ->
-        mutableDeveloper.value = developer
       }
     }
   }

@@ -10,14 +10,6 @@
     android:label="MainTabFragment">
 
     <action
-      android:id="@+id/action_main_tab_to_account"
-      app:destination="@id/accountFragment"
-      app:enterAnim="@anim/nav_default_enter_anim"
-      app:exitAnim="@anim/nav_default_exit_anim"
-      app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-      app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-
-    <action
       android:id="@+id/action_main_tab_to_repo"
       app:destination="@id/repoFragment"
       app:enterAnim="@anim/nav_default_enter_anim"
@@ -26,11 +18,6 @@
       app:popExitAnim="@anim/nav_default_pop_exit_anim" />
 
   </fragment>
-
-  <fragment
-    android:id="@+id/accountFragment"
-    android:name="com.takusemba.jethub.account.AccountFragment"
-    app:moduleName="@string/dynamic_module_account" />
 
   <fragment
     android:id="@+id/repoFragment"

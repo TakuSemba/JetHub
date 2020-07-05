@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.tabs.TabLayout.Tab
 import com.google.android.material.tabs.TabLayoutMediator
-import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.feed.databinding.FragmentFeedBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,7 +18,6 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
     fun newInstance() = FeedFragment()
   }
 
-  private val navigationViewModel: NavigationViewModel by activityViewModels()
   private val systemViewModel: SystemViewModel by activityViewModels()
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,10 +30,6 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
       tab.text = adapter.getTitle(position)
     }
     mediator.attach()
-
-    binding.account.setOnClickListener {
-      navigationViewModel.openAccount()
-    }
 
     binding.themeSwitch.setOnClickListener {
       systemViewModel.setNightMode(!systemViewModel.isNightMode())

@@ -62,10 +62,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
       }
     })
 
-    binding.account.setOnClickListener {
-      navigationViewModel.openAccount()
-    }
-
     binding.themeSwitch.setOnClickListener {
       systemViewModel.setNightMode(!systemViewModel.isNightMode())
     }

@@ -50,10 +50,6 @@ class PinFragment : Fragment(R.layout.fragment_pin) {
       binding.emptyLayout.visibility = if (repositories.isEmpty()) View.VISIBLE else View.INVISIBLE
     }
 
-    binding.account.setOnClickListener {
-      navigationViewModel.openAccount()
-    }
-
     binding.themeSwitch.setOnClickListener {
       systemViewModel.setNightMode(!systemViewModel.isNightMode())
     }

@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import com.takusemba.jethub.R
-import com.takusemba.jethub.base.model.Direction.Account
 import com.takusemba.jethub.base.model.Direction.Developer
 import com.takusemba.jethub.base.model.Direction.Repo
 import com.takusemba.jethub.base.model.EventObserver
@@ -37,7 +36,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     navigationViewModel.direction.observe(this, EventObserver { direction ->
       val navDirection = when (direction) {
-        is Account -> MainTabFragmentDirections.actionMainTabToAccount()
         is Repo -> MainTabFragmentDirections.actionMainTabToRepo(direction.owner, direction.repo)
         is Developer -> RepoFragmentDirections.actionRepoToDeveloper(direction.name)
       }
