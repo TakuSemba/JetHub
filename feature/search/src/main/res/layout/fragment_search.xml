@@ -19,12 +19,19 @@
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
     app:boxBackgroundColor="?attr/colorSurface"
+    app:endIconMode="clear_text"
+    app:hintAnimationEnabled="false"
+    app:hintEnabled="false"
     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
     app:startIconDrawable="@drawable/ic_search">
 
     <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/search_view_input"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:hint="@string/hint_search"
+      android:imeOptions="actionSearch"
+      android:inputType="text"
       android:lines="1" />
 
   </com.google.android.material.textfield.TextInputLayout>

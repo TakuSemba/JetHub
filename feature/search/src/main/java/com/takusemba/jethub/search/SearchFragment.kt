@@ -6,6 +6,7 @@ import androidx.core.view.doOnLayout
 import androidx.core.view.marginBottom
 import androidx.core.view.marginTop
 import androidx.core.view.updatePadding
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -54,21 +55,20 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     binding.recyclerView.layoutManager = linearLayoutManager
     binding.recyclerView.adapter = groupAdapter
 
-    binding.recyclerView.doOnLayout {
+    binding.searchView.doOnLayout {
       val padding = binding.searchView.height + binding.searchView.marginTop + binding.searchView.marginBottom
       binding.recyclerView.updatePadding(top = padding)
+      binding.recyclerView.scrollTo(0, 0)
     }
 
-//    binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//      override fun onQueryTextSubmit(query: String): Boolean {
-//        return false
-//      }
-//
-//      override fun onQueryTextChange(newText: String): Boolean {
-//        searchViewModel.search(newText)
-//        return true
-//      }
-//    })
+    binding.searchView.setEndIconOnClickListener {
+      binding.searchViewInput.setText("")
+      binding.searchViewInput.clearFocus()
+    }
+
+    binding.searchViewInput.doAfterTextChanged { text ->
+      searchViewModel.search(text.toString())
+    }
 
     binding.themeSwitch.setOnClickListener {
       systemViewModel.setNightMode(!systemViewModel.isNightMode())

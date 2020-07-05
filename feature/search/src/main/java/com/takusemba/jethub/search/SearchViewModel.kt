@@ -8,6 +8,9 @@ import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.base.ErrorHandler
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.SearchRepository
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 /**
@@ -20,6 +23,8 @@ class SearchViewModel @ViewModelInject constructor(
 
   private val mutableSearchedRepos = MutableLiveData<List<Repository>>()
   val searchedRepos: LiveData<List<Repository>> = mutableSearchedRepos
+
+  var searchJob: Job? = null
 
   init {
     viewModelScope.launch {
@@ -34,13 +39,20 @@ class SearchViewModel @ViewModelInject constructor(
   }
 
   fun search(query: String) {
-    viewModelScope.launch {
+    val currentJob = searchJob
+    if (currentJob != null && currentJob.isActive) {
+      currentJob.cancel()
+    }
+    searchJob = viewModelScope.launch {
       runCatching {
+        delay(1000)
         searchRepository.searchRepos(query)
       }.onSuccess { repos ->
         mutableSearchedRepos.value = repos
       }.onFailure { error ->
-        errorHandler.handleError(error)
+        if (error !is CancellationException) {
+          errorHandler.handleError(error)
+        }
       }
     }
   }
