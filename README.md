@@ -29,6 +29,8 @@ The purpose of this project is to try new Android technologies and learn how it 
  - [Mockk](https://github.com/mockk/mockk) (Unit testing)
  
 <br/>
+<br/>
+<br/>
 
 <img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/modules.png" align="left" width="40%">
 
@@ -53,7 +55,7 @@ The details can be learned from [here](https://developer.android.com/guide/app-b
 
 This app uses MVVM architecture and follows the guildline shown [here](https://developer.android.com/jetpack/docs/guide).
 
-This is also a single-activity application. All screen transitions are done by Navigation Component.
+This is also a single-activity application. All screen transitions are done by [Navigation](https://developer.android.com/guide/navigation?hl=ja).
 
 ```kt
 //--- Activity / Fragments ---//
@@ -73,6 +75,14 @@ api.getData() // get data from API
 db.getData() // get data from DB
 
 ```
+
+## Jetpack Compose (Under Development)
+
+Jetpack Compose is used in some of the screens, but the UI is under development...
+
+## Dark Theme
+
+Dark Theme is supported. You can toggle theme by tapping the theme icon on top right corner.
 
 
 ## Threading
