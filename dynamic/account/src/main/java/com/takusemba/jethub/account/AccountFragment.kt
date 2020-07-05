@@ -12,7 +12,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.observe
 import androidx.ui.core.setContent
 import androidx.ui.foundation.Text
+import androidx.ui.layout.Column
 import androidx.ui.livedata.observeAsState
+import com.takusemba.jethub.account.theme.JethubTheme
 import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.di.AccountModuleDependencies
 import com.takusemba.jethub.model.Developer
@@ -44,12 +46,17 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
 
     val developer = userViewModel.developer
 
-    (view as ViewGroup).setContent(Recomposer()) {
-      DeveloperProfile(developer)
+    (view as ViewGroup).setContent(Recomposer.current()) {
+      val developerState = developer.observeAsState()
+      JethubTheme {
+        Column {
+          Text("state: ${developerState.value}")
+        }
+      }
     }
 
-    userViewModel.developer.observe(viewLifecycleOwner) { developer ->
-      Log.d("TEST", "developer: $developer")
+    userViewModel.developer.observe(viewLifecycleOwner) {
+      Log.d("TEST", "developer: $it")
     }
 
     userViewModel.loadProfile(DEVELOPER_NAME)
