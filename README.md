@@ -31,7 +31,7 @@ The purpose of this project is to try new Android technologies and learn how it 
 <br/>
 <br/>
 
-<img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/modules.png" align="left" width="40%">
+<img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/modules.png" align="left" width="400">
 
 ## Multi Module / Dynamic Feature Module
 
@@ -48,7 +48,7 @@ The details can be learned from [here](https://developer.android.com/guide/app-b
 
 <br/>
 
-<img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/architecture.png" align="right" width="40%">
+<img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/architecture.png" align="right" width="380">
 
 ## Architecture
 
@@ -77,18 +77,11 @@ db.getData() // get data from DB
 
 ## Jetpack Compose (Under Development)
 
-Jetpack Compose is used in some of the screens, but the UI is under development...
+`:repo`, `:developer` UI is constructed using [Jetpack Compose](https://developer.android.com/jetpack/compose). But UI is not finished yet, so you will see unfinished UI for those screen just for now. I'm migrating to Jetpack Compose...
 
 ## Dark Theme
 
-Dark Theme is supported. You can toggle theme by tapping the theme icon on top right corner.
-
-
-## Threading
-
-This app uses Kotlin coroutine to archive asynchronize programing. The layers below ViewModel are all suspend functions.
-
-The basics of Kotlin coroutine can be learned from this [doc](https://github.com/Kotlin/kotlinx.coroutines/tree/master/docs).
+Dark Theme is supported. You can toggle theme by tapping the theme icon on top right corner. The selected theme would be retained in application scope for the sake of demo application.
 
 ## Github API Token
 
