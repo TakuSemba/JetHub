@@ -14,7 +14,7 @@ import androidx.ui.core.setContent
 import androidx.ui.foundation.Text
 import androidx.ui.layout.Column
 import androidx.ui.livedata.observeAsState
-import com.takusemba.jethub.account.theme.JethubTheme
+import com.takusemba.jethub.compose.JethubTheme
 import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.di.AccountModuleDependencies
 import com.takusemba.jethub.model.Developer

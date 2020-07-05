@@ -1,4 +1,4 @@
-package com.takusemba.jethub.account.theme
+package com.takusemba.jethub.compose
 
 import androidx.ui.material.Typography
 

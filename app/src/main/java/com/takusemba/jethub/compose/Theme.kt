@@ -1,4 +1,4 @@
-package com.takusemba.jethub.account.theme
+package com.takusemba.jethub.compose
 
 import androidx.compose.Composable
 import androidx.ui.foundation.isSystemInDarkTheme
