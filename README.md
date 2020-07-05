@@ -1,17 +1,18 @@
-# JetHub
+<p align="center">
+<img src="https://github.com/TakuSemba/JetHub/blob/master/art/banner.png" width=250>
+</p>
 
-<img src="https://github.com/TakuSemba/JetHub/blob/master/art/logo.png">
-
+<H3 align="center">
+Android Sample App using Github API and Jetpack Component.</br>
+</H3>
 
 <img src="https://github.com/TakuSemba/JetHub/blob/master/art/screen.gif" align="right" width="30%">
 
 ## What's JetHub? :rocket:
 
-JetHub is a sample app using Github API and Jetpack components (LiveData, ViewModel, Room, Navigation etc...). 
+JetHub is a sample app using Github API and Jetpack components (LiveData, ViewModel, Room, Navigation etc...).
 
-
-The purpose of this app is to try new Android technologies and learn how it works and how it can be used in an app.
-
+The purpose of this project is to try new Android technologies and learn how it works in an app.
 
 ## Used Libraries
  - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)  (Observable data)
@@ -19,16 +20,21 @@ The purpose of this app is to try new Android technologies and learn how it work
  - [Kotlin Coroutine](https://github.com/Kotlin/kotlinx.coroutines) (Light-weight threads)
  - [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) (Fragment transitions)
  - [Dagger2](https://github.com/google/dagger) (Dependency Injection)
+ - [Hilt](https://dagger.dev/hilt/) (Dependency Injection for Android)
  - [Room](https://developer.android.com/topic/libraries/architecture/room) (Abstraction layer over SQLite)
  - [Retrofit](https://github.com/square/retrofit) (HTTP client)
- - [Ktx](https://developer.android.com/kotlin/ktx) (Kotlin extension)
+ - [Jetpack Compose](https://developer.android.com/jetpack/compose) (Declarative UI)
  - [Mockk](https://github.com/mockk/mockk) (Unit testing)
-
-
-</br>
 
 <img src="https://github.com/TakuSemba/JetHub/blob/master/art/architecture.png" align="left" width="40%">
 
+## Multi Module / Dynamic Feature Module
+
+This projects consists of multiple modules and some of them are provided as Dynamic Feature Module.
+
+
+
+<img src="https://github.com/TakuSemba/JetHub/blob/master/art/architecture.png" align="right" width="40%">
 
 ## Architecture
 
@@ -72,9 +78,6 @@ If you do not have a GitHub token, that's fine. You can use this app without tok
 // local.properties
 api_token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
-
-
-
 
 ## Author
 
