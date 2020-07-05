@@ -58,6 +58,10 @@
   <fragment
     android:id="@+id/developerFragment"
     android:name="com.takusemba.jethub.developer.DeveloperFragment"
-    app:moduleName="@string/dynamic_module_developer" />
+    app:moduleName="@string/dynamic_module_developer">
+    <argument
+      android:name="name"
+      app:argType="string" />
+  </fragment>
 
 </navigation>

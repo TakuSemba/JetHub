@@ -4,7 +4,7 @@ import com.takusemba.jethub.model.Owner.Companion.createOwner
 import org.jetbrains.annotations.TestOnly
 import java.time.LocalDateTime
 
-class Repository(
+data class Repository(
   val id: Int,
   val owner: Owner,
   val name: String,

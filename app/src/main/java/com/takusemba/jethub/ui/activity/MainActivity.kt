@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
       val navDirection = when (direction) {
         is Account -> MainTabFragmentDirections.actionMainTabToAccount()
         is Repo -> MainTabFragmentDirections.actionMainTabToRepo(direction.owner, direction.repo)
-        is Developer -> RepoFragmentDirections.actionRepoToDeveloper()
+        is Developer -> RepoFragmentDirections.actionRepoToDeveloper(direction.name)
       }
       findNavController(R.id.host_fragment).navigate(navDirection)
     })

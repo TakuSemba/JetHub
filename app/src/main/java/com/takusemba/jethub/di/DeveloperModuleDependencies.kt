@@ -1,6 +1,6 @@
 package com.takusemba.jethub.di
 
-import com.takusemba.jethub.api.DeveloperApi
+import com.takusemba.jethub.repository.DeveloperRepository
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
@@ -9,5 +9,5 @@ import dagger.hilt.android.components.ApplicationComponent
 @InstallIn(ApplicationComponent::class)
 interface DeveloperModuleDependencies {
 
-  fun provideDeveloperApi(): DeveloperApi
+  fun provideDeveloperRepository(): DeveloperRepository
 }
