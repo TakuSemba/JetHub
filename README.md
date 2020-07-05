@@ -8,7 +8,7 @@ Android Sample App using Github API and Jetpack Component.</br>
 
 <br/>
 
-<img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/screen.gif" align="right" width="30%">
+<img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/screen.gif" align="right" width="280">
 
 ## What's JetHub? :rocket:
 
@@ -28,7 +28,6 @@ The purpose of this project is to try new Android technologies and learn how it 
  - [Retrofit](https://github.com/square/retrofit) (HTTP client)
  - [Mockk](https://github.com/mockk/mockk) (Unit testing)
  
-<br/>
 <br/>
 <br/>
 
