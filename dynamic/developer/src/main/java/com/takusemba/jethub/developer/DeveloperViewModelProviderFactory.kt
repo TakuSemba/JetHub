@@ -3,6 +3,7 @@ package com.takusemba.jethub.developer
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.takusemba.jethub.base.ErrorHandler
 import com.takusemba.jethub.repository.DeveloperRepository
 import javax.inject.Inject
 
@@ -14,11 +15,12 @@ import javax.inject.Inject
  */
 class DeveloperViewModelProviderFactory @Inject constructor(
   private val fragment: Fragment,
-  private val developerRepository: DeveloperRepository
+  private val developerRepository: DeveloperRepository,
+  private val errorHandler: ErrorHandler
 ) : ViewModelProvider.NewInstanceFactory() {
 
   override fun <T : ViewModel?> create(modelClass: Class<T>): T {
     val args = DeveloperFragmentArgs.fromBundle(fragment.requireArguments())
-    return DeveloperViewModel(args.name, developerRepository) as T
+    return DeveloperViewModel(args.name, developerRepository, errorHandler) as T
   }
 }

@@ -3,6 +3,7 @@ package com.takusemba.jethub.repo
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.takusemba.jethub.base.ErrorHandler
 import com.takusemba.jethub.repository.RepoRepository
 import javax.inject.Inject
 
@@ -14,11 +15,12 @@ import javax.inject.Inject
  */
 class RepoViewModelProviderFactory @Inject constructor(
   private val fragment: Fragment,
-  private val repoRepository: RepoRepository
+  private val repoRepository: RepoRepository,
+  private val errorHandler: ErrorHandler
 ) : ViewModelProvider.NewInstanceFactory() {
 
   override fun <T : ViewModel?> create(modelClass: Class<T>): T {
     val args = RepoFragmentArgs.fromBundle(fragment.requireArguments())
-    return RepoViewModel(args.ownerName, args.repoName, repoRepository) as T
+    return RepoViewModel(args.ownerName, args.repoName, repoRepository, errorHandler) as T
   }
 }

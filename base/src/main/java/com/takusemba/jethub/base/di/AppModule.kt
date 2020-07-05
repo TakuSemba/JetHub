@@ -1,6 +1,6 @@
 package com.takusemba.jethub.base.di
 
-import android.content.Context
+import android.app.Application
 import com.takusemba.jethub.base.AppErrorHandler
 import com.takusemba.jethub.base.ErrorHandler
 import dagger.Module
@@ -15,7 +15,7 @@ class AppModule {
 
   @Singleton
   @Provides
-  fun provideErrorHandler(context: Context): ErrorHandler {
+  fun provideErrorHandler(context: Application): ErrorHandler {
     return AppErrorHandler(context)
   }
 }
