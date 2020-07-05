@@ -1,17 +1,13 @@
-apply plugin: "com.android.application"
-apply plugin: "kotlin-android"
+apply plugin: "com.android.dynamic-feature"
+apply plugin: 'kotlin-android'
 apply plugin: "kotlin-kapt"
-apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'dagger.hilt.android.plugin'
-apply plugin: "com.github.konifar.gradle.unused-resources-remover"
-apply from: '../depgraph.gradle'
-apply from: '../shared_deps.gradle'
-apply from: '../test_deps.gradle'
+apply from: '../../shared_deps.gradle'
+apply from: '../../test_deps.gradle'
 
 android {
   compileSdkVersion configs.compileSdkVersion
   defaultConfig {
-    applicationId configs.packageName
     minSdkVersion configs.minSdkVersion
     targetSdkVersion configs.targetSdkVersion
     versionCode configs.versionCode
@@ -20,34 +16,32 @@ android {
   }
   buildTypes {
     release {
-      minifyEnabled true
-      proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
   }
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
-    coreLibraryDesugaringEnabled true
   }
   kotlinOptions {
     jvmTarget = '1.8'
   }
   buildFeatures {
-    viewBinding = true
+    compose true
   }
-  dynamicFeatures = [':dynamic:account', ':dynamic:developer']
+  composeOptions {
+    kotlinCompilerVersion "1.3.70-dev-withExperimentalGoogleExtensions-20200424"
+    kotlinCompilerExtensionVersion versions.compose
+  }
 }
 
 dependencies {
 
   // module
+  implementation(project(':app'))
   implementation(project(':base'))
-  implementation(project(':feature:feed'))
-  implementation(project(':feature:search'))
-  implementation(project(':feature:pin'))
 
-  // compose
-  // compose dependencies have to be included in base.apk, to use compose in dynamic feature module.
   implementation deps.composeCore
   implementation deps.composeLayout
   implementation deps.composeMaterial

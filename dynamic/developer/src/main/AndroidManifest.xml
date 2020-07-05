@@ -1,9 +1,9 @@
 <manifest xmlns:dist="http://schemas.android.com/apk/distribution"
-  package="com.takusemba.jethub.account">
+  package="com.takusemba.jethub.developer">
 
   <dist:module
     dist:instant="false"
-    dist:title="@string/dynamic_module_account">
+    dist:title="@string/dynamic_module_developer">
     <dist:delivery>
       <dist:on-demand />
     </dist:delivery>

@@ -2,6 +2,7 @@
 <resources>
   <string name="app_name">JetHub</string>
   <string name="dynamic_module_account">account</string>
+  <string name="dynamic_module_developer">developer</string>
 
   <string name="feed">feed</string>
   <string name="search">search</string>
