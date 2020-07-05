@@ -5,16 +5,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.takusemba.jethub.base.model.Direction
+import com.takusemba.jethub.base.model.Event
 
 /**
  * [ViewModel] to manage directions, because feature module can not reference to a direction.
  */
 class NavigationViewModel @ViewModelInject constructor() : ViewModel() {
 
-  private val mutableDirection: MutableLiveData<Direction> = MutableLiveData()
-  val direction: LiveData<Direction> = mutableDirection
+  private val mutableDirection: MutableLiveData<Event<Direction>> = MutableLiveData()
+  val direction: LiveData<Event<Direction>> = mutableDirection
 
-  fun onDirectionChanged(direction: Direction) {
-    mutableDirection.value = direction
+  fun openAccount() {
+    mutableDirection.value = Event(Direction.ACCOUNT)
   }
 }

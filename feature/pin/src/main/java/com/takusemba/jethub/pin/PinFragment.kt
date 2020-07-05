@@ -7,7 +7,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.takusemba.jethub.base.model.Direction
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.base.viewmodel.UserViewModel
@@ -52,7 +51,7 @@ class PinFragment : Fragment(R.layout.fragment_pin) {
     }
 
     binding.account.setOnClickListener {
-      navigationViewModel.onDirectionChanged(Direction.ACCOUNT)
+      navigationViewModel.openAccount()
     }
 
     binding.themeSwitch.setOnClickListener {

@@ -64,7 +64,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     })
 
     binding.account.setOnClickListener {
-      navigationViewModel.onDirectionChanged(Direction.ACCOUNT)
+      navigationViewModel.openAccount()
     }
 
     binding.themeSwitch.setOnClickListener {

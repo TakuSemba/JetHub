@@ -8,6 +8,7 @@ import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import com.takusemba.jethub.R
 import com.takusemba.jethub.base.model.Direction
+import com.takusemba.jethub.base.model.EventObserver
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.ui.fragment.MainTabFragmentDirections
@@ -31,11 +32,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
       AppCompatDelegate.setDefaultNightMode(nightModeSetting)
     }
 
-    navigationViewModel.direction.observe(this) { direction ->
+    navigationViewModel.direction.observe(this, EventObserver { direction ->
       val navDirection = when (direction) {
         Direction.ACCOUNT -> MainTabFragmentDirections.actionMainTabToAccount()
       }
       findNavController(R.id.host_fragment).navigate(navDirection)
-    }
+    })
   }
 }

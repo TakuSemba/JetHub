@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.tabs.TabLayout.Tab
 import com.google.android.material.tabs.TabLayoutMediator
-import com.takusemba.jethub.base.model.Direction
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.feed.databinding.FragmentFeedBinding
@@ -35,7 +34,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
     mediator.attach()
 
     binding.account.setOnClickListener {
-      navigationViewModel.onDirectionChanged(Direction.ACCOUNT)
+      navigationViewModel.openAccount()
     }
 
     binding.themeSwitch.setOnClickListener {
