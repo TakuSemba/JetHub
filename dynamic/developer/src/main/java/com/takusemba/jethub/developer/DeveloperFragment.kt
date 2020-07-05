@@ -19,18 +19,20 @@ import androidx.ui.layout.Column
 import androidx.ui.layout.fillMaxHeight
 import androidx.ui.layout.fillMaxWidth
 import androidx.ui.layout.padding
+import androidx.ui.livedata.observeAsState
 import androidx.ui.text.font.FontWeight
 import androidx.ui.text.style.TextAlign
+import androidx.ui.unit.TextUnit
 import androidx.ui.unit.dp
 import com.takusemba.jethub.compose.JethubTheme
 import com.takusemba.jethub.di.DeveloperModuleDependencies
-import com.takusemba.jethub.di.RepoModuleDependencies
 import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
 class DeveloperFragment : Fragment(R.layout.fragment_developer) {
 
-  @Inject lateinit var developerViewModelProviderFactory: DeveloperViewModelProviderFactory
+  @Inject
+  lateinit var developerViewModelProviderFactory: DeveloperViewModelProviderFactory
 
   private val developerViewModel: DeveloperViewModel by viewModels { developerViewModelProviderFactory }
 
@@ -58,18 +60,25 @@ class DeveloperFragment : Fragment(R.layout.fragment_developer) {
           verticalArrangement = Arrangement.Center,
           horizontalGravity = Alignment.CenterHorizontally
         ) {
+          Text(
+            text = "This screen is under development...",
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(18.dp)
+          )
           Box(
             gravity = ContentGravity.Center
           ) {
             Text(
               text = "Developer Fragment",
-              textAlign = TextAlign.Center,
               fontWeight = FontWeight.Bold,
-              modifier = Modifier.padding(22.dp)
-            )
-            Text(
-              text = "This screen is under development...",
               textAlign = TextAlign.Center,
+              modifier = Modifier.padding(16.dp)
+            )
+            val developer = developerViewModel.developer.observeAsState()
+            Text(
+              text = developer.value.toString(),
+              textAlign = TextAlign.Center,
+              fontSize = TextUnit.Sp(12),
               modifier = Modifier.padding(16.dp)
             )
           }

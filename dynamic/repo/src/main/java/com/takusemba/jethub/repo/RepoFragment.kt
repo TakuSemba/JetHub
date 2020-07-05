@@ -1,14 +1,12 @@
 package com.takusemba.jethub.repo
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.Recomposer
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.observe
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.core.setContent
@@ -20,9 +18,11 @@ import androidx.ui.layout.Column
 import androidx.ui.layout.fillMaxHeight
 import androidx.ui.layout.fillMaxWidth
 import androidx.ui.layout.padding
+import androidx.ui.livedata.observeAsState
 import androidx.ui.material.Button
 import androidx.ui.text.font.FontWeight
 import androidx.ui.text.style.TextAlign
+import androidx.ui.unit.TextUnit
 import androidx.ui.unit.dp
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.compose.JethubTheme
@@ -32,7 +32,8 @@ import javax.inject.Inject
 
 class RepoFragment : Fragment(R.layout.fragment_repo) {
 
-  @Inject lateinit var repoViewModelProviderFactory: RepoViewModelProviderFactory
+  @Inject
+  lateinit var repoViewModelProviderFactory: RepoViewModelProviderFactory
 
   private val navigationViewModel: NavigationViewModel by activityViewModels()
   private val repoViewModel: RepoViewModel by viewModels { repoViewModelProviderFactory }
@@ -61,6 +62,11 @@ class RepoFragment : Fragment(R.layout.fragment_repo) {
           verticalArrangement = Arrangement.Center,
           horizontalGravity = Alignment.CenterHorizontally
         ) {
+          Text(
+            text = "This screen is under development...",
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(18.dp)
+          )
           Box(
             gravity = ContentGravity.Center
           ) {
@@ -68,11 +74,13 @@ class RepoFragment : Fragment(R.layout.fragment_repo) {
               text = "Repo Fragment",
               fontWeight = FontWeight.Bold,
               textAlign = TextAlign.Center,
-              modifier = Modifier.padding(22.dp)
+              modifier = Modifier.padding(16.dp)
             )
+            val repo = repoViewModel.repository.observeAsState()
             Text(
-              text = "This screen is under development...",
+              text = repo.value.toString(),
               textAlign = TextAlign.Center,
+              fontSize = TextUnit.Sp(12),
               modifier = Modifier.padding(16.dp)
             )
             Button(
@@ -83,16 +91,12 @@ class RepoFragment : Fragment(R.layout.fragment_repo) {
             ) {
               Text(
                 text = "Go to Developer Fragment",
-                modifier = Modifier.padding(18.dp)
+                modifier = Modifier.padding(8.dp)
               )
             }
           }
         }
       }
-    }
-
-    repoViewModel.repository.observe(viewLifecycleOwner) { repository ->
-      Log.d("TEST", "repository: $repository")
     }
   }
 }
