@@ -75,6 +75,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
       systemViewModel.setNightMode(!systemViewModel.isNightMode())
     }
 
+    // show progress only while the first fetch.
     binding.progress.show()
     searchViewModel.searchedRepos.observe(viewLifecycleOwner) {
       binding.progress.hide()
