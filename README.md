@@ -79,7 +79,7 @@ db.getData() // get data from DB
 
 ## :construction: Jetpack Compose (Under Development) :construction:
 
-Design in `:repo`, `:developer` modules is constructed using [Jetpack Compose](https://developer.android.com/jetpack/compose). But it is not finished yet, so you will see unfinished UI for those screen just for now. I'm migrating to Jetpack Compose...
+Design in `:repo`, `:developer` modules is constructed using [Jetpack Compose](https://developer.android.com/jetpack/compose). But it is not finished yet and you will see unfinished UI for those screens just for now. I'm migrating to Jetpack Compose...
 
 ## Dark Theme
 
