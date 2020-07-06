@@ -88,9 +88,9 @@ Dark Theme is supported. You can toggle theme by tapping the theme icon on top r
 
 ## Github API Token
 
-This project is based on GitHub API. You can set your own token in local.properties and app will use the token everytime app requests network calls to Github API. 
+This project is based on GitHub API. You can set your own token in local.properties and JetHub will use the token for every single request to Github.
 
-If you do not have a GitHub token, that's fine. You can use this app without token, but the number of API call is very limited by Github. You can see the details from this [link](https://developer.github.com/v3/#rate-limiting).
+If you do not have a GitHub token, that's fine. You can use this app without a token, but the number of API call is very limited by Github. You can see the details from this [link](https://developer.github.com/v3/#rate-limiting).
 
 ```local.properties
 // local.properties
