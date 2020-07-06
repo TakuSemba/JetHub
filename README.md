@@ -39,7 +39,7 @@ This projects consists of multiple modules and some of them are provided as Dyna
 
 **Feature Module**
 
-`:feed`, `:search`, `:pin` are feature modules. These are included in base.apk and does not require user to download one.
+`:feed`, `:search`, `:pin` are feature modules. These are included in base.apk and does not require user to download one later.
 
 **Dynamic Feature Module**
 
