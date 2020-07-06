@@ -75,4 +75,13 @@
 
   </com.google.android.material.appbar.AppBarLayout>
 
+  <com.google.android.material.progressindicator.ProgressIndicator
+    android:id="@+id/progress"
+    style="@style/Widget.MaterialComponents.ProgressIndicator.Circular.Indeterminate"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:visibility="invisible"
+    app:indicatorType="circular" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

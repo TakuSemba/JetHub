@@ -24,7 +24,7 @@ class SearchViewModel @ViewModelInject constructor(
   private val mutableSearchedRepos = MutableLiveData<List<Repository>>()
   val searchedRepos: LiveData<List<Repository>> = mutableSearchedRepos
 
-  var searchJob: Job? = null
+  private var searchJob: Job? = null
 
   init {
     viewModelScope.launch {

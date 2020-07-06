@@ -10,6 +10,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
@@ -72,6 +73,11 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     binding.themeSwitch.setOnClickListener {
       systemViewModel.setNightMode(!systemViewModel.isNightMode())
+    }
+
+    binding.progress.show()
+    searchViewModel.searchedRepos.observe(viewLifecycleOwner) {
+      binding.progress.hide()
     }
   }
 }
