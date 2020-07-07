@@ -18,11 +18,14 @@ android {
 
     Properties properties = new Properties()
     def file = project.rootProject.file('local.properties')
+    def githubApiToken = ""
     if (file.exists()) {
       properties.load(file.newDataInputStream())
-      def githubApiToken = properties.getProperty("github_api_token")
-      buildConfigField "String", "GITHUB_API_TOKEN", "\"" + githubApiToken + "\""
     }
+    if (properties.hasProperty("github_api_token")) {
+      githubApiToken = properties.getProperty("github_api_token")
+    }
+    buildConfigField "String", "GITHUB_API_TOKEN", "\"" + githubApiToken + "\""
   }
   buildTypes {
     release {
