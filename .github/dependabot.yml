@@ -1,7 +1,12 @@
+# dependabot does not work when you declare using variables.
+# Even thought it does not work for now, I will leave it now for being able to recognise variables later.
+# e.g. implementation deps.retrofit <-- does not work
+# e.g. implementation "com.squareup.retrofit2:retrofit:${versions.okhttp}" <-- does not work
+# e.g. implementation "com.squareup.retrofit2:retrofit:2.9.0" <-- works
 version: 2
 updates:
-- package-ecosystem: gradle
-  directory: "/"
-  schedule:
-    interval: daily
-    time: "20:00"
+  - package-ecosystem: gradle
+    directory: "/"
+    schedule:
+      interval: daily
+      time: "20:00"

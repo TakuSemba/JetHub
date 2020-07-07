@@ -59,6 +59,4 @@ dependencies {
   implementation deps.composeAnimation
   implementation deps.composeTooling
   implementation deps.composeLivedata
-
-  implementation "com.squareup.okhttp3:logging-interceptor:4.7.1"
 }
