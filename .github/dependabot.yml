@@ -5,4 +5,3 @@ updates:
   schedule:
     interval: daily
     time: "20:00"
-  open-pull-requests-limit: 10
