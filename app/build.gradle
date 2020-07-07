@@ -60,5 +60,5 @@ dependencies {
   implementation deps.composeTooling
   implementation deps.composeLivedata
 
-  implementation "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}"
+  implementation "com.squareup.okhttp3:logging-interceptor:4.7.1"
 }
