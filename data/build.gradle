@@ -5,6 +5,7 @@ apply plugin: 'kotlinx-serialization'
 apply plugin: 'dagger.hilt.android.plugin'
 apply from: '../shared_deps.gradle'
 apply from: '../test_deps.gradle'
+apply from: '../ktlint.gradle'
 
 android {
   compileSdkVersion configs.compileSdkVersion

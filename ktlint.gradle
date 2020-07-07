@@ -1,0 +1,22 @@
+configurations {
+  ktlint
+}
+
+dependencies {
+  ktlint deps.ktlint
+}
+
+task ktlint(type: JavaExec, group: "Verification") {
+  ignoreExitValue = true
+  description = "Check Kotlin code style."
+  classpath = configurations.ktlint
+  main = "com.github.shyiko.ktlint.Main"
+  args "src/**/*.kt", "--reporter=checkstyle,output=${buildDir}/reports/ktlint-results.xml"
+}
+
+task ktFormat(type: JavaExec, group: "Formatting") {
+  description = "Fix Kotlin code style deviations."
+  classpath = configurations.ktlint
+  main = "com.github.shyiko.ktlint.Main"
+  args "-F", "src/**/*.kt"
+}

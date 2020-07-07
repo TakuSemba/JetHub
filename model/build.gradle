@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: "kotlin-kapt"
 apply from: '../shared_deps.gradle'
 apply from: '../test_deps.gradle'
+apply from: '../ktlint.gradle'
 
 android {
   compileSdkVersion configs.compileSdkVersion

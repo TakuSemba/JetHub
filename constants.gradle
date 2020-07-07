@@ -114,5 +114,8 @@ project.ext {
       mockk: "io.mockk:mockk:1.9.3",
       truth: "com.google.truth:truth:1.0",
       testCore: "android.arch.core:core-testing:1.1.0",
+
+      // lint
+      ktlint: "com.pinterest:ktlint:0.37.2",
   ]
 }

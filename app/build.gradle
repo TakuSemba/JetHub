@@ -1,12 +1,13 @@
-apply plugin: "com.android.application"
-apply plugin: "kotlin-android"
-apply plugin: "kotlin-kapt"
-apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'dagger.hilt.android.plugin'
-apply plugin: "com.github.konifar.gradle.unused-resources-remover"
+apply plugin: 'com.github.konifar.gradle.unused-resources-remover'
 apply from: '../depgraph.gradle'
 apply from: '../shared_deps.gradle'
 apply from: '../test_deps.gradle'
+apply from: '../ktlint.gradle'
 
 android {
   compileSdkVersion configs.compileSdkVersion
