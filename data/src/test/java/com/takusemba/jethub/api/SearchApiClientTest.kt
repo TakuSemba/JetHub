@@ -26,10 +26,12 @@ class SearchApiClientTest {
 
   @Before
   fun setUp() {
-    val converterFactory = Json(JsonConfiguration.Stable.copy(
-      isLenient = true,
-      ignoreUnknownKeys = true
-    )).asConverterFactory("application/json".toMediaType())
+    val converterFactory = Json(
+      JsonConfiguration.Stable.copy(
+        isLenient = true,
+        ignoreUnknownKeys = true
+      )
+    ).asConverterFactory("application/json".toMediaType())
     val retrofit = Retrofit.Builder()
       .baseUrl(mockWebServer.url("/").toString())
       .addConverterFactory(converterFactory)
@@ -40,7 +42,8 @@ class SearchApiClientTest {
   @Test
   fun `get hot developers`() {
     runBlocking {
-      val json = """
+      val json =
+        """
           {
               "total_count": 116,
               "incomplete_results": false,
@@ -67,7 +70,7 @@ class SearchApiClientTest {
                 }
               ]
           }
-    """.trimIndent()
+        """.trimIndent()
 
       mockWebServer.enqueue(MockResponse().setResponseCode(200).setBody(json))
 
@@ -86,7 +89,8 @@ class SearchApiClientTest {
   @Test
   fun `get hot repos`() {
     runBlocking {
-      val json = """
+      val json =
+        """
           {
               "total_count": 116,
               "incomplete_results": false,
@@ -181,7 +185,7 @@ class SearchApiClientTest {
                   }
               ]
           }
-    """.trimIndent()
+        """.trimIndent()
 
       mockWebServer.enqueue(MockResponse().setResponseCode(200).setBody(json))
 
@@ -200,7 +204,8 @@ class SearchApiClientTest {
   @Test
   fun `search developers`() {
     runBlocking {
-      val json = """
+      val json =
+        """
           {
               "total_count": 116,
               "incomplete_results": false,
@@ -227,7 +232,7 @@ class SearchApiClientTest {
                 }
               ]
           }
-    """.trimIndent()
+        """.trimIndent()
 
       mockWebServer.enqueue(MockResponse().setResponseCode(200).setBody(json))
 
@@ -246,7 +251,8 @@ class SearchApiClientTest {
   @Test
   fun `search repos`() {
     runBlocking {
-      val json = """
+      val json =
+        """
           {
               "total_count": 116,
               "incomplete_results": false,
@@ -341,7 +347,7 @@ class SearchApiClientTest {
                   }
               ]
           }
-    """.trimIndent()
+        """.trimIndent()
 
       mockWebServer.enqueue(MockResponse().setResponseCode(200).setBody(json))
 

@@ -26,10 +26,12 @@ class NetworkModule {
   @Singleton
   @Provides
   fun provideConverterFactory(): Converter.Factory {
-    return Json(JsonConfiguration.Stable.copy(
-      isLenient = true,
-      ignoreUnknownKeys = true
-    )).asConverterFactory("application/json".toMediaType())
+    return Json(
+      JsonConfiguration.Stable.copy(
+        isLenient = true,
+        ignoreUnknownKeys = true
+      )
+    ).asConverterFactory("application/json".toMediaType())
   }
 
   @Singleton

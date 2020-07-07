@@ -25,10 +25,12 @@ class RepoApiClientTest {
 
   @Before
   fun setUp() {
-    val converterFactory = Json(JsonConfiguration.Stable.copy(
-      isLenient = true,
-      ignoreUnknownKeys = true
-    )).asConverterFactory("application/json".toMediaType())
+    val converterFactory = Json(
+      JsonConfiguration.Stable.copy(
+        isLenient = true,
+        ignoreUnknownKeys = true
+      )
+    ).asConverterFactory("application/json".toMediaType())
     val retrofit = Retrofit.Builder()
       .baseUrl(mockWebServer.url("/").toString())
       .addConverterFactory(converterFactory)
@@ -39,7 +41,8 @@ class RepoApiClientTest {
   @Test
   fun `get repo`() {
     runBlocking {
-      val json = """
+      val json =
+        """
           {
               "id": 163260752,
               "node_id": "MDEwOlJlcG9zaXRvcnkxNjMyNjA3NTI=",
@@ -95,7 +98,7 @@ class RepoApiClientTest {
               "network_count": 1,
               "subscribers_count": 1
           }
-    """.trimIndent()
+        """.trimIndent()
 
       mockWebServer.enqueue(MockResponse().setResponseCode(200).setBody(json))
 

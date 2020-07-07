@@ -25,10 +25,12 @@ class DeveloperApiClientTest {
 
   @Before
   fun setUp() {
-    val converterFactory = Json(JsonConfiguration.Stable.copy(
-      isLenient = true,
-      ignoreUnknownKeys = true
-    )).asConverterFactory("application/json".toMediaType())
+    val converterFactory = Json(
+      JsonConfiguration.Stable.copy(
+        isLenient = true,
+        ignoreUnknownKeys = true
+      )
+    ).asConverterFactory("application/json".toMediaType())
     val retrofit = Retrofit.Builder()
       .baseUrl(mockWebServer.url("/").toString())
       .addConverterFactory(converterFactory)
@@ -39,7 +41,8 @@ class DeveloperApiClientTest {
   @Test
   fun `get developer`() {
     runBlocking {
-      val json = """
+      val json =
+        """
       {
           "login": "TakuSemba",
           "id": 13956869,
@@ -73,7 +76,7 @@ class DeveloperApiClientTest {
           "created_at": "2015-08-25T04:37:48Z",
           "updated_at": "2019-01-03T07:05:41Z"
       }
-    """.trimIndent()
+        """.trimIndent()
 
       mockWebServer.enqueue(MockResponse().setResponseCode(200).setBody(json))
 
@@ -98,7 +101,8 @@ class DeveloperApiClientTest {
   @Test
   fun `get getRepos`() {
     runBlocking {
-      val json = """
+      val json =
+        """
         [
             {
                 "id": 108085495,
@@ -193,7 +197,7 @@ class DeveloperApiClientTest {
                 "default_branch": "master"
             }
         ]
-    """.trimIndent()
+        """.trimIndent()
 
       mockWebServer.enqueue(MockResponse().setResponseCode(200).setBody(json))
 

@@ -42,7 +42,8 @@ class MainTabFragment : Fragment(R.layout.fragment_main_tab) {
           }
         }
         false
-      })
+      }
+    )
 
     if (childFragmentManager.findFragmentById(R.id.container) == null) {
       childFragmentManager.commit {

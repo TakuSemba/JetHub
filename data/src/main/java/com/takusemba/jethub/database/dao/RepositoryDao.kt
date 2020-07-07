@@ -25,4 +25,3 @@ abstract class RepositoryDao {
   @Query("DELETE FROM repository")
   abstract suspend fun deleteAll()
 }
-

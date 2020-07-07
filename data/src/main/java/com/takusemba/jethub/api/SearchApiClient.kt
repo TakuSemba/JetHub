@@ -1,8 +1,8 @@
 package com.takusemba.jethub.api
 
 import com.takusemba.jethub.api.response.ListResponse
-import com.takusemba.jethub.api.response.RepositoryResponse
 import com.takusemba.jethub.api.response.OwnerResponse
+import com.takusemba.jethub.api.response.RepositoryResponse
 import com.takusemba.jethub.model.DateFormatters
 import com.takusemba.jethub.model.Owner
 import com.takusemba.jethub.model.Repository
@@ -47,7 +47,8 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
   ): List<Repository> {
     return withContext(IO) {
       service.getHotRepos(
-        "language:${language} created:>${from.format(DateFormatters.ofSearchQuery())}")
+        "language:$language created:>${from.format(DateFormatters.ofSearchQuery())}"
+      )
         .items
         ?.map { response -> response.toModel() } ?: emptyList()
     }
@@ -59,7 +60,8 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
   ): List<Owner> {
     return withContext(IO) {
       service.getHotDevelopers(
-        "language:${language} created:>${from.format(DateFormatters.ofSearchQuery())}")
+        "language:$language created:>${from.format(DateFormatters.ofSearchQuery())}"
+      )
         .items
         ?.map { response -> response.toModel() } ?: emptyList()
     }

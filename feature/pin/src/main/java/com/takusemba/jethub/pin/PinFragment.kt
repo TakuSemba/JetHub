@@ -41,7 +41,8 @@ class PinFragment : Fragment(R.layout.fragment_pin) {
     }
     val dividerItemDecoration = DividerItemDecoration(context, linearLayoutManager.orientation)
     dividerItemDecoration.setDrawable(
-      requireNotNull(requireContext().getDrawable(R.drawable.shape_divider)))
+      requireNotNull(requireContext().getDrawable(R.drawable.shape_divider))
+    )
     binding.recyclerView.addItemDecoration(dividerItemDecoration)
     binding.recyclerView.layoutManager = linearLayoutManager
     binding.recyclerView.adapter = groupAdapter

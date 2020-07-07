@@ -34,12 +34,15 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
       AppCompatDelegate.setDefaultNightMode(nightModeSetting)
     }
 
-    navigationViewModel.direction.observe(this, EventObserver { direction ->
-      val navDirection = when (direction) {
-        is Repo -> MainTabFragmentDirections.actionMainTabToRepo(direction.owner, direction.repo)
-        is Developer -> RepoFragmentDirections.actionRepoToDeveloper(direction.name)
+    navigationViewModel.direction.observe(
+      this,
+      EventObserver { direction ->
+        val navDirection = when (direction) {
+          is Repo -> MainTabFragmentDirections.actionMainTabToRepo(direction.owner, direction.repo)
+          is Developer -> RepoFragmentDirections.actionRepoToDeveloper(direction.name)
+        }
+        findNavController(R.id.host_fragment).navigate(navDirection)
       }
-      findNavController(R.id.host_fragment).navigate(navDirection)
-    })
+    )
   }
 }

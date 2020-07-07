@@ -46,12 +46,16 @@ data class RepositoryItem(
     binding.root.setOnLongClickListener { v ->
       if (userViewModel.isPinned(repository)) {
         userViewModel.unpin(repository)
-        Toast.makeText(v.context,
-          R.string.unpinned_repository, LENGTH_SHORT).show()
+        Toast.makeText(
+          v.context,
+          R.string.unpinned_repository, LENGTH_SHORT
+        ).show()
       } else {
         userViewModel.pin(repository)
-        Toast.makeText(v.context,
-          R.string.pinned_repository, LENGTH_SHORT).show()
+        Toast.makeText(
+          v.context,
+          R.string.pinned_repository, LENGTH_SHORT
+        ).show()
       }
       true
     }
