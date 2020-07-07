@@ -3,6 +3,7 @@ package com.takusemba.jethub.feed
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
+import com.takusemba.jethub.base.ErrorHandler
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.model.Repository.Companion.createRepository
 import com.takusemba.jethub.repository.SearchRepository
@@ -15,9 +16,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.ObsoleteCoroutinesApi
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Before
@@ -33,12 +34,15 @@ class FeedViewModelTest {
   @get:Rule var instantTaskExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
 
   @MockK private lateinit var searchRepository: SearchRepository
+  @MockK private lateinit var errorHandler: ErrorHandler
+
+  private val dispatcher = TestCoroutineDispatcher()
 
   @Before
   @ExperimentalCoroutinesApi
   fun setUp() {
     MockKAnnotations.init(this)
-    Dispatchers.setMain(TestCoroutineDispatcher())
+    Dispatchers.setMain(dispatcher)
   }
 
   @After
@@ -48,7 +52,7 @@ class FeedViewModelTest {
 
   @Test
   fun `initial state`() {
-    runBlocking {
+    dispatcher.runBlockingTest {
 
       val observer = mockk<Observer<List<Repository>>>(relaxed = true)
 
@@ -58,10 +62,9 @@ class FeedViewModelTest {
         createRepository(id = 3, language = "Kotlin")
       )
 
-      val viewModel = FeedViewModel(searchRepository)
+      val viewModel = FeedViewModel(searchRepository, errorHandler)
 
       viewModel.hotRepos("Kotlin").observeForever(observer)
-      viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
 
       verify { observer.onChanged(match { it.size == 3 }) }
     }

@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.model.Repository.Companion.createRepository
-import com.takusemba.jethub.repository.DeveloperRepository
 import com.takusemba.jethub.repository.RepoRepository
 import io.mockk.MockKAnnotations
 import io.mockk.Runs
@@ -19,9 +18,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.ObsoleteCoroutinesApi
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Before
@@ -37,14 +36,15 @@ class UserViewModelTest {
   @get:Rule var instantTaskExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
 
   @MockK private lateinit var repoRepository: RepoRepository
-  @MockK private lateinit var developerRepository: DeveloperRepository
   @MockK private lateinit var errorHandler: ErrorHandler
+
+  private val dispatcher = TestCoroutineDispatcher()
 
   @Before
   @ExperimentalCoroutinesApi
   fun setUp() {
     MockKAnnotations.init(this)
-    Dispatchers.setMain(TestCoroutineDispatcher())
+    Dispatchers.setMain(dispatcher)
   }
 
   @After
@@ -54,7 +54,7 @@ class UserViewModelTest {
 
   @Test
   fun `initial state`() {
-    runBlocking {
+    dispatcher.runBlockingTest {
 
       val observer = mockk<Observer<List<Repository>>>(relaxed = true)
 
@@ -67,7 +67,6 @@ class UserViewModelTest {
       val viewModel = UserViewModel(repoRepository, errorHandler)
 
       viewModel.pinedRepositories.observeForever(observer)
-      viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
 
       verify { observer.onChanged(match { it.size == 3 }) }
     }
@@ -75,7 +74,7 @@ class UserViewModelTest {
 
   @Test
   fun `pin repo`() {
-    runBlocking {
+    dispatcher.runBlockingTest {
 
       val observer = mockk<Observer<List<Repository>>>(relaxed = true)
 
@@ -92,7 +91,6 @@ class UserViewModelTest {
       viewModel.pin(repo)
 
       viewModel.pinedRepositories.observeForever(observer)
-      viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
 
       verify { observer.onChanged(match { it.size == 4 }) }
     }
@@ -100,7 +98,7 @@ class UserViewModelTest {
 
   @Test
   fun `unpin repo`() {
-    runBlocking {
+    dispatcher.runBlockingTest {
 
       val observer = mockk<Observer<List<Repository>>>(relaxed = true)
       val repoToBeRemoved = createRepository(id = 3)
@@ -117,7 +115,6 @@ class UserViewModelTest {
       viewModel.unpin(repoToBeRemoved)
 
       viewModel.pinedRepositories.observeForever(observer)
-      viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
 
       verify { observer.onChanged(match { it.size == 2 }) }
     }
