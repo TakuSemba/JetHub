@@ -52,6 +52,7 @@ dependencies {
   // network
   api(deps.retrofit)
   api(deps.retrofitConverter)
+  api(deps.okhttp)
   debugImplementation(deps.loggingInterceptor)
   testImplementation(deps.mockWebServer)
 }

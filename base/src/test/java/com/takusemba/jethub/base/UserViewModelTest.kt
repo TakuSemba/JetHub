@@ -38,6 +38,7 @@ class UserViewModelTest {
 
   @MockK private lateinit var repoRepository: RepoRepository
   @MockK private lateinit var developerRepository: DeveloperRepository
+  @MockK private lateinit var errorHandler: ErrorHandler
 
   @Before
   @ExperimentalCoroutinesApi
@@ -63,7 +64,7 @@ class UserViewModelTest {
         createRepository(id = 3)
       )
 
-      val viewModel = UserViewModel(repoRepository, developerRepository)
+      val viewModel = UserViewModel(repoRepository, errorHandler)
 
       viewModel.pinedRepositories.observeForever(observer)
       viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
@@ -85,7 +86,7 @@ class UserViewModelTest {
       )
       coEvery { repoRepository.pin(any()) } just Runs
 
-      val viewModel = UserViewModel(repoRepository, developerRepository)
+      val viewModel = UserViewModel(repoRepository, errorHandler)
 
       val repo = createRepository(id = 4)
       viewModel.pin(repo)
@@ -111,7 +112,7 @@ class UserViewModelTest {
       )
       coEvery { repoRepository.unpin(any()) } just Runs
 
-      val viewModel = UserViewModel(repoRepository, developerRepository)
+      val viewModel = UserViewModel(repoRepository, errorHandler)
 
       viewModel.unpin(repoToBeRemoved)
 
