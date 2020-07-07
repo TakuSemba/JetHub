@@ -16,9 +16,12 @@ android {
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     Properties properties = new Properties()
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
-    buildConfigField "String", "GITHUB_API_TOKEN",
-        "\"" + properties.getProperty("github_api_token") + "\""
+    def file = project.rootProject.file('local.properties')
+    if (file.exists()) {
+      properties.load(file.newDataInputStream())
+      def githubApiToken = properties.getProperty("github_api_token")
+      buildConfigField "String", "GITHUB_API_TOKEN", "\"" + githubApiToken + "\""
+    }
   }
   buildTypes {
     release {
