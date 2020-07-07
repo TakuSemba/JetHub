@@ -59,7 +59,4 @@ dependencies {
   implementation deps.composeAnimation
   implementation deps.composeTooling
   implementation deps.composeLivedata
-
-  // dependabot test
-  implementation "com.squareup.retrofit2:retrofit:2.7.0"
 }

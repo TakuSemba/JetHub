@@ -22,7 +22,7 @@ project.ext {
       daggerHilt: "2.28-alpha",
       androidHilt: "1.0.0-SNAPSHOT",
       retrofit: "2.9.0",
-      okhttp: "4.7.2",
+      okhttp: "4.7.1",
       groupie: "2.8.0",
 
       // library (test)
