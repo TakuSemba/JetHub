@@ -61,5 +61,5 @@ dependencies {
   implementation deps.composeLivedata
 
   // dependabot test
-  implementation "com.squareup.retrofit2:retrofit:2.8.0"
+  implementation "com.squareup.retrofit2:retrofit:2.7.0"
 }
