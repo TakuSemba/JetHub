@@ -87,6 +87,7 @@ class SearchViewModelTest {
       viewModel.search("something")
 
       viewModel.searchedRepos.observeForever(observer)
+      viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
 
       verify { observer.onChanged(match { it.size == 3 }) }
     }
