@@ -2,22 +2,23 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:id="@+id/coordinator_layout"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent">
+  android:layout_height="match_parent"
+  android:layout_width="match_parent">
 
   <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/recycler_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    tools:listitem="@layout/item_repository"
     android:clipToPadding="false"
+    android:id="@+id/recycler_view"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
   <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/search_view"
     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-    android:layout_width="match_parent"
+    android:id="@+id/search_view"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
+    android:layout_width="match_parent"
     app:boxBackgroundColor="?attr/colorSurface"
     app:endIconMode="clear_text"
     app:hintAnimationEnabled="false"
@@ -26,31 +27,31 @@
     app:startIconDrawable="@drawable/ic_search">
 
     <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/search_view_input"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
       android:hint="@string/hint_search"
+      android:id="@+id/search_view_input"
       android:imeOptions="actionSearch"
       android:inputType="text"
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
       android:lines="1" />
 
   </com.google.android.material.textfield.TextInputLayout>
 
   <com.google.android.material.appbar.AppBarLayout
     android:id="@+id/appbar"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-      android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_width="match_parent"
       app:layout_scrollFlags="scroll|snap|exitUntilCollapsed|enterAlways">
 
       <ImageView
         android:id="@+id/theme_switch"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:layout_width="wrap_content"
         android:padding="8dp"
         android:src="@drawable/ic_theme_switch"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,10 +59,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
       <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:gravity="center"
+        android:id="@+id/title"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         android:minHeight="?actionBarSize"
         android:text="@string/search"
         android:textAppearance="?attr/textAppearanceHeadline6"
@@ -76,11 +77,11 @@
   </com.google.android.material.appbar.AppBarLayout>
 
   <com.google.android.material.progressindicator.ProgressIndicator
-    android:id="@+id/progress"
     style="@style/Widget.MaterialComponents.ProgressIndicator.Circular.Indeterminate"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:id="@+id/progress"
     android:layout_gravity="center"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
     android:visibility="invisible"
     app:indicatorType="circular" />
 

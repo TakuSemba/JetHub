@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent">
+  android:layout_height="match_parent"
+  android:layout_width="match_parent">
 
   <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/empty_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
 
     <ImageView
       android:id="@+id/empty_image"
-      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_width="wrap_content"
       android:src="@drawable/ic_empty_box"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
@@ -21,9 +21,9 @@
 
     <TextView
       android:id="@+id/empty_title"
-      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="16dp"
+      android:layout_width="wrap_content"
       android:text="@string/empty_pinned_repositories_title"
       android:textAppearance="?attr/textAppearanceBody1"
       android:textColor="?android:attr/textColorSecondary"
@@ -32,13 +32,13 @@
       app:layout_constraintTop_toBottomOf="@id/empty_image" />
 
     <TextView
+      android:gravity="center"
       android:id="@+id/empty_description"
-      android:layout_width="0dp"
       android:layout_height="wrap_content"
+      android:layout_marginEnd="16dp"
       android:layout_marginStart="16dp"
       android:layout_marginTop="8dp"
-      android:layout_marginEnd="16dp"
-      android:gravity="center"
+      android:layout_width="0dp"
       android:text="@string/empty_pinned_repositories_description"
       android:textAppearance="?attr/textAppearanceBody2"
       android:textColor="?android:attr/textColorSecondary"
@@ -50,9 +50,10 @@
 
 
   <androidx.recyclerview.widget.RecyclerView
+    tools:listitem="@layout/item_repository"
     android:id="@+id/recycler_view"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_width="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -61,19 +62,19 @@
 
   <com.google.android.material.appbar.AppBarLayout
     android:id="@+id/appbar"
-    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_width="match_parent"
     app:liftOnScroll="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content">
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent">
 
       <ImageView
         android:id="@+id/theme_switch"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:layout_width="wrap_content"
         android:padding="8dp"
         android:src="@drawable/ic_theme_switch"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -81,10 +82,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
       <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:gravity="center"
+        android:id="@+id/title"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         android:minHeight="?actionBarSize"
         android:text="@string/pin"
         android:textAppearance="?attr/textAppearanceHeadline6"
