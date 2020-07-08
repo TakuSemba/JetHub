@@ -3,8 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: "kotlin-kapt"
 apply plugin: 'kotlinx-serialization'
 apply plugin: 'dagger.hilt.android.plugin'
-apply from: '../shared_deps.gradle'
-apply from: '../test_deps.gradle'
+apply from: '../deps_shared.gradle'
+apply from: '../deps_test.gradle'
 apply from: '../ktlint.gradle'
 
 android {

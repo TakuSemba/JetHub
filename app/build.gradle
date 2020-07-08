@@ -5,8 +5,9 @@ apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'com.github.konifar.gradle.unused-resources-remover'
 apply from: '../depgraph.gradle'
-apply from: '../shared_deps.gradle'
-apply from: '../test_deps.gradle'
+apply from: '../deps_shared.gradle'
+apply from: '../deps_test.gradle'
+apply from: '../deps_android_test.gradle'
 apply from: '../ktlint.gradle'
 
 android {
@@ -17,7 +18,7 @@ android {
     targetSdkVersion configs.targetSdkVersion
     versionCode configs.versionCode
     versionName configs.versionName
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner "com.takusemba.jethub.CustomAndroidJUnitRunner"
   }
   buildTypes {
     release {

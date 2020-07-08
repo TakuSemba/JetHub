@@ -1,0 +1,10 @@
+dependencies {
+  androidTestImplementation deps.junit
+  androidTestImplementation deps.truth
+  androidTestImplementation deps.testCore
+  androidTestImplementation deps.extJunitKtx
+  androidTestImplementation deps.extTruth
+  androidTestImplementation deps.espresso
+  androidTestImplementation deps.daggerHiltTesting
+  kaptAndroidTest deps.daggerHiltCompiler
+}
