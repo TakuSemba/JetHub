@@ -6,13 +6,6 @@
 Android Sample App using Github API and Jetpack Component.</br>
 </H3>
 
-<p align="center">
-<a href="#"><img alt="Android Language Badge" src="https://badgen.net/badge/OS/Android?color=3ddc84"/></a>
-<a href="#"><img alt="Kotlin Language Badge" src="https://badgen.net/badge/language/Kotlin?color=0395d5"/></a>
-<a href="https://github.com/TakuSemba/JetHub/workflows/Primary/badge.svgg"><img alt="CI Status" src="https://github.com/TakuSemba/JetHub/workflows/Primary/badge.svg"/></a>
-</p>
-<br/>
-
 <img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/screen.gif" align="right" width="280">
 
 ## What's JetHub? :rocket:
