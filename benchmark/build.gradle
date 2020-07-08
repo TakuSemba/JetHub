@@ -1,0 +1,52 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: "kotlin-kapt"
+apply plugin: 'dagger.hilt.android.plugin'
+apply from: '../deps_shared.gradle'
+apply from: '../deps_android_test.gradle'
+apply from: '../ktlint.gradle'
+
+android {
+  compileSdkVersion configs.compileSdkVersion
+  defaultConfig {
+    minSdkVersion configs.minSdkVersion
+    targetSdkVersion configs.targetSdkVersion
+    versionCode configs.versionCode
+    versionName configs.versionName
+    testInstrumentationRunner "androidx.benchmark.junit4.AndroidBenchmarkRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+    coreLibraryDesugaringEnabled true
+  }
+  kotlinOptions {
+    jvmTarget = '1.8'
+  }
+  buildFeatures {
+    viewBinding true
+  }
+}
+
+dependencies {
+
+  // design/core
+  api(deps.appCompat)
+  api(deps.material)
+  api(deps.constraintLayout)
+  api(deps.coreKtx)
+  api(deps.activityKtx)
+  api(deps.fragmentKtx)
+
+  // recycler view
+  implementation(deps.groupie)
+  implementation(deps.groupieViewBinding)
+
+  androidTestImplementation deps.banchmark
+}

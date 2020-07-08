@@ -121,6 +121,7 @@ project.ext {
       espresso: "androidx.test.espresso:espresso-core:3.2.0",
       extJunitKtx: "androidx.test.ext:junit-ktx:1.1.1",
       extTruth: "androidx.test.ext:truth:1.2.0",
+      banchmark: "androidx.benchmark:benchmark-junit4:1.0.0-beta01",
 
       // lint
       ktlint: "com.pinterest:ktlint:0.37.2",
