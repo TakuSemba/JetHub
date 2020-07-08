@@ -22,7 +22,9 @@
     </codeStyleSettings>
     <codeStyleSettings language="XML">
       <indentOptions>
-        <option name="CONTINUATION_INDENT_SIZE" value="4" />
+        <option name="INDENT_SIZE" value="2" />
+        <option name="CONTINUATION_INDENT_SIZE" value="2" />
+        <option name="TAB_SIZE" value="2" />
       </indentOptions>
       <arrangement>
         <rules>
@@ -55,7 +57,7 @@
                 <AND>
                   <NAME>.*:id</NAME>
                   <XML_ATTRIBUTE />
-                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
+                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android\n</XML_NAMESPACE>
                 </AND>
               </match>
             </rule>
@@ -66,7 +68,7 @@
                 <AND>
                   <NAME>.*:name</NAME>
                   <XML_ATTRIBUTE />
-                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
+                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android\n</XML_NAMESPACE>
                 </AND>
               </match>
             </rule>
@@ -111,7 +113,7 @@
                 <AND>
                   <NAME>.*</NAME>
                   <XML_ATTRIBUTE />
-                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
+                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android\n</XML_NAMESPACE>
                 </AND>
               </match>
               <order>ANDROID_ATTRIBUTE_ORDER</order>
