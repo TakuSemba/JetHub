@@ -13,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.base.viewmodel.UserViewModel
@@ -20,6 +21,7 @@ import com.takusemba.jethub.search.databinding.FragmentSearchBinding
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SearchFragment : Fragment(R.layout.fragment_search) {
@@ -28,6 +30,8 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     fun newInstance() = SearchFragment()
   }
+
+  @Inject lateinit var recycledViewPool: RecyclerView.RecycledViewPool
 
   private val searchViewModel: SearchViewModel by viewModels(
     ownerProducer = { requireParentFragment() }
@@ -54,6 +58,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
       requireNotNull(requireContext().getDrawable(R.drawable.shape_divider))
     )
     binding.recyclerView.addItemDecoration(dividerItemDecoration)
+    binding.recyclerView.setRecycledViewPool(recycledViewPool)
     binding.recyclerView.layoutManager = linearLayoutManager
     binding.recyclerView.adapter = groupAdapter
 
