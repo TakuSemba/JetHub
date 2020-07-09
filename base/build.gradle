@@ -66,5 +66,5 @@ dependencies {
   implementation(deps.groupieViewBinding)
 
   // image
-  implementation(deps.picasso)
+  implementation(deps.coil)
 }

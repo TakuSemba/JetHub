@@ -108,7 +108,7 @@ project.ext {
       groupieViewBinding: "com.xwray:groupie-viewbinding:${versions.groupie}",
 
       // image
-      picasso: "com.squareup.picasso:picasso:2.71828",
+      coil: "io.coil-kt:coil:0.11.0",
 
       // test
       junit: "junit:junit:${versions.junit}",

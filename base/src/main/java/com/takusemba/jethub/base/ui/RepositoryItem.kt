@@ -3,7 +3,7 @@ package com.takusemba.jethub.base.ui
 import android.view.View
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
-import com.squareup.picasso.Picasso
+import coil.api.load
 import com.takusemba.jethub.base.R
 import com.takusemba.jethub.base.databinding.ItemRepositoryBinding
 import com.takusemba.jethub.base.model.ColoredLanguage
@@ -25,7 +25,7 @@ data class RepositoryItem(
   }
 
   override fun bind(binding: ItemRepositoryBinding, position: Int) {
-    Picasso.get().load(repository.owner.avatarUrl).into(binding.developerIcon)
+    binding.developerIcon.load(repository.owner.avatarUrl)
     binding.developerName.text = repository.owner.login
     binding.title.text = repository.name
     binding.description.text = repository.description
