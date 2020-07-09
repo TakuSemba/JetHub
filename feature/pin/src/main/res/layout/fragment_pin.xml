@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
   android:layout_height="match_parent"
   android:layout_width="match_parent">
 
@@ -50,7 +51,6 @@
 
 
   <androidx.recyclerview.widget.RecyclerView
-    tools:listitem="@layout/item_repository"
     android:id="@+id/recycler_view"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
@@ -58,7 +58,8 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toTopOf="parent"
+    tools:listitem="@layout/item_repository" />
 
   <com.google.android.material.appbar.AppBarLayout
     android:id="@+id/appbar"
