@@ -48,7 +48,7 @@ class PinFragment : Fragment(R.layout.fragment_pin) {
     binding.recyclerView.adapter = groupAdapter
 
     userViewModel.pinedRepositories.observe(viewLifecycleOwner) { repositories ->
-      binding.emptyLayout.visibility = if (repositories.isEmpty()) View.VISIBLE else View.INVISIBLE
+      binding.emptyLayout.visibility = if (repositories.isEmpty()) View.VISIBLE else View.GONE
     }
 
     binding.themeSwitch.setOnClickListener {

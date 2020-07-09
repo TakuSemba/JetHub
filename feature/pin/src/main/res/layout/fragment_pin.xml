@@ -7,7 +7,8 @@
   <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/empty_layout"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:visibility="gone">
 
     <ImageView
       android:id="@+id/empty_image"
@@ -32,13 +33,12 @@
       app:layout_constraintTop_toBottomOf="@id/empty_image" />
 
     <TextView
-      android:gravity="center"
       android:id="@+id/empty_description"
       android:layout_height="wrap_content"
       android:layout_marginEnd="16dp"
       android:layout_marginStart="16dp"
       android:layout_marginTop="8dp"
-      android:layout_width="0dp"
+      android:layout_width="wrap_content"
       android:text="@string/empty_pinned_repositories_description"
       android:textAppearance="?attr/textAppearanceBody2"
       android:textColor="?android:attr/textColorSecondary"

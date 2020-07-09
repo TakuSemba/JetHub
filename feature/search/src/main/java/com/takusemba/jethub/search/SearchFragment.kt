@@ -58,7 +58,8 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     binding.recyclerView.adapter = groupAdapter
 
     binding.searchView.doOnLayout {
-      val padding = binding.searchView.height + binding.searchView.marginTop + binding.searchView.marginBottom
+      val verticalMargin = binding.searchView.marginTop + binding.searchView.marginBottom
+      val padding = binding.searchView.height + verticalMargin
       binding.recyclerView.updatePadding(top = padding)
       binding.recyclerView.scrollToPosition(0)
     }
@@ -80,6 +81,13 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     binding.progress.show()
     searchViewModel.searchedRepos.observe(viewLifecycleOwner) {
       binding.progress.hide()
+    }
+
+    searchViewModel.searchedRepos.observe(viewLifecycleOwner) { repositories ->
+      binding.emptyLayout.visibility = if (repositories.isEmpty()) View.VISIBLE else View.GONE
+      val inputWord = binding.searchViewInput.text.toString()
+      val description = getString(R.string.empty_search_repositories_description, inputWord)
+      binding.emptyDescription.text = description
     }
   }
 }

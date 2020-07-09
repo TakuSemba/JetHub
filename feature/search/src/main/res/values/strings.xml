@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="hint_search">repository name</string>
+
+  <string name="empty_search_repositories_title">repositories not found</string>
+  <string name="empty_search_repositories_description">No repositories for %1$s</string>
 </resources>
