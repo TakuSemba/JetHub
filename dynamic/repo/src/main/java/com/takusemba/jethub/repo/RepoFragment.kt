@@ -20,11 +20,12 @@ import androidx.ui.layout.fillMaxWidth
 import androidx.ui.layout.padding
 import androidx.ui.livedata.observeAsState
 import androidx.ui.material.Button
+import androidx.ui.material.MaterialTheme
 import androidx.ui.text.font.FontWeight
 import androidx.ui.text.style.TextAlign
-import androidx.ui.unit.TextUnit
 import androidx.ui.unit.dp
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
+import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.compose.JethubTheme
 import com.takusemba.jethub.di.RepoModuleDependencies
 import dagger.hilt.android.EntryPointAccessors
@@ -36,6 +37,7 @@ class RepoFragment : Fragment(R.layout.fragment_repo) {
   lateinit var repoViewModelProviderFactory: RepoViewModelProviderFactory
 
   private val navigationViewModel: NavigationViewModel by activityViewModels()
+  private val systemViewModel: SystemViewModel by activityViewModels()
   private val repoViewModel: RepoViewModel by viewModels { repoViewModelProviderFactory }
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,7 +58,7 @@ class RepoFragment : Fragment(R.layout.fragment_repo) {
     super.onViewCreated(view, savedInstanceState)
 
     (view as ViewGroup).setContent(Recomposer.current()) {
-      JethubTheme {
+      JethubTheme(systemViewModel.isNightMode()) {
         Column(
           modifier = Modifier.fillMaxWidth().fillMaxHeight(),
           verticalArrangement = Arrangement.Center,
@@ -65,23 +67,24 @@ class RepoFragment : Fragment(R.layout.fragment_repo) {
           Text(
             text = "This screen is under development...",
             textAlign = TextAlign.Center,
-            modifier = Modifier.padding(18.dp)
+            style = MaterialTheme.typography.subtitle1,
+            color = MaterialTheme.colors.onSurface
           )
           Box(
             gravity = ContentGravity.Center
           ) {
             Text(
               text = "Repo Fragment",
-              fontWeight = FontWeight.Bold,
               textAlign = TextAlign.Center,
-              modifier = Modifier.padding(16.dp)
+              style = MaterialTheme.typography.h4,
+              color = MaterialTheme.colors.onSurface
             )
             val repo = repoViewModel.repository.observeAsState()
             Text(
               text = repo.value.toString(),
               textAlign = TextAlign.Center,
-              fontSize = TextUnit.Sp(12),
-              modifier = Modifier.padding(16.dp)
+              style = MaterialTheme.typography.caption,
+              color = MaterialTheme.colors.onSurface
             )
             Button(
               onClick = {
