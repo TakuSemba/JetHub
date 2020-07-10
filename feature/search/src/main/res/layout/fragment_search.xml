@@ -94,7 +94,7 @@
       android:id="@+id/empty_image"
       android:layout_height="wrap_content"
       android:layout_width="wrap_content"
-      android:src="@drawable/ic_empty_box"
+      android:src="@drawable/ic_empty_search"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
