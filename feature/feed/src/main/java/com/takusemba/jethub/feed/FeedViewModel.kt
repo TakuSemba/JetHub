@@ -33,11 +33,13 @@ class FeedViewModel @ViewModelInject constructor(
     viewModelScope.launch {
       runCatching {
         mutableMapOf<String, List<Repository>>().also { map ->
-          ColoredLanguage.POPULAR_LANGUAGES.map { language ->
-            coroutineScope {
+          // https://medium.com/@elizarov/structured-concurrency-722d765aa952
+          coroutineScope {
+            ColoredLanguage.POPULAR_LANGUAGES.map { language ->
               async { map[language.title] = searchRepository.searchHotRepos(language.title) }
-            }
-          }.awaitAll()
+
+            }.awaitAll()
+          }
         }
       }.onSuccess { map ->
         mutableHotReposMap.value = map
