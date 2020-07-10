@@ -4,10 +4,12 @@ import com.takusemba.jethub.api.DeveloperApi
 import com.takusemba.jethub.model.Developer
 import com.takusemba.jethub.model.Repository
 import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Repository for Developer
  */
+@Singleton
 class DeveloperRepository @Inject constructor(
   private val developerApi: DeveloperApi
 ) {

@@ -4,10 +4,12 @@ import com.takusemba.jethub.api.RepoApi
 import com.takusemba.jethub.database.RepoDb
 import com.takusemba.jethub.model.Repository
 import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Repository for Repo
  */
+@Singleton
 class RepoRepository @Inject constructor(
   private val repoDb: RepoDb,
   private val repoApi: RepoApi
