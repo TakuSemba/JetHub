@@ -23,7 +23,6 @@ project.ext {
       androidHilt: "1.0.0-SNAPSHOT",
       retrofit: "2.9.0",
       okhttp: "4.7.2",
-      groupie: "2.8.0",
 
       // library (test)
       junit: "4.13",
@@ -102,10 +101,6 @@ project.ext {
       roomRuntime: "androidx.room:room-runtime:${versions.room}",
       roomCompiler: "androidx.room:room-compiler:${versions.room}",
       roomKtx: "androidx.room:room-ktx:${versions.room}",
-
-      // recycler view
-      groupie: "com.xwray:groupie:${versions.groupie}",
-      groupieViewBinding: "com.xwray:groupie-viewbinding:${versions.groupie}",
 
       // image
       coil: "io.coil-kt:coil:0.11.0",

@@ -38,11 +38,4 @@ dependencies {
 
   // module
   implementation(project(':base'))
-
-  // recycler view
-  implementation(deps.groupie)
-  implementation(deps.groupieViewBinding)
-
-  // image
-  implementation(deps.coil)
 }

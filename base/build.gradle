@@ -61,10 +61,6 @@ dependencies {
   api(deps.navUiKtx)
   api(deps.navDfm)
 
-  // recycler view
-  implementation(deps.groupie)
-  implementation(deps.groupieViewBinding)
-
   // image
-  implementation(deps.coil)
+  api(deps.coil)
 }
