@@ -12,6 +12,7 @@ import com.takusemba.jethub.model.Repository
 import com.takusemba.jethub.repository.SearchRepository
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 /**
@@ -33,7 +34,9 @@ class FeedViewModel @ViewModelInject constructor(
       runCatching {
         mutableMapOf<String, List<Repository>>().also { map ->
           ColoredLanguage.POPULAR_LANGUAGES.map { language ->
-            async { map[language.title] = searchRepository.searchHotRepos(language.title) }
+            coroutineScope {
+              async { map[language.title] = searchRepository.searchHotRepos(language.title) }
+            }
           }.awaitAll()
         }
       }.onSuccess { map ->
