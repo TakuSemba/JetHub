@@ -12,8 +12,6 @@ import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.pin.databinding.FragmentPinBinding
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.GroupieViewHolder
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -31,18 +29,12 @@ class PinFragment : Fragment(R.layout.fragment_pin) {
   private val systemViewModel: SystemViewModel by activityViewModels()
   private val userViewModel: UserViewModel by activityViewModels()
 
-  private val pinSection: PinSection by lazy {
-    PinSection(this, userViewModel, navigationViewModel)
-  }
-
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     val binding = FragmentPinBinding.bind(view)
 
     val linearLayoutManager = LinearLayoutManager(context)
-    val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
-      add(pinSection)
-    }
+    val pinAdapter = PinAdapter(userViewModel, navigationViewModel)
     val dividerItemDecoration = DividerItemDecoration(context, linearLayoutManager.orientation)
     dividerItemDecoration.setDrawable(
       requireNotNull(requireContext().getDrawable(R.drawable.shape_divider))
@@ -50,7 +42,7 @@ class PinFragment : Fragment(R.layout.fragment_pin) {
     binding.recyclerView.addItemDecoration(dividerItemDecoration)
     binding.recyclerView.setRecycledViewPool(recycledViewPool)
     binding.recyclerView.layoutManager = linearLayoutManager
-    binding.recyclerView.adapter = groupAdapter
+    binding.recyclerView.adapter = pinAdapter
 
     userViewModel.pinedRepositories.observe(viewLifecycleOwner) { repositories ->
       binding.emptyLayout.visibility = if (repositories.isEmpty()) View.VISIBLE else View.GONE
@@ -58,6 +50,10 @@ class PinFragment : Fragment(R.layout.fragment_pin) {
 
     binding.themeSwitch.setOnClickListener {
       systemViewModel.setNightMode(!systemViewModel.isNightMode())
+    }
+
+    userViewModel.pinedRepositories.observe(viewLifecycleOwner) { repositories ->
+      pinAdapter.submitList(repositories)
     }
   }
 }

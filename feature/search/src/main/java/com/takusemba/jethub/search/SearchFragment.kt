@@ -18,8 +18,6 @@ import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.search.databinding.FragmentSearchBinding
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.GroupieViewHolder
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -41,18 +39,12 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
   private val systemViewModel: SystemViewModel by activityViewModels()
   private val userViewModel: UserViewModel by activityViewModels()
 
-  private val searchSection: SearchSection by lazy {
-    SearchSection(this, searchViewModel, userViewModel, navigationViewModel)
-  }
-
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     val binding = FragmentSearchBinding.bind(view)
 
     val linearLayoutManager = LinearLayoutManager(context)
-    val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
-      add(searchSection)
-    }
+    val searchAdapter = SearchAdapter(userViewModel, navigationViewModel)
     val dividerItemDecoration = DividerItemDecoration(context, linearLayoutManager.orientation)
     dividerItemDecoration.setDrawable(
       requireNotNull(requireContext().getDrawable(R.drawable.shape_divider))
@@ -60,7 +52,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     binding.recyclerView.addItemDecoration(dividerItemDecoration)
     binding.recyclerView.setRecycledViewPool(recycledViewPool)
     binding.recyclerView.layoutManager = linearLayoutManager
-    binding.recyclerView.adapter = groupAdapter
+    binding.recyclerView.adapter = searchAdapter
 
     binding.searchView.doOnLayout {
       val verticalMargin = binding.searchView.marginTop + binding.searchView.marginBottom
@@ -93,6 +85,10 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
       val inputWord = binding.searchViewInput.text.toString()
       val description = getString(R.string.empty_search_repositories_description, inputWord)
       binding.emptyDescription.text = description
+    }
+
+    searchViewModel.searchedRepos.observe(viewLifecycleOwner) { repositories ->
+      searchAdapter.submitList(repositories)
     }
   }
 }

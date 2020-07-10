@@ -4,14 +4,15 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.takusemba.jethub.base.viewmodel.NavigationViewModel
+import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.feed.databinding.FragmentFeedChannelBinding
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.GroupieViewHolder
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -32,17 +33,16 @@ class FeedChannelFragment : Fragment(R.layout.fragment_feed_channel) {
   private val feedViewModel: FeedViewModel by viewModels(
     ownerProducer = { requireParentFragment().requireParentFragment() }
   )
+  private val userViewModel: UserViewModel by activityViewModels()
+  private val navigationViewModel: NavigationViewModel by activityViewModels()
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     val binding = FragmentFeedChannelBinding.bind(view)
     val language = requireNotNull(requireArguments().getString(KEY_LANGUAGE))
-    val feedRepoSection = FeedRepoSection(this, language)
 
     val linearLayoutManager = LinearLayoutManager(context)
-    val groupAdapter = GroupAdapter<GroupieViewHolder>().apply {
-      add(feedRepoSection)
-    }
+    val feedChannelAdapter = FeedChannelAdapter(userViewModel, navigationViewModel)
     val dividerItemDecoration = DividerItemDecoration(context, linearLayoutManager.orientation)
     dividerItemDecoration.setDrawable(
       requireNotNull(requireContext().getDrawable(R.drawable.shape_divider))
@@ -50,11 +50,15 @@ class FeedChannelFragment : Fragment(R.layout.fragment_feed_channel) {
     binding.recyclerView.addItemDecoration(dividerItemDecoration)
     binding.recyclerView.setRecycledViewPool(recycledViewPool)
     binding.recyclerView.layoutManager = linearLayoutManager
-    binding.recyclerView.adapter = groupAdapter
+    binding.recyclerView.adapter = feedChannelAdapter
 
     binding.progress.show()
     feedViewModel.hotRepos(language).observe(viewLifecycleOwner) {
       binding.progress.hide()
+    }
+
+    feedViewModel.hotRepos(language).observe(viewLifecycleOwner) { repositories ->
+      feedChannelAdapter.submitList(repositories)
     }
   }
 }
