@@ -50,4 +50,6 @@ dependencies {
   implementation deps.composeAnimation
   implementation deps.composeTooling
   implementation deps.composeLivedata
+
+  implementation "dev.chrisbanes.accompanist:accompanist-coil:0.1.6"
 }

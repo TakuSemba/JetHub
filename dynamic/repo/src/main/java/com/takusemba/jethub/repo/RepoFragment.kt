@@ -7,23 +7,7 @@ import androidx.compose.Recomposer
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.ui.core.Alignment
-import androidx.ui.core.Modifier
 import androidx.ui.core.setContent
-import androidx.ui.foundation.Box
-import androidx.ui.foundation.ContentGravity
-import androidx.ui.foundation.Text
-import androidx.ui.layout.Arrangement
-import androidx.ui.layout.Column
-import androidx.ui.layout.fillMaxHeight
-import androidx.ui.layout.fillMaxWidth
-import androidx.ui.layout.padding
-import androidx.ui.livedata.observeAsState
-import androidx.ui.material.Button
-import androidx.ui.material.MaterialTheme
-import androidx.ui.text.font.FontWeight
-import androidx.ui.text.style.TextAlign
-import androidx.ui.unit.dp
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.compose.JethubTheme
@@ -59,46 +43,7 @@ class RepoFragment : Fragment(R.layout.fragment_repo) {
 
     (view as ViewGroup).setContent(Recomposer.current()) {
       JethubTheme(systemViewModel.isNightMode()) {
-        Column(
-          modifier = Modifier.fillMaxWidth().fillMaxHeight(),
-          verticalArrangement = Arrangement.Center,
-          horizontalGravity = Alignment.CenterHorizontally
-        ) {
-          Text(
-            text = "This screen is under development...",
-            textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.subtitle1,
-            color = MaterialTheme.colors.onSurface
-          )
-          Box(
-            gravity = ContentGravity.Center
-          ) {
-            Text(
-              text = "Repo Fragment",
-              textAlign = TextAlign.Center,
-              style = MaterialTheme.typography.h4,
-              color = MaterialTheme.colors.onSurface
-            )
-            val repo = repoViewModel.repository.observeAsState()
-            Text(
-              text = repo.value.toString(),
-              textAlign = TextAlign.Center,
-              style = MaterialTheme.typography.caption,
-              color = MaterialTheme.colors.onSurface
-            )
-            Button(
-              onClick = {
-                val owner = RepoFragmentArgs.fromBundle(requireArguments()).ownerName
-                navigationViewModel.openDeveloper(owner)
-              }
-            ) {
-              Text(
-                text = "Go to Developer Fragment",
-                modifier = Modifier.padding(8.dp)
-              )
-            }
-          }
-        }
+        RepoScreen(repoViewModel, navigationViewModel)
       }
     }
   }

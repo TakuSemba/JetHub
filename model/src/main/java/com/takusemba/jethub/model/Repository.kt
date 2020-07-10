@@ -19,6 +19,19 @@ data class Repository(
 
   companion object {
 
+    val EMPTY = Repository(
+      id = -1,
+      owner = Owner.EMPTY,
+      name = "",
+      description = "",
+      createdAt = LocalDateTime.MIN,
+      updatedAt = LocalDateTime.MIN,
+      starsCount = 0,
+      watchersCount = 0,
+      forksCount = 0,
+      language = ""
+    )
+
     @TestOnly
     fun createRepository(
       id: Int = -1,

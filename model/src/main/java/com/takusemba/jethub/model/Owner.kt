@@ -11,6 +11,13 @@ data class Owner(
 
   companion object {
 
+    val EMPTY = Owner(
+      id = -1,
+      login = "",
+      avatarUrl = "",
+      url = ""
+    )
+
     @TestOnly
     fun createOwner(
       id: Int = -1,
