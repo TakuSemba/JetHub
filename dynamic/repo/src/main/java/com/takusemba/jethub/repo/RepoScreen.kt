@@ -1,15 +1,11 @@
 package com.takusemba.jethub.repo
 
-import android.net.Uri
-import android.util.Log
 import androidx.compose.Composable
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.Box
 import androidx.ui.foundation.ContentGravity
 import androidx.ui.foundation.Icon
 import androidx.ui.foundation.Text
-import androidx.ui.graphics.ImageAsset
-import androidx.ui.graphics.painter.ImagePainter
 import androidx.ui.layout.Column
 import androidx.ui.layout.Row
 import androidx.ui.layout.padding
@@ -62,15 +58,12 @@ fun RepoTopBar() {
 fun Header(owner: Owner) {
   Column {
     Row {
-      // FIXME this does not work...
-      CoilImage(
-        data = Uri.parse(owner.avatarUrl),
-        modifier = Modifier.preferredSize(128.dp),
-        getFailurePainter = { error ->
-          Log.d("TEST", "error: ${error.throwable.message}")
-          ImagePainter(ImageAsset(10, 10))
-        }
-      )
+      if (owner.avatarUrl.isNotEmpty()) {
+        CoilImage(
+          data = owner.avatarUrl,
+          modifier = Modifier.preferredSize(16.dp)
+        )
+      }
       Text(text = owner.login)
     }
   }
