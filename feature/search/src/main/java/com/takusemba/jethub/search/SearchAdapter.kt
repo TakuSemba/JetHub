@@ -3,9 +3,9 @@ package com.takusemba.jethub.search
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.takusemba.jethub.base.databinding.ItemRepositoryBinding
-import com.takusemba.jethub.base.ui.RepositoryDiffUtil
-import com.takusemba.jethub.base.ui.RepositoryViewHolder
+import com.takusemba.jethub.base.databinding.ItemRepoBinding
+import com.takusemba.jethub.base.ui.RepoDiffUtil
+import com.takusemba.jethub.base.ui.RepoViewHolder
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.model.Repository
@@ -13,14 +13,14 @@ import com.takusemba.jethub.model.Repository
 class SearchAdapter(
   private val userViewModel: UserViewModel,
   private val navigationViewModel: NavigationViewModel
-) : ListAdapter<Repository, RepositoryViewHolder>(RepositoryDiffUtil) {
+) : ListAdapter<Repository, RepoViewHolder>(RepoDiffUtil) {
 
-  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder {
-    val binding = ItemRepositoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-    return RepositoryViewHolder(binding, userViewModel, navigationViewModel)
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoViewHolder {
+    val binding = ItemRepoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    return RepoViewHolder(binding, userViewModel, navigationViewModel)
   }
 
-  override fun onBindViewHolder(holder: RepositoryViewHolder, position: Int) {
+  override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {
     holder.bind(getItem(position))
   }
 }

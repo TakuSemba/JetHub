@@ -5,14 +5,14 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.takusemba.jethub.base.R
-import com.takusemba.jethub.base.databinding.ItemRepositoryBinding
+import com.takusemba.jethub.base.databinding.ItemRepoBinding
 import com.takusemba.jethub.base.model.ColoredLanguage
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.model.Repository
 
-class RepositoryViewHolder(
-  private val binding: ItemRepositoryBinding,
+class RepoViewHolder(
+  private val binding: ItemRepoBinding,
   private val userViewModel: UserViewModel,
   private val navigationViewModel: NavigationViewModel
 ) : RecyclerView.ViewHolder(binding.root) {
