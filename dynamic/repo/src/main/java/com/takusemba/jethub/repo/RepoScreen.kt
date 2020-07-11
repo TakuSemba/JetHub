@@ -4,6 +4,7 @@ import androidx.compose.Composable
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.Icon
 import androidx.ui.foundation.Text
+import androidx.ui.foundation.VerticalScroller
 import androidx.ui.layout.Column
 import androidx.ui.layout.Row
 import androidx.ui.layout.padding
@@ -30,7 +31,7 @@ fun RepoScreen(
   Scaffold(
     topBar = { RepoTopBar(navigationViewModel) },
     bodyContent = { innerPadding ->
-      Column(modifier = Modifier.padding(16.dp)) {
+      VerticalScroller(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
         Header(repo.value)
         Body(
           repo = repo.value,
@@ -56,7 +57,7 @@ fun RepoTopBar(navigationViewModel: NavigationViewModel) {
 
 @Composable
 fun Header(repo: Repo) {
-  Column {
+  Column(modifier = Modifier.padding(top = 16.dp)) {
     Row {
       if (repo.owner.avatarUrl.isNotEmpty()) {
         CoilImage(
@@ -104,7 +105,7 @@ fun Body(
   repo: Repo,
   navigationViewModel: NavigationViewModel
 ) {
-  Column(modifier = Modifier.padding(top = 16.dp)) {
+  Column(modifier = Modifier.padding(top = 16.dp, bottom = 16.dp)) {
     Text(
       text = "show README.md here.",
       textAlign = TextAlign.Center,
