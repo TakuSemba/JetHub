@@ -28,7 +28,7 @@ fun RepoScreen(
 ) {
   val repo = repoViewModel.repository.observeAsState(Repo.EMPTY)
   Scaffold(
-    topBar = { RepoTopBar() },
+    topBar = { RepoTopBar(navigationViewModel) },
     bodyContent = { innerPadding ->
       Column(modifier = Modifier.padding(16.dp)) {
         Header(repo.value)
@@ -42,11 +42,11 @@ fun RepoScreen(
 }
 
 @Composable
-fun RepoTopBar() {
+fun RepoTopBar(navigationViewModel: NavigationViewModel) {
   TopAppBar(
     title = {},
     navigationIcon = {
-      IconButton(onClick = { }) {
+      IconButton(onClick = { navigationViewModel.popBackStack() }) {
         Icon(vectorResource(R.drawable.ic_back))
       }
     },

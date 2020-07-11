@@ -8,6 +8,7 @@ import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import com.takusemba.jethub.R
 import com.takusemba.jethub.base.model.Direction.Developer
+import com.takusemba.jethub.base.model.Direction.Pop
 import com.takusemba.jethub.base.model.Direction.Repo
 import com.takusemba.jethub.base.model.EventObserver
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
@@ -40,6 +41,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         val navDirection = when (direction) {
           is Repo -> MainTabFragmentDirections.actionMainTabToRepo(direction.owner, direction.repo)
           is Developer -> RepoFragmentDirections.actionRepoToDeveloper(direction.name)
+          is Pop -> {
+            findNavController(R.id.host_fragment).popBackStack()
+            return@EventObserver
+          }
         }
         findNavController(R.id.host_fragment).navigate(navDirection)
       }

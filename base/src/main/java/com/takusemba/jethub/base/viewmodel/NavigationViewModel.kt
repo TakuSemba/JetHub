@@ -22,4 +22,8 @@ class NavigationViewModel @ViewModelInject constructor() : ViewModel() {
   fun openDeveloper(name: String) {
     mutableDirection.value = Event(Direction.Developer(name))
   }
+
+  fun popBackStack() {
+    mutableDirection.value = Event(Direction.Pop)
+  }
 }
