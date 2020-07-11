@@ -20,6 +20,22 @@ data class Developer(
 
   companion object {
 
+    val EMPTY = Developer(
+      id = -1,
+      login = "",
+      avatarUrl = "",
+      name = "",
+      company = "",
+      blog = "",
+      location = "",
+      email = "",
+      bio = "",
+      publicRepositoriesCount = 0,
+      publicGistsCount = 0,
+      followersCount = 0,
+      followingCount = 0
+    )
+
     @TestOnly
     fun createDeveloper(
       id: Int = -1,
