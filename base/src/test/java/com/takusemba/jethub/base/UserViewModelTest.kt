@@ -3,8 +3,8 @@ package com.takusemba.jethub.base
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.takusemba.jethub.base.viewmodel.UserViewModel
-import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.model.Repository.Companion.createRepository
+import com.takusemba.jethub.model.Repo
+import com.takusemba.jethub.model.Repo.Companion.createRepo
 import com.takusemba.jethub.repository.RepoRepository
 import io.mockk.MockKAnnotations
 import io.mockk.Runs
@@ -54,12 +54,12 @@ class UserViewModelTest {
   fun `initial state`() {
     dispatcher.runBlockingTest {
 
-      val observer = mockk<Observer<List<Repository>>>(relaxed = true)
+      val observer = mockk<Observer<List<Repo>>>(relaxed = true)
 
       coEvery { repoRepository.findAllPins() } returns listOf(
-        createRepository(id = 1),
-        createRepository(id = 2),
-        createRepository(id = 3)
+        createRepo(id = 1),
+        createRepo(id = 2),
+        createRepo(id = 3)
       )
 
       val viewModel = UserViewModel(repoRepository, errorHandler)
@@ -74,18 +74,18 @@ class UserViewModelTest {
   fun `pin repo`() {
     dispatcher.runBlockingTest {
 
-      val observer = mockk<Observer<List<Repository>>>(relaxed = true)
+      val observer = mockk<Observer<List<Repo>>>(relaxed = true)
 
       coEvery { repoRepository.findAllPins() } returns listOf(
-        createRepository(id = 1),
-        createRepository(id = 2),
-        createRepository(id = 3)
+        createRepo(id = 1),
+        createRepo(id = 2),
+        createRepo(id = 3)
       )
       coEvery { repoRepository.pin(any()) } just Runs
 
       val viewModel = UserViewModel(repoRepository, errorHandler)
 
-      val repo = createRepository(id = 4)
+      val repo = createRepo(id = 4)
       viewModel.pin(repo)
 
       viewModel.pinedRepositories.observeForever(observer)
@@ -98,12 +98,12 @@ class UserViewModelTest {
   fun `unpin repo`() {
     dispatcher.runBlockingTest {
 
-      val observer = mockk<Observer<List<Repository>>>(relaxed = true)
-      val repoToBeRemoved = createRepository(id = 3)
+      val observer = mockk<Observer<List<Repo>>>(relaxed = true)
+      val repoToBeRemoved = createRepo(id = 3)
 
       coEvery { repoRepository.findAllPins() } returns listOf(
-        createRepository(id = 1),
-        createRepository(id = 2),
+        createRepo(id = 1),
+        createRepo(id = 2),
         repoToBeRemoved
       )
       coEvery { repoRepository.unpin(any()) } just Runs

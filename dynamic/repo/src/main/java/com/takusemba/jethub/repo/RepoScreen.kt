@@ -21,7 +21,7 @@ import androidx.ui.text.style.TextAlign
 import androidx.ui.unit.dp
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.model.Owner
-import com.takusemba.jethub.model.Repository
+import com.takusemba.jethub.model.Repo
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
@@ -29,7 +29,7 @@ fun RepoScreen(
   repoViewModel: RepoViewModel,
   navigationViewModel: NavigationViewModel
 ) {
-  val repo = repoViewModel.repository.observeAsState(Repository.EMPTY)
+  val repo = repoViewModel.repository.observeAsState(Repo.EMPTY)
   Scaffold(
     topBar = { RepoTopBar() },
     bodyContent = { innerPadding ->
@@ -71,7 +71,7 @@ fun Header(owner: Owner) {
 
 @Composable
 fun Body(
-  repo: Repository,
+  repo: Repo,
   navigationViewModel: NavigationViewModel
 ) {
   Text(

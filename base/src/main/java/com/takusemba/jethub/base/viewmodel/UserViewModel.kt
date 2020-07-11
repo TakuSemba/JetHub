@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.base.ErrorHandler
-import com.takusemba.jethub.model.Repository
+import com.takusemba.jethub.model.Repo
 import com.takusemba.jethub.repository.RepoRepository
 import kotlinx.coroutines.launch
 
@@ -19,8 +19,8 @@ class UserViewModel @ViewModelInject constructor(
   private val errorHandler: ErrorHandler
 ) : ViewModel() {
 
-  private val mutablePinedRepositories: MutableLiveData<List<Repository>> = MutableLiveData()
-  val pinedRepositories: LiveData<List<Repository>> = mutablePinedRepositories
+  private val mutablePinedRepositories: MutableLiveData<List<Repo>> = MutableLiveData()
+  val pinedRepositories: LiveData<List<Repo>> = mutablePinedRepositories
 
   init {
     viewModelScope.launch {
@@ -34,12 +34,12 @@ class UserViewModel @ViewModelInject constructor(
     }
   }
 
-  fun pin(repository: Repository) {
+  fun pin(repo: Repo) {
     viewModelScope.launch {
       runCatching {
-        repoRepository.pin(repository)
+        repoRepository.pin(repo)
         val repositories = mutablePinedRepositories.value?.toMutableList() ?: mutableListOf()
-        repositories.apply { add(repository) }
+        repositories.apply { add(repo) }
       }.onSuccess { repos ->
         mutablePinedRepositories.value = repos
       }.onFailure { error ->
@@ -48,12 +48,12 @@ class UserViewModel @ViewModelInject constructor(
     }
   }
 
-  fun unpin(repository: Repository) {
+  fun unpin(repo: Repo) {
     viewModelScope.launch {
       runCatching {
-        repoRepository.unpin(repository)
+        repoRepository.unpin(repo)
         val repositories = mutablePinedRepositories.value?.toMutableList() ?: mutableListOf()
-        repositories.apply { remove(repository) }
+        repositories.apply { remove(repo) }
       }.onSuccess { repos ->
         mutablePinedRepositories.value = repos
       }.onFailure { error ->
@@ -62,7 +62,7 @@ class UserViewModel @ViewModelInject constructor(
     }
   }
 
-  fun isPinned(repository: Repository): Boolean {
-    return pinedRepositories.value?.contains(repository) ?: false
+  fun isPinned(repo: Repo): Boolean {
+    return pinedRepositories.value?.contains(repo) ?: false
   }
 }

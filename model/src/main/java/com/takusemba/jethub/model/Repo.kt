@@ -4,7 +4,7 @@ import com.takusemba.jethub.model.Owner.Companion.createOwner
 import org.jetbrains.annotations.TestOnly
 import java.time.LocalDateTime
 
-data class Repository(
+data class Repo(
   val id: Int,
   val owner: Owner,
   val name: String,
@@ -19,7 +19,7 @@ data class Repository(
 
   companion object {
 
-    val EMPTY = Repository(
+    val EMPTY = Repo(
       id = -1,
       owner = Owner.EMPTY,
       name = "",
@@ -33,7 +33,7 @@ data class Repository(
     )
 
     @TestOnly
-    fun createRepository(
+    fun createRepo(
       id: Int = -1,
       owner: Owner = createOwner(),
       name: String = "",
@@ -44,7 +44,7 @@ data class Repository(
       watchersCount: Int = 0,
       forksCount: Int = 0,
       language: String = "Kotlin"
-    ) = Repository(
+    ) = Repo(
       id = id,
       owner = owner,
       name = name,

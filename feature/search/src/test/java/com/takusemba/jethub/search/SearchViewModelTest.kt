@@ -4,8 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.base.ErrorHandler
-import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.model.Repository.Companion.createRepository
+import com.takusemba.jethub.model.Repo
+import com.takusemba.jethub.model.Repo.Companion.createRepo
 import com.takusemba.jethub.repository.SearchRepository
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
@@ -54,12 +54,12 @@ class SearchViewModelTest {
   fun `initial state`() {
     dispatcher.runBlockingTest {
 
-      val observer = mockk<Observer<List<Repository>>>(relaxed = true)
+      val observer = mockk<Observer<List<Repo>>>(relaxed = true)
 
       coEvery { searchRepository.searchRepos("") } returns listOf(
-        createRepository(id = 1),
-        createRepository(id = 2),
-        createRepository(id = 3)
+        createRepo(id = 1),
+        createRepo(id = 2),
+        createRepo(id = 3)
       )
 
       val viewModel = SearchViewModel(searchRepository, errorHandler)
@@ -73,13 +73,13 @@ class SearchViewModelTest {
   @Test
   fun `search repos`() {
     dispatcher.runBlockingTest {
-      val observer = mockk<Observer<List<Repository>>>(relaxed = true)
+      val observer = mockk<Observer<List<Repo>>>(relaxed = true)
 
       coEvery { searchRepository.searchRepos("") } returns emptyList()
       coEvery { searchRepository.searchRepos("something") } returns listOf(
-        createRepository(id = 1),
-        createRepository(id = 2),
-        createRepository(id = 3)
+        createRepo(id = 1),
+        createRepo(id = 2),
+        createRepo(id = 3)
       )
 
       val viewModel = SearchViewModel(searchRepository, errorHandler)

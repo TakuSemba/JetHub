@@ -1,6 +1,6 @@
 package com.takusemba.jethub.database
 
-import com.takusemba.jethub.model.Repository
+import com.takusemba.jethub.model.Repo
 
 /**
  * Repository DB
@@ -8,22 +8,22 @@ import com.takusemba.jethub.model.Repository
 interface RepoDb {
 
   /**
-   * get all [Repository]
+   * get all [Repo]
    */
-  suspend fun getAll(): List<Repository>
+  suspend fun getAll(): List<Repo>
 
   /**
-   * insert [Repository]
+   * insert [Repo]
    */
-  suspend fun insert(repository: Repository)
+  suspend fun insert(repo: Repo)
 
   /**
-   * delete [Repository]
+   * delete [Repo]
    */
-  suspend fun delete(repository: Repository)
+  suspend fun delete(repo: Repo)
 
   /**
-   * delete all [Repository]
+   * delete all [Repo]
    */
   suspend fun deleteAll()
 }

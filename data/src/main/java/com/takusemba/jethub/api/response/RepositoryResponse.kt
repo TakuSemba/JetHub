@@ -1,7 +1,7 @@
 package com.takusemba.jethub.api.response
 
 import com.takusemba.jethub.model.DateFormatters
-import com.takusemba.jethub.model.Repository
+import com.takusemba.jethub.model.Repo
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import java.time.LocalDateTime
@@ -231,7 +231,7 @@ class RepositoryResponse {
   @SerialName("score")
   var score: Double? = null
 
-  fun toModel() = Repository(
+  fun toModel() = Repo(
     id = id ?: throw IllegalArgumentException("id not found"),
     owner = owner?.toModel() ?: throw IllegalArgumentException("owner not found"),
     name = name ?: "",

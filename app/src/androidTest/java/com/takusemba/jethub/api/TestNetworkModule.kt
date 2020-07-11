@@ -12,7 +12,7 @@ class TestNetworkModule {
 
   @Singleton
   @Provides
-  fun provideRepositoryApi(): RepoApi {
+  fun provideRepoApi(): RepoApi {
     return FakeRepoApi()
   }
 

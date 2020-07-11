@@ -3,8 +3,8 @@ package com.takusemba.jethub.feed
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.takusemba.jethub.base.ErrorHandler
-import com.takusemba.jethub.model.Repository
-import com.takusemba.jethub.model.Repository.Companion.createRepository
+import com.takusemba.jethub.model.Repo
+import com.takusemba.jethub.model.Repo.Companion.createRepo
 import com.takusemba.jethub.repository.SearchRepository
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
@@ -52,12 +52,12 @@ class FeedViewModelTest {
   fun `initial state`() {
     dispatcher.runBlockingTest {
 
-      val observer = mockk<Observer<List<Repository>>>(relaxed = true)
+      val observer = mockk<Observer<List<Repo>>>(relaxed = true)
 
       coEvery { searchRepository.searchHotRepos(any()) } returns listOf(
-        createRepository(id = 1, language = "Kotlin"),
-        createRepository(id = 2, language = "Kotlin"),
-        createRepository(id = 3, language = "Kotlin")
+        createRepo(id = 1, language = "Kotlin"),
+        createRepo(id = 2, language = "Kotlin"),
+        createRepo(id = 3, language = "Kotlin")
       )
 
       val viewModel = FeedViewModel(searchRepository, errorHandler)

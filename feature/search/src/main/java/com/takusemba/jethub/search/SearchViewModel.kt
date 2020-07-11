@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.base.ErrorHandler
-import com.takusemba.jethub.model.Repository
+import com.takusemba.jethub.model.Repo
 import com.takusemba.jethub.repository.SearchRepository
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
@@ -21,8 +21,8 @@ class SearchViewModel @ViewModelInject constructor(
   private val errorHandler: ErrorHandler
 ) : ViewModel() {
 
-  private val mutableSearchedRepos = MutableLiveData<List<Repository>>()
-  val searchedRepos: LiveData<List<Repository>> = mutableSearchedRepos
+  private val mutableSearchedRepos = MutableLiveData<List<Repo>>()
+  val searchedRepos: LiveData<List<Repo>> = mutableSearchedRepos
 
   private var searchJob: Job? = null
 

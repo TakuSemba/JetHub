@@ -46,7 +46,7 @@ class NetworkModule {
 
   @Singleton
   @Provides
-  fun provideRepositoryApi(retrofit: Retrofit): RepoApi {
+  fun provideRepoApi(retrofit: Retrofit): RepoApi {
     return RepoApiClient(retrofit)
   }
 

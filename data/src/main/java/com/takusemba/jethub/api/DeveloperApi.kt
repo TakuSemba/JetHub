@@ -1,7 +1,7 @@
 package com.takusemba.jethub.api
 
 import com.takusemba.jethub.model.Developer
-import com.takusemba.jethub.model.Repository
+import com.takusemba.jethub.model.Repo
 
 /**
  * Developer API
@@ -14,7 +14,7 @@ interface DeveloperApi {
   suspend fun getDeveloper(name: String): Developer
 
   /**
-   * get list of [Repository] of owner.
+   * get list of [Repo] of owner.
    */
-  suspend fun getRepos(owner: String): List<Repository>
+  suspend fun getRepos(owner: String): List<Repo>
 }

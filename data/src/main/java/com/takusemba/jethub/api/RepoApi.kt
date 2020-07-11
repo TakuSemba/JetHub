@@ -1,6 +1,6 @@
 package com.takusemba.jethub.api
 
-import com.takusemba.jethub.model.Repository
+import com.takusemba.jethub.model.Repo
 
 /**
  * Repository API
@@ -8,7 +8,7 @@ import com.takusemba.jethub.model.Repository
 interface RepoApi {
 
   /**
-   * get [Repository] from owner name and repo name.
+   * get [Repo] from owner name and repo name.
    */
-  suspend fun getRepo(owner: String, repo: String): Repository
+  suspend fun getRepo(owner: String, repo: String): Repo
 }

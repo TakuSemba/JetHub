@@ -5,7 +5,7 @@ import com.takusemba.jethub.api.response.OwnerResponse
 import com.takusemba.jethub.api.response.RepositoryResponse
 import com.takusemba.jethub.model.DateFormatters
 import com.takusemba.jethub.model.Owner
-import com.takusemba.jethub.model.Repository
+import com.takusemba.jethub.model.Repo
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
@@ -44,7 +44,7 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
   override suspend fun getHotRepos(
     language: String,
     from: LocalDateTime
-  ): List<Repository> {
+  ): List<Repo> {
     return withContext(IO) {
       service.getHotRepos(
         "language:$language created:>${from.format(DateFormatters.ofSearchQuery())}"
@@ -67,7 +67,7 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     }
   }
 
-  override suspend fun searchRepos(query: String): List<Repository> {
+  override suspend fun searchRepos(query: String): List<Repo> {
     return withContext(IO) {
       val q = if (query.isNotBlank()) {
         query

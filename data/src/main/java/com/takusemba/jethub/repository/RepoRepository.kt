@@ -2,7 +2,7 @@ package com.takusemba.jethub.repository
 
 import com.takusemba.jethub.api.RepoApi
 import com.takusemba.jethub.database.RepoDb
-import com.takusemba.jethub.model.Repository
+import com.takusemba.jethub.model.Repo
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -15,19 +15,19 @@ class RepoRepository @Inject constructor(
   private val repoApi: RepoApi
 ) {
 
-  suspend fun getRepo(owner: String, repo: String): Repository {
+  suspend fun getRepo(owner: String, repo: String): Repo {
     return repoApi.getRepo(owner, repo)
   }
 
-  suspend fun pin(repository: Repository) {
-    repoDb.insert(repository)
+  suspend fun pin(repo: Repo) {
+    repoDb.insert(repo)
   }
 
-  suspend fun unpin(repository: Repository) {
-    repoDb.delete(repository)
+  suspend fun unpin(repo: Repo) {
+    repoDb.delete(repo)
   }
 
-  suspend fun findAllPins(): List<Repository> {
+  suspend fun findAllPins(): List<Repo> {
     return repoDb.getAll()
   }
 }

@@ -8,7 +8,7 @@ import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.base.ErrorHandler
 import com.takusemba.jethub.base.model.ColoredLanguage
-import com.takusemba.jethub.model.Repository
+import com.takusemba.jethub.model.Repo
 import com.takusemba.jethub.repository.SearchRepository
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -23,16 +23,16 @@ class FeedViewModel @ViewModelInject constructor(
   private val errorHandler: ErrorHandler
 ) : ViewModel() {
 
-  private val mutableHotReposMap = MutableLiveData<Map<String, List<Repository>>>()
+  private val mutableHotReposMap = MutableLiveData<Map<String, List<Repo>>>()
 
-  fun hotRepos(language: String): LiveData<List<Repository>> {
+  fun hotRepos(language: String): LiveData<List<Repo>> {
     return mutableHotReposMap.map { map -> map[language] ?: emptyList() }
   }
 
   init {
     viewModelScope.launch {
       runCatching {
-        mutableMapOf<String, List<Repository>>().also { map ->
+        mutableMapOf<String, List<Repo>>().also { map ->
           // https://medium.com/@elizarov/structured-concurrency-722d765aa952
           coroutineScope {
             ColoredLanguage.POPULAR_LANGUAGES.map { language ->

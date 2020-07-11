@@ -1,7 +1,7 @@
 package com.takusemba.jethub.api
 
 import com.takusemba.jethub.model.Owner
-import com.takusemba.jethub.model.Repository
+import com.takusemba.jethub.model.Repo
 import java.time.LocalDateTime
 
 /**
@@ -10,9 +10,9 @@ import java.time.LocalDateTime
 interface SearchApi {
 
   /**
-   * get hot list of [Repository] from [language] created after [from].
+   * get hot list of [Repo] from [language] created after [from].
    */
-  suspend fun getHotRepos(language: String, from: LocalDateTime): List<Repository>
+  suspend fun getHotRepos(language: String, from: LocalDateTime): List<Repo>
 
   /**
    * get hot list of [Owner] from [language] created after [from].
@@ -20,9 +20,9 @@ interface SearchApi {
   suspend fun getHotOwners(language: String, from: LocalDateTime): List<Owner>
 
   /**
-   * search [Repository] from query.
+   * search [Repo] from query.
    */
-  suspend fun searchRepos(query: String): List<Repository>
+  suspend fun searchRepos(query: String): List<Repo>
 
   /**
    * search [Owner] from query.

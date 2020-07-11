@@ -3,7 +3,7 @@ package com.takusemba.jethub.api
 import com.takusemba.jethub.api.response.DeveloperResponse
 import com.takusemba.jethub.api.response.RepositoryResponse
 import com.takusemba.jethub.model.Developer
-import com.takusemba.jethub.model.Repository
+import com.takusemba.jethub.model.Repo
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
@@ -32,7 +32,7 @@ class DeveloperApiClient(retrofit: Retrofit) : DeveloperApi {
     }
   }
 
-  override suspend fun getRepos(owner: String): List<Repository> {
+  override suspend fun getRepos(owner: String): List<Repo> {
     return withContext(IO) {
       service.getRepos(owner).map { response -> response.toModel() }
     }

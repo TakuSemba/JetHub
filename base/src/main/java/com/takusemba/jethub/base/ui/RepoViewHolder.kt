@@ -9,7 +9,7 @@ import com.takusemba.jethub.base.databinding.ItemRepoBinding
 import com.takusemba.jethub.base.model.ColoredLanguage
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.UserViewModel
-import com.takusemba.jethub.model.Repository
+import com.takusemba.jethub.model.Repo
 
 class RepoViewHolder(
   private val binding: ItemRepoBinding,
@@ -17,34 +17,34 @@ class RepoViewHolder(
   private val navigationViewModel: NavigationViewModel
 ) : RecyclerView.ViewHolder(binding.root) {
 
-  fun bind(repository: Repository) {
-    binding.developerIcon.load(repository.owner.avatarUrl)
-    binding.developerName.text = repository.owner.login
-    binding.title.text = repository.name
-    binding.description.text = repository.description
-    binding.description.visibility = if (repository.description.isBlank()) {
+  fun bind(repo: Repo) {
+    binding.developerIcon.load(repo.owner.avatarUrl)
+    binding.developerName.text = repo.owner.login
+    binding.title.text = repo.name
+    binding.description.text = repo.description
+    binding.description.visibility = if (repo.description.isBlank()) {
       View.GONE
     } else {
       View.VISIBLE
     }
-    val language = ColoredLanguage.of(repository.language)
+    val language = ColoredLanguage.of(repo.language)
     binding.languageName.text = language.title
     binding.languageIcon.setImageResource(language.icon)
-    binding.starCount.text = repository.starsCount.toString()
+    binding.starCount.text = repo.starsCount.toString()
 
     binding.root.setOnClickListener {
-      navigationViewModel.openRepo(repository.owner.login, repository.name)
+      navigationViewModel.openRepo(repo.owner.login, repo.name)
     }
 
     binding.root.setOnLongClickListener { v ->
-      if (userViewModel.isPinned(repository)) {
-        userViewModel.unpin(repository)
+      if (userViewModel.isPinned(repo)) {
+        userViewModel.unpin(repo)
         Toast.makeText(
           v.context,
           R.string.unpinned_repository, Toast.LENGTH_SHORT
         ).show()
       } else {
-        userViewModel.pin(repository)
+        userViewModel.pin(repo)
         Toast.makeText(
           v.context,
           R.string.pinned_repository, Toast.LENGTH_SHORT

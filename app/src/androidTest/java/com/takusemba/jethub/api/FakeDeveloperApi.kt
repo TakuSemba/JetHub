@@ -1,7 +1,7 @@
 package com.takusemba.jethub.api
 
 import com.takusemba.jethub.model.Developer
-import com.takusemba.jethub.model.Repository
+import com.takusemba.jethub.model.Repo
 
 class FakeDeveloperApi : DeveloperApi {
 
@@ -9,7 +9,7 @@ class FakeDeveloperApi : DeveloperApi {
     return Developer.createDeveloper()
   }
 
-  override suspend fun getRepos(owner: String): List<Repository> {
+  override suspend fun getRepos(owner: String): List<Repo> {
     return emptyList()
   }
 }

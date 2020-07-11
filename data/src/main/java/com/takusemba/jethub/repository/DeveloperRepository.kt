@@ -2,7 +2,7 @@ package com.takusemba.jethub.repository
 
 import com.takusemba.jethub.api.DeveloperApi
 import com.takusemba.jethub.model.Developer
-import com.takusemba.jethub.model.Repository
+import com.takusemba.jethub.model.Repo
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -18,7 +18,7 @@ class DeveloperRepository @Inject constructor(
     return developerApi.getDeveloper(name)
   }
 
-  suspend fun getDeveloperRepos(owner: String): List<Repository> {
+  suspend fun getDeveloperRepos(owner: String): List<Repo> {
     return developerApi.getRepos(owner)
   }
 }

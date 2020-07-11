@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.takusemba.jethub.database.LocalDateTimeConverter
 import com.takusemba.jethub.database.entity.OwnerEntity.Companion.createOwnerEntity
-import com.takusemba.jethub.model.Repository
+import com.takusemba.jethub.model.Repo
 import org.jetbrains.annotations.TestOnly
 import java.time.LocalDateTime
 
@@ -25,7 +25,7 @@ class RepositoryEntity(
   val language: String
 ) {
 
-  fun toModel() = Repository(
+  fun toModel() = Repo(
     id = id,
     owner = owner.toModel(),
     name = name,
@@ -40,18 +40,18 @@ class RepositoryEntity(
 
   companion object {
 
-    fun fromModel(repository: Repository): RepositoryEntity {
+    fun fromModel(repo: Repo): RepositoryEntity {
       return RepositoryEntity(
-        id = repository.id,
-        owner = OwnerEntity.fromModel(repository.owner),
-        name = repository.name,
-        description = repository.description,
-        createdAt = repository.createdAt,
-        updatedAt = repository.updatedAt,
-        starsCount = repository.starsCount,
-        watchersCount = repository.watchersCount,
-        forksCount = repository.forksCount,
-        language = repository.language
+        id = repo.id,
+        owner = OwnerEntity.fromModel(repo.owner),
+        name = repo.name,
+        description = repo.description,
+        createdAt = repo.createdAt,
+        updatedAt = repo.updatedAt,
+        starsCount = repo.starsCount,
+        watchersCount = repo.watchersCount,
+        forksCount = repo.forksCount,
+        language = repo.language
       )
     }
 
