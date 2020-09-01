@@ -63,5 +63,5 @@ dependencies {
   implementation deps.composeLivedata
 
   // TODO if this works, move this into constants.gradle
-  implementation "dev.chrisbanes.accompanist:accompanist-coil:0.1.6"
+  implementation "dev.chrisbanes.accompanist:accompanist-coil:0.2.0"
 }
