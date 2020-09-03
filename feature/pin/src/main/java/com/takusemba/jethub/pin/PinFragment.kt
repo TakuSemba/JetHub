@@ -39,10 +39,12 @@ class PinFragment : Fragment(R.layout.fragment_pin) {
     dividerItemDecoration.setDrawable(
       requireNotNull(requireContext().getDrawable(R.drawable.shape_divider))
     )
-    binding.recyclerView.addItemDecoration(dividerItemDecoration)
-    binding.recyclerView.setRecycledViewPool(recycledViewPool)
-    binding.recyclerView.layoutManager = linearLayoutManager
-    binding.recyclerView.adapter = pinAdapter
+    with(binding.recyclerView) {
+      addItemDecoration(dividerItemDecoration)
+      setRecycledViewPool(recycledViewPool)
+      layoutManager = linearLayoutManager
+      adapter = pinAdapter
+    }
 
     userViewModel.pinedRepositories.observe(viewLifecycleOwner) { repositories ->
       binding.emptyLayout.visibility = if (repositories.isEmpty()) View.VISIBLE else View.GONE

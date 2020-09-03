@@ -47,10 +47,12 @@ class FeedChannelFragment : Fragment(R.layout.fragment_feed_channel) {
     dividerItemDecoration.setDrawable(
       requireNotNull(requireContext().getDrawable(R.drawable.shape_divider))
     )
-    binding.recyclerView.addItemDecoration(dividerItemDecoration)
-    binding.recyclerView.setRecycledViewPool(recycledViewPool)
-    binding.recyclerView.layoutManager = linearLayoutManager
-    binding.recyclerView.adapter = feedChannelAdapter
+    with(binding.recyclerView) {
+      addItemDecoration(dividerItemDecoration)
+      setRecycledViewPool(recycledViewPool)
+      layoutManager = linearLayoutManager
+      adapter = feedChannelAdapter
+    }
 
     binding.progress.show()
     feedViewModel.hotRepos(language).observe(viewLifecycleOwner) {
