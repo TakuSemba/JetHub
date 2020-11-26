@@ -15,4 +15,4 @@ jobs:
 
     # Runs unit tests with gradle
     - name: Runs Unit Tests
-      run: ./gradlew test
+      run: ./gradlew testDebug
