@@ -18,9 +18,9 @@ project.ext {
       lifecycle: "2.2.0",
       navigation: "2.3.1",
       room: "2.2.5",
-      dagger: "2.28",
-      daggerHilt: "2.28-alpha",
-      androidHilt: "1.0.0-SNAPSHOT",
+      dagger: "2.30.1",
+      daggerHilt: "2.30.1-alpha",
+      androidHilt: "1.0.0-alpha02",
       retrofit: "2.9.0",
       okhttp: "4.9.0",
 

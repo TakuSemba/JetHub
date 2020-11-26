@@ -4,10 +4,10 @@ import com.takusemba.jethub.base.ErrorHandler
 import com.takusemba.jethub.repository.RepoRepository
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 
 @EntryPoint
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 interface RepoModuleDependencies {
 
   fun provideRepoRepository(): RepoRepository

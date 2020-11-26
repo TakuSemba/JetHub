@@ -8,7 +8,7 @@ import com.takusemba.jethub.database.RepoDbClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 /**
@@ -16,7 +16,7 @@ import javax.inject.Singleton
  * Define all the database-related classes that need to be provided in the scope of Application.
  */
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 class DatabaseModule {
 
   @Provides

@@ -13,7 +13,7 @@ import javax.inject.Singleton
  * Database Module for debugging.
  */
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 class AdditionalNetworkModule {
 
   @Provides

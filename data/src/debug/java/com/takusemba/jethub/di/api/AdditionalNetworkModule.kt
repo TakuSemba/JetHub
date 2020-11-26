@@ -4,7 +4,7 @@ import com.takusemba.jethub.api.ApiTokenInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
@@ -14,7 +14,7 @@ import javax.inject.Singleton
  * Database Module for debugging.
  */
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 class AdditionalNetworkModule {
 
   @Provides
