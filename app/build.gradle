@@ -6,6 +6,7 @@ apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'com.github.konifar.gradle.unused-resources-remover'
 apply from: '../depgraph.gradle'
 apply from: '../deps_shared.gradle'
+apply from: '../deps_compose.gradle'
 apply from: '../deps_test.gradle'
 apply from: '../deps_android_test.gradle'
 apply from: '../ktlint.gradle'
@@ -52,16 +53,4 @@ dependencies {
   implementation(project(':feature:feed'))
   implementation(project(':feature:search'))
   implementation(project(':feature:pin'))
-
-  // compose
-  implementation deps.composeCore
-  implementation deps.composeLayout
-  implementation deps.composeMaterial
-  implementation deps.composeFoundation
-  implementation deps.composeAnimation
-  implementation deps.composeTooling
-  implementation deps.composeLivedata
-
-  // TODO if this works, move this into constants.gradle
-  implementation "dev.chrisbanes.accompanist:accompanist-coil:0.1.9"
 }

@@ -1,0 +1,14 @@
+dependencies {
+
+  // compose
+  implementation deps.composeCore
+  implementation deps.composeLayout
+  implementation deps.composeMaterial
+  implementation deps.composeFoundation
+  implementation deps.composeAnimation
+  implementation deps.composeTooling
+  implementation deps.composeLivedata
+
+  // TODO if this works, move this into constants.gradle
+  implementation "dev.chrisbanes.accompanist:accompanist-coil:0.1.9"
+}
