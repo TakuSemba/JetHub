@@ -4,7 +4,6 @@ import com.google.common.truth.Truth.assertThat
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonConfiguration
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -25,12 +24,10 @@ class DeveloperApiClientTest {
 
   @Before
   fun setUp() {
-    val converterFactory = Json(
-      JsonConfiguration.Stable.copy(
-        isLenient = true,
-        ignoreUnknownKeys = true
-      )
-    ).asConverterFactory("application/json".toMediaType())
+    val converterFactory = Json {
+      isLenient = true
+      ignoreUnknownKeys = true
+    }.asConverterFactory("application/json".toMediaType())
     val retrofit = Retrofit.Builder()
       .baseUrl(mockWebServer.url("/").toString())
       .addConverterFactory(converterFactory)
