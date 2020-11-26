@@ -3,7 +3,7 @@ package com.takusemba.jethub.base.ui
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import coil.api.load
+import coil.load
 import com.takusemba.jethub.base.R
 import com.takusemba.jethub.base.databinding.ItemRepoBinding
 import com.takusemba.jethub.base.model.ColoredLanguage

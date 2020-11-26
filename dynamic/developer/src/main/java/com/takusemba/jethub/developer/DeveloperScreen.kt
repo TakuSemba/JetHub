@@ -1,22 +1,22 @@
 package com.takusemba.jethub.developer
 
-import androidx.compose.Composable
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Icon
-import androidx.ui.foundation.Text
-import androidx.ui.foundation.VerticalScroller
-import androidx.ui.layout.Column
-import androidx.ui.layout.Row
-import androidx.ui.layout.padding
-import androidx.ui.layout.preferredSize
-import androidx.ui.livedata.observeAsState
-import androidx.ui.material.IconButton
-import androidx.ui.material.MaterialTheme
-import androidx.ui.material.Scaffold
-import androidx.ui.material.TopAppBar
-import androidx.ui.res.vectorResource
-import androidx.ui.text.style.TextAlign
-import androidx.ui.unit.dp
+import androidx.compose.foundation.Icon
+import androidx.compose.foundation.ScrollableColumn
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.preferredSize
+import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.model.Developer
 import dev.chrisbanes.accompanist.coil.CoilImage
@@ -30,7 +30,7 @@ fun DeveloperScreen(
   Scaffold(
     topBar = { DeveloperTopBar(navigationViewModel) },
     bodyContent = { innerPadding ->
-      VerticalScroller(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
+      ScrollableColumn(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
         Header(developer.value)
         Body()
       }

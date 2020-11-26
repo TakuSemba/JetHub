@@ -1,6 +1,6 @@
 package com.takusemba.jethub.compose
 
-import androidx.ui.material.Typography
+import androidx.compose.material.Typography
 
 // FIXME seems like only bundled fonts work
 // private val AppFontFamily = fontFamily(

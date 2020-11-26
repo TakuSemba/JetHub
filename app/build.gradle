@@ -39,7 +39,7 @@ android {
     compose true
   }
   composeOptions {
-    kotlinCompilerVersion "1.3.70-dev-withExperimentalGoogleExtensions-20200424"
+    kotlinCompilerVersion versions.kotlin
     kotlinCompilerExtensionVersion versions.compose
   }
   dynamicFeatures = [':dynamic:repo', ':dynamic:developer']
@@ -63,5 +63,5 @@ dependencies {
   implementation deps.composeLivedata
 
   // TODO if this works, move this into constants.gradle
-  implementation "dev.chrisbanes.accompanist:accompanist-coil:0.1.6"
+  implementation "dev.chrisbanes.accompanist:accompanist-coil:0.1.9"
 }

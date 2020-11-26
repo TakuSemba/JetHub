@@ -12,7 +12,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonConfiguration
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Converter
@@ -26,12 +25,10 @@ class NetworkModule {
   @Singleton
   @Provides
   fun provideConverterFactory(): Converter.Factory {
-    return Json(
-      JsonConfiguration.Stable.copy(
-        isLenient = true,
-        ignoreUnknownKeys = true
-      )
-    ).asConverterFactory("application/json".toMediaType())
+    return Json {
+      isLenient = true
+      ignoreUnknownKeys = true
+    }.asConverterFactory("application/json".toMediaType())
   }
 
   @Singleton

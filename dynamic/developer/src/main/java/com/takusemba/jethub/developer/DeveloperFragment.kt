@@ -3,11 +3,11 @@ package com.takusemba.jethub.developer
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.Recomposer
+import androidx.compose.runtime.Recomposer
+import androidx.compose.ui.platform.setContent
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.ui.core.setContent
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.compose.JethubTheme
