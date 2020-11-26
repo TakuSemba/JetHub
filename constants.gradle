@@ -11,7 +11,7 @@ project.ext {
 
   versions = [
       // library
-      buildGradle: "4.0.0",
+      buildGradle: "4.1.1",
       kotlin: "1.3.72",
       coroutine: "1.3.7",
       compose: "0.1.0-dev14",
@@ -38,7 +38,7 @@ project.ext {
       pluginResourceRemover: "gradle.plugin.com.github.konifar.gradle:plugin:0.3.3",
 
       // desugar
-      desugar: "com.android.tools:desugar_jdk_libs:1.0.5",
+      desugar: "com.android.tools:desugar_jdk_libs:1.1.1",
 
       // kotlin
       kotlin: "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
