@@ -16,16 +16,13 @@ project.ext {
       coroutine: "1.4.2",
       compose: "0.1.0-dev17",
       lifecycle: "2.2.0",
-      navigation: "2.3.1",
-      room: "2.2.5",
+      navigation: "2.3.3",
+      room: "2.2.6",
       dagger: "2.30.1",
       daggerHilt: "2.30.1-alpha",
       androidHilt: "1.0.0-alpha02",
       retrofit: "2.9.0",
       okhttp: "4.9.0",
-
-      // library (test)
-      junit: "4.13",
   ]
 
   deps = [
@@ -93,7 +90,7 @@ project.ext {
       // network
       retrofit: "com.squareup.retrofit2:retrofit:${versions.retrofit}",
       retrofitConverter: "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0",
-      serializationJson: "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1",
+      serializationJson: "org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0",
       okhttp: "com.squareup.okhttp3:okhttp:${versions.okhttp}",
       loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}",
       mockWebServer: "com.squareup.okhttp3:mockwebserver:${versions.okhttp}",
@@ -107,9 +104,9 @@ project.ext {
       coil: "io.coil-kt:coil:1.1.0",
 
       // test
-      junit: "junit:junit:${versions.junit}",
-      mockk: "io.mockk:mockk:1.9.3",
-      truth: "com.google.truth:truth:1.1",
+      junit: "junit:junit:4.13.2",
+      mockk: "io.mockk:mockk:1.10.6",
+      truth: "com.google.truth:truth:1.1.2",
       archCore: "androidx.arch.core:core-testing:2.1.0",
 
       // android test
@@ -120,6 +117,6 @@ project.ext {
       banchmark: "androidx.benchmark:benchmark-junit4:1.0.0",
 
       // lint
-      ktlint: "com.pinterest:ktlint:0.39.0",
+      ktlint: "com.pinterest:ktlint:0.40.0",
   ]
 }
