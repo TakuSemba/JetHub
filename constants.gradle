@@ -4,16 +4,16 @@ project.ext {
       versionName: "1.0.0",
       versionCode: 1,
       packageName: "com.takusemba.jethub",
-      compileSdkVersion: 29,
-      targetSdkVersion: 29,
+      compileSdkVersion: 30,
+      targetSdkVersion: 30,
       minSdkVersion: 21,
   ]
 
   versions = [
       // library
-      buildGradle: "4.1.1",
-      kotlin: "1.4.0",
-      coroutine: "1.4.1",
+      buildGradle: "4.1.2",
+      kotlin: "1.4.31",
+      coroutine: "1.4.2",
       compose: "0.1.0-dev17",
       lifecycle: "2.2.0",
       navigation: "2.3.1",
