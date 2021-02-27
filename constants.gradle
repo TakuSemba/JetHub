@@ -90,7 +90,7 @@ project.ext {
       // network
       retrofit: "com.squareup.retrofit2:retrofit:${versions.retrofit}",
       retrofitConverter: "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0",
-      serializationJson: "org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0",
+      serializationJson: "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1",
       okhttp: "com.squareup.okhttp3:okhttp:${versions.okhttp}",
       loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}",
       mockWebServer: "com.squareup.okhttp3:mockwebserver:${versions.okhttp}",
