@@ -2,6 +2,7 @@ package com.takusemba.jethub.feed
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -45,7 +46,7 @@ class FeedChannelFragment : Fragment(R.layout.fragment_feed_channel) {
     val feedChannelAdapter = FeedChannelAdapter(userViewModel, navigationViewModel)
     val dividerItemDecoration = DividerItemDecoration(context, linearLayoutManager.orientation)
     dividerItemDecoration.setDrawable(
-      requireNotNull(requireContext().getDrawable(R.drawable.shape_divider))
+      requireNotNull(ContextCompat.getDrawable(requireContext(), R.drawable.shape_divider))
     )
     binding.recyclerView.addItemDecoration(dividerItemDecoration)
     binding.recyclerView.setRecycledViewPool(recycledViewPool)
@@ -53,11 +54,11 @@ class FeedChannelFragment : Fragment(R.layout.fragment_feed_channel) {
     binding.recyclerView.adapter = feedChannelAdapter
 
     binding.progress.show()
-    feedViewModel.hotRepos(language).observe(viewLifecycleOwner) {
+    feedViewModel.hotRepos(language).observe(owner = viewLifecycleOwner) {
       binding.progress.hide()
     }
 
-    feedViewModel.hotRepos(language).observe(viewLifecycleOwner) { repositories ->
+    feedViewModel.hotRepos(language).observe(owner= viewLifecycleOwner) { repositories ->
       feedChannelAdapter.submitList(repositories)
     }
   }

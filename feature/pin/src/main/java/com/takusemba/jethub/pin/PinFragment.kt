@@ -44,7 +44,7 @@ class PinFragment : Fragment(R.layout.fragment_pin) {
     binding.recyclerView.layoutManager = linearLayoutManager
     binding.recyclerView.adapter = pinAdapter
 
-    userViewModel.pinedRepositories.observe(viewLifecycleOwner) { repositories ->
+    userViewModel.pinedRepositories.observe(owner = viewLifecycleOwner) { repositories ->
       binding.emptyLayout.visibility = if (repositories.isEmpty()) View.VISIBLE else View.GONE
     }
 
@@ -52,7 +52,7 @@ class PinFragment : Fragment(R.layout.fragment_pin) {
       systemViewModel.setNightMode(!systemViewModel.isNightMode())
     }
 
-    userViewModel.pinedRepositories.observe(viewLifecycleOwner) { repositories ->
+    userViewModel.pinedRepositories.observe(owner = viewLifecycleOwner) { repositories ->
       pinAdapter.submitList(repositories)
     }
   }

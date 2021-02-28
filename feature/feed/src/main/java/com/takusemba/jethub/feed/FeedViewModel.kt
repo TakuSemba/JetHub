@@ -1,6 +1,5 @@
 package com.takusemba.jethub.feed
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,6 +9,7 @@ import com.takusemba.jethub.base.ErrorHandler
 import com.takusemba.jethub.base.model.ColoredLanguage
 import com.takusemba.jethub.model.Repo
 import com.takusemba.jethub.repository.SearchRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
@@ -18,7 +18,8 @@ import kotlinx.coroutines.launch
 /**
  * [ViewModel] to store and manage Feed data.
  */
-class FeedViewModel @ViewModelInject constructor(
+@HiltViewModel
+class FeedViewModel constructor(
   private val searchRepository: SearchRepository,
   private val errorHandler: ErrorHandler
 ) : ViewModel() {

@@ -1,6 +1,5 @@
 package com.takusemba.jethub.base.viewmodel
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,13 +7,15 @@ import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.base.ErrorHandler
 import com.takusemba.jethub.model.Repo
 import com.takusemba.jethub.repository.RepoRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 
 /**
  * [ViewModel] to store and manage user-related data.
  * This should be Activity-Scope, because the data is used across screens.
  */
-class UserViewModel @ViewModelInject constructor(
+@HiltViewModel
+class UserViewModel constructor(
   private val repoRepository: RepoRepository,
   private val errorHandler: ErrorHandler
 ) : ViewModel() {

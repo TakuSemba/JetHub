@@ -1,6 +1,5 @@
 package com.takusemba.jethub.search
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.base.ErrorHandler
 import com.takusemba.jethub.model.Repo
 import com.takusemba.jethub.repository.SearchRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -16,7 +16,8 @@ import kotlinx.coroutines.launch
 /**
  * [ViewModel] to store and manage searched repos data.
  */
-class SearchViewModel @ViewModelInject constructor(
+@HiltViewModel
+class SearchViewModel constructor(
   private val searchRepository: SearchRepository,
   private val errorHandler: ErrorHandler
 ) : ViewModel() {

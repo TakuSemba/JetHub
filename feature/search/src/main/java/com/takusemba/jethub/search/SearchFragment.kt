@@ -76,18 +76,18 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     // show progress only while the first fetch.
     binding.progress.show()
-    searchViewModel.searchedRepos.observe(viewLifecycleOwner) {
+    searchViewModel.searchedRepos.observe(owner = viewLifecycleOwner) {
       binding.progress.hide()
     }
 
-    searchViewModel.searchedRepos.observe(viewLifecycleOwner) { repositories ->
+    searchViewModel.searchedRepos.observe(owner = viewLifecycleOwner) { repositories ->
       binding.emptyLayout.visibility = if (repositories.isEmpty()) View.VISIBLE else View.GONE
       val inputWord = binding.searchViewInput.text.toString()
       val description = getString(R.string.empty_search_repositories_description, inputWord)
       binding.emptyDescription.text = description
     }
 
-    searchViewModel.searchedRepos.observe(viewLifecycleOwner) { repositories ->
+    searchViewModel.searchedRepos.observe(owner = viewLifecycleOwner) { repositories ->
       searchAdapter.submitList(repositories)
     }
   }

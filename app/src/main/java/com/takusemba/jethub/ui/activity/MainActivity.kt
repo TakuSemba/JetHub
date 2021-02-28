@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-    systemViewModel.isNightMode.observe(this) { isNightMode ->
+    systemViewModel.isNightMode.observe(owner = this) { isNightMode ->
       val nightModeSetting = if (isNightMode) {
         AppCompatDelegate.MODE_NIGHT_YES
       } else {

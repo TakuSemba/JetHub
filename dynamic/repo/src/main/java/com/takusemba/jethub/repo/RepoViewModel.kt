@@ -1,6 +1,5 @@
 package com.takusemba.jethub.repo
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,9 +7,11 @@ import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.base.ErrorHandler
 import com.takusemba.jethub.model.Repo
 import com.takusemba.jethub.repository.RepoRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 
-class RepoViewModel @ViewModelInject constructor(
+@HiltViewModel
+class RepoViewModel constructor(
   private val owner: String,
   private val repo: String,
   private val repoRepository: RepoRepository,

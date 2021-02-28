@@ -1,6 +1,5 @@
 package com.takusemba.jethub.developer
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,9 +7,11 @@ import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.base.ErrorHandler
 import com.takusemba.jethub.model.Developer
 import com.takusemba.jethub.repository.DeveloperRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 
-class DeveloperViewModel @ViewModelInject constructor(
+@HiltViewModel
+class DeveloperViewModel constructor(
   private val name: String,
   private val developerRepository: DeveloperRepository,
   private val errorHandler: ErrorHandler

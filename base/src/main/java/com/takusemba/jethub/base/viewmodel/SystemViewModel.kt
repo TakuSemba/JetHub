@@ -1,11 +1,12 @@
 package com.takusemba.jethub.base.viewmodel
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 
-class SystemViewModel @ViewModelInject constructor() : ViewModel() {
+@HiltViewModel
+class SystemViewModel : ViewModel() {
 
   private val mutableIsNightMode: MutableLiveData<Boolean> = MutableLiveData(false)
   val isNightMode: LiveData<Boolean> get() = mutableIsNightMode
