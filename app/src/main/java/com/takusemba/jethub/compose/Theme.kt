@@ -21,7 +21,7 @@ private val DarkThemeColors = darkColors(
 @Composable
 fun JethubTheme(
   darkTheme: Boolean = isSystemInDarkTheme(),
-  content: @Composable() () -> Unit
+  content: @Composable () -> Unit
 ) {
   MaterialTheme(
     colors = if (darkTheme) DarkThemeColors else LightThemeColors,

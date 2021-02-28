@@ -11,10 +11,10 @@ project.ext {
 
   versions = [
       // library
-      buildGradle: "4.1.2",
-      kotlin: "1.4.0",
+      buildGradle: "7.0.0-alpha08",
+      kotlin: "1.4.30",
       coroutine: "1.4.2",
-      compose: "0.1.0-dev17",
+      compose: "1.0.0-beta01",
       lifecycle: "2.2.0",
       navigation: "2.3.3",
       room: "2.2.6",
@@ -55,12 +55,11 @@ project.ext {
       fragmentKtx: "androidx.fragment:fragment-ktx:1.3.0-alpha06",
 
       // compose
-      composeCore: "androidx.compose.ui:ui:${versions.compose}",
-      composeLayout: "androidx.compose.foundation:foundation-layout:${versions.compose}",
+      composeUi: "androidx.compose.ui:ui:${versions.compose}",
+      composeCompiler: "androidx.compose.compiler:compiler:${versions.compose}",
       composeMaterial: "androidx.compose.material:material:${versions.compose}",
       composeFoundation: "androidx.compose.foundation:foundation:${versions.compose}",
       composeAnimation: "androidx.compose.animation:animation:${versions.compose}",
-      composeTooling: "androidx.ui:ui-tooling:${versions.compose}",
       composeLivedata: "androidx.compose.runtime:runtime-livedata:${versions.compose}",
 
       // navigation

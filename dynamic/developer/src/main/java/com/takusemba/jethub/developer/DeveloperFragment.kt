@@ -2,9 +2,7 @@ package com.takusemba.jethub.developer
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
-import androidx.compose.runtime.Recomposer
-import androidx.compose.ui.platform.setContent
+import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -41,7 +39,7 @@ class DeveloperFragment : Fragment(R.layout.fragment_developer) {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    (view as ViewGroup).setContent(Recomposer.current()) {
+    view.findViewById<ComposeView>(R.id.compose_view).setContent {
       JethubTheme(systemViewModel.isNightMode()) {
         DeveloperScreen(developerViewModel, navigationViewModel)
       }

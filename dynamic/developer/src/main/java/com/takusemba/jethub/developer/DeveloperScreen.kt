@@ -1,20 +1,20 @@
 package com.takusemba.jethub.developer
 
-import androidx.compose.foundation.Icon
-import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredSize
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
@@ -29,10 +29,12 @@ fun DeveloperScreen(
   val developer = developerViewModel.developer.observeAsState(Developer.EMPTY)
   Scaffold(
     topBar = { DeveloperTopBar(navigationViewModel) },
-    bodyContent = { innerPadding ->
-      ScrollableColumn(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
-        Header(developer.value)
-        Body()
+    content = {
+      LazyColumn(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
+        item {
+          Header(developer.value)
+          Body()
+        }
       }
     }
   )
@@ -44,7 +46,7 @@ fun DeveloperTopBar(navigationViewModel: NavigationViewModel) {
     title = {},
     navigationIcon = {
       IconButton(onClick = { navigationViewModel.popBackStack() }) {
-        Icon(vectorResource(R.drawable.ic_back))
+        Icon(painterResource(R.drawable.ic_back), "back")
       }
     },
     backgroundColor = MaterialTheme.colors.surface
@@ -58,7 +60,8 @@ fun Header(developer: Developer) {
       if (developer.avatarUrl.isNotEmpty()) {
         CoilImage(
           data = developer.avatarUrl,
-          modifier = Modifier.preferredSize(64.dp)
+          modifier = Modifier.size(64.dp),
+          contentDescription = "avator"
         )
       }
       Column(modifier = Modifier.padding(start = 16.dp)) {

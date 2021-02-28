@@ -1,21 +1,21 @@
 package com.takusemba.jethub.repo
 
-import androidx.compose.foundation.Icon
-import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredSize
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Button
+import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
@@ -30,13 +30,15 @@ fun RepoScreen(
   val repo = repoViewModel.repository.observeAsState(Repo.EMPTY)
   Scaffold(
     topBar = { RepoTopBar(navigationViewModel) },
-    bodyContent = { innerPadding ->
-      ScrollableColumn(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
-        Header(repo.value)
-        Body(
-          repo = repo.value,
-          navigationViewModel = navigationViewModel
-        )
+    content = {
+      LazyColumn(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
+        item {
+          Header(repo.value)
+          Body(
+            repo = repo.value,
+            navigationViewModel = navigationViewModel
+          )
+        }
       }
     }
   )
@@ -48,7 +50,10 @@ fun RepoTopBar(navigationViewModel: NavigationViewModel) {
     title = {},
     navigationIcon = {
       IconButton(onClick = { navigationViewModel.popBackStack() }) {
-        Icon(vectorResource(R.drawable.ic_back))
+        Icon(
+          painter = painterResource(R.drawable.ic_back),
+          contentDescription = "back"
+        )
       }
     },
     backgroundColor = MaterialTheme.colors.surface
@@ -62,7 +67,8 @@ fun Header(repo: Repo) {
       if (repo.owner.avatarUrl.isNotEmpty()) {
         CoilImage(
           data = repo.owner.avatarUrl,
-          modifier = Modifier.preferredSize(16.dp)
+          modifier = Modifier.size(16.dp),
+          contentDescription = "avator"
         )
       }
       Text(
