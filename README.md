@@ -80,7 +80,7 @@ db.getData() // get data from DB
 
 ## :construction: Jetpack Compose (Under Development) :construction:
 
-[Jetpack Compose](https://developer.android.com/jetpack/compose) is used for the screens of `:repo`, `:developer` modules. Therefore, To build this project, you will need AndroidStudio 4.0 or above.
+[Jetpack Compose](https://developer.android.com/jetpack/compose) is used for the screens of `:repo`, `:developer` modules. Therefore, To build this project, you will need the latest canary version of Android Studio Preview.
 I'm currently migrating to Jetpack Compose and the design is in progress for now.
 
 ## Dark Theme
