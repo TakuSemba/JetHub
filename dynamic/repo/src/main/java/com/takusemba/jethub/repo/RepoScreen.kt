@@ -35,8 +35,7 @@ fun RepoScreen(
         item {
           Header(repo.value)
           Body(
-            repo = repo.value,
-            navigationViewModel = navigationViewModel
+            developerButtonClicked = { navigationViewModel.openDeveloper(repo.value.owner.login) }
           )
         }
       }
@@ -107,10 +106,7 @@ fun Header(repo: Repo) {
 }
 
 @Composable
-fun Body(
-  repo: Repo,
-  navigationViewModel: NavigationViewModel
-) {
+fun Body(developerButtonClicked: () -> Unit) {
   Column(modifier = Modifier.padding(top = 16.dp, bottom = 16.dp)) {
     Text(
       text = "show README.md here.",
@@ -119,7 +115,7 @@ fun Body(
       color = MaterialTheme.colors.onSurface
     )
     Button(
-      onClick = { navigationViewModel.openDeveloper(repo.owner.login) },
+      onClick = developerButtonClicked,
       modifier = Modifier.padding(top = 16.dp)
     ) {
       Text(

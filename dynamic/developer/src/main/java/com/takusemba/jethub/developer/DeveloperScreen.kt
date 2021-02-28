@@ -28,7 +28,7 @@ fun DeveloperScreen(
 ) {
   val developer = developerViewModel.developer.observeAsState(Developer.EMPTY)
   Scaffold(
-    topBar = { DeveloperTopBar(navigationViewModel) },
+    topBar = { DeveloperTopBar(navigationIconClicked = {navigationViewModel.popBackStack()}) },
     content = {
       LazyColumn(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
         item {
@@ -41,11 +41,11 @@ fun DeveloperScreen(
 }
 
 @Composable
-fun DeveloperTopBar(navigationViewModel: NavigationViewModel) {
+fun DeveloperTopBar(navigationIconClicked: () -> Unit) {
   TopAppBar(
     title = {},
     navigationIcon = {
-      IconButton(onClick = { navigationViewModel.popBackStack() }) {
+      IconButton(onClick = navigationIconClicked) {
         Icon(painterResource(R.drawable.ic_back), "back")
       }
     },
