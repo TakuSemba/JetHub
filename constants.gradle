@@ -32,7 +32,6 @@ project.ext {
       pluginSafeArgs: "androidx.navigation:navigation-safe-args-gradle-plugin:${versions.navigation}",
       pluginDaggerHilt: "com.google.dagger:hilt-android-gradle-plugin:${versions.daggerHilt}",
       pluginKotlinSerialization: "org.jetbrains.kotlin:kotlin-serialization:${versions.kotlin}",
-      pluginResourceRemover: "gradle.plugin.com.github.konifar.gradle:plugin:0.3.3",
 
       // desugar
       desugar: "com.android.tools:desugar_jdk_libs:1.1.1",

@@ -4,8 +4,7 @@ buildscript {
   apply from: "constants.gradle"
   repositories {
     google()
-    jcenter()
-    maven { url "https://plugins.gradle.org/m2/" }
+    mavenCentral()
   }
   dependencies {
     classpath deps.pluginBuildGradle
@@ -13,21 +12,12 @@ buildscript {
     classpath deps.pluginSafeArgs
     classpath deps.pluginDaggerHilt
     classpath deps.pluginKotlinSerialization
-    classpath deps.pluginResourceRemover
-
-    // NOTE: Do not place your application dependencies here; they belong
-    // in the individual module build.gradle files
   }
 }
 
 allprojects {
   repositories {
     google()
-    jcenter()
-    maven { url 'https://dl.bintray.com/lisawray/maven' }
-    maven {
-      // to use androidx.hilt
-      url "https://androidx.dev/snapshots/builds/6543454/artifacts/repository/"
-    }
+    mavenCentral()
   }
 }
