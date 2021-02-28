@@ -17,9 +17,13 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
+import com.takusemba.jethub.compose.JethubTheme
+import com.takusemba.jethub.database.dao.RepositoryDao_Impl
 import com.takusemba.jethub.model.Repo
+import com.takusemba.jethub.repository.RepoRepository
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
@@ -125,3 +129,12 @@ fun Body(developerButtonClicked: () -> Unit) {
     }
   }
 }
+
+@Preview
+@Composable
+fun PreviewRepoScreenBody(){
+  JethubTheme(darkTheme = false) {
+    Body{}
+  }
+}
+

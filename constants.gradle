@@ -56,6 +56,7 @@ project.ext {
 
       // compose
       composeUi: "androidx.compose.ui:ui:${versions.compose}",
+      composeUiTooling: "androidx.compose.ui:ui-tooling:${versions.compose}",
       composeCompiler: "androidx.compose.compiler:compiler:${versions.compose}",
       composeMaterial: "androidx.compose.material:material:${versions.compose}",
       composeFoundation: "androidx.compose.foundation:foundation:${versions.compose}",

@@ -2,6 +2,7 @@ dependencies {
 
   // compose
   implementation deps.composeUi
+  implementation deps.composeUiTooling
   implementation deps.composeCompiler
   implementation deps.composeMaterial
   implementation deps.composeFoundation

@@ -16,8 +16,10 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
+import com.takusemba.jethub.compose.JethubTheme
 import com.takusemba.jethub.model.Developer
 import dev.chrisbanes.accompanist.coil.CoilImage
 
@@ -142,5 +144,13 @@ fun Body() {
       style = MaterialTheme.typography.h5,
       color = MaterialTheme.colors.onSurface
     )
+  }
+}
+
+@Preview
+@Composable
+fun PreviewDeveloperScreenBody(){
+  JethubTheme(darkTheme = false) {
+    Body()
   }
 }
