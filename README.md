@@ -49,7 +49,7 @@ The details can be learned from [here](https://developer.android.com/guide/app-b
 
 <br/>
 
-<img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/architecture.png" align="right" width="380">
+<img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/architecture.png" align="right" width="360">
 
 ## Architecture
 
