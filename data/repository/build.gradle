@@ -3,9 +3,9 @@ apply plugin: 'kotlin-android'
 apply plugin: "kotlin-kapt"
 apply plugin: 'kotlinx-serialization'
 apply plugin: 'dagger.hilt.android.plugin'
-apply from: '../deps_shared.gradle'
-apply from: '../deps_test.gradle'
-apply from: '../ktlint.gradle'
+apply from: '../../deps_shared.gradle'
+apply from: '../../deps_test.gradle'
+apply from: '../../ktlint.gradle'
 
 android {
   compileSdkVersion configs.compileSdkVersion
@@ -15,17 +15,6 @@ android {
     versionCode configs.versionCode
     versionName configs.versionName
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-    Properties properties = new Properties()
-    def file = project.rootProject.file('local.properties')
-    def githubApiToken = ""
-    if (file.exists()) {
-      properties.load(file.newDataInputStream())
-    }
-    if (properties.hasProperty("github_api_token")) {
-      githubApiToken = properties.getProperty("github_api_token")
-    }
-    buildConfigField "String", "GITHUB_API_TOKEN", "\"" + githubApiToken + "\""
   }
   buildTypes {
     release {
@@ -47,17 +36,6 @@ dependencies {
 
   // module
   api(project(':model'))
-
-  // database
-  api(deps.roomRuntime)
-  kapt(deps.roomCompiler)
-  implementation(deps.roomKtx)
-
-  // network
-  api(deps.retrofit)
-  api(deps.retrofitConverter)
-  api(deps.serializationJson)
-  api(deps.okhttp)
-  debugImplementation(deps.loggingInterceptor)
-  testImplementation(deps.mockWebServer)
+  api(project(':data:api'))
+  api(project(':data:database'))
 }

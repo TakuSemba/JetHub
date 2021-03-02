@@ -1,10 +1,11 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: "kotlin-kapt"
+apply plugin: 'kotlinx-serialization'
 apply plugin: 'dagger.hilt.android.plugin'
-apply from: '../deps_shared.gradle'
-apply from: '../deps_test.gradle'
-apply from: '../ktlint.gradle'
+apply from: '../../deps_shared.gradle'
+apply from: '../../deps_test.gradle'
+apply from: '../../ktlint.gradle'
 
 android {
   compileSdkVersion configs.compileSdkVersion
@@ -14,6 +15,17 @@ android {
     versionCode configs.versionCode
     versionName configs.versionName
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    Properties properties = new Properties()
+    def file = project.rootProject.file('../local.properties')
+    def githubApiToken = ""
+    if (file.exists()) {
+      properties.load(file.newDataInputStream())
+    }
+    if (properties.hasProperty("github_api_token")) {
+      githubApiToken = properties.getProperty("github_api_token")
+    }
+    buildConfigField "String", "GITHUB_API_TOKEN", "\"" + githubApiToken + "\""
   }
   buildTypes {
     release {
@@ -29,38 +41,18 @@ android {
   kotlinOptions {
     jvmTarget = '1.8'
   }
-  buildFeatures {
-    viewBinding true
-  }
 }
 
 dependencies {
 
   // module
-  api(project(':data:repository'))
+  api(project(':model'))
 
-  // design/core
-  api(deps.appCompat)
-  api(deps.material)
-  api(deps.constraintLayout)
-  api(deps.coreKtx)
-  api(deps.activityKtx)
-  api(deps.fragmentKtx)
-
-  // lifecycle
-  api(deps.lifecycleRuntime)
-  api(deps.lifecycleExtensions)
-  kapt(deps.lifecycleCompiler)
-  api(deps.viewmodelKtx)
-  api(deps.livedataKtx)
-
-  // navigation
-  api(deps.navCommonKtx)
-  api(deps.navRuntimeKtx)
-  api(deps.navFragmentKtx)
-  api(deps.navUiKtx)
-  api(deps.navDfm)
-
-  // image
-  api(deps.coil)
+  // network
+  api(deps.retrofit)
+  api(deps.retrofitConverter)
+  api(deps.serializationJson)
+  api(deps.okhttp)
+  debugImplementation(deps.loggingInterceptor)
+  testImplementation(deps.mockWebServer)
 }
