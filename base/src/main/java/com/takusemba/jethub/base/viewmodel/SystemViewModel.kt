@@ -4,9 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 @HiltViewModel
-class SystemViewModel : ViewModel() {
+class SystemViewModel @Inject constructor() : ViewModel() {
 
   private val mutableIsNightMode: MutableLiveData<Boolean> = MutableLiveData(false)
   val isNightMode: LiveData<Boolean> get() = mutableIsNightMode

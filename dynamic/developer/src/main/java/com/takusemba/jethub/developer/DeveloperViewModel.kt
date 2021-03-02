@@ -9,9 +9,10 @@ import com.takusemba.jethub.model.Developer
 import com.takusemba.jethub.repository.DeveloperRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-class DeveloperViewModel constructor(
+class DeveloperViewModel @Inject constructor(
   private val name: String,
   private val developerRepository: DeveloperRepository,
   private val errorHandler: ErrorHandler

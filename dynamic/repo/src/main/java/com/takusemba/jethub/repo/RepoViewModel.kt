@@ -9,9 +9,10 @@ import com.takusemba.jethub.model.Repo
 import com.takusemba.jethub.repository.RepoRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-class RepoViewModel constructor(
+class RepoViewModel @Inject constructor(
   private val owner: String,
   private val repo: String,
   private val repoRepository: RepoRepository,

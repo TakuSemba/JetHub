@@ -9,13 +9,14 @@ import com.takusemba.jethub.model.Repo
 import com.takusemba.jethub.repository.RepoRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * [ViewModel] to store and manage user-related data.
  * This should be Activity-Scope, because the data is used across screens.
  */
 @HiltViewModel
-class UserViewModel constructor(
+class UserViewModel @Inject constructor(
   private val repoRepository: RepoRepository,
   private val errorHandler: ErrorHandler
 ) : ViewModel() {

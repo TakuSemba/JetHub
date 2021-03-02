@@ -14,12 +14,13 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * [ViewModel] to store and manage Feed data.
  */
 @HiltViewModel
-class FeedViewModel constructor(
+class FeedViewModel @Inject constructor(
   private val searchRepository: SearchRepository,
   private val errorHandler: ErrorHandler
 ) : ViewModel() {

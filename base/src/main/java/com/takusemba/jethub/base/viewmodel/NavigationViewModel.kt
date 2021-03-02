@@ -6,12 +6,13 @@ import androidx.lifecycle.ViewModel
 import com.takusemba.jethub.base.model.Direction
 import com.takusemba.jethub.base.model.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 /**
  * [ViewModel] to manage directions, because feature module can not reference to a direction.
  */
 @HiltViewModel
-class NavigationViewModel constructor() : ViewModel() {
+class NavigationViewModel @Inject constructor() : ViewModel() {
 
   private val mutableDirection: MutableLiveData<Event<Direction>> = MutableLiveData()
   val direction: LiveData<Event<Direction>> = mutableDirection

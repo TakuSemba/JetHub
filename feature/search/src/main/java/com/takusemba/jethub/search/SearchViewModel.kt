@@ -12,12 +12,13 @@ import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * [ViewModel] to store and manage searched repos data.
  */
 @HiltViewModel
-class SearchViewModel constructor(
+class SearchViewModel @Inject constructor(
   private val searchRepository: SearchRepository,
   private val errorHandler: ErrorHandler
 ) : ViewModel() {
