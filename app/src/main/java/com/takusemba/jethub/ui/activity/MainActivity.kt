@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.lifecycle.observe
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.takusemba.jethub.R
 import com.takusemba.jethub.base.model.Direction.Developer
@@ -16,6 +18,8 @@ import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.repo.RepoFragmentDirections
 import com.takusemba.jethub.ui.fragment.MainTabFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
@@ -26,13 +30,19 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-    systemViewModel.isNightMode.observe(owner = this) { isNightMode ->
-      val nightModeSetting = if (isNightMode) {
-        AppCompatDelegate.MODE_NIGHT_YES
-      } else {
-        AppCompatDelegate.MODE_NIGHT_NO
-      }
-      AppCompatDelegate.setDefaultNightMode(nightModeSetting)
+    lifecycleScope.launch {
+
+      systemViewModel.isNightMode
+        .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+        .collect { isNightMode ->
+          val nightModeSetting = if (isNightMode) {
+            AppCompatDelegate.MODE_NIGHT_YES
+          } else {
+            AppCompatDelegate.MODE_NIGHT_NO
+          }
+          AppCompatDelegate.setDefaultNightMode(nightModeSetting)
+        }
+
     }
 
     navigationViewModel.direction.observe(

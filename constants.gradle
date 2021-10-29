@@ -69,7 +69,7 @@ project.ext {
       navDfm: "androidx.navigation:navigation-dynamic-features-fragment:${versions.navigation}",
 
       // lifecycle
-      lifecycleRuntime: "androidx.lifecycle:lifecycle-runtime:${versions.lifecycle}",
+      lifecycleRuntime: "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}",
       lifecycleCompiler: "androidx.lifecycle:lifecycle-compiler:${versions.lifecycle}",
       viewmodelKtx: "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}",
       livedataKtx: "androidx.lifecycle:lifecycle-livedata-ktx:${versions.lifecycle}",
