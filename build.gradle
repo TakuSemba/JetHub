@@ -19,9 +19,5 @@ allprojects {
   repositories {
     google()
     mavenCentral()
-    maven {
-      // TODO https://github.com/Kotlin/kotlinx.collections.immutable/issues/96
-      url "https://kotlin.bintray.com/kotlinx"
-    }
   }
 }
