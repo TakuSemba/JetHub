@@ -7,7 +7,9 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.observe
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +17,9 @@ import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.feed.databinding.FragmentFeedChannelBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -54,12 +59,14 @@ class FeedChannelFragment : Fragment(R.layout.fragment_feed_channel) {
     binding.recyclerView.adapter = feedChannelAdapter
 
     binding.progress.show()
-    feedViewModel.hotRepos(language).observe(owner = viewLifecycleOwner) {
-      binding.progress.hide()
-    }
-
-    feedViewModel.hotRepos(language).observe(owner= viewLifecycleOwner) { repositories ->
-      feedChannelAdapter.submitList(repositories)
+    lifecycleScope.launch {
+      feedViewModel.hotReposMap
+        .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+        .map { map -> map[language] ?: emptyList() }
+        .collect { repositories ->
+          binding.progress.hide()
+          feedChannelAdapter.submitList(repositories)
+        }
     }
   }
 }

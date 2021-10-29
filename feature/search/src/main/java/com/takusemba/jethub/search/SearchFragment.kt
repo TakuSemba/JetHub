@@ -10,6 +10,9 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +22,8 @@ import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.search.databinding.FragmentSearchBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -76,19 +81,17 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     // show progress only while the first fetch.
     binding.progress.show()
-    searchViewModel.searchedRepos.observe(owner = viewLifecycleOwner) {
-      binding.progress.hide()
-    }
-
-    searchViewModel.searchedRepos.observe(owner = viewLifecycleOwner) { repositories ->
-      binding.emptyLayout.visibility = if (repositories.isEmpty()) View.VISIBLE else View.GONE
-      val inputWord = binding.searchViewInput.text.toString()
-      val description = getString(R.string.empty_search_repositories_description, inputWord)
-      binding.emptyDescription.text = description
-    }
-
-    searchViewModel.searchedRepos.observe(owner = viewLifecycleOwner) { repositories ->
-      searchAdapter.submitList(repositories)
+    lifecycleScope.launch {
+      searchViewModel.searchedRepos
+        .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+        .collect { repositories ->
+          binding.progress.hide()
+          binding.emptyLayout.visibility = if (repositories.isEmpty()) View.VISIBLE else View.GONE
+          val inputWord = binding.searchViewInput.text.toString()
+          val description = getString(R.string.empty_search_repositories_description, inputWord)
+          binding.emptyDescription.text = description
+          searchAdapter.submitList(repositories)
+        }
     }
   }
 }

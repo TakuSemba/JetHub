@@ -1,13 +1,13 @@
 package com.takusemba.jethub.base.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.base.ErrorHandler
 import com.takusemba.jethub.model.Repo
 import com.takusemba.jethub.repository.RepoRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,8 +21,8 @@ class UserViewModel @Inject constructor(
   private val errorHandler: ErrorHandler
 ) : ViewModel() {
 
-  private val mutablePinedRepositories: MutableLiveData<List<Repo>> = MutableLiveData()
-  val pinedRepositories: LiveData<List<Repo>> = mutablePinedRepositories
+  private val mutablePinedRepositories: MutableStateFlow<List<Repo>> = MutableStateFlow(emptyList())
+  val pinedRepositories: StateFlow<List<Repo>> = mutablePinedRepositories
 
   init {
     viewModelScope.launch {
@@ -54,7 +54,7 @@ class UserViewModel @Inject constructor(
     viewModelScope.launch {
       runCatching {
         repoRepository.unpin(repo)
-        val repositories = mutablePinedRepositories.value?.toMutableList() ?: mutableListOf()
+        val repositories = mutablePinedRepositories.value.toMutableList()
         repositories.apply { remove(repo) }
       }.onSuccess { repos ->
         mutablePinedRepositories.value = repos
@@ -65,6 +65,6 @@ class UserViewModel @Inject constructor(
   }
 
   fun isPinned(repo: Repo): Boolean {
-    return pinedRepositories.value?.contains(repo) ?: false
+    return pinedRepositories.value.contains(repo)
   }
 }

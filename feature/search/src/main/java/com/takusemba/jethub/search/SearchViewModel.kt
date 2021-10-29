@@ -1,7 +1,5 @@
 package com.takusemba.jethub.search
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.base.ErrorHandler
@@ -11,6 +9,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,8 +23,8 @@ class SearchViewModel @Inject constructor(
   private val errorHandler: ErrorHandler
 ) : ViewModel() {
 
-  private val mutableSearchedRepos = MutableLiveData<List<Repo>>()
-  val searchedRepos: LiveData<List<Repo>> = mutableSearchedRepos
+  private val mutableSearchedRepos = MutableStateFlow<List<Repo>>(emptyList())
+  val searchedRepos: StateFlow<List<Repo>> = mutableSearchedRepos
 
   private var searchJob: Job? = null
 

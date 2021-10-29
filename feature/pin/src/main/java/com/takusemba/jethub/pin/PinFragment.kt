@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.observe
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +15,8 @@ import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.pin.databinding.FragmentPinBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -44,16 +48,17 @@ class PinFragment : Fragment(R.layout.fragment_pin) {
     binding.recyclerView.layoutManager = linearLayoutManager
     binding.recyclerView.adapter = pinAdapter
 
-    userViewModel.pinedRepositories.observe(owner = viewLifecycleOwner) { repositories ->
-      binding.emptyLayout.visibility = if (repositories.isEmpty()) View.VISIBLE else View.GONE
-    }
-
     binding.themeSwitch.setOnClickListener {
       systemViewModel.setNightMode(!systemViewModel.isNightMode())
     }
 
-    userViewModel.pinedRepositories.observe(owner = viewLifecycleOwner) { repositories ->
-      pinAdapter.submitList(repositories)
+    lifecycleScope.launch {
+      userViewModel.pinedRepositories
+        .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+        .collect { repositories ->
+          binding.emptyLayout.visibility = if (repositories.isEmpty()) View.VISIBLE else View.GONE
+          pinAdapter.submitList(repositories)
+        }
     }
   }
 }

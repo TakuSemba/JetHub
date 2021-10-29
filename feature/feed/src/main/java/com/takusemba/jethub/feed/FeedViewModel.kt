@@ -1,9 +1,6 @@
 package com.takusemba.jethub.feed
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.base.ErrorHandler
 import com.takusemba.jethub.base.model.ColoredLanguage
@@ -13,6 +10,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -25,11 +24,8 @@ class FeedViewModel @Inject constructor(
   private val errorHandler: ErrorHandler
 ) : ViewModel() {
 
-  private val mutableHotReposMap = MutableLiveData<Map<String, List<Repo>>>()
-
-  fun hotRepos(language: String): LiveData<List<Repo>> {
-    return mutableHotReposMap.map { map -> map[language] ?: emptyList() }
-  }
+  private val mutableHotReposMap = MutableStateFlow<Map<String, List<Repo>>>(emptyMap())
+  val hotReposMap: StateFlow<Map<String, List<Repo>>> = mutableHotReposMap
 
   init {
     viewModelScope.launch {
@@ -39,7 +35,6 @@ class FeedViewModel @Inject constructor(
           coroutineScope {
             ColoredLanguage.POPULAR_LANGUAGES.map { language ->
               async { map[language.title] = searchRepository.searchHotRepos(language.title) }
-
             }.awaitAll()
           }
         }

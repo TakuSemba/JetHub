@@ -1,9 +1,8 @@
 package com.takusemba.jethub.base
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.Observer
+import com.google.common.truth.Truth.assertThat
 import com.takusemba.jethub.base.viewmodel.UserViewModel
-import com.takusemba.jethub.model.Repo
 import com.takusemba.jethub.model.Repo.Companion.createRepo
 import com.takusemba.jethub.repository.RepoRepository
 import io.mockk.MockKAnnotations
@@ -11,11 +10,8 @@ import io.mockk.Runs
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import io.mockk.just
-import io.mockk.mockk
-import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runBlockingTest
@@ -27,8 +23,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
-@ObsoleteCoroutinesApi
 @RunWith(JUnit4::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 class UserViewModelTest {
 
   @get:Rule var instantTaskExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
@@ -39,7 +35,6 @@ class UserViewModelTest {
   private val dispatcher = TestCoroutineDispatcher()
 
   @Before
-  @ExperimentalCoroutinesApi
   fun setUp() {
     MockKAnnotations.init(this)
     Dispatchers.setMain(dispatcher)
@@ -51,70 +46,54 @@ class UserViewModelTest {
   }
 
   @Test
-  fun `initial state`() {
-    dispatcher.runBlockingTest {
+  fun `initial state`() = runBlockingTest {
+    val repositories = listOf(
+      createRepo(id = 1),
+      createRepo(id = 2),
+      createRepo(id = 3)
+    )
+    coEvery { repoRepository.findAllPins() } returns repositories
 
-      val observer = mockk<Observer<List<Repo>>>(relaxed = true)
+    val viewModel = UserViewModel(repoRepository, errorHandler)
 
-      coEvery { repoRepository.findAllPins() } returns listOf(
-        createRepo(id = 1),
-        createRepo(id = 2),
-        createRepo(id = 3)
-      )
-
-      val viewModel = UserViewModel(repoRepository, errorHandler)
-
-      viewModel.pinedRepositories.observeForever(observer)
-
-      verify { observer.onChanged(match { it.size == 3 }) }
-    }
+    assertThat(viewModel.pinedRepositories.value).isEqualTo(repositories)
   }
 
   @Test
-  fun `pin repo`() {
-    dispatcher.runBlockingTest {
+  fun `pin repo`() = runBlockingTest {
 
-      val observer = mockk<Observer<List<Repo>>>(relaxed = true)
+    val repositories = listOf(
+      createRepo(id = 1),
+      createRepo(id = 2),
+      createRepo(id = 3)
+    )
+    coEvery { repoRepository.findAllPins() } returns repositories
+    coEvery { repoRepository.pin(any()) } just Runs
 
-      coEvery { repoRepository.findAllPins() } returns listOf(
-        createRepo(id = 1),
-        createRepo(id = 2),
-        createRepo(id = 3)
-      )
-      coEvery { repoRepository.pin(any()) } just Runs
+    val viewModel = UserViewModel(repoRepository, errorHandler)
 
-      val viewModel = UserViewModel(repoRepository, errorHandler)
+    val repoToBeAdded = createRepo(id = 4)
+    viewModel.pin(repoToBeAdded)
 
-      val repo = createRepo(id = 4)
-      viewModel.pin(repo)
-
-      viewModel.pinedRepositories.observeForever(observer)
-
-      verify { observer.onChanged(match { it.size == 4 }) }
-    }
+    assertThat(viewModel.pinedRepositories.value).isEqualTo(repositories + repoToBeAdded)
   }
 
   @Test
-  fun `unpin repo`() {
-    dispatcher.runBlockingTest {
+  fun `unpin repo`() = runBlockingTest {
 
-      val observer = mockk<Observer<List<Repo>>>(relaxed = true)
-      val repoToBeRemoved = createRepo(id = 3)
+    val repoToBeRemoved = createRepo(id = 3)
+    val repositories = listOf(
+      createRepo(id = 1),
+      createRepo(id = 2),
+      repoToBeRemoved
+    )
+    coEvery { repoRepository.findAllPins() } returns repositories
+    coEvery { repoRepository.unpin(any()) } just Runs
 
-      coEvery { repoRepository.findAllPins() } returns listOf(
-        createRepo(id = 1),
-        createRepo(id = 2),
-        repoToBeRemoved
-      )
-      coEvery { repoRepository.unpin(any()) } just Runs
+    val viewModel = UserViewModel(repoRepository, errorHandler)
 
-      val viewModel = UserViewModel(repoRepository, errorHandler)
+    viewModel.unpin(repoToBeRemoved)
 
-      viewModel.unpin(repoToBeRemoved)
-
-      viewModel.pinedRepositories.observeForever(observer)
-
-      verify { observer.onChanged(match { it.size == 2 }) }
-    }
+    assertThat(viewModel.pinedRepositories.value).isEqualTo(repositories - repoToBeRemoved)
   }
 }

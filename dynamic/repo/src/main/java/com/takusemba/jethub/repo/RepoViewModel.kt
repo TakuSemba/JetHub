@@ -1,13 +1,13 @@
 package com.takusemba.jethub.repo
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.base.ErrorHandler
 import com.takusemba.jethub.model.Repo
 import com.takusemba.jethub.repository.RepoRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -19,8 +19,8 @@ class RepoViewModel @Inject constructor(
   private val errorHandler: ErrorHandler
 ) : ViewModel() {
 
-  private val mutableRepo: MutableLiveData<Repo> = MutableLiveData()
-  val repository: LiveData<Repo> get() = mutableRepo
+  private val mutableRepo: MutableStateFlow<Repo> = MutableStateFlow(Repo.EMPTY)
+  val repository: StateFlow<Repo> get() = mutableRepo
 
   init {
     viewModelScope.launch {

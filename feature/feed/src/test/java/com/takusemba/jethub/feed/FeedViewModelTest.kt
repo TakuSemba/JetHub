@@ -1,19 +1,17 @@
 package com.takusemba.jethub.feed
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.Observer
+import androidx.lifecycle.viewModelScope
+import com.google.common.truth.Truth.assertThat
 import com.takusemba.jethub.base.ErrorHandler
-import com.takusemba.jethub.model.Repo
 import com.takusemba.jethub.model.Repo.Companion.createRepo
 import com.takusemba.jethub.repository.SearchRepository
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
-import io.mockk.mockk
-import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.ObsoleteCoroutinesApi
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runBlockingTest
@@ -25,8 +23,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
-@ObsoleteCoroutinesApi
 @RunWith(JUnit4::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 class FeedViewModelTest {
 
   @get:Rule var instantTaskExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
@@ -37,7 +35,6 @@ class FeedViewModelTest {
   private val dispatcher = TestCoroutineDispatcher()
 
   @Before
-  @ExperimentalCoroutinesApi
   fun setUp() {
     MockKAnnotations.init(this)
     Dispatchers.setMain(dispatcher)
@@ -49,22 +46,17 @@ class FeedViewModelTest {
   }
 
   @Test
-  fun `initial state`() {
-    dispatcher.runBlockingTest {
+  fun `initial state`() = runBlockingTest {
+    val repositories = listOf(
+      createRepo(id = 1, language = "Kotlin"),
+      createRepo(id = 2, language = "Kotlin"),
+      createRepo(id = 3, language = "Kotlin")
+    )
+    coEvery { searchRepository.searchHotRepos(any()) } returns repositories
 
-      val observer = mockk<Observer<List<Repo>>>(relaxed = true)
+    val viewModel = FeedViewModel(searchRepository, errorHandler)
 
-      coEvery { searchRepository.searchHotRepos(any()) } returns listOf(
-        createRepo(id = 1, language = "Kotlin"),
-        createRepo(id = 2, language = "Kotlin"),
-        createRepo(id = 3, language = "Kotlin")
-      )
-
-      val viewModel = FeedViewModel(searchRepository, errorHandler)
-
-      viewModel.hotRepos("Kotlin").observeForever(observer)
-
-      verify { observer.onChanged(match { it.size == 3 }) }
-    }
+    viewModel.viewModelScope.coroutineContext[Job]!!.children.forEach { it.join() }
+    assertThat(viewModel.hotReposMap.value["Kotlin"]).isEqualTo(repositories)
   }
 }
