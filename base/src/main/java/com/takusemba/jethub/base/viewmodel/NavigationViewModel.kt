@@ -1,11 +1,12 @@
 package com.takusemba.jethub.base.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.base.model.Direction
-import com.takusemba.jethub.base.model.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
@@ -14,18 +15,24 @@ import javax.inject.Inject
 @HiltViewModel
 class NavigationViewModel @Inject constructor() : ViewModel() {
 
-  private val mutableDirection: MutableLiveData<Event<Direction>> = MutableLiveData()
-  val direction: LiveData<Event<Direction>> = mutableDirection
+  private val mutableDirection: MutableSharedFlow<Direction> = MutableSharedFlow()
+  val direction: SharedFlow<Direction> = mutableDirection
 
   fun openRepo(owner: String, repo: String) {
-    mutableDirection.value = Event(Direction.Repo(owner, repo))
+    viewModelScope.launch {
+      mutableDirection.emit(Direction.Repo(owner, repo))
+    }
   }
 
   fun openDeveloper(name: String) {
-    mutableDirection.value = Event(Direction.Developer(name))
+    viewModelScope.launch {
+      mutableDirection.emit(Direction.Developer(name))
+    }
   }
 
   fun popBackStack() {
-    mutableDirection.value = Event(Direction.Pop)
+    viewModelScope.launch {
+      mutableDirection.tryEmit(Direction.Pop)
+    }
   }
 }

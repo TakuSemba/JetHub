@@ -12,7 +12,6 @@ import com.takusemba.jethub.R
 import com.takusemba.jethub.base.model.Direction.Developer
 import com.takusemba.jethub.base.model.Direction.Pop
 import com.takusemba.jethub.base.model.Direction.Repo
-import com.takusemba.jethub.base.model.EventObserver
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.repo.RepoFragmentDirections
@@ -31,7 +30,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     super.onCreate(savedInstanceState)
 
     lifecycleScope.launch {
-
       systemViewModel.isNightMode
         .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
         .collect { isNightMode ->
@@ -42,22 +40,26 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
           }
           AppCompatDelegate.setDefaultNightMode(nightModeSetting)
         }
-
     }
 
-    navigationViewModel.direction.observe(
-      this,
-      EventObserver { direction ->
-        val navDirection = when (direction) {
-          is Repo -> MainTabFragmentDirections.actionMainTabToRepo(direction.owner, direction.repo)
-          is Developer -> RepoFragmentDirections.actionRepoToDeveloper(direction.name)
-          is Pop -> {
-            findNavController(R.id.host_fragment).popBackStack()
-            return@EventObserver
+    lifecycleScope.launch {
+      navigationViewModel.direction
+        .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+        .collect { direction ->
+          val navDirection = when (direction) {
+            is Repo -> {
+              MainTabFragmentDirections.actionMainTabToRepo(direction.owner, direction.repo)
+            }
+            is Developer -> {
+              RepoFragmentDirections.actionRepoToDeveloper(direction.name)
+            }
+            is Pop -> {
+              findNavController(R.id.host_fragment).popBackStack()
+              return@collect
+            }
           }
+          findNavController(R.id.host_fragment).navigate(navDirection)
         }
-        findNavController(R.id.host_fragment).navigate(navDirection)
-      }
-    )
+    }
   }
 }
