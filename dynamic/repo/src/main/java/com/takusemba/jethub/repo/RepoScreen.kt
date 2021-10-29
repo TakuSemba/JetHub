@@ -1,9 +1,9 @@
 package com.takusemba.jethub.repo
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -11,7 +11,6 @@ import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -23,13 +22,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.transform.CircleCropTransformation
+import coil.compose.rememberImagePainter
 import coil.transform.RoundedCornersTransformation
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.compose.JethubTheme
 import com.takusemba.jethub.model.Owner
 import com.takusemba.jethub.model.Repo
-import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
 fun RepoScreen(
@@ -68,7 +66,7 @@ fun RepoTopBar(navigationViewModel: NavigationViewModel) {
 fun RepoContent(
   repo: Repo,
   developerButtonClicked: () -> Unit
-){
+) {
   LazyColumn {
     item {
       Developer(owner = repo.owner)
@@ -81,19 +79,21 @@ fun RepoContent(
 }
 
 @Composable
-fun Developer(owner: Owner){
+fun Developer(owner: Owner) {
   Row(
     modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp, bottom = 8.dp),
     horizontalArrangement = Arrangement.Center
   ) {
     if (owner.avatarUrl.isNotEmpty()) {
-      CoilImage(
-        data = owner.avatarUrl,
+      Image(
         modifier = Modifier.size(20.dp),
-        requestBuilder = {
-          transformations(RoundedCornersTransformation(18.0f))
-        },
-        contentDescription = "avator"
+        painter = rememberImagePainter(
+          data = owner.avatarUrl,
+          builder = {
+            transformations(RoundedCornersTransformation(18.0f))
+          }
+        ),
+        contentDescription = null
       )
     }
     Text(
@@ -105,7 +105,7 @@ fun Developer(owner: Owner){
 }
 
 @Composable
-fun RepoOverview(repo: Repo){
+fun RepoOverview(repo: Repo) {
   Text(
     text = repo.name,
     modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
@@ -158,7 +158,7 @@ fun GoToDeveloperButton(developerButtonClicked: () -> Unit) {
 
 @Preview
 @Composable
-fun PreviewRepoScreenBody(){
+fun PreviewRepoScreenBody() {
   JethubTheme(darkTheme = false) {
     GoToDeveloperButton {}
   }

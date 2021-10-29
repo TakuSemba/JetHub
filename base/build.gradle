@@ -62,4 +62,5 @@ dependencies {
 
   // image
   api(deps.coil)
+  api(deps.coilCompose)
 }

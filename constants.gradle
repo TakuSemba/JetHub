@@ -95,7 +95,8 @@ project.ext {
       roomKtx: "androidx.room:room-ktx:${versions.room}",
 
       // image
-      coil: "io.coil-kt:coil:1.1.0",
+      coil: "io.coil-kt:coil:1.4.0",
+      coilCompose: "io.coil-kt:coil-compose:1.4.0",
 
       // test
       junit: "junit:junit:4.13.2",
