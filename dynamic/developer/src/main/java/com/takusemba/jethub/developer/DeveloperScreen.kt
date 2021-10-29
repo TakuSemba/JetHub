@@ -15,17 +15,14 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
-import coil.transform.RoundedCornersTransformation
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.compose.JethubTheme
 import com.takusemba.jethub.model.Developer
-import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
 fun DeveloperScreen(
@@ -34,7 +31,7 @@ fun DeveloperScreen(
 ) {
   val developer = developerViewModel.developer.observeAsState(Developer.EMPTY)
   Scaffold(
-    topBar = { DeveloperTopBar(navigationIconClicked = {navigationViewModel.popBackStack()}) },
+    topBar = { DeveloperTopBar(navigationIconClicked = { navigationViewModel.popBackStack() }) },
     content = {
       LazyColumn(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
         item {
@@ -155,7 +152,7 @@ fun Body() {
 
 @Preview
 @Composable
-fun PreviewDeveloperScreenBody(){
+fun PreviewDeveloperScreenBody() {
   JethubTheme(darkTheme = false) {
     Body()
   }
