@@ -49,7 +49,6 @@ dependencies {
 
   // lifecycle
   api(deps.lifecycleRuntime)
-  api(deps.lifecycleExtensions)
   kapt(deps.lifecycleCompiler)
   api(deps.viewmodelKtx)
   api(deps.livedataKtx)
