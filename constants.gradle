@@ -11,7 +11,7 @@ project.ext {
 
   versions = [
       // library
-      buildGradle: "7.0.0-alpha08",
+      buildGradle: "7.0.0",
       kotlin: "1.4.30",
       coroutine: "1.4.2",
       compose: "1.0.0-beta01",
@@ -19,7 +19,7 @@ project.ext {
       navigation: "2.3.3",
       room: "2.2.6",
       dagger: "2.33",
-      daggerHilt: "2.33-beta",
+      daggerHilt: "2.40",
       androidHilt: "1.0.0-alpha03",
       retrofit: "2.9.0",
       okhttp: "4.9.0",
