@@ -12,9 +12,9 @@ project.ext {
   versions = [
       // library
       buildGradle: "7.0.0",
-      kotlin: "1.4.30",
-      coroutine: "1.4.2",
-      compose: "1.0.0-beta01",
+      kotlin: "1.5.21",
+      coroutine: "1.5.2",
+      compose: "1.0.1",
       lifecycle: "2.2.0",
       navigation: "2.3.3",
       room: "2.2.6",

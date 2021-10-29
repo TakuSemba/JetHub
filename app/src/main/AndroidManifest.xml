@@ -14,7 +14,7 @@
     android:theme="@style/Jethub.Theme"
     tools:ignore="GoogleAppIndexingWarning">
     <activity
-      android:exported="false"
+      android:exported="true"
       android:name=".ui.activity.MainActivity"
       android:windowSoftInputMode="adjustPan">
       <intent-filter>
