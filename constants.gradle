@@ -4,8 +4,8 @@ project.ext {
       versionName: "1.0.0",
       versionCode: 1,
       packageName: "com.takusemba.jethub",
-      compileSdkVersion: 30,
-      targetSdkVersion: 30,
+      compileSdkVersion: 31,
+      targetSdkVersion: 31,
       minSdkVersion: 21,
   ]
 
