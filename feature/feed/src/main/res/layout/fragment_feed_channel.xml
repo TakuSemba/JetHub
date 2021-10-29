@@ -13,8 +13,8 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
 
-  <com.google.android.material.progressindicator.ProgressIndicator
-    style="@style/Widget.MaterialComponents.ProgressIndicator.Circular.Indeterminate"
+  <com.google.android.material.progressindicator.CircularProgressIndicator
+    style="@style/Widget.MaterialComponents.CircularProgressIndicator"
     android:id="@+id/progress"
     android:layout_gravity="center"
     android:layout_height="wrap_content"

@@ -33,7 +33,7 @@ project.ext {
       pluginKotlinSerialization: "org.jetbrains.kotlin:kotlin-serialization:${versions.kotlin}",
 
       // desugar
-      desugar: "com.android.tools:desugar_jdk_libs:1.1.1",
+      desugar: "com.android.tools:desugar_jdk_libs:1.1.5",
 
       // kotlin
       kotlin: "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
@@ -45,12 +45,12 @@ project.ext {
       coroutineTest: "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.coroutine}",
 
       // androidx
-      appCompat: "androidx.appcompat:appcompat:1.3.0-alpha01",
-      material: "com.google.android.material:material:1.3.0-alpha01",
-      constraintLayout: "androidx.constraintlayout:constraintlayout:2.0.0-beta7",
-      coreKtx: "androidx.core:core-ktx:1.5.0-alpha01",
-      activityKtx: "androidx.activity:activity-ktx:1.2.0-alpha06",
-      fragmentKtx: "androidx.fragment:fragment-ktx:1.3.0-alpha06",
+      appCompat: "androidx.appcompat:appcompat:1.3.1",
+      material: "com.google.android.material:material:1.4.0",
+      constraintLayout: "androidx.constraintlayout:constraintlayout:2.1.1",
+      coreKtx: "androidx.core:core-ktx:1.7.0",
+      activityKtx: "androidx.activity:activity-ktx:1.4.0",
+      fragmentKtx: "androidx.fragment:fragment-ktx:1.3.6",
 
       // compose
       composeUi: "androidx.compose.ui:ui:${versions.compose}",
