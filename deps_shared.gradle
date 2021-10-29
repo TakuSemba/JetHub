@@ -16,7 +16,4 @@ dependencies {
   kapt(deps.daggerCompiler)
   implementation(deps.daggerHilt)
   kapt(deps.daggerHiltCompiler)
-  implementation(deps.androidHilt)
-  implementation(deps.androidHiltViewModel)
-  kapt(deps.androidHiltCompiler)
 }

@@ -18,9 +18,8 @@ project.ext {
       lifecycle: "2.4.0",
       navigation: "2.3.5",
       room: "2.3.0",
-      dagger: "2.33",
-      daggerHilt: "2.40",
-      androidHilt: "1.0.0-alpha03",
+      dagger: "2.40",
+      androidHilt: "1.0.0",
       retrofit: "2.9.0",
       okhttp: "4.9.0",
   ]
@@ -30,7 +29,7 @@ project.ext {
       pluginBuildGradle: "com.android.tools.build:gradle:${versions.buildGradle}",
       pluginKotlinGradle: "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
       pluginSafeArgs: "androidx.navigation:navigation-safe-args-gradle-plugin:${versions.navigation}",
-      pluginDaggerHilt: "com.google.dagger:hilt-android-gradle-plugin:${versions.daggerHilt}",
+      pluginDaggerHilt: "com.google.dagger:hilt-android-gradle-plugin:${versions.dagger}",
       pluginKotlinSerialization: "org.jetbrains.kotlin:kotlin-serialization:${versions.kotlin}",
 
       // desugar
@@ -78,12 +77,9 @@ project.ext {
       // dependency injection
       dagger: "com.google.dagger:dagger:${versions.dagger}",
       daggerCompiler: "com.google.dagger:dagger-compiler:${versions.dagger}",
-      daggerHilt: "com.google.dagger:hilt-android:${versions.daggerHilt}",
-      daggerHiltCompiler: "com.google.dagger:hilt-android-compiler:${versions.daggerHilt}",
-      daggerHiltTesting: "com.google.dagger:hilt-android-testing:${versions.daggerHilt}",
-      androidHilt: "androidx.hilt:hilt-common:${versions.androidHilt}",
-      androidHiltViewModel: "androidx.hilt:hilt-lifecycle-viewmodel:${versions.androidHilt}",
-      androidHiltCompiler: "androidx.hilt:hilt-compiler:${versions.androidHilt}",
+      daggerHilt: "com.google.dagger:hilt-android:${versions.dagger}",
+      daggerHiltCompiler: "com.google.dagger:hilt-android-compiler:${versions.dagger}",
+      daggerHiltTesting: "com.google.dagger:hilt-android-testing:${versions.dagger}",
 
       // network
       retrofit: "com.squareup.retrofit2:retrofit:${versions.retrofit}",
