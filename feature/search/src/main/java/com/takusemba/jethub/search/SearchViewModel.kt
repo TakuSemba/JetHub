@@ -8,7 +8,6 @@ import com.takusemba.jethub.repository.SearchRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -47,7 +46,6 @@ class SearchViewModel @Inject constructor(
     }
     searchJob = viewModelScope.launch {
       runCatching {
-        delay(500)
         searchRepository.searchRepos(query)
       }.onSuccess { repos ->
         mutableSearchedRepos.value = repos

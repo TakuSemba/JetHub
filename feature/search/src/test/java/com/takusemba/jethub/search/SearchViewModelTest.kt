@@ -25,8 +25,6 @@ import org.junit.runners.JUnit4
 @OptIn(ExperimentalCoroutinesApi::class)
 class SearchViewModelTest {
 
-  @get:Rule var instantTaskExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
-
   @MockK private lateinit var searchRepository: SearchRepository
   @MockK private lateinit var errorHandler: ErrorHandler
 

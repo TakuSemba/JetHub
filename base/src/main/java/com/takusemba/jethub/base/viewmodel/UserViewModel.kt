@@ -40,7 +40,7 @@ class UserViewModel @Inject constructor(
     viewModelScope.launch {
       runCatching {
         repoRepository.pin(repo)
-        val repositories = mutablePinedRepositories.value?.toMutableList() ?: mutableListOf()
+        val repositories = mutablePinedRepositories.value.toMutableList()
         repositories.apply { add(repo) }
       }.onSuccess { repos ->
         mutablePinedRepositories.value = repos
