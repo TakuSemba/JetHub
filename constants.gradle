@@ -59,7 +59,6 @@ project.ext {
       composeMaterial: "androidx.compose.material:material:${versions.compose}",
       composeFoundation: "androidx.compose.foundation:foundation:${versions.compose}",
       composeAnimation: "androidx.compose.animation:animation:${versions.compose}",
-      composeLivedata: "androidx.compose.runtime:runtime-livedata:${versions.compose}",
       composeIconsCore: "androidx.compose.material:material-icons-core:${versions.compose}",
       composeIconsExtended: "androidx.compose.material:material-icons-extended:${versions.compose}",
 
@@ -74,7 +73,6 @@ project.ext {
       lifecycleRuntime: "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}",
       lifecycleCompiler: "androidx.lifecycle:lifecycle-compiler:${versions.lifecycle}",
       viewmodelKtx: "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}",
-      livedataKtx: "androidx.lifecycle:lifecycle-livedata-ktx:${versions.lifecycle}",
 
       // dependency injection
       dagger: "com.google.dagger:dagger:${versions.dagger}",

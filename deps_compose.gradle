@@ -7,7 +7,6 @@ dependencies {
   implementation deps.composeMaterial
   implementation deps.composeFoundation
   implementation deps.composeAnimation
-  implementation deps.composeLivedata
   implementation deps.composeIconsCore
   implementation deps.composeIconsExtended
 }

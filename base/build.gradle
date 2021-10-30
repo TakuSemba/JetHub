@@ -51,7 +51,6 @@ dependencies {
   api(deps.lifecycleRuntime)
   kapt(deps.lifecycleCompiler)
   api(deps.viewmodelKtx)
-  api(deps.livedataKtx)
 
   // navigation
   api(deps.navCommonKtx)
