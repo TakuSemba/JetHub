@@ -8,4 +8,6 @@ dependencies {
   implementation deps.composeFoundation
   implementation deps.composeAnimation
   implementation deps.composeLivedata
+  implementation deps.composeIconsCore
+  implementation deps.composeIconsExtended
 }

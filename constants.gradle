@@ -60,6 +60,8 @@ project.ext {
       composeFoundation: "androidx.compose.foundation:foundation:${versions.compose}",
       composeAnimation: "androidx.compose.animation:animation:${versions.compose}",
       composeLivedata: "androidx.compose.runtime:runtime-livedata:${versions.compose}",
+      composeIconsCore: "androidx.compose.material:material-icons-core:${versions.compose}",
+      composeIconsExtended: "androidx.compose.material:material-icons-extended:${versions.compose}",
 
       // navigation
       navCommonKtx: "androidx.navigation:navigation-common-ktx:${versions.navigation}",

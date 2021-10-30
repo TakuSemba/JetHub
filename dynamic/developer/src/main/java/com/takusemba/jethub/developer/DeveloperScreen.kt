@@ -1,6 +1,5 @@
 package com.takusemba.jethub.developer
 
-import android.graphics.fonts.FontStyle
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,12 +8,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Business
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -22,12 +25,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import coil.transform.RoundedCornersTransformation
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
-import com.takusemba.jethub.compose.JethubTheme
 import com.takusemba.jethub.model.Developer
 
 @Composable
@@ -58,7 +59,10 @@ fun DeveloperTopBar(onBackPressed: () -> Unit) {
     title = {},
     navigationIcon = {
       IconButton(onClick = onBackPressed) {
-        Icon(painterResource(R.drawable.ic_back), null)
+        Icon(
+          painter = painterResource(R.drawable.ic_back),
+          contentDescription = null
+        )
       }
     },
     backgroundColor = MaterialTheme.colors.surface,
@@ -71,14 +75,14 @@ fun DeveloperBody(
   modifier: Modifier,
   uiState: DeveloperUiState
 ) {
-  LazyColumn {
-    item {
-      DeveloperHeader(
-        modifier = Modifier.fillMaxWidth(),
-        developer = uiState.developer
-      )
-      Body()
-    }
+  Column(
+    modifier = modifier.verticalScroll(rememberScrollState())
+  ) {
+    DeveloperHeader(
+      modifier = Modifier.fillMaxWidth(),
+      developer = uiState.developer
+    )
+    DeveloperReadMe()
   }
 }
 
@@ -136,14 +140,23 @@ fun DeveloperHeader(
       )
     }
     if (developer.company.isNotEmpty()) {
-      Text(
-        text = developer.company,
+      Row(
         modifier = Modifier
           .padding(top = 4.dp)
-          .padding(horizontal = 16.dp),
-        style = MaterialTheme.typography.body1,
-        fontWeight = FontWeight.Bold,
-      )
+          .padding(horizontal = 16.dp)
+      ) {
+        Icon(
+          modifier = Modifier.size(size = 24.dp),
+          imageVector = Icons.Default.Business,
+          contentDescription = null
+        )
+        Text(
+          modifier = Modifier.padding(start = 4.dp),
+          text = developer.company,
+          style = MaterialTheme.typography.body1,
+          fontWeight = FontWeight.Bold,
+        )
+      }
     }
     if (developer.location.isNotEmpty()) {
       Text(
@@ -193,7 +206,7 @@ fun DeveloperHeader(
 }
 
 @Composable
-fun Body() {
+fun DeveloperReadMe() {
   Column(modifier = Modifier.padding(top = 16.dp, bottom = 16.dp)) {
     Text(
       text = "show more details here.",
@@ -201,13 +214,5 @@ fun Body() {
       style = MaterialTheme.typography.h5,
       color = MaterialTheme.colors.onSurface
     )
-  }
-}
-
-@Preview
-@Composable
-fun PreviewDeveloperScreenBody() {
-  JethubTheme(darkTheme = false) {
-    Body()
   }
 }
