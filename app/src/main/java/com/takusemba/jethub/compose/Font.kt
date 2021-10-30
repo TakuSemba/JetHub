@@ -1,10 +1,17 @@
 package com.takusemba.jethub.compose
 
 import androidx.compose.material.Typography
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import com.takusemba.jethub.R
 
-// FIXME seems like only bundled fonts work
-// private val AppFontFamily = fontFamily(
-//  ResourceFont(R.font.roboto_mono_medium)
-// )
+private val RobotoMono = FontFamily(
+  Font(R.font.roboto_mono_regular, FontWeight.Normal),
+  Font(R.font.roboto_mono_medium, FontWeight.Medium),
+  Font(R.font.roboto_mono_bold, FontWeight.Bold)
+)
 
-val ThemeTypography = Typography()
+val ThemeTypography = Typography(
+  defaultFontFamily = RobotoMono
+)
