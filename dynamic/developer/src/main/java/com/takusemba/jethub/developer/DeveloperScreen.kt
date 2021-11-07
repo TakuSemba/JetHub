@@ -28,7 +28,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import coil.transform.RoundedCornersTransformation
@@ -51,7 +50,7 @@ fun DeveloperScreen(
     topBar = {
       DeveloperTopBar(
         onBackPressed = { navigationViewModel.popBackStack() },
-        elevation = if (scrollState.value == 0) 0.dp else AppBarDefaults.TopAppBarElevation
+        scrollState = scrollState,
       )
     },
     content = { paddingValues ->
@@ -71,11 +70,11 @@ fun DeveloperScreen(
 @Composable
 fun DeveloperTopBar(
   onBackPressed: () -> Unit,
-  elevation: Dp,
+  scrollState: ScrollState,
 ) {
   TopBar(
     navigationIcon = { BackArrowIconButton(onBackPressed = onBackPressed) },
-    elevation = elevation,
+    elevation = if (scrollState.value == 0) 0.dp else AppBarDefaults.TopAppBarElevation,
   )
 }
 
