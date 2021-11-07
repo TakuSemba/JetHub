@@ -3,6 +3,7 @@ package com.takusemba.jethub.repo
 import android.util.Base64
 import android.widget.TextView
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -33,6 +34,7 @@ import com.takusemba.jethub.base.ui.component.BackArrowIconButton
 import com.takusemba.jethub.base.ui.component.ProgressView
 import com.takusemba.jethub.base.ui.component.TopBar
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
+import com.takusemba.jethub.model.Owner
 import com.takusemba.jethub.model.ReadMe
 import com.takusemba.jethub.model.Repo
 import io.noties.markwon.Markwon
@@ -53,6 +55,7 @@ fun RepoScreen(
       RepoBody(
         modifier = Modifier.padding(paddingValues),
         uiState = uiState,
+        onOwnerClicked = { owner -> navigationViewModel.openDeveloper(owner.login) }
       )
     }
   )
@@ -74,11 +77,13 @@ fun RepoTopBar(onBackPressed: () -> Unit) {
 fun RepoBody(
   modifier: Modifier,
   uiState: RepoUiState,
+  onOwnerClicked: (owner: Owner) -> Unit,
 ) {
   Column(modifier = modifier.verticalScroll(rememberScrollState())) {
     RepoOverview(
       modifier = Modifier.fillMaxWidth(),
       repo = uiState.repo,
+      onOwnerClicked = onOwnerClicked
     )
     RepoReadMe(
       modifier = Modifier.fillMaxWidth(),
@@ -91,16 +96,21 @@ fun RepoBody(
 fun RepoOverview(
   modifier: Modifier,
   repo: Repo,
+  onOwnerClicked: (owner: Owner) -> Unit,
 ) {
   Column(modifier = modifier) {
     Row(
-      modifier = Modifier.fillMaxWidth(),
+      modifier = Modifier
+        .fillMaxWidth()
+        .padding(horizontal = 8.dp)
+        .clickable { onOwnerClicked(repo.owner) },
       verticalAlignment = Alignment.CenterVertically,
     ) {
       if (repo.owner.avatarUrl.isNotEmpty()) {
         Image(
           modifier = Modifier
-            .padding(start = 16.dp)
+            .padding(start = 8.dp)
+            .padding(vertical = 8.dp)
             .size(20.dp),
           painter = rememberImagePainter(
             data = repo.owner.avatarUrl,
@@ -119,7 +129,7 @@ fun RepoOverview(
     }
     Text(
       text = repo.name,
-      modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+      modifier = Modifier.padding(horizontal = 8.dp),
       style = MaterialTheme.typography.h5,
       fontWeight = FontWeight.Bold,
     )
