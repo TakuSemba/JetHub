@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import com.takusemba.jethub.base.ui.theme.JethubTheme
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.SystemViewModel
-import com.takusemba.jethub.di.DeveloperModuleDependencies
+import com.takusemba.jethub.di.DeveloperAppModuleDependencies
 import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
@@ -29,7 +29,7 @@ class DeveloperFragment : Fragment(R.layout.fragment_developer) {
       .appDependencies(
         EntryPointAccessors.fromApplication(
           requireContext().applicationContext,
-          DeveloperModuleDependencies::class.java
+          DeveloperAppModuleDependencies::class.java
         )
       )
       .build()

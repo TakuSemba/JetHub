@@ -1,7 +1,7 @@
 package com.takusemba.jethub.repo
 
 import androidx.fragment.app.Fragment
-import com.takusemba.jethub.di.RepoModuleDependencies
+import com.takusemba.jethub.di.RepoAppModuleDependencies
 import dagger.BindsInstance
 import dagger.Component
 
@@ -10,7 +10,7 @@ import dagger.Component
  * Therefore, this is a alternative way to archive injection for now.
  * https://developer.android.com/training/dependency-injection/hilt-multi-module#dfm
  */
-@Component(dependencies = [RepoModuleDependencies::class])
+@Component(dependencies = [RepoAppModuleDependencies::class])
 interface RepoComponent {
 
   fun inject(fragment: RepoFragment)
@@ -20,7 +20,7 @@ interface RepoComponent {
 
     fun fragment(@BindsInstance fragment: Fragment): Builder
 
-    fun appDependencies(dependencies: RepoModuleDependencies): Builder
+    fun appDependencies(dependencies: RepoAppModuleDependencies): Builder
 
     fun build(): RepoComponent
   }

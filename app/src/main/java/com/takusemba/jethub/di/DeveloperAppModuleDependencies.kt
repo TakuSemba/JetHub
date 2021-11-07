@@ -1,16 +1,16 @@
 package com.takusemba.jethub.di
 
 import com.takusemba.jethub.base.ErrorHandler
-import com.takusemba.jethub.repository.RepoRepository
+import com.takusemba.jethub.repository.DeveloperRepository
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
 @EntryPoint
 @InstallIn(SingletonComponent::class)
-interface RepoModuleDependencies {
+interface DeveloperAppModuleDependencies {
 
-  fun provideRepoRepository(): RepoRepository
+  fun provideDeveloperRepository(): DeveloperRepository
 
   fun provideErrorHandler(): ErrorHandler
 }

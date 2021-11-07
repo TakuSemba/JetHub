@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import com.takusemba.jethub.base.ui.theme.JethubTheme
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.SystemViewModel
-import com.takusemba.jethub.di.RepoModuleDependencies
+import com.takusemba.jethub.di.RepoAppModuleDependencies
 import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
@@ -29,7 +29,7 @@ class RepoFragment : Fragment(R.layout.fragment_repo) {
       .appDependencies(
         EntryPointAccessors.fromApplication(
           requireContext().applicationContext,
-          RepoModuleDependencies::class.java
+          RepoAppModuleDependencies::class.java
         )
       )
       .build()
