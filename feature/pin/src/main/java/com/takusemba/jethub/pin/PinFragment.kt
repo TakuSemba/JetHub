@@ -2,6 +2,7 @@ package com.takusemba.jethub.pin
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
@@ -41,7 +42,7 @@ class PinFragment : Fragment(R.layout.fragment_pin) {
     val pinAdapter = PinAdapter(userViewModel, navigationViewModel)
     val dividerItemDecoration = DividerItemDecoration(context, linearLayoutManager.orientation)
     dividerItemDecoration.setDrawable(
-      requireNotNull(requireContext().getDrawable(R.drawable.shape_divider))
+      requireNotNull(AppCompatResources.getDrawable(requireContext(), R.drawable.shape_divider))
     )
     binding.recyclerView.addItemDecoration(dividerItemDecoration)
     binding.recyclerView.setRecycledViewPool(recycledViewPool)

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.takusemba.jethub.R
 import com.takusemba.jethub.databinding.FragmentMainTabBinding
 import com.takusemba.jethub.feed.FeedFragment
@@ -19,31 +18,31 @@ class MainTabFragment : Fragment(R.layout.fragment_main_tab) {
     super.onViewCreated(view, savedInstanceState)
     val binding = FragmentMainTabBinding.bind(view)
 
-    binding.bottomNavigation.setOnNavigationItemSelectedListener(
-      BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        when (item.itemId) {
-          R.id.feed -> {
-            childFragmentManager.commit {
-              replace(R.id.container, FeedFragment.newInstance())
-            }
-            return@OnNavigationItemSelectedListener true
+    binding.bottomNavigation.setOnItemSelectedListener { item ->
+      when (item.itemId) {
+        R.id.feed -> {
+          childFragmentManager.commit {
+            replace(R.id.container, FeedFragment.newInstance())
           }
-          R.id.search -> {
-            childFragmentManager.commit {
-              replace(R.id.container, SearchFragment.newInstance())
-            }
-            return@OnNavigationItemSelectedListener true
-          }
-          R.id.pin -> {
-            childFragmentManager.commit {
-              replace(R.id.container, PinFragment.newInstance())
-            }
-            return@OnNavigationItemSelectedListener true
-          }
+          true
         }
-        false
+        R.id.search -> {
+          childFragmentManager.commit {
+            replace(R.id.container, SearchFragment.newInstance())
+          }
+          true
+        }
+        R.id.pin -> {
+          childFragmentManager.commit {
+            replace(R.id.container, PinFragment.newInstance())
+          }
+          true
+        }
+        else -> {
+          false
+        }
       }
-    )
+    }
 
     if (childFragmentManager.findFragmentById(R.id.container) == null) {
       childFragmentManager.commit {
