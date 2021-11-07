@@ -175,7 +175,7 @@ fun RepoOverview(
     }
     Text(
       text = repo.name,
-      modifier = Modifier.padding(horizontal = 8.dp),
+      modifier = Modifier.padding(horizontal = 16.dp),
       style = MaterialTheme.typography.h5,
       fontWeight = FontWeight.Bold,
     )
@@ -219,10 +219,11 @@ fun RepoReadMe(
       modifier = Modifier
         .padding(horizontal = 16.dp)
         .padding(top = 16.dp),
-      text = "ReadMe",
+      text = "README.md",
       style = MaterialTheme.typography.h6,
       fontWeight = FontWeight.Bold,
     )
+    val markwon = LocalMarkwon.current
     AndroidView(
       modifier = Modifier
         .padding(horizontal = 16.dp)
@@ -231,14 +232,7 @@ fun RepoReadMe(
         TextView(context)
       },
       update = { textView ->
-        Markwon.builder(textView.context)
-          .usePlugins(
-            listOf(
-              CoilImagesPlugin.create(textView.context),
-              TablePlugin.create(textView.context),
-            )
-          )
-          .build()
+        markwon
           .setMarkdown(
             textView,
             String(Base64.decode(readMe.content, Base64.DEFAULT), StandardCharsets.UTF_8)
