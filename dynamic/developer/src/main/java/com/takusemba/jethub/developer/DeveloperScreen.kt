@@ -7,9 +7,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -18,10 +18,15 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Business
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Place
+import androidx.compose.material.icons.filled.RssFeed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -120,6 +125,7 @@ fun DeveloperHeader(
             .padding(horizontal = 16.dp),
           text = developer.name,
           style = MaterialTheme.typography.h5,
+          fontWeight = FontWeight.Bold,
         )
         Text(
           modifier = Modifier
@@ -140,68 +146,87 @@ fun DeveloperHeader(
       )
     }
     if (developer.company.isNotEmpty()) {
-      Row(
+      DeveloperHeaderIconItem(
         modifier = Modifier
-          .padding(top = 4.dp)
-          .padding(horizontal = 16.dp)
-      ) {
-        Icon(
-          modifier = Modifier.size(size = 24.dp),
-          imageVector = Icons.Default.Business,
-          contentDescription = null
-        )
-        Text(
-          modifier = Modifier.padding(start = 4.dp),
-          text = developer.company,
-          style = MaterialTheme.typography.body1,
-          fontWeight = FontWeight.Bold,
-        )
-      }
+          .padding(top = 8.dp)
+          .padding(horizontal = 16.dp),
+        icon = Icons.Default.Business,
+        text = developer.company,
+      )
     }
     if (developer.location.isNotEmpty()) {
-      Text(
-        text = developer.location,
+      DeveloperHeaderIconItem(
         modifier = Modifier
-          .padding(top = 4.dp)
+          .padding(top = 8.dp)
           .padding(horizontal = 16.dp),
-        style = MaterialTheme.typography.body1,
-        fontWeight = FontWeight.Bold,
+        icon = Icons.Default.Place,
+        text = developer.location,
       )
     }
     if (developer.blog.isNotEmpty()) {
-      Text(
-        text = developer.blog,
+      DeveloperHeaderIconItem(
         modifier = Modifier
-          .padding(top = 4.dp)
+          .padding(top = 8.dp)
           .padding(horizontal = 16.dp),
-        style = MaterialTheme.typography.body1,
-        fontWeight = FontWeight.Bold,
+        icon = Icons.Default.RssFeed,
+        text = developer.blog,
       )
     }
     if (developer.email.isNotEmpty()) {
-      Text(
-        text = developer.email,
+      DeveloperHeaderIconItem(
         modifier = Modifier
-          .padding(top = 4.dp)
+          .padding(top = 8.dp)
           .padding(horizontal = 16.dp),
-        style = MaterialTheme.typography.body1,
-        fontWeight = FontWeight.Bold,
+        icon = Icons.Default.Email,
+        text = developer.email,
       )
     }
-    Row(modifier = Modifier.padding(top = 16.dp)) {
+    Row(
+      modifier = Modifier
+        .padding(top = 8.dp)
+        .padding(horizontal = 16.dp),
+    ) {
+      Icon(
+        modifier = Modifier.size(size = 18.dp),
+        imageVector = Icons.Default.Person,
+        contentDescription = null,
+        tint = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)
+      )
       Text(
-        modifier = Modifier.padding(start = 16.dp),
+        modifier = Modifier.padding(start = 4.dp),
         text = "${developer.followersCount} followers",
-        style = MaterialTheme.typography.body1,
+        style = MaterialTheme.typography.body2,
         fontWeight = FontWeight.Bold,
       )
       Text(
         text = "${developer.followingCount} following",
-        modifier = Modifier.padding(start = 8.dp, end = 16.dp),
-        style = MaterialTheme.typography.body1,
+        modifier = Modifier.padding(start = 4.dp),
+        style = MaterialTheme.typography.body2,
         fontWeight = FontWeight.Bold,
       )
     }
+  }
+}
+
+@Composable
+fun DeveloperHeaderIconItem(
+  modifier: Modifier,
+  icon: ImageVector,
+  text: String,
+) {
+  Row(modifier = modifier) {
+    Icon(
+      modifier = Modifier.size(size = 18.dp),
+      imageVector = icon,
+      contentDescription = null,
+      tint = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)
+    )
+    Text(
+      modifier = Modifier.padding(start = 4.dp),
+      text = text,
+      style = MaterialTheme.typography.body2,
+      fontWeight = FontWeight.Bold,
+    )
   }
 }
 
