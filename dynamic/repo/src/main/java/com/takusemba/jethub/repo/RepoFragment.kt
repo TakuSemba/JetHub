@@ -2,6 +2,7 @@ package com.takusemba.jethub.repo
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -11,12 +12,16 @@ import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.di.RepoAppModuleDependencies
 import dagger.hilt.android.EntryPointAccessors
+import io.noties.markwon.Markwon
 import javax.inject.Inject
 
 class RepoFragment : Fragment(R.layout.fragment_repo) {
 
   @Inject
   lateinit var repoViewModelProviderFactory: RepoViewModelProviderFactory
+
+  @Inject
+  lateinit var markwon: Markwon
 
   private val navigationViewModel: NavigationViewModel by activityViewModels()
   private val systemViewModel: SystemViewModel by activityViewModels()
@@ -26,6 +31,7 @@ class RepoFragment : Fragment(R.layout.fragment_repo) {
     super.onCreate(savedInstanceState)
     DaggerRepoComponent.builder()
       .fragment(this)
+      .repoModule(RepoModule())
       .appDependencies(
         EntryPointAccessors.fromApplication(
           requireContext().applicationContext,
@@ -41,7 +47,11 @@ class RepoFragment : Fragment(R.layout.fragment_repo) {
 
     view.findViewById<ComposeView>(R.id.compose_view).setContent {
       JethubTheme(systemViewModel.isNightMode()) {
-        RepoScreen(repoViewModel, navigationViewModel)
+        CompositionLocalProvider(
+          LocalMarkwon provides markwon,
+        ) {
+          RepoScreen(repoViewModel, navigationViewModel)
+        }
       }
     }
   }
