@@ -53,9 +53,7 @@ The details can be learned from [here](https://developer.android.com/guide/app-b
 
 ## Architecture
 
-This app uses MVVM architecture and follows the guildline shown [here](https://developer.android.com/jetpack/docs/guide).
-
-This is also a single-activity application. All screen transitions are done by [Navigation](https://developer.android.com/guide/navigation?hl=ja).
+This app is a single-activity application and uses MVVM architecture and follows the guildline shown [here](https://developer.android.com/jetpack/docs/guide).
 
 ```kt
 //--- Activity / Fragments / Compose ---//
@@ -63,9 +61,7 @@ This is also a single-activity application. All screen transitions are done by [
 lifecycleScope.launch {
   viewModel.uiState
     .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-    .collect { repositories ->
-      // do something
-    }
+    .collect { data -> /* do something */ }
 }
 
 val uiState by repoViewModel.uiState.collectAsState()
@@ -79,7 +75,6 @@ repository.getData() // get data from API and/or DB
 
 api.getData() // get data from API
 db.getData() // get data from DB
-
 ```
 
 <br/>
