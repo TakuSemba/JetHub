@@ -11,11 +11,9 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Business
 import androidx.compose.material.icons.filled.Email
@@ -27,12 +25,13 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import coil.transform.RoundedCornersTransformation
+import com.takusemba.jethub.base.ui.component.BackArrowIconButton
+import com.takusemba.jethub.base.ui.component.TopBar
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.model.Developer
 
@@ -60,17 +59,8 @@ fun DeveloperScreen(
 
 @Composable
 fun DeveloperTopBar(onBackPressed: () -> Unit) {
-  TopAppBar(
-    title = {},
-    navigationIcon = {
-      IconButton(onClick = onBackPressed) {
-        Icon(
-          painter = painterResource(R.drawable.ic_back),
-          contentDescription = null
-        )
-      }
-    },
-    backgroundColor = MaterialTheme.colors.surface,
+  TopBar(
+    navigationIcon = { BackArrowIconButton(onBackPressed = onBackPressed) },
     elevation = 0.dp,
   )
 }
