@@ -83,16 +83,18 @@ fun DeveloperBody(
   Column(
     modifier = modifier.verticalScroll(rememberScrollState())
   ) {
-    DeveloperHeader(
+    DeveloperProfile(
       modifier = Modifier.fillMaxWidth(),
       developer = uiState.developer
     )
-    DeveloperReadMe()
+    DeveloperReadMe(
+      modifier = Modifier.fillMaxWidth(),
+    )
   }
 }
 
 @Composable
-fun DeveloperHeader(
+fun DeveloperProfile(
   modifier: Modifier,
   developer: Developer
 ) {
@@ -146,7 +148,7 @@ fun DeveloperHeader(
       )
     }
     if (developer.company.isNotEmpty()) {
-      DeveloperHeaderIconItem(
+      DeveloperProfileIconItem(
         modifier = Modifier
           .padding(top = 8.dp)
           .padding(horizontal = 16.dp),
@@ -155,7 +157,7 @@ fun DeveloperHeader(
       )
     }
     if (developer.location.isNotEmpty()) {
-      DeveloperHeaderIconItem(
+      DeveloperProfileIconItem(
         modifier = Modifier
           .padding(top = 8.dp)
           .padding(horizontal = 16.dp),
@@ -164,7 +166,7 @@ fun DeveloperHeader(
       )
     }
     if (developer.blog.isNotEmpty()) {
-      DeveloperHeaderIconItem(
+      DeveloperProfileIconItem(
         modifier = Modifier
           .padding(top = 8.dp)
           .padding(horizontal = 16.dp),
@@ -173,7 +175,7 @@ fun DeveloperHeader(
       )
     }
     if (developer.email.isNotEmpty()) {
-      DeveloperHeaderIconItem(
+      DeveloperProfileIconItem(
         modifier = Modifier
           .padding(top = 8.dp)
           .padding(horizontal = 16.dp),
@@ -181,35 +183,18 @@ fun DeveloperHeader(
         text = developer.email,
       )
     }
-    Row(
+    DeveloperProfileIconItem(
       modifier = Modifier
         .padding(top = 8.dp)
         .padding(horizontal = 16.dp),
-    ) {
-      Icon(
-        modifier = Modifier.size(size = 18.dp),
-        imageVector = Icons.Default.Person,
-        contentDescription = null,
-        tint = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)
-      )
-      Text(
-        modifier = Modifier.padding(start = 4.dp),
-        text = "${developer.followersCount} followers",
-        style = MaterialTheme.typography.body2,
-        fontWeight = FontWeight.Bold,
-      )
-      Text(
-        text = "${developer.followingCount} following",
-        modifier = Modifier.padding(start = 4.dp),
-        style = MaterialTheme.typography.body2,
-        fontWeight = FontWeight.Bold,
-      )
-    }
+      icon = Icons.Default.Person,
+      text = "${developer.followersCount} followers ${developer.followingCount} following",
+    )
   }
 }
 
 @Composable
-fun DeveloperHeaderIconItem(
+fun DeveloperProfileIconItem(
   modifier: Modifier,
   icon: ImageVector,
   text: String,
@@ -231,9 +216,12 @@ fun DeveloperHeaderIconItem(
 }
 
 @Composable
-fun DeveloperReadMe() {
-  Column(modifier = Modifier.padding(top = 16.dp, bottom = 16.dp)) {
+fun DeveloperReadMe(
+  modifier: Modifier
+) {
+  Column(modifier = modifier) {
     Text(
+      modifier = Modifier.padding(vertical = 16.dp, horizontal = 16.dp),
       text = "show more details here.",
       textAlign = TextAlign.Center,
       style = MaterialTheme.typography.h5,
