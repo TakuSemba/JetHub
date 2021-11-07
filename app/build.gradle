@@ -5,7 +5,6 @@ apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'dagger.hilt.android.plugin'
 apply from: '../depgraph.gradle'
 apply from: '../deps_shared.gradle'
-apply from: '../deps_compose.gradle'
 apply from: '../deps_test.gradle'
 apply from: '../deps_android_test.gradle'
 apply from: '../ktlint.gradle'
@@ -37,11 +36,6 @@ android {
   }
   buildFeatures {
     viewBinding true
-    compose true
-  }
-  composeOptions {
-    kotlinCompilerVersion versions.kotlin
-    kotlinCompilerExtensionVersion versions.compose
   }
   dynamicFeatures = [':dynamic:repo', ':dynamic:developer']
 }

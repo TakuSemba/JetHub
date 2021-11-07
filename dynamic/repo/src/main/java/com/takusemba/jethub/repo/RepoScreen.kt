@@ -20,12 +20,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import coil.transform.RoundedCornersTransformation
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
-import com.takusemba.jethub.compose.JethubTheme
 import com.takusemba.jethub.model.Owner
 import com.takusemba.jethub.model.Repo
 
@@ -155,12 +153,3 @@ fun GoToDeveloperButton(developerButtonClicked: () -> Unit) {
     }
   }
 }
-
-@Preview
-@Composable
-fun PreviewRepoScreenBody() {
-  JethubTheme(darkTheme = false) {
-    GoToDeveloperButton {}
-  }
-}
-

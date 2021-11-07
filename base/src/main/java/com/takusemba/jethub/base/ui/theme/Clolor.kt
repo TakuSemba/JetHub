@@ -1,4 +1,4 @@
-package com.takusemba.jethub.compose
+package com.takusemba.jethub.base.ui.theme
 
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
