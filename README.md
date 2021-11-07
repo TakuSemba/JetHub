@@ -8,9 +8,9 @@ Android Sample App using Github API and Jetpack Component.</br>
 
 <br/>
 
-<img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/screen.gif" align="right" width="280">
-
 ## What's JetHub? :rocket:
+
+<img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/screen.gif" align="right" width="280">
 
 JetHub is a sample app using Github API and Jetpack components.
 
@@ -32,9 +32,10 @@ The purpose of this project is to try new Android technologies and learn how it 
 <br/>
 <br/>
 
-<img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/modules.png" align="left" width="380">
 
 ## Multi Module / Dynamic Feature Module
+
+<img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/modules.png" align="left" width="380">
 
 This project consists of multiple modules and some of them are provided as Dynamic Feature Module.
 
@@ -48,10 +49,12 @@ This project consists of multiple modules and some of them are provided as Dynam
 The details can be learned from [here](https://developer.android.com/guide/app-bundle/dynamic-delivery).
 
 <br/>
-
-<img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/architecture.png" align="right" width="360">
+<br/>
+<br/>
 
 ## Architecture
+
+<img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/architecture.png" align="right" width="360">
 
 This app is a single-activity application and uses MVVM architecture and follows the guildline shown [here](https://developer.android.com/jetpack/docs/guide).
 
