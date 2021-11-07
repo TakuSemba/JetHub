@@ -47,8 +47,7 @@ This project consists of multiple modules and some of them are provided as Dynam
 
 **Dynamic Feature Module**
 
-`:repo`, `:developer` are dynamic feature modules. These are not included in base.apk and require user to download one on demand.
-The details can be learned from [here](https://developer.android.com/guide/app-bundle/dynamic-delivery).
+`:repo`, `:developer` are [dynamic feature modules](https://developer.android.com/guide/app-bundle/dynamic-delivery). These are not included in base.apk and require user to download one on demand.
 
 <br/>
 
