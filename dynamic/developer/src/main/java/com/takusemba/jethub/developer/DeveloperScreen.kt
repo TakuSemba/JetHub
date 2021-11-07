@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import coil.transform.RoundedCornersTransformation
 import com.takusemba.jethub.base.ui.component.BackArrowIconButton
+import com.takusemba.jethub.base.ui.component.ProgressView
 import com.takusemba.jethub.base.ui.component.TopBar
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.model.Developer
@@ -55,6 +56,10 @@ fun DeveloperScreen(
       )
     }
   )
+
+  if (uiState.isLoading) {
+    ProgressView()
+  }
 }
 
 @Composable

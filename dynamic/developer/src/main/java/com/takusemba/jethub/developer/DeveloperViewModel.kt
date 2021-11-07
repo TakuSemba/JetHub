@@ -23,10 +23,12 @@ class DeveloperViewModel @Inject constructor(
   init {
     viewModelScope.launch {
       runCatching {
+        _uiState.value = _uiState.value.copy(isLoading = true)
         developerRepository.getDeveloper(name)
       }.onSuccess { developer ->
-        _uiState.value = _uiState.value.copy(developer = developer)
+        _uiState.value = _uiState.value.copy(developer = developer, isLoading = false)
       }.onFailure { error ->
+        _uiState.value = _uiState.value.copy(isLoading = false)
         errorHandler.handleError(error)
       }
     }
