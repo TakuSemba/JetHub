@@ -107,4 +107,42 @@ class RepoApiClientTest {
       assertThat(repo.updatedAt.toString()).isEqualTo("2019-01-03T07:43:11")
     }
   }
+
+  @Test
+  fun `get readMe`() {
+    runBlocking {
+      val json =
+        """
+          {
+            "type": "file",
+            "encoding": "base64",
+            "size": 5362,
+            "name": "README.md",
+            "path": "README.md",
+            "content": "encoded content",
+            "sha": "3d21ec53a331a6f037a91c368710b99387d012c1",
+            "url": "https://api.github.com/repos/octokit/octokit.rb/contents/README.md",
+            "git_url": "https://api.github.com/repos/octokit/octokit.rb/git/blobs/3d21ec53a331a6f037a91c368710b99387d012c1",
+            "html_url": "https://github.com/octokit/octokit.rb/blob/master/README.md",
+            "download_url": "https://raw.githubusercontent.com/octokit/octokit.rb/master/README.md",
+            "_links": {
+              "git": "https://api.github.com/repos/octokit/octokit.rb/git/blobs/3d21ec53a331a6f037a91c368710b99387d012c1",
+              "self": "https://api.github.com/repos/octokit/octokit.rb/contents/README.md",
+              "html": "https://github.com/octokit/octokit.rb/blob/master/README.md"
+            }
+          }
+        """.trimIndent()
+
+      mockWebServer.enqueue(MockResponse().setResponseCode(200).setBody(json))
+
+      val readMe = client.getReadMe("octokit", "octokit.rb")
+      assertThat(readMe.name).isEqualTo("README.md")
+      assertThat(readMe.path).isEqualTo("README.md")
+      assertThat(readMe.content).isEqualTo("encoded content")
+      assertThat(readMe.url).isEqualTo("https://api.github.com/repos/octokit/octokit.rb/contents/README.md")
+      assertThat(readMe.gitUrl).isEqualTo("https://api.github.com/repos/octokit/octokit.rb/git/blobs/3d21ec53a331a6f037a91c368710b99387d012c1")
+      assertThat(readMe.htmlUrl).isEqualTo("https://github.com/octokit/octokit.rb/blob/master/README.md")
+      assertThat(readMe.downloadUrl).isEqualTo("https://raw.githubusercontent.com/octokit/octokit.rb/master/README.md")
+    }
+  }
 }

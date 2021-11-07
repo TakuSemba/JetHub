@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.base.ErrorHandler
 import com.takusemba.jethub.repository.RepoRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -25,9 +26,15 @@ class RepoViewModel @Inject constructor(
     viewModelScope.launch {
       runCatching {
         _uiState.value = _uiState.value.copy(isLoading = true)
-        repoRepository.getRepo(owner, repo)
-      }.onSuccess { repo ->
-        _uiState.value = _uiState.value.copy(repo = repo, isLoading = false)
+        val getRepo = async { repoRepository.getRepo(owner, repo) }
+        val getReadMe = async { repoRepository.getReadMe(owner, repo) }
+        Pair(getRepo.await(), getReadMe.await())
+      }.onSuccess { (repo, readMe) ->
+        _uiState.value = _uiState.value.copy(
+          repo = repo,
+          readMe = readMe,
+          isLoading = false
+        )
       }.onFailure { error ->
         _uiState.value = _uiState.value.copy(isLoading = false)
         errorHandler.handleError(error)
