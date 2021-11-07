@@ -3,6 +3,7 @@ package com.takusemba.jethub.repo
 import android.util.Base64
 import android.widget.TextView
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -26,6 +28,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import coil.compose.rememberImagePainter
@@ -49,12 +52,20 @@ fun RepoScreen(
 ) {
   val uiState by repoViewModel.uiState.collectAsState()
 
+  val scrollState = rememberScrollState()
+
   Scaffold(
-    topBar = { RepoTopBar(onBackPressed = { navigationViewModel.popBackStack() }) },
+    topBar = {
+      RepoTopBar(
+        onBackPressed = { navigationViewModel.popBackStack() },
+        elevation = if (scrollState.value == 0) 0.dp else AppBarDefaults.TopAppBarElevation
+      )
+    },
     content = { paddingValues ->
       RepoBody(
         modifier = Modifier.padding(paddingValues),
         uiState = uiState,
+        scrollState = scrollState,
         onOwnerClicked = { owner -> navigationViewModel.openDeveloper(owner.login) }
       )
     }
@@ -66,10 +77,13 @@ fun RepoScreen(
 }
 
 @Composable
-fun RepoTopBar(onBackPressed: () -> Unit) {
+fun RepoTopBar(
+  onBackPressed: () -> Unit,
+  elevation: Dp,
+) {
   TopBar(
     navigationIcon = { BackArrowIconButton(onBackPressed = onBackPressed) },
-    elevation = 0.dp,
+    elevation = elevation,
   )
 }
 
@@ -77,9 +91,10 @@ fun RepoTopBar(onBackPressed: () -> Unit) {
 fun RepoBody(
   modifier: Modifier,
   uiState: RepoUiState,
+  scrollState: ScrollState,
   onOwnerClicked: (owner: Owner) -> Unit,
 ) {
-  Column(modifier = modifier.verticalScroll(rememberScrollState())) {
+  Column(modifier = modifier.verticalScroll(scrollState)) {
     RepoOverview(
       modifier = Modifier.fillMaxWidth(),
       repo = uiState.repo,

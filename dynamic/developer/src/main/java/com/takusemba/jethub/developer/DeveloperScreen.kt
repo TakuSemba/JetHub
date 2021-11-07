@@ -1,6 +1,7 @@
 package com.takusemba.jethub.developer
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -26,7 +28,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import coil.transform.RoundedCornersTransformation
@@ -43,14 +45,20 @@ fun DeveloperScreen(
 ) {
   val uiState by developerViewModel.uiState.collectAsState()
 
+  val scrollState = rememberScrollState()
+
   Scaffold(
     topBar = {
-      DeveloperTopBar(onBackPressed = { navigationViewModel.popBackStack() })
+      DeveloperTopBar(
+        onBackPressed = { navigationViewModel.popBackStack() },
+        elevation = if (scrollState.value == 0) 0.dp else AppBarDefaults.TopAppBarElevation
+      )
     },
     content = { paddingValues ->
       DeveloperBody(
         modifier = Modifier.padding(paddingValues),
         uiState = uiState,
+        scrollState = scrollState,
       )
     }
   )
@@ -61,20 +69,24 @@ fun DeveloperScreen(
 }
 
 @Composable
-fun DeveloperTopBar(onBackPressed: () -> Unit) {
+fun DeveloperTopBar(
+  onBackPressed: () -> Unit,
+  elevation: Dp,
+) {
   TopBar(
     navigationIcon = { BackArrowIconButton(onBackPressed = onBackPressed) },
-    elevation = 0.dp,
+    elevation = elevation,
   )
 }
 
 @Composable
 fun DeveloperBody(
   modifier: Modifier,
-  uiState: DeveloperUiState
+  uiState: DeveloperUiState,
+  scrollState: ScrollState,
 ) {
   Column(
-    modifier = modifier.verticalScroll(rememberScrollState())
+    modifier = modifier.verticalScroll(scrollState)
   ) {
     DeveloperProfile(
       modifier = Modifier.fillMaxWidth(),
