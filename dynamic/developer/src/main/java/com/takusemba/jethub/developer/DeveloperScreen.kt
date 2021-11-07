@@ -80,9 +80,6 @@ fun DeveloperBody(
       modifier = Modifier.fillMaxWidth(),
       developer = uiState.developer
     )
-    DeveloperReadMe(
-      modifier = Modifier.fillMaxWidth(),
-    )
   }
 }
 
@@ -204,21 +201,6 @@ fun DeveloperProfileIconItem(
       text = text,
       style = MaterialTheme.typography.body2,
       fontWeight = FontWeight.Bold,
-    )
-  }
-}
-
-@Composable
-fun DeveloperReadMe(
-  modifier: Modifier
-) {
-  Column(modifier = modifier) {
-    Text(
-      modifier = Modifier.padding(vertical = 16.dp, horizontal = 16.dp),
-      text = "show more details here.",
-      textAlign = TextAlign.Center,
-      style = MaterialTheme.typography.h5,
-      color = MaterialTheme.colors.onSurface
     )
   }
 }
