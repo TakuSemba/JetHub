@@ -15,21 +15,16 @@ import com.takusemba.jethub.ui.activity.MainActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
-import okhttp3.OkHttpClient
 import org.hamcrest.CoreMatchers.allOf
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import javax.inject.Inject
 
 @HiltAndroidTest
 @UninstallModules(NetworkModule::class, DatabaseModule::class)
 @RunWith(AndroidJUnit4::class)
 class MainTabFragmentTest {
-
-  @Inject
-  lateinit var okHttpClient: OkHttpClient
 
   @get:Rule(order = 0)
   var hiltRule = HiltAndroidRule(this)
