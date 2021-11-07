@@ -6,6 +6,9 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideIn
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.clickable
@@ -92,8 +95,8 @@ fun RepoTopBar(
     title = {
       AnimatedVisibility(
         visible = 200 < scrollState.value,
-        enter = fadeIn(),
-        exit = fadeOut()
+        enter = fadeIn() + slideInVertically(initialOffsetY =  { it / 2 }),
+        exit = fadeOut() + slideOutVertically(targetOffsetY =  { it / 2 })
       ) {
         Column(
           verticalArrangement = Arrangement.spacedBy(2.dp)
