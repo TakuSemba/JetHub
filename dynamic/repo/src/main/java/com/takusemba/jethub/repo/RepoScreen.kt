@@ -2,9 +2,14 @@ package com.takusemba.jethub.repo
 
 import android.util.Base64
 import android.widget.TextView
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -55,8 +60,9 @@ fun RepoScreen(
   Scaffold(
     topBar = {
       RepoTopBar(
-        onBackPressed = { navigationViewModel.popBackStack() },
+        uiState = uiState,
         scrollState = scrollState,
+        onBackPressed = { navigationViewModel.popBackStack() },
       )
     },
     content = { paddingValues ->
@@ -74,12 +80,35 @@ fun RepoScreen(
   }
 }
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun RepoTopBar(
-  onBackPressed: () -> Unit,
+  uiState: RepoUiState,
   scrollState: ScrollState,
+  onBackPressed: () -> Unit,
 ) {
   TopBar(
+    title = {
+      AnimatedVisibility(
+        visible = 200 < scrollState.value,
+        enter = fadeIn(),
+        exit = fadeOut()
+      ) {
+        Column(
+          verticalArrangement = Arrangement.spacedBy(2.dp)
+        ) {
+          Text(
+            text = uiState.repo.name,
+            style = MaterialTheme.typography.h6,
+            fontWeight = FontWeight.Bold,
+          )
+          Text(
+            text = uiState.repo.owner.login,
+            style = MaterialTheme.typography.subtitle2,
+          )
+        }
+      }
+    },
     navigationIcon = { BackArrowIconButton(onBackPressed = onBackPressed) },
     elevation = if (scrollState.value == 0) 0.dp else AppBarDefaults.TopAppBarElevation,
   )
