@@ -58,7 +58,7 @@ This app uses MVVM architecture and follows the guildline shown [here](https://d
 This is also a single-activity application. All screen transitions are done by [Navigation](https://developer.android.com/guide/navigation?hl=ja).
 
 ```kt
-//--- Activity / Fragments or Compose ---//
+//--- Activity / Fragments / Compose ---//
 
 lifecycleScope.launch {
   viewModel.uiState
