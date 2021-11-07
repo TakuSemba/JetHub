@@ -6,16 +6,16 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -23,6 +23,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import coil.transform.RoundedCornersTransformation
+import com.takusemba.jethub.base.ui.component.BackArrowIconButton
+import com.takusemba.jethub.base.ui.component.ProgressView
+import com.takusemba.jethub.base.ui.component.TopBar
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.model.Owner
 import com.takusemba.jethub.model.Repo
@@ -32,47 +35,42 @@ fun RepoScreen(
   repoViewModel: RepoViewModel,
   navigationViewModel: NavigationViewModel
 ) {
-  val repo = repoViewModel.repository.collectAsState()
+  val uiState by repoViewModel.uiState.collectAsState()
+
   Scaffold(
-    topBar = { RepoTopBar(navigationViewModel) },
-    content = {
+    topBar = { RepoTopBar(onBackPressed = { navigationViewModel.popBackStack() }) },
+    content = { paddingValues ->
       RepoContent(
-        repo = repo.value,
-        developerButtonClicked = { navigationViewModel.openDeveloper(repo.value.owner.login) }
+        modifier = Modifier.padding(paddingValues),
+        uiState = uiState,
       )
     }
   )
+
+  if (uiState.isLoading) {
+    ProgressView()
+  }
 }
 
 @Composable
-fun RepoTopBar(navigationViewModel: NavigationViewModel) {
-  TopAppBar(
-    title = {},
-    navigationIcon = {
-      IconButton(onClick = { navigationViewModel.popBackStack() }) {
-        Icon(
-          painter = painterResource(R.drawable.ic_back),
-          contentDescription = "back"
-        )
-      }
-    },
-    backgroundColor = MaterialTheme.colors.surface
+fun RepoTopBar(onBackPressed: () -> Unit) {
+  TopBar(
+    navigationIcon = { BackArrowIconButton(onBackPressed = onBackPressed) },
+    elevation = 0.dp,
   )
 }
 
 @Composable
 fun RepoContent(
-  repo: Repo,
-  developerButtonClicked: () -> Unit
+  modifier: Modifier,
+  uiState: RepoUiState,
 ) {
-  LazyColumn {
-    item {
-      Developer(owner = repo.owner)
-      RepoOverview(repo = repo)
-      GoToDeveloperButton(
-        developerButtonClicked = developerButtonClicked
-      )
-    }
+  Column(modifier = modifier.verticalScroll(rememberScrollState())) {
+    Developer(owner = uiState.repo.owner)
+    RepoOverview(repo = uiState.repo)
+    GoToDeveloperButton(
+      developerButtonClicked = { }
+    )
   }
 }
 

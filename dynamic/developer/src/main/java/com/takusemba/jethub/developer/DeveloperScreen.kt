@@ -45,14 +45,12 @@ fun DeveloperScreen(
 
   Scaffold(
     topBar = {
-      DeveloperTopBar(
-        onBackPressed = { navigationViewModel.popBackStack() }
-      )
+      DeveloperTopBar(onBackPressed = { navigationViewModel.popBackStack() })
     },
     content = { paddingValues ->
       DeveloperBody(
         modifier = Modifier.padding(paddingValues),
-        uiState = uiState
+        uiState = uiState,
       )
     }
   )
