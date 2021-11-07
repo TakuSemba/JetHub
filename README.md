@@ -80,6 +80,7 @@ db.getData() // get data from DB
 ```
 
 <br/>
+<br/>
 
 ## :construction: Jetpack Compose (Under Development) :construction:
 
