@@ -39,6 +39,7 @@ import coil.transform.RoundedCornersTransformation
 import com.takusemba.jethub.base.ui.component.BackArrowIconButton
 import com.takusemba.jethub.base.ui.component.ProgressView
 import com.takusemba.jethub.base.ui.component.TopBar
+import com.takusemba.jethub.base.util.collectAsLifecycleAwareState
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.model.Owner
 import com.takusemba.jethub.model.ReadMe
@@ -53,7 +54,7 @@ fun RepoScreen(
   repoViewModel: RepoViewModel,
   navigationViewModel: NavigationViewModel
 ) {
-  val uiState by repoViewModel.uiState.collectAsState()
+  val uiState by repoViewModel.uiState.collectAsLifecycleAwareState()
 
   val scrollState = rememberScrollState()
 

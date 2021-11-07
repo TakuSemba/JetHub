@@ -34,6 +34,7 @@ import coil.transform.RoundedCornersTransformation
 import com.takusemba.jethub.base.ui.component.BackArrowIconButton
 import com.takusemba.jethub.base.ui.component.ProgressView
 import com.takusemba.jethub.base.ui.component.TopBar
+import com.takusemba.jethub.base.util.collectAsLifecycleAwareState
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.model.Developer
 
@@ -42,7 +43,7 @@ fun DeveloperScreen(
   developerViewModel: DeveloperViewModel,
   navigationViewModel: NavigationViewModel
 ) {
-  val uiState by developerViewModel.uiState.collectAsState()
+  val uiState by developerViewModel.uiState.collectAsLifecycleAwareState()
 
   val scrollState = rememberScrollState()
 
