@@ -1,6 +1,9 @@
 package com.takusemba.jethub.repo
 
+import android.util.Base64
+import android.widget.TextView
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -8,7 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -23,15 +25,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
 import coil.compose.rememberImagePainter
 import coil.transform.RoundedCornersTransformation
 import com.takusemba.jethub.base.ui.component.BackArrowIconButton
 import com.takusemba.jethub.base.ui.component.ProgressView
 import com.takusemba.jethub.base.ui.component.TopBar
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
+import com.takusemba.jethub.model.ReadMe
 import com.takusemba.jethub.model.Repo
+import io.noties.markwon.Markwon
+import io.noties.markwon.ext.tables.TablePlugin
+import io.noties.markwon.image.coil.CoilImagesPlugin
+import java.nio.charset.StandardCharsets
 
 @Composable
 fun RepoScreen(
@@ -73,6 +80,10 @@ fun RepoBody(
       modifier = Modifier.fillMaxWidth(),
       repo = uiState.repo,
     )
+    RepoReadMe(
+      modifier = Modifier.fillMaxWidth(),
+      readMe = uiState.readMe,
+    )
   }
 }
 
@@ -109,7 +120,7 @@ fun RepoOverview(
     Text(
       text = repo.name,
       modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-      style = MaterialTheme.typography.h4,
+      style = MaterialTheme.typography.h5,
       fontWeight = FontWeight.Bold,
     )
     Text(
@@ -143,22 +154,32 @@ fun RepoOverview(
 }
 
 @Composable
-fun GoToDeveloperButton(developerButtonClicked: () -> Unit) {
-  Column(modifier = Modifier.padding(16.dp)) {
-    Text(
-      text = "show README.md here.",
-      textAlign = TextAlign.Center,
-      style = MaterialTheme.typography.h5,
-      color = MaterialTheme.colors.onSurface
+fun RepoReadMe(
+  modifier: Modifier,
+  readMe: ReadMe,
+) {
+  Box(modifier = modifier) {
+    AndroidView(
+      modifier = Modifier
+        .padding(horizontal = 16.dp)
+        .padding(top = 8.dp, bottom = 16.dp),
+      factory = { context ->
+        TextView(context)
+      },
+      update = { textView ->
+        Markwon.builder(textView.context)
+          .usePlugins(
+            listOf(
+              CoilImagesPlugin.create(textView.context),
+              TablePlugin.create(textView.context),
+            )
+          )
+          .build()
+          .setMarkdown(
+            textView,
+            String(Base64.decode(readMe.content, Base64.DEFAULT), StandardCharsets.UTF_8)
+          )
+      }
     )
-    Button(
-      onClick = developerButtonClicked,
-      modifier = Modifier.padding(top = 16.dp)
-    ) {
-      Text(
-        text = "Go to Developer Fragment",
-        modifier = Modifier.padding(8.dp)
-      )
-    }
   }
 }

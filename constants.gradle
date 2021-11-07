@@ -22,6 +22,7 @@ project.ext {
       androidHilt: "1.0.0",
       retrofit: "2.9.0",
       okhttp: "4.9.0",
+      markdown: "4.6.2",
   ]
 
   deps = [
@@ -97,6 +98,11 @@ project.ext {
       // image
       coil: "io.coil-kt:coil:1.4.0",
       coilCompose: "io.coil-kt:coil-compose:1.4.0",
+
+      // markdown
+      markdownCore: "io.noties.markwon:core:${versions.markdown}",
+      markdownTable: "io.noties.markwon:ext-tables:${versions.markdown}",
+      markdownImage: "io.noties.markwon:image-coil:${versions.markdown}",
 
       // test
       junit: "junit:junit:4.13.2",

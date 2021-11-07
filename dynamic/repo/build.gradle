@@ -44,4 +44,8 @@ dependencies {
   // module
   implementation(project(':app'))
   implementation(project(':base'))
+
+  implementation deps.markdownCore
+  implementation deps.markdownTable
+  implementation deps.markdownImage
 }
