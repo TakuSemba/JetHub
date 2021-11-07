@@ -6,10 +6,10 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import com.takusemba.jethub.base.ui.theme.JethubTheme
 import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.di.RepoModuleDependencies
-import com.takusemba.jethub.ui.theme.JethubTheme
 import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
