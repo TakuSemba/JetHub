@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.AppBarDefaults
@@ -112,17 +113,19 @@ fun PinRepoItems(
   onRepoClicked: (repo: Repo) -> Unit,
   onRepoLongClicked: (repo: Repo) -> Unit,
 ) {
-  Column(
+  LazyColumn(
     modifier = modifier.verticalScroll(scrollState)
   ) {
     for (pinnedRepo in uiState.pinnedRepos) {
-      RepoCell(
-        modifier = Modifier.fillMaxWidth(),
-        repo = pinnedRepo,
-        onClicked = onRepoClicked,
-        onLongClicked = onRepoLongClicked,
-      )
-      Divider()
+      item {
+        RepoCell(
+          modifier = Modifier.fillMaxWidth(),
+          repo = pinnedRepo,
+          onClicked = onRepoClicked,
+          onLongClicked = onRepoLongClicked,
+        )
+        Divider()
+      }
     }
   }
 }
