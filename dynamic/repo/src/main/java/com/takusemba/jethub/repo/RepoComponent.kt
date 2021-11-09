@@ -4,7 +4,6 @@ import androidx.fragment.app.Fragment
 import com.takusemba.jethub.di.RepoAppModuleDependencies
 import dagger.BindsInstance
 import dagger.Component
-import dagger.Module
 
 /**
  * Hilt does not support injection for Dynamic Feature Module.
