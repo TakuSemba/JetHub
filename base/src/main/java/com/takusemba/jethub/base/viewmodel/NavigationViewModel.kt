@@ -32,7 +32,7 @@ class NavigationViewModel @Inject constructor() : ViewModel() {
 
   fun popBackStack() {
     viewModelScope.launch {
-      mutableDirection.tryEmit(Direction.Pop)
+      mutableDirection.emit(Direction.Pop)
     }
   }
 }
