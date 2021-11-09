@@ -7,9 +7,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.takusemba.jethub.database.entity.RepositoryEntity
 
-/**
- * Repository Dao
- */
 @Dao
 abstract class RepositoryDao {
 

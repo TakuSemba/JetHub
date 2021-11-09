@@ -5,9 +5,6 @@ import androidx.room.RoomDatabase
 import com.takusemba.jethub.database.dao.RepositoryDao
 import com.takusemba.jethub.database.entity.RepositoryEntity
 
-/**
- * App Database
- */
 @Database(entities = [RepositoryEntity::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 

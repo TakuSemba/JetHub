@@ -15,9 +15,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-/**
- * [ViewModel] to store and manage Feed data.
- */
 @HiltViewModel
 class FeedViewModel @Inject constructor(
   private val searchRepository: SearchRepository,

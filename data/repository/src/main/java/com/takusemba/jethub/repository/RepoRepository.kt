@@ -7,9 +7,6 @@ import com.takusemba.jethub.model.Repo
 import javax.inject.Inject
 import javax.inject.Singleton
 
-/**
- * Repository for Repo
- */
 @Singleton
 class RepoRepository @Inject constructor(
   private val repoDb: RepoDb,

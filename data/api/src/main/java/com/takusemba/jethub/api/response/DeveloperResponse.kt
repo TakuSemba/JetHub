@@ -4,9 +4,6 @@ import com.takusemba.jethub.model.Developer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-/**
- * Developer response data.
- */
 @Serializable
 class DeveloperResponse {
 

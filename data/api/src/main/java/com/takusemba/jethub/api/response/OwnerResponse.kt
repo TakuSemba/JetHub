@@ -4,9 +4,6 @@ import com.takusemba.jethub.model.Owner
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-/**
- * Owner response data.
- */
 @Serializable
 class OwnerResponse {
 

@@ -7,9 +7,6 @@ import java.time.LocalDateTime
 import javax.inject.Inject
 import javax.inject.Singleton
 
-/**
- * Repository for searching
- */
 @Singleton
 class SearchRepository @Inject constructor(
   private val searchApi: SearchApi

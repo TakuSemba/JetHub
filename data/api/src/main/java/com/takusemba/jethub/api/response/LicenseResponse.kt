@@ -4,9 +4,6 @@ import com.takusemba.jethub.model.License
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-/**
- * License response data.
- */
 @Serializable
 class LicenseResponse {
 

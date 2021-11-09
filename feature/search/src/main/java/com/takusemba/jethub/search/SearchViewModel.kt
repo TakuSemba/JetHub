@@ -13,9 +13,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-/**
- * [ViewModel] to store and manage searched repos data.
- */
 @HiltViewModel
 class SearchViewModel @Inject constructor(
   private val searchRepository: SearchRepository,

@@ -4,9 +4,6 @@ import com.takusemba.jethub.model.ReadMe
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-/**
- * ReadMe response data.
- */
 @Serializable
 class ReadMeResponse {
 

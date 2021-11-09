@@ -6,9 +6,6 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import java.time.LocalDateTime
 
-/**
- * Repository response data.
- */
 @Serializable
 class RepositoryResponse {
 

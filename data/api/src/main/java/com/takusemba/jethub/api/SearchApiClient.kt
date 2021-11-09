@@ -13,9 +13,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import java.time.LocalDateTime
 
-/**
- * Search API client
- */
 class SearchApiClient(retrofit: Retrofit) : SearchApi {
 
   interface Service {
