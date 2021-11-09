@@ -6,7 +6,7 @@ project.ext {
       packageName: "com.takusemba.jethub",
       compileSdkVersion: 31,
       targetSdkVersion: 31,
-      minSdkVersion: 21,
+      minSdkVersion: 23,
   ]
 
   versions = [
