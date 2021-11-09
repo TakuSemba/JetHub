@@ -20,7 +20,7 @@ class DeveloperViewModelProviderFactory @Inject constructor(
 ) : ViewModelProvider.NewInstanceFactory() {
 
   override fun <T : ViewModel> create(modelClass: Class<T>): T {
-    // val args = DeveloperFragmentArgs.fromBundle(fragment.requireArguments())
-    return DeveloperViewModel("args.name", developerRepository, errorHandler) as T
+    val args = DeveloperFragmentArgs.fromBundle(fragment.requireArguments())
+    return DeveloperViewModel(args.name, developerRepository, errorHandler) as T
   }
 }
