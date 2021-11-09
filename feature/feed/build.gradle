@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: "kotlin-kapt"
 apply plugin: 'dagger.hilt.android.plugin'
 apply from: '../../deps_shared.gradle'
+apply from: '../../deps_compose.gradle'
 apply from: '../../deps_test.gradle'
 apply from: '../../ktlint.gradle'
 
@@ -31,7 +32,11 @@ android {
     freeCompilerArgs = ["-Xopt-in=kotlin.RequiresOptIn"]
   }
   buildFeatures {
-    viewBinding true
+    compose true
+  }
+  composeOptions {
+    kotlinCompilerVersion versions.kotlin
+    kotlinCompilerExtensionVersion versions.compose
   }
 }
 
