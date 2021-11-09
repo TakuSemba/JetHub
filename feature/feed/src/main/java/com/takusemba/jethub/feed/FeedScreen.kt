@@ -24,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.takusemba.jethub.base.model.ColoredLanguage
 import com.takusemba.jethub.base.ui.component.NightModeIconButton
+import com.takusemba.jethub.base.ui.component.ProgressView
 import com.takusemba.jethub.base.ui.component.RepoCell
 import com.takusemba.jethub.base.ui.component.TopBar
 import com.takusemba.jethub.base.util.collectAsLifecycleAwareState
@@ -67,6 +68,10 @@ fun FeedScreen(
       )
     }
   )
+
+  if (uiState.isLoading) {
+    ProgressView()
+  }
 }
 
 @Composable
@@ -115,7 +120,7 @@ fun FeedTabs(
 ) {
   ScrollableTabRow(
     modifier = modifier.shadow(AppBarDefaults.TopAppBarElevation),
-    selectedTabIndex = selectedLanguage.ordinal,
+    selectedTabIndex = languages.indexOf(selectedLanguage),
     edgePadding = 0.dp,
     backgroundColor = MaterialTheme.colors.surface,
     contentColor = MaterialTheme.colors.primary,
