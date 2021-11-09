@@ -47,7 +47,6 @@ dependencies {
   // design/core
   api(deps.appCompat)
   api(deps.material)
-  api(deps.constraintLayout)
   api(deps.coreKtx)
   api(deps.activityKtx)
   api(deps.fragmentKtx)
