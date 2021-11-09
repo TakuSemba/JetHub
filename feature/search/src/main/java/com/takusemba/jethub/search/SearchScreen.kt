@@ -22,8 +22,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -39,6 +41,7 @@ import com.takusemba.jethub.base.viewmodel.SystemViewModel
 import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.model.Repo
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SearchScreen(
   searchViewModel: SearchViewModel,
@@ -49,7 +52,12 @@ fun SearchScreen(
   val uiState by searchViewModel.uiState.collectAsLifecycleAwareState()
 
   val context = LocalContext.current
+  val keyboardController = LocalSoftwareKeyboardController.current
   val listState = rememberLazyListState()
+
+  if (listState.isScrollInProgress) {
+    keyboardController?.hide()
+  }
 
   Scaffold(
     topBar = {
@@ -112,23 +120,20 @@ fun SearchBody(
   onQueryChanged: (query: String) -> Unit,
 ) {
   Box(modifier = modifier) {
-    if (uiState.repos.isEmpty()) {
-      if (!uiState.isLoading) {
-        SearchEmptyLayout(
-          modifier = Modifier.fillMaxSize(),
-          uiState = uiState,
-        )
-      }
-    } else {
-      SearchRepoItemsWithSearchBar(
-        modifier = Modifier.fillMaxWidth(),
+    if (uiState.repos.isEmpty() && !uiState.isLoading) {
+      SearchEmptyLayout(
+        modifier = Modifier.fillMaxSize(),
         uiState = uiState,
-        listState = listState,
-        onRepoClicked = onRepoClicked,
-        onRepoLongClicked = onRepoLongClicked,
-        onQueryChanged = onQueryChanged,
       )
     }
+    SearchRepoItemsWithSearchBar(
+      modifier = Modifier.fillMaxWidth(),
+      uiState = uiState,
+      listState = listState,
+      onRepoClicked = onRepoClicked,
+      onRepoLongClicked = onRepoLongClicked,
+      onQueryChanged = onQueryChanged,
+    )
   }
 }
 
@@ -153,6 +158,12 @@ fun SearchRepoItemsWithSearchBar(
           .fillMaxWidth()
           .background(MaterialTheme.colors.background),
         value = uiState.query,
+        leadingIcon = {
+          Image(
+            painter = painterResource(R.drawable.ic_search),
+            contentDescription = null,
+          )
+        },
         label = { Text(text = stringResource(id = R.string.hint_search)) },
         onValueChange = onQueryChanged,
         singleLine = true,
