@@ -50,6 +50,6 @@ class FeedViewModelTest {
 
     val viewModel = FeedViewModel(searchRepository, errorHandler)
 
-    assertThat(viewModel.hotReposMap.value["Kotlin"]).isEqualTo(repositories)
+    assertThat(viewModel.uiState.value.hotRepos["Kotlin"]).isEqualTo(repositories)
   }
 }

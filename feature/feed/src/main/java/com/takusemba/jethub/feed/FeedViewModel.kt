@@ -21,12 +21,13 @@ class FeedViewModel @Inject constructor(
   private val errorHandler: ErrorHandler
 ) : ViewModel() {
 
-  private val mutableHotReposMap = MutableStateFlow<Map<String, List<Repo>>>(emptyMap())
-  val hotReposMap: StateFlow<Map<String, List<Repo>>> = mutableHotReposMap
+  private val _uiState = MutableStateFlow(FeedUiState.EMPTY)
+  val uiState: StateFlow<FeedUiState> = _uiState
 
   init {
     viewModelScope.launch {
       runCatching {
+        _uiState.value = _uiState.value.copy(isLoading = true)
         mutableMapOf<String, List<Repo>>().also { map ->
           // https://medium.com/@elizarov/structured-concurrency-722d765aa952
           coroutineScope {
@@ -35,9 +36,10 @@ class FeedViewModel @Inject constructor(
             }.awaitAll()
           }
         }
-      }.onSuccess { map ->
-        mutableHotReposMap.value = map
+      }.onSuccess { hotRepos ->
+        _uiState.value = _uiState.value.copy(hotRepos = hotRepos, isLoading = false)
       }.onFailure { error ->
+        _uiState.value = _uiState.value.copy(isLoading = false)
         errorHandler.handleError(error)
       }
     }

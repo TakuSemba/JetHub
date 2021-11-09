@@ -54,11 +54,12 @@ class PinFragment : Fragment(R.layout.fragment_pin) {
     }
 
     lifecycleScope.launch {
-      userViewModel.pinedRepositories
+      userViewModel.uiState
         .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-        .collect { repositories ->
-          binding.emptyLayout.visibility = if (repositories.isEmpty()) View.VISIBLE else View.GONE
-          pinAdapter.submitList(repositories)
+        .collect { uiState ->
+          val repos = uiState.pinnedRepos
+          binding.emptyLayout.visibility = if (repos.isEmpty()) View.VISIBLE else View.GONE
+          pinAdapter.submitList(repos)
         }
     }
   }

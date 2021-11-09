@@ -3,7 +3,6 @@ package com.takusemba.jethub.search
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.takusemba.jethub.base.ErrorHandler
-import com.takusemba.jethub.model.Repo
 import com.takusemba.jethub.repository.SearchRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CancellationException
@@ -19,18 +18,20 @@ class SearchViewModel @Inject constructor(
   private val errorHandler: ErrorHandler
 ) : ViewModel() {
 
-  private val mutableSearchedRepos = MutableStateFlow<List<Repo>>(emptyList())
-  val searchedRepos: StateFlow<List<Repo>> = mutableSearchedRepos
+  private val _uiState = MutableStateFlow(SearchUiState.EMPTY)
+  val uiState: StateFlow<SearchUiState> = _uiState
 
   private var searchJob: Job? = null
 
   init {
     viewModelScope.launch {
       runCatching {
+        _uiState.value = _uiState.value.copy(isLoading = true)
         searchRepository.searchRepos("")
       }.onSuccess { repos ->
-        mutableSearchedRepos.value = repos
+        _uiState.value = _uiState.value.copy(repos = repos, isLoading = false)
       }.onFailure { error ->
+        _uiState.value = _uiState.value.copy(isLoading = false)
         errorHandler.handleError(error)
       }
     }
@@ -45,7 +46,7 @@ class SearchViewModel @Inject constructor(
       runCatching {
         searchRepository.searchRepos(query)
       }.onSuccess { repos ->
-        mutableSearchedRepos.value = repos
+        _uiState.value = _uiState.value.copy(repos = repos)
       }.onFailure { error ->
         if (error !is CancellationException) {
           errorHandler.handleError(error)

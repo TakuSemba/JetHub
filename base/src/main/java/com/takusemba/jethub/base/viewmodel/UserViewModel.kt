@@ -21,15 +21,15 @@ class UserViewModel @Inject constructor(
   private val errorHandler: ErrorHandler
 ) : ViewModel() {
 
-  private val mutablePinedRepositories: MutableStateFlow<List<Repo>> = MutableStateFlow(emptyList())
-  val pinedRepositories: StateFlow<List<Repo>> = mutablePinedRepositories
+  private val _uiState: MutableStateFlow<UserUiState> = MutableStateFlow(UserUiState.EMPTY)
+  val uiState: StateFlow<UserUiState> = _uiState
 
   init {
     viewModelScope.launch {
       runCatching {
         repoRepository.findAllPins()
       }.onSuccess { repos ->
-        mutablePinedRepositories.value = repos
+        _uiState.value = _uiState.value.copy(pinnedRepos = repos)
       }.onFailure { error ->
         errorHandler.handleError(error)
       }
@@ -40,10 +40,10 @@ class UserViewModel @Inject constructor(
     viewModelScope.launch {
       runCatching {
         repoRepository.pin(repo)
-        val repositories = mutablePinedRepositories.value.toMutableList()
+        val repositories = _uiState.value.pinnedRepos.toMutableList()
         repositories.apply { add(repo) }
       }.onSuccess { repos ->
-        mutablePinedRepositories.value = repos
+        _uiState.value = _uiState.value.copy(pinnedRepos = repos)
       }.onFailure { error ->
         errorHandler.handleError(error)
       }
@@ -54,10 +54,10 @@ class UserViewModel @Inject constructor(
     viewModelScope.launch {
       runCatching {
         repoRepository.unpin(repo)
-        val repositories = mutablePinedRepositories.value.toMutableList()
+        val repositories = _uiState.value.pinnedRepos.toMutableList()
         repositories.apply { remove(repo) }
       }.onSuccess { repos ->
-        mutablePinedRepositories.value = repos
+        _uiState.value = _uiState.value.copy(pinnedRepos = repos)
       }.onFailure { error ->
         errorHandler.handleError(error)
       }
@@ -65,6 +65,6 @@ class UserViewModel @Inject constructor(
   }
 
   fun isPinned(repo: Repo): Boolean {
-    return pinedRepositories.value.contains(repo)
+    return _uiState.value.pinnedRepos.contains(repo)
   }
 }

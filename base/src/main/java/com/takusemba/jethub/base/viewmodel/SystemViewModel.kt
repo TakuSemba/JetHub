@@ -9,16 +9,16 @@ import javax.inject.Inject
 @HiltViewModel
 class SystemViewModel @Inject constructor() : ViewModel() {
 
-  private val mutableIsNightMode: MutableStateFlow<Boolean> = MutableStateFlow(false)
-  val isNightMode: StateFlow<Boolean> get() = mutableIsNightMode
+  private val _uiState: MutableStateFlow<SystemUiState> = MutableStateFlow(SystemUiState.EMPTY)
+  val uiState: StateFlow<SystemUiState> = _uiState
 
   fun isNightMode(): Boolean {
-    return requireNotNull(isNightMode.value)
+    return requireNotNull(uiState.value.isNightMode)
   }
 
   fun setNightMode(isEnabled: Boolean) {
-    if (mutableIsNightMode.value != isEnabled) {
-      mutableIsNightMode.value = isEnabled
+    if (_uiState.value.isNightMode != isEnabled) {
+      _uiState.value = _uiState.value.copy(isNightMode = isEnabled)
     }
   }
 }

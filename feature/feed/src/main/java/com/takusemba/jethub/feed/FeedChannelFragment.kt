@@ -18,7 +18,6 @@ import com.takusemba.jethub.base.viewmodel.UserViewModel
 import com.takusemba.jethub.feed.databinding.FragmentFeedChannelBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -58,14 +57,17 @@ class FeedChannelFragment : Fragment(R.layout.fragment_feed_channel) {
     binding.recyclerView.layoutManager = linearLayoutManager
     binding.recyclerView.adapter = feedChannelAdapter
 
-    binding.progress.show()
     lifecycleScope.launch {
-      feedViewModel.hotReposMap
+      feedViewModel.uiState
         .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-        .map { map -> map[language] ?: emptyList() }
-        .collect { repositories ->
-          binding.progress.hide()
-          feedChannelAdapter.submitList(repositories)
+        .collect { uiState ->
+          val repos = uiState.hotRepos[language] ?: emptyList()
+          feedChannelAdapter.submitList(repos)
+          if (uiState.isLoading) {
+            binding.progress.show()
+          } else {
+            binding.progress.hide()
+          }
         }
     }
   }

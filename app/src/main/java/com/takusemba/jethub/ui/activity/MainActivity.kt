@@ -30,10 +30,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     super.onCreate(savedInstanceState)
 
     lifecycleScope.launch {
-      systemViewModel.isNightMode
+      systemViewModel.uiState
         .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-        .collect { isNightMode ->
-          val nightModeSetting = if (isNightMode) {
+        .collect { uiState ->
+          val nightModeSetting = if (uiState.isNightMode) {
             AppCompatDelegate.MODE_NIGHT_YES
           } else {
             AppCompatDelegate.MODE_NIGHT_NO

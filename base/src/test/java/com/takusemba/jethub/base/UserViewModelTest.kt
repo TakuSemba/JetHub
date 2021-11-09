@@ -52,7 +52,7 @@ class UserViewModelTest {
 
     val viewModel = UserViewModel(repoRepository, errorHandler)
 
-    assertThat(viewModel.pinedRepositories.value).isEqualTo(repositories)
+    assertThat(viewModel.uiState.value.pinnedRepos).isEqualTo(repositories)
   }
 
   @Test
@@ -71,7 +71,7 @@ class UserViewModelTest {
     val repoToBeAdded = createRepo(id = 4)
     viewModel.pin(repoToBeAdded)
 
-    assertThat(viewModel.pinedRepositories.value).isEqualTo(repositories + repoToBeAdded)
+    assertThat(viewModel.uiState.value.pinnedRepos).isEqualTo(repositories + repoToBeAdded)
   }
 
   @Test
@@ -90,6 +90,6 @@ class UserViewModelTest {
 
     viewModel.unpin(repoToBeRemoved)
 
-    assertThat(viewModel.pinedRepositories.value).isEqualTo(repositories - repoToBeRemoved)
+    assertThat(viewModel.uiState.value.pinnedRepos).isEqualTo(repositories - repoToBeRemoved)
   }
 }

@@ -13,7 +13,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -79,18 +78,23 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
       systemViewModel.setNightMode(!systemViewModel.isNightMode())
     }
 
-    // show progress only while the first fetch.
-    binding.progress.show()
     lifecycleScope.launch {
-      searchViewModel.searchedRepos
+      searchViewModel.uiState
         .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-        .collect { repositories ->
+        .collect { uiState ->
+          val repos = uiState.repos
           binding.progress.hide()
-          binding.emptyLayout.visibility = if (repositories.isEmpty()) View.VISIBLE else View.GONE
+          binding.emptyLayout.visibility = if (repos.isEmpty()) View.VISIBLE else View.GONE
           val inputWord = binding.searchViewInput.text.toString()
           val description = getString(R.string.empty_search_repositories_description, inputWord)
           binding.emptyDescription.text = description
-          searchAdapter.submitList(repositories)
+          searchAdapter.submitList(repos)
+
+          if (uiState.isLoading) {
+            binding.progress.show()
+          } else {
+            binding.progress.hide()
+          }
         }
     }
   }

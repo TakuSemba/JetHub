@@ -1,6 +1,5 @@
 package com.takusemba.jethub.search
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import com.takusemba.jethub.base.ErrorHandler
 import com.takusemba.jethub.model.Repo.Companion.createRepo
@@ -16,7 +15,6 @@ import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -52,7 +50,7 @@ class SearchViewModelTest {
 
     val viewModel = SearchViewModel(searchRepository, errorHandler)
 
-    assertThat(viewModel.searchedRepos.value).isEqualTo(repositories)
+    assertThat(viewModel.uiState.value.repos).isEqualTo(repositories)
   }
 
   @Test
@@ -69,6 +67,6 @@ class SearchViewModelTest {
 
     viewModel.search("something")
 
-    assertThat(viewModel.searchedRepos.value).isEqualTo(repositories)
+    assertThat(viewModel.uiState.value.repos).isEqualTo(repositories)
   }
 }
