@@ -7,11 +7,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import coil.transform.RoundedCornersTransformation
+import com.takusemba.jethub.base.R
 import com.takusemba.jethub.base.model.ColoredLanguage
 import com.takusemba.jethub.model.Owner
 import com.takusemba.jethub.model.Repo
@@ -61,13 +59,15 @@ fun RepoCell(
       text = repo.name,
       style = MaterialTheme.typography.h6,
     )
-    Text(
-      modifier = Modifier
-        .padding(top = 8.dp)
-        .padding(horizontal = 16.dp),
-      text = repo.description,
-      style = MaterialTheme.typography.body1,
-    )
+    if (repo.description.isNotBlank()) {
+      Text(
+        modifier = Modifier
+          .padding(top = 8.dp)
+          .padding(horizontal = 16.dp),
+        text = repo.description,
+        style = MaterialTheme.typography.body1,
+      )
+    }
     Row(
       modifier = Modifier
         .padding(bottom = 8.dp)
@@ -78,7 +78,7 @@ fun RepoCell(
       Image(
         modifier = Modifier
           .padding(start = 16.dp)
-          .padding(vertical = 8.dp)
+          .padding(vertical = 12.dp)
           .size(8.dp),
         painter = painterResource(language.icon),
         contentDescription = null,
@@ -90,12 +90,12 @@ fun RepoCell(
         text = language.title,
         style = MaterialTheme.typography.body2,
       )
-      Icon(
+      Image(
         modifier = Modifier
           .padding(start = 8.dp)
           .padding(vertical = 8.dp)
-          .size(8.dp),
-        imageVector = Icons.Default.Star,
+          .size(12.dp),
+        painter = painterResource(R.drawable.ic_star),
         contentDescription = null,
       )
       Text(
