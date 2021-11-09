@@ -20,7 +20,7 @@ class RepoViewModelProviderFactory @Inject constructor(
 ) : ViewModelProvider.NewInstanceFactory() {
 
   override fun <T : ViewModel> create(modelClass: Class<T>): T {
-    val args = RepoFragmentArgs.fromBundle(fragment.requireArguments())
-    return RepoViewModel(args.ownerName, args.repoName, repoRepository, errorHandler) as T
+    // val args = RepoFragmentArgs.fromBundle(fragment.requireArguments())
+    return RepoViewModel("args.ownerName", "args.repoName", repoRepository, errorHandler) as T
   }
 }

@@ -15,7 +15,7 @@
     tools:ignore="GoogleAppIndexingWarning">
     <activity
       android:exported="true"
-      android:name=".ui.activity.MainActivity"
+      android:name=".ui.MainActivity"
       android:windowSoftInputMode="adjustPan">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />

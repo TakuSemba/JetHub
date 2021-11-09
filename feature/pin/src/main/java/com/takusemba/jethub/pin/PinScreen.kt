@@ -26,6 +26,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.takusemba.jethub.base.ui.LocalActivity
 import com.takusemba.jethub.base.ui.component.NightModeIconButton
 import com.takusemba.jethub.base.ui.component.RepoCell
 import com.takusemba.jethub.base.ui.component.TopBar
@@ -38,9 +40,9 @@ import com.takusemba.jethub.model.Repo
 
 @Composable
 fun PinScreen(
-  userViewModel: UserViewModel,
-  systemViewModel: SystemViewModel,
-  navigationViewModel: NavigationViewModel,
+  userViewModel: UserViewModel = viewModel(LocalActivity.current),
+  systemViewModel: SystemViewModel = viewModel(LocalActivity.current),
+  navigationViewModel: NavigationViewModel = viewModel(LocalActivity.current),
 ) {
   val uiState by userViewModel.uiState.collectAsLifecycleAwareState()
 

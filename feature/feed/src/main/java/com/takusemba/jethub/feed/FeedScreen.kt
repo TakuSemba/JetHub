@@ -22,7 +22,10 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.takusemba.jethub.base.model.ColoredLanguage
+import com.takusemba.jethub.base.ui.LocalActivity
 import com.takusemba.jethub.base.ui.component.NightModeIconButton
 import com.takusemba.jethub.base.ui.component.ProgressView
 import com.takusemba.jethub.base.ui.component.RepoCell
@@ -35,10 +38,10 @@ import com.takusemba.jethub.model.Repo
 
 @Composable
 fun FeedScreen(
-  feedViewModel: FeedViewModel,
-  systemViewModel: SystemViewModel,
-  userViewModel: UserViewModel,
-  navigationViewModel: NavigationViewModel,
+  feedViewModel: FeedViewModel = hiltViewModel(),
+  systemViewModel: SystemViewModel = viewModel(LocalActivity.current),
+  userViewModel: UserViewModel = viewModel(LocalActivity.current),
+  navigationViewModel: NavigationViewModel = viewModel(LocalActivity.current),
 ) {
 
   val uiState by feedViewModel.uiState.collectAsLifecycleAwareState()

@@ -11,7 +11,7 @@ import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.takusemba.jethub.api.di.NetworkModule
 import com.takusemba.jethub.database.di.DatabaseModule
-import com.takusemba.jethub.ui.activity.MainActivity
+import com.takusemba.jethub.ui.MainActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules

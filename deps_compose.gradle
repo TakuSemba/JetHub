@@ -1,6 +1,10 @@
 dependencies {
 
   // compose
+  implementation deps.activityCompose
+  implementation deps.navigationCompose
+  implementation deps.viewModelCompose
+  implementation deps.hiltNavigationCompose
   implementation deps.composeUi
   implementation deps.composeUiTooling
   implementation deps.composeCompiler
