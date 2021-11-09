@@ -12,6 +12,7 @@ import androidx.compose.material.contentColorFor
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.ModeNight
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -58,8 +59,8 @@ fun TopBarTitle(title: String) {
 }
 
 @Composable
-fun BackArrowIconButton(onBackPressed: () -> Unit) {
-  IconButton(onClick = { onBackPressed() }) {
+fun BackArrowIconButton(onPressed: () -> Unit) {
+  IconButton(onClick = { onPressed() }) {
     Icon(
       imageVector = Icons.Default.ArrowBack,
       contentDescription = null,
@@ -69,10 +70,21 @@ fun BackArrowIconButton(onBackPressed: () -> Unit) {
 }
 
 @Composable
-fun CloseIconButton(onBackPressed: () -> Unit) {
-  IconButton(onClick = { onBackPressed() }) {
+fun CloseIconButton(onPressed: () -> Unit) {
+  IconButton(onClick = { onPressed() }) {
     Icon(
       imageVector = Icons.Default.Close,
+      contentDescription = null,
+      tint = MaterialTheme.colors.onSurface
+    )
+  }
+}
+
+@Composable
+fun NightModeIconButton(onPressed: () -> Unit) {
+  IconButton(onClick = { onPressed() }) {
+    Icon(
+      imageVector = Icons.Default.ModeNight,
       contentDescription = null,
       tint = MaterialTheme.colors.onSurface
     )

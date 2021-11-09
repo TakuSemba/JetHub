@@ -16,9 +16,7 @@ class SystemViewModel @Inject constructor() : ViewModel() {
     return requireNotNull(uiState.value.isNightMode)
   }
 
-  fun setNightMode(isEnabled: Boolean) {
-    if (_uiState.value.isNightMode != isEnabled) {
-      _uiState.value = _uiState.value.copy(isNightMode = isEnabled)
-    }
+  fun toggleNightMode() {
+    _uiState.value = _uiState.value.copy(isNightMode = !_uiState.value.isNightMode)
   }
 }

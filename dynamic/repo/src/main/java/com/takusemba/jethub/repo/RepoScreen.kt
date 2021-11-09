@@ -113,7 +113,7 @@ fun RepoTopBar(
         }
       }
     },
-    navigationIcon = { BackArrowIconButton(onBackPressed = onBackPressed) },
+    navigationIcon = { BackArrowIconButton(onPressed = onBackPressed) },
     elevation = if (scrollState.value == 0) 0.dp else AppBarDefaults.TopAppBarElevation,
   )
 }

@@ -75,7 +75,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     }
 
     binding.themeSwitch.setOnClickListener {
-      systemViewModel.setNightMode(!systemViewModel.isNightMode())
+      systemViewModel.toggleNightMode()
     }
 
     lifecycleScope.launch {

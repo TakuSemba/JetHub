@@ -32,7 +32,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
     mediator.attach()
 
     binding.themeSwitch.setOnClickListener {
-      systemViewModel.setNightMode(!systemViewModel.isNightMode())
+      systemViewModel.toggleNightMode()
     }
   }
 }
