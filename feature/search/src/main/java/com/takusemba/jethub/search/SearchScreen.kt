@@ -1,7 +1,9 @@
 package com.takusemba.jethub.search
 
 import android.widget.Toast
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,6 +16,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -69,7 +72,8 @@ fun SearchScreen(
             userViewModel.pin(repo)
             Toast.makeText(context, R.string.pinned_repository, Toast.LENGTH_SHORT).show()
           }
-        }
+        },
+        onQueryChanged = { query -> searchViewModel.search(query) },
       )
     }
   )
@@ -105,6 +109,7 @@ fun SearchBody(
   listState: LazyListState,
   onRepoClicked: (repo: Repo) -> Unit,
   onRepoLongClicked: (repo: Repo) -> Unit,
+  onQueryChanged: (query: String) -> Unit,
 ) {
   Box(modifier = modifier) {
     if (uiState.repos.isEmpty()) {
@@ -115,29 +120,44 @@ fun SearchBody(
         )
       }
     } else {
-      SearchRepoItems(
+      SearchRepoItemsWithSearchBar(
         modifier = Modifier.fillMaxWidth(),
         uiState = uiState,
         listState = listState,
         onRepoClicked = onRepoClicked,
-        onRepoLongClicked = onRepoLongClicked
+        onRepoLongClicked = onRepoLongClicked,
+        onQueryChanged = onQueryChanged,
       )
     }
   }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun SearchRepoItems(
+fun SearchRepoItemsWithSearchBar(
   modifier: Modifier,
   uiState: SearchUiState,
   listState: LazyListState,
   onRepoClicked: (repo: Repo) -> Unit,
   onRepoLongClicked: (repo: Repo) -> Unit,
+  onQueryChanged: (query: String) -> Unit,
 ) {
   LazyColumn(
     modifier = modifier,
     state = listState,
   ) {
+    stickyHeader {
+      OutlinedTextField(
+        modifier = Modifier
+          .padding(vertical = 16.dp, horizontal = 16.dp)
+          .fillMaxWidth()
+          .background(MaterialTheme.colors.background),
+        value = uiState.query,
+        label = { Text(text = stringResource(id = R.string.hint_search)) },
+        onValueChange = onQueryChanged,
+        singleLine = true,
+      )
+    }
     for (pinnedRepo in uiState.repos) {
       item {
         RepoCell(
