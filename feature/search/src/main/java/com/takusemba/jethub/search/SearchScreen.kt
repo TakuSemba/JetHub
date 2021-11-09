@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.Divider
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Scaffold
@@ -162,9 +163,9 @@ fun SearchRepoItemsWithSearchBar(
           .background(MaterialTheme.colors.background),
         value = uiState.query,
         leadingIcon = {
-          Image(
+          Icon(
             painter = painterResource(R.drawable.ic_search),
-            contentDescription = null,
+            contentDescription = null
           )
         },
         label = { Text(text = stringResource(id = R.string.hint_search)) },
