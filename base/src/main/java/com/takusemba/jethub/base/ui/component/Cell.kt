@@ -35,8 +35,7 @@ fun RepoCell(
     ) {
       Image(
         modifier = Modifier
-          .padding(start = 16.dp)
-          .padding(vertical = 16.dp)
+          .padding(start = 16.dp, top = 16.dp, bottom = 8.dp)
           .size(24.dp),
         painter = rememberImagePainter(
           data = repo.owner.avatarUrl,
@@ -47,9 +46,7 @@ fun RepoCell(
         contentDescription = null,
       )
       Text(
-        modifier = Modifier
-          .padding(start = 8.dp, end = 16.dp)
-          .padding(vertical = 16.dp),
+        modifier = Modifier.padding(start = 8.dp, top = 16.dp, end = 16.dp, bottom = 8.dp),
         text = repo.owner.login,
         style = MaterialTheme.typography.subtitle2,
       )
@@ -62,10 +59,10 @@ fun RepoCell(
     if (repo.description.isNotBlank()) {
       Text(
         modifier = Modifier
-          .padding(top = 8.dp)
+          .padding(top = 4.dp)
           .padding(horizontal = 16.dp),
         text = repo.description,
-        style = MaterialTheme.typography.body1,
+        style = MaterialTheme.typography.body2,
       )
     }
     Row(
