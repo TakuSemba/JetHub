@@ -1,7 +1,8 @@
 package com.takusemba.jethub.base.ui.component
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,13 +23,21 @@ import com.takusemba.jethub.base.model.ColoredLanguage
 import com.takusemba.jethub.model.Owner
 import com.takusemba.jethub.model.Repo
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun RepoCell(
   modifier: Modifier,
   repo: Repo,
   onClicked: (repo: Repo) -> Unit,
+  onLongClicked: (repo: Repo) -> Unit,
 ) {
-  Column(modifier = modifier.clickable { onClicked(repo) }) {
+  Column(
+    modifier = modifier
+      .combinedClickable(
+        onClick = { onClicked(repo) },
+        onLongClick = { onLongClicked(repo) },
+      )
+  ) {
     Row(
       modifier = Modifier.fillMaxWidth(),
       verticalAlignment = Alignment.CenterVertically,
@@ -122,6 +131,7 @@ fun RepoCellPreview() {
       description = "Repo Description",
       language = "Kotlin"
     ),
-    onClicked = {}
+    onClicked = {},
+    onLongClicked = {},
   )
 }
