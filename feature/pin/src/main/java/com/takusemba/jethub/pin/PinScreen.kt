@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.takusemba.jethub.base.ui.component.NightModeIconButton
 import com.takusemba.jethub.base.ui.component.RepoCell
@@ -59,7 +60,13 @@ fun PinTopBar(
   scrollState: ScrollState,
 ) {
   TopBar(
-    title = { Text(text = stringResource(id = R.string.pin)) },
+    title = {
+      Text(
+        modifier = Modifier.fillMaxWidth(),
+        textAlign = TextAlign.Center,
+        text = stringResource(id = R.string.pin),
+      )
+    },
     actions = { NightModeIconButton(onPressed = onNightModePressed) },
     elevation = if (scrollState.value == 0) 0.dp else AppBarDefaults.TopAppBarElevation,
   )
