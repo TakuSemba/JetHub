@@ -6,7 +6,6 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideIn
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
@@ -30,11 +29,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AltRoute
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import coil.compose.rememberImagePainter
@@ -47,9 +46,6 @@ import com.takusemba.jethub.base.viewmodel.NavigationViewModel
 import com.takusemba.jethub.model.Owner
 import com.takusemba.jethub.model.ReadMe
 import com.takusemba.jethub.model.Repo
-import io.noties.markwon.Markwon
-import io.noties.markwon.ext.tables.TablePlugin
-import io.noties.markwon.image.coil.CoilImagesPlugin
 import java.nio.charset.StandardCharsets
 
 @Composable
@@ -95,8 +91,8 @@ fun RepoTopBar(
     title = {
       AnimatedVisibility(
         visible = 200 < scrollState.value,
-        enter = fadeIn() + slideInVertically(initialOffsetY =  { it / 2 }),
-        exit = fadeOut() + slideOutVertically(targetOffsetY =  { it / 2 })
+        enter = fadeIn() + slideInVertically(initialOffsetY = { it / 2 }),
+        exit = fadeOut() + slideOutVertically(targetOffsetY = { it / 2 })
       ) {
         Column(
           verticalArrangement = Arrangement.spacedBy(2.dp)
@@ -105,10 +101,14 @@ fun RepoTopBar(
             text = uiState.repo.name,
             style = MaterialTheme.typography.h6,
             fontWeight = FontWeight.Bold,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
           )
           Text(
             text = uiState.repo.owner.login,
             style = MaterialTheme.typography.subtitle2,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
           )
         }
       }
