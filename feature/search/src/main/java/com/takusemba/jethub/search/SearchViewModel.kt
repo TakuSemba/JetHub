@@ -38,6 +38,7 @@ class SearchViewModel @Inject constructor(
   }
 
   fun search(query: String) {
+    _uiState.value = _uiState.value.copy(query = query)
     val currentJob = searchJob
     if (currentJob != null && currentJob.isActive) {
       currentJob.cancel()

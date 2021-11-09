@@ -2,7 +2,6 @@ package com.takusemba.jethub.pin
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,8 +9,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
@@ -46,20 +45,20 @@ fun PinScreen(
   val uiState by userViewModel.uiState.collectAsLifecycleAwareState()
 
   val context = LocalContext.current
-  val scrollState = rememberScrollState()
+  val listState = rememberLazyListState()
 
   Scaffold(
     topBar = {
       PinTopBar(
         onNightModePressed = { systemViewModel.toggleNightMode() },
-        scrollState = scrollState,
+        listState = listState,
       )
     },
     content = { paddingValues ->
       PinBody(
         modifier = Modifier.padding(paddingValues),
         uiState = uiState,
-        scrollState = scrollState,
+        listState = listState,
         onRepoClicked = { repo -> navigationViewModel.openRepo(repo.owner.login, repo.name) },
         onRepoLongClicked = { repo ->
           userViewModel.unpin(repo)
@@ -73,12 +72,19 @@ fun PinScreen(
 @Composable
 fun PinTopBar(
   onNightModePressed: () -> Unit,
-  scrollState: ScrollState,
+  listState: LazyListState,
 ) {
   TopBar(
     title = { Text(text = stringResource(id = R.string.pin)) },
     actions = { NightModeIconButton(onPressed = onNightModePressed) },
-    elevation = if (scrollState.value == 0) 0.dp else AppBarDefaults.TopAppBarElevation,
+    elevation = if (
+      listState.firstVisibleItemIndex == 0 &&
+      listState.firstVisibleItemScrollOffset < 25
+    ) {
+      0.dp
+    } else {
+      AppBarDefaults.TopAppBarElevation
+    },
   )
 }
 
@@ -86,7 +92,7 @@ fun PinTopBar(
 fun PinBody(
   modifier: Modifier,
   uiState: UserUiState,
-  scrollState: ScrollState,
+  listState: LazyListState,
   onRepoClicked: (repo: Repo) -> Unit,
   onRepoLongClicked: (repo: Repo) -> Unit,
 ) {
@@ -97,7 +103,7 @@ fun PinBody(
       PinRepoItems(
         modifier = Modifier.fillMaxWidth(),
         uiState = uiState,
-        scrollState = scrollState,
+        listState = listState,
         onRepoClicked = onRepoClicked,
         onRepoLongClicked = onRepoLongClicked
       )
@@ -109,12 +115,13 @@ fun PinBody(
 fun PinRepoItems(
   modifier: Modifier,
   uiState: UserUiState,
-  scrollState: ScrollState,
+  listState: LazyListState,
   onRepoClicked: (repo: Repo) -> Unit,
   onRepoLongClicked: (repo: Repo) -> Unit,
 ) {
   LazyColumn(
-    modifier = modifier.verticalScroll(scrollState)
+    modifier = modifier,
+    state = listState,
   ) {
     for (pinnedRepo in uiState.pinnedRepos) {
       item {

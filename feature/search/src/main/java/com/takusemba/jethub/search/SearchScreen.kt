@@ -2,15 +2,15 @@ package com.takusemba.jethub.search
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
@@ -46,20 +46,20 @@ fun SearchScreen(
   val uiState by searchViewModel.uiState.collectAsLifecycleAwareState()
 
   val context = LocalContext.current
-  val scrollState = rememberScrollState()
+  val listState = rememberLazyListState()
 
   Scaffold(
     topBar = {
       SearchTopBar(
         onNightModePressed = { systemViewModel.toggleNightMode() },
-        scrollState = scrollState,
+        listState = listState,
       )
     },
     content = { paddingValues ->
       SearchBody(
         modifier = Modifier.padding(paddingValues),
         uiState = uiState,
-        scrollState = scrollState,
+        listState = listState,
         onRepoClicked = { repo -> navigationViewModel.openRepo(repo.owner.login, repo.name) },
         onRepoLongClicked = { repo ->
           if (userViewModel.isPinned(repo)) {
@@ -82,12 +82,19 @@ fun SearchScreen(
 @Composable
 fun SearchTopBar(
   onNightModePressed: () -> Unit,
-  scrollState: ScrollState,
+  listState: LazyListState,
 ) {
   TopBar(
     title = { Text(text = stringResource(id = R.string.search)) },
     actions = { NightModeIconButton(onPressed = onNightModePressed) },
-    elevation = if (scrollState.value == 0) 0.dp else AppBarDefaults.TopAppBarElevation,
+    elevation = if (
+      listState.firstVisibleItemIndex == 0 &&
+      listState.firstVisibleItemScrollOffset < 25
+    ) {
+      0.dp
+    } else {
+      AppBarDefaults.TopAppBarElevation
+    },
   )
 }
 
@@ -95,18 +102,23 @@ fun SearchTopBar(
 fun SearchBody(
   modifier: Modifier,
   uiState: SearchUiState,
-  scrollState: ScrollState,
+  listState: LazyListState,
   onRepoClicked: (repo: Repo) -> Unit,
   onRepoLongClicked: (repo: Repo) -> Unit,
 ) {
   Box(modifier = modifier) {
     if (uiState.repos.isEmpty()) {
-      SearchEmptyLayout(modifier = Modifier.fillMaxSize())
+      if (!uiState.isLoading) {
+        SearchEmptyLayout(
+          modifier = Modifier.fillMaxSize(),
+          uiState = uiState,
+        )
+      }
     } else {
       SearchRepoItems(
         modifier = Modifier.fillMaxWidth(),
         uiState = uiState,
-        scrollState = scrollState,
+        listState = listState,
         onRepoClicked = onRepoClicked,
         onRepoLongClicked = onRepoLongClicked
       )
@@ -118,21 +130,24 @@ fun SearchBody(
 fun SearchRepoItems(
   modifier: Modifier,
   uiState: SearchUiState,
-  scrollState: ScrollState,
+  listState: LazyListState,
   onRepoClicked: (repo: Repo) -> Unit,
   onRepoLongClicked: (repo: Repo) -> Unit,
 ) {
-  Column(
-    modifier = modifier.verticalScroll(scrollState)
+  LazyColumn(
+    modifier = modifier,
+    state = listState,
   ) {
     for (pinnedRepo in uiState.repos) {
-      RepoCell(
-        modifier = Modifier.fillMaxWidth(),
-        repo = pinnedRepo,
-        onClicked = onRepoClicked,
-        onLongClicked = onRepoLongClicked,
-      )
-      Divider()
+      item {
+        RepoCell(
+          modifier = Modifier.fillMaxWidth(),
+          repo = pinnedRepo,
+          onClicked = onRepoClicked,
+          onLongClicked = onRepoLongClicked,
+        )
+        Divider()
+      }
     }
   }
 }
@@ -140,6 +155,7 @@ fun SearchRepoItems(
 @Composable
 fun SearchEmptyLayout(
   modifier: Modifier,
+  uiState: SearchUiState,
 ) {
   Column(
     modifier = modifier,
@@ -163,7 +179,7 @@ fun SearchEmptyLayout(
       modifier = Modifier
         .padding(horizontal = 32.dp)
         .padding(top = 16.dp),
-      text = stringResource(id = R.string.empty_search_repositories_description),
+      text = stringResource(id = R.string.empty_search_repositories_description, uiState.query),
       textAlign = TextAlign.Center,
       style = MaterialTheme.typography.body2,
     )
