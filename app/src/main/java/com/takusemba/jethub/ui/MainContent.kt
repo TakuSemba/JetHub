@@ -2,14 +2,11 @@ package com.takusemba.jethub.ui
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.contentColorFor
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -55,36 +52,28 @@ fun MainBottomNavigation(
   currentDestination: NavDestination?,
   onNavigationSelected: (Screen) -> Unit
 ) {
-  BottomNavigation(
+  NavigationBar(
     modifier = modifier,
-    backgroundColor = MaterialTheme.colors.surface,
-    contentColor = contentColorFor(MaterialTheme.colors.surface),
   ) {
-    BottomNavigationItem(
+    NavigationBarItem(
       icon = { Icon(painterResource(R.drawable.ic_feed), null) },
       label = { Text(stringResource(id = R.string.feed)) },
       selected = currentDestination?.hierarchy?.any { it.route == Screen.Feed.route } == true,
       onClick = { onNavigationSelected(Screen.Feed) },
-      selectedContentColor = MaterialTheme.colors.primary,
-      unselectedContentColor = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.disabled),
     )
 
-    BottomNavigationItem(
+    NavigationBarItem(
       icon = { Icon(painterResource(R.drawable.ic_search), null) },
       label = { Text(stringResource(id = R.string.search)) },
       selected = currentDestination?.hierarchy?.any { it.route == Screen.Search.route } == true,
       onClick = { onNavigationSelected(Screen.Search) },
-      selectedContentColor = MaterialTheme.colors.primary,
-      unselectedContentColor = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.disabled),
     )
 
-    BottomNavigationItem(
+    NavigationBarItem(
       icon = { Icon(painterResource(R.drawable.ic_pin), null) },
       label = { Text(stringResource(id = R.string.pin)) },
       selected = currentDestination?.hierarchy?.any { it.route == Screen.Pin.route } == true,
       onClick = { onNavigationSelected(Screen.Pin) },
-      selectedContentColor = MaterialTheme.colors.primary,
-      unselectedContentColor = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.disabled),
     )
   }
 }

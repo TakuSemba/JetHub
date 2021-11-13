@@ -7,11 +7,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.ScrollableTabRow
 import androidx.compose.material.Tab
 import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -125,8 +125,8 @@ fun FeedTabs(
     modifier = modifier.shadow(AppBarDefaults.TopAppBarElevation),
     selectedTabIndex = languages.indexOf(selectedLanguage),
     edgePadding = 0.dp,
-    backgroundColor = MaterialTheme.colors.surface,
-    contentColor = MaterialTheme.colors.primary,
+    backgroundColor = MaterialTheme.colorScheme.surface,
+    contentColor = MaterialTheme.colorScheme.primary,
   ) {
     for (language in languages) {
       Tab(

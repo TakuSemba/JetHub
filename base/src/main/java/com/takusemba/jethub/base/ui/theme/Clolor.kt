@@ -1,21 +1,21 @@
 package com.takusemba.jethub.base.ui.theme
 
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
 
 private val Primary = Color(0xff6da1f0)
-private val PrimaryDark = Color(0xff4688f1)
-private val Accent = Color(0xff4688f1)
+private val Secondary = Color(0xff4688f1)
+private val Tertiary = Color(0xff4688f1)
 
-val LightThemeColors = lightColors(
+val LightColorScheme = lightColorScheme(
   primary = Primary,
-  primaryVariant = PrimaryDark,
-  secondary = Accent
+  secondary = Secondary,
+  tertiary = Tertiary,
 )
 
-val DarkThemeColors = darkColors(
+val DarkColorScheme = darkColorScheme(
   primary = Primary,
-  primaryVariant = PrimaryDark,
-  secondary = Accent
+  secondary = Secondary,
+  tertiary = Tertiary,
 )

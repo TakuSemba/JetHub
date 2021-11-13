@@ -13,9 +13,9 @@ import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -158,7 +158,7 @@ fun PinEmptyLayout(
         .padding(top = 16.dp),
       text = stringResource(id = R.string.empty_pinned_repositories_title),
       textAlign = TextAlign.Center,
-      style = MaterialTheme.typography.h6,
+      style = MaterialTheme.typography.headlineSmall,
       fontWeight = FontWeight.Bold,
     )
     Text(
@@ -167,7 +167,7 @@ fun PinEmptyLayout(
         .padding(top = 16.dp),
       text = stringResource(id = R.string.empty_pinned_repositories_description),
       textAlign = TextAlign.Center,
-      style = MaterialTheme.typography.body2,
+      style = MaterialTheme.typography.bodyMedium,
     )
   }
 }

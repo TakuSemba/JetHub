@@ -22,12 +22,12 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AltRoute
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -99,14 +99,14 @@ fun RepoTopBar(
         ) {
           Text(
             text = uiState.repo.name,
-            style = MaterialTheme.typography.h6,
+            style = MaterialTheme.typography.headlineSmall,
             fontWeight = FontWeight.Bold,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
           )
           Text(
             text = uiState.repo.owner.login,
-            style = MaterialTheme.typography.subtitle2,
+            style = MaterialTheme.typography.titleSmall,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
           )
@@ -170,19 +170,19 @@ fun RepoOverview(
       Text(
         text = repo.owner.login,
         modifier = Modifier.padding(start = 8.dp, end = 16.dp),
-        style = MaterialTheme.typography.subtitle2
+        style = MaterialTheme.typography.titleSmall
       )
     }
     Text(
       text = repo.name,
       modifier = Modifier.padding(horizontal = 16.dp),
-      style = MaterialTheme.typography.h5,
+      style = MaterialTheme.typography.headlineSmall,
       fontWeight = FontWeight.Bold,
     )
     Text(
       text = repo.description,
       modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-      style = MaterialTheme.typography.body1
+      style = MaterialTheme.typography.bodyLarge
     )
     Row(
       modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
@@ -192,7 +192,7 @@ fun RepoOverview(
         modifier = Modifier.size(size = 18.dp),
         imageVector = Icons.Default.Star,
         contentDescription = null,
-        tint = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)
+        tint = MaterialTheme.colorScheme.onSurface.copy(alpha = ContentAlpha.medium)
       )
       Text(
         text = "${repo.starsCount} stars",
@@ -202,7 +202,7 @@ fun RepoOverview(
         modifier = Modifier.size(size = 18.dp),
         imageVector = Icons.Default.AltRoute,
         contentDescription = null,
-        tint = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)
+        tint = MaterialTheme.colorScheme.onSurface.copy(alpha = ContentAlpha.medium)
       )
       Text(text = "${repo.forksCount} forks", modifier = Modifier.padding(start = 8.dp))
     }
@@ -220,7 +220,7 @@ fun RepoReadMe(
         .padding(horizontal = 16.dp)
         .padding(top = 16.dp),
       text = "README.md",
-      style = MaterialTheme.typography.h6,
+      style = MaterialTheme.typography.headlineSmall,
       fontWeight = FontWeight.Bold,
     )
     val markwon = LocalMarkwon.current

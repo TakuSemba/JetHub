@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.contentColorFor
@@ -13,6 +12,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.ModeNight
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,7 +27,7 @@ fun TopBar(
   title: @Composable () -> Unit = {},
   navigationIcon: @Composable (() -> Unit)? = null,
   actions: @Composable RowScope.() -> Unit = {},
-  backgroundColor: Color = MaterialTheme.colors.surface,
+  backgroundColor: Color = MaterialTheme.colorScheme.surface,
   contentColor: Color = contentColorFor(backgroundColor),
   elevation: Dp = AppBarDefaults.TopAppBarElevation
 ) {
@@ -52,7 +52,7 @@ fun TopBarTitle(title: String) {
   Text(
     text = title,
     textAlign = TextAlign.Start,
-    color = MaterialTheme.colors.onSurface,
+    color = MaterialTheme.colorScheme.onSurface,
     maxLines = 1,
     overflow = TextOverflow.Ellipsis,
   )
@@ -64,7 +64,7 @@ fun BackArrowIconButton(onPressed: () -> Unit) {
     Icon(
       imageVector = Icons.Default.ArrowBack,
       contentDescription = null,
-      tint = MaterialTheme.colors.onSurface
+      tint = MaterialTheme.colorScheme.onSurface
     )
   }
 }
@@ -75,7 +75,7 @@ fun CloseIconButton(onPressed: () -> Unit) {
     Icon(
       imageVector = Icons.Default.Close,
       contentDescription = null,
-      tint = MaterialTheme.colors.onSurface
+      tint = MaterialTheme.colorScheme.onSurface
     )
   }
 }
@@ -86,7 +86,7 @@ fun NightModeIconButton(onPressed: () -> Unit) {
     Icon(
       imageVector = Icons.Default.ModeNight,
       contentDescription = null,
-      tint = MaterialTheme.colors.onSurface
+      tint = MaterialTheme.colorScheme.onSurface
     )
   }
 }

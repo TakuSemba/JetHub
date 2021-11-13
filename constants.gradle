@@ -61,6 +61,7 @@ project.ext {
       composeUiTooling: "androidx.compose.ui:ui-tooling:${versions.compose}",
       composeCompiler: "androidx.compose.compiler:compiler:${versions.compose}",
       composeMaterial: "androidx.compose.material:material:${versions.compose}",
+      composeMaterialYou: "androidx.compose.material3:material3:1.0.0-alpha01",
       composeFoundation: "androidx.compose.foundation:foundation:${versions.compose}",
       composeAnimation: "androidx.compose.animation:animation:${versions.compose}",
       composeIconsCore: "androidx.compose.material:material-icons-core:${versions.compose}",

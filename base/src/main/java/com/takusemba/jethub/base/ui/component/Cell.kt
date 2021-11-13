@@ -8,8 +8,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -57,13 +57,13 @@ fun RepoCell(
       Text(
         modifier = Modifier.padding(start = 8.dp, top = 16.dp, end = 16.dp, bottom = 8.dp),
         text = repo.owner.login,
-        style = MaterialTheme.typography.subtitle2,
+        style = MaterialTheme.typography.titleSmall,
       )
     }
     Text(
       modifier = Modifier.padding(horizontal = 16.dp),
       text = repo.name,
-      style = MaterialTheme.typography.h6,
+      style = MaterialTheme.typography.headlineSmall,
     )
     if (repo.description.isNotBlank()) {
       Text(
@@ -71,7 +71,7 @@ fun RepoCell(
           .padding(top = 4.dp)
           .padding(horizontal = 16.dp),
         text = repo.description,
-        style = MaterialTheme.typography.body2,
+        style = MaterialTheme.typography.bodyMedium,
       )
     }
     Row(
@@ -94,7 +94,7 @@ fun RepoCell(
           .padding(start = 4.dp)
           .padding(vertical = 8.dp),
         text = language.title,
-        style = MaterialTheme.typography.body2,
+        style = MaterialTheme.typography.bodyMedium,
       )
       Image(
         modifier = Modifier
@@ -109,7 +109,7 @@ fun RepoCell(
           .padding(start = 4.dp)
           .padding(vertical = 8.dp),
         text = repo.starsCount.toString(),
-        style = MaterialTheme.typography.body2,
+        style = MaterialTheme.typography.bodyMedium,
       )
     }
   }

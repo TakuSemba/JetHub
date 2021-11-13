@@ -9,6 +9,7 @@ dependencies {
   implementation deps.composeUiTooling
   implementation deps.composeCompiler
   implementation deps.composeMaterial
+  implementation deps.composeMaterialYou
   implementation deps.composeFoundation
   implementation deps.composeAnimation
   implementation deps.composeIconsCore

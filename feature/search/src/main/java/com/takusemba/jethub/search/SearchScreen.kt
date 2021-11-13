@@ -16,10 +16,10 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -160,7 +160,7 @@ fun SearchRepoItemsWithSearchBar(
         modifier = Modifier
           .padding(vertical = 16.dp, horizontal = 16.dp)
           .fillMaxWidth()
-          .background(MaterialTheme.colors.background),
+          .background(MaterialTheme.colorScheme.background),
         value = uiState.query,
         leadingIcon = {
           Icon(
@@ -207,7 +207,7 @@ fun SearchEmptyLayout(
         .padding(top = 16.dp),
       text = stringResource(id = R.string.empty_search_repositories_title),
       textAlign = TextAlign.Center,
-      style = MaterialTheme.typography.h6,
+      style = MaterialTheme.typography.headlineSmall,
       fontWeight = FontWeight.Bold,
     )
     Text(
@@ -216,7 +216,7 @@ fun SearchEmptyLayout(
         .padding(top = 16.dp),
       text = stringResource(id = R.string.empty_search_repositories_description, uiState.query),
       textAlign = TextAlign.Center,
-      style = MaterialTheme.typography.body2,
+      style = MaterialTheme.typography.bodyMedium,
     )
   }
 }

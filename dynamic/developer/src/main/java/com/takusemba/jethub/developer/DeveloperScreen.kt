@@ -13,7 +13,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -22,6 +21,7 @@ import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Place
 import androidx.compose.material.icons.filled.RssFeed
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -127,7 +127,7 @@ fun DeveloperProfile(
             .padding(top = 8.dp, bottom = 2.dp)
             .padding(horizontal = 16.dp),
           text = developer.name,
-          style = MaterialTheme.typography.h5,
+          style = MaterialTheme.typography.headlineSmall,
           fontWeight = FontWeight.Bold,
         )
         Text(
@@ -135,7 +135,7 @@ fun DeveloperProfile(
             .padding(top = 2.dp, bottom = 8.dp)
             .padding(horizontal = 16.dp),
           text = developer.login,
-          style = MaterialTheme.typography.subtitle1,
+          style = MaterialTheme.typography.titleMedium,
         )
       }
     }
@@ -145,7 +145,7 @@ fun DeveloperProfile(
         modifier = Modifier
           .padding(top = 8.dp)
           .padding(horizontal = 16.dp),
-        style = MaterialTheme.typography.body1,
+        style = MaterialTheme.typography.bodyLarge,
       )
     }
     if (developer.company.isNotEmpty()) {
@@ -205,12 +205,12 @@ fun DeveloperProfileIconItem(
       modifier = Modifier.size(size = 18.dp),
       imageVector = icon,
       contentDescription = null,
-      tint = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)
+      tint = MaterialTheme.colorScheme.onSurface.copy(alpha = ContentAlpha.medium)
     )
     Text(
       modifier = Modifier.padding(start = 4.dp),
       text = text,
-      style = MaterialTheme.typography.body2,
+      style = MaterialTheme.typography.bodyMedium,
       fontWeight = FontWeight.Bold,
     )
   }
