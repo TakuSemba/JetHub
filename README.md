@@ -33,7 +33,6 @@ The purpose of this project is to try new Android technologies and learn how it 
 <br/>
 <br/>
 <br/>
-<br/>
 
 <img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/modules.png" align="left" width="400">
 
@@ -50,6 +49,7 @@ This project consists of multiple modules and some of them are provided as Dynam
 
 `:repo`, `:developer` are [dynamic feature modules](https://developer.android.com/guide/app-bundle/dynamic-delivery). These are not included in base.apk and require user to download one on demand.
 
+<br/>
 <br/>
 
 ## Architecture
