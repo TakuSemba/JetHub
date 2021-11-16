@@ -82,10 +82,9 @@ db.getData() // get data from DB
 <br/>
 <br/>
 
-## :construction: Jetpack Compose (Under Development) :construction:
+## Jetpack Compose
 
-[Jetpack Compose](https://developer.android.com/jetpack/compose) is used for the screens of `:repo`, `:developer` modules. Therefore, To build this project, you will need at lease 2020.3.1 version of Android Studio.
-I'm currently migrating to Jetpack Compose and the design is in progress for now.
+Every screen is built on top of [Jetpack Compose](https://developer.android.com/jetpack/compose).
 
 ## Dark Theme
 
