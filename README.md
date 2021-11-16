@@ -17,6 +17,7 @@ JetHub is a sample app using Github API and Jetpack components.
 The purpose of this project is to try new Android technologies and learn how it works in an app.
 
 ## Used Libraries
+ - [Jetpack Compose](https://developer.android.com/jetpack/compose) (Decleartive UI)
  - [Navigation](https://developer.android.com/topic/libraries/architecture/navigation) (Fragment transitions)
  - [View Binding](https://developer.android.com/topic/libraries/view-binding) (Bind views)
  - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) (Store and manage UI-related data)
@@ -81,10 +82,6 @@ db.getData() // get data from DB
 
 <br/>
 <br/>
-
-## Jetpack Compose
-
-Every screen is built on top of [Jetpack Compose](https://developer.android.com/jetpack/compose).
 
 ## Dark Theme
 
