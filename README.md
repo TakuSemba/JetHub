@@ -3,7 +3,7 @@
 </p>
 
 <H3 align="center">
-Android Sample App using Github API and Jetpack Component.</br>
+Android Sample App using Github API and Jetpack Component.<br/>
 </H3>
 
 <br/>
@@ -17,7 +17,7 @@ JetHub is a sample app using Github API and Jetpack components.
 The purpose of this project is to try new Android technologies and learn how it works in an app.
 
 ## Used Libraries
- - [Jetpack Compose](https://developer.android.com/jetpack/compose) (Decleartive UI)
+ - [Jetpack Compose](https://developer.android.com/jetpack/compose) (Declarative UI)
  - [Navigation](https://developer.android.com/topic/libraries/architecture/navigation) (Fragment transitions)
  - [View Binding](https://developer.android.com/topic/libraries/view-binding) (Bind views)
  - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) (Store and manage UI-related data)
@@ -56,7 +56,7 @@ This project consists of multiple modules and some of them are provided as Dynam
 
 <img src="https://github.com/TakuSemba/JetHub/blob/master/screenshots/architecture.png" align="right" width="360">
 
-This app is a single-activity application and uses MVVM architecture and follows the guildline shown [here](https://developer.android.com/jetpack/docs/guide).
+This app is a single-activity application and uses MVVM architecture and follows the guideline shown [here](https://developer.android.com/jetpack/docs/guide).
 
 ```kt
 //--- Activity / Fragments / Compose ---//
